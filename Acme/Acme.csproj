@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net5.0;net6.0;net7.0</TargetFrameworks>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<Version>5.0.23</Version>
+		<Authors>yzxs</Authors>
+		<Company>yzxs</Company>
+		<Copyright>yzxs</Copyright>
+		<Description>
+			.Net通用公共类库
+				一、工具类Tool
+					1.数据转化ConvHelper
+					2.Http接口请求处理HttpHelper
+					3.MD5加密MD5Encryption
+					4.Excel和List集合操作NpolExcelHelper
+					5.随机数、验证码VerCode
+					6.类型验证VerificationHelper
+					7、json拓展方法
+						(1).ToJson
+						(2).ToEntity
+						(3).ToJObject
+				二、汉语拼音类库 NPinyin
+				三、appsettings.json配置文件读取App
+				四、公用返回参数Oh
+				五、通用常量CV
+		</Description>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="DotNetCore.NPOI" Version="1.2.3" />
+		<PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.17" />
+		<PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="6.0.0" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.1" />
+		<PackageReference Include="System.Net.Http" Version="4.3.4" />
+	</ItemGroup>
+</Project>
