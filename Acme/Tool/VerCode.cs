@@ -4,7 +4,7 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
 
-namespace Acme.Tools
+namespace Acme
 {
     /// <summary>
     /// 验证码
@@ -33,7 +33,7 @@ namespace Acme.Tools
         /// 创建验证码的图片
         /// </summary>
         /// <param name="validateCode">要输出到的page对象</param>
-        public static byte[] CreateValidateGraphic(string validateCode)
+        public static byte[] CreateValidateGraphic1(string validateCode)
         {
             Bitmap image = new((int)Math.Ceiling(validateCode.Length * 12.0), 22);
             Graphics g = Graphics.FromImage(image);
@@ -71,6 +71,76 @@ namespace Acme.Tools
             image.Dispose();
             //输出图片流
             return stream.ToArray();
+        }
+
+        /// <summary>
+        /// 创建验证码的图片
+        /// </summary>
+        /// <param name="validateCode">要输出到的page对象</param>
+        /// <returns></returns>
+        public static byte[] CreateValidateGraphic2(string validateCode)
+        {
+            Color[] colors = {
+                                 Color.Red, Color.OrangeRed,Color.SaddleBrown,
+                                 Color.LimeGreen,Color.Green,Color.MediumAquamarine,
+                                 Color.Blue,Color.MediumOrchid,Color.Black,
+                                 Color.DarkBlue,Color.Orange,Color.Brown,
+                                 Color.DarkCyan,Color.Purple
+                             };
+            string[] fonts = { "Verdana", "Microsoft Sans Serif", "Comic Sans MS", "Arial", "宋体" };
+            Random random = new();
+            // 创建一个 Bitmap 图片类型对象
+            Bitmap bitmap = new(validateCode.Length * 18, 32);
+            // 创建一个图形画笔
+            Graphics graphics = Graphics.FromImage(bitmap);
+            // 将图片背景填充成白色
+            graphics.Clear(Color.White);
+            // 绘制验证码噪点
+            for (int i = 0; i < random.Next(60, 80); i++)
+            {
+                int pointX = random.Next(bitmap.Width);
+                int pointY = random.Next(bitmap.Height);
+                graphics.DrawLine(new Pen(Color.LightGray, 1), pointX, pointY, pointX + 1, pointY);
+            }
+            // 绘制随机线条 1 条
+            graphics.DrawLine(
+                    new Pen(colors[random.Next(colors.Length)], random.Next(3)),
+                    new Point(
+                        random.Next(bitmap.Width),
+                        random.Next(bitmap.Height)),
+                    new Point(random.Next(bitmap.Width),
+                    random.Next(bitmap.Height)));
+            // 绘制验证码
+            for (int i = 0; i < validateCode.Length; i++)
+            {
+                graphics.DrawString(
+                    validateCode.Substring(i, 1),
+                    new Font(fonts[random.Next(fonts.Length)], 15, FontStyle.Bold),
+                    new SolidBrush(colors[random.Next(colors.Length)]),
+                    16 * i + 1,
+                    random.Next(0, 5)
+                    );
+            }
+            // 绘制验证码噪点
+            for (int i = 0; i < random.Next(30, 50); i++)
+            {
+                int pointX = random.Next(bitmap.Width);
+                int pointY = random.Next(bitmap.Height);
+                graphics.DrawLine(new Pen(colors[random.Next(colors.Length)], 1), pointX, pointY, pointX, pointY + 1);
+            }
+            // 绘制随机线条 1 条
+            graphics.DrawLine(
+                    new Pen(colors[random.Next(colors.Length)], random.Next(3)),
+                    new Point(
+                        random.Next(bitmap.Width),
+                        random.Next(bitmap.Height)),
+                    new Point(random.Next(bitmap.Width),
+                    random.Next(bitmap.Height)));
+
+            using MemoryStream memoryStream = new();
+            bitmap.Save(memoryStream, ImageFormat.Jpeg);
+            byte[] bytes = memoryStream.ToArray();
+            return bytes;
         }
     }
 }

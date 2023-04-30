@@ -2,41 +2,13 @@
 using System;
 using System.IO;
 
-namespace Acme.Tool
+namespace Acme
 {
     /// <summary>
     /// 类型转换
     /// </summary>
     public static class ConvHelper
     {
-        /// <summary>
-        /// 实体转Json
-        /// </summary>
-        /// <param name="data">要转化的实体</param>
-        /// <returns></returns>
-        public static string ToJson(this object data)
-        {
-            return JsonConvert.SerializeObject(data);
-        }
-
-        /// <summary>
-        /// Json字符串转实体
-        /// </summary>
-        /// <typeparam name="T">实体类型</typeparam>
-        /// <param name="json">json字符串</param>
-        /// <returns></returns>
-        public static T ToEntity<T>(this string json)
-        {
-            try
-            {
-                return JsonConvert.DeserializeObject<T>(json);
-            }
-            catch
-            {
-                return default;
-            }
-        }
-
         /// <summary>  
         /// 获取时间戳  13位
         /// </summary>  
@@ -175,7 +147,7 @@ namespace Acme.Tool
             {
                 throw new Exception("参数格式不正确");
             }
-            string UrlPath = $"{App.Path}{absolutelyPath.Substring(1, absolutelyPath.Length - 1)}";
+            string UrlPath = $"{App.Path}{absolutelyPath[1..]}";
             return UrlPath.Replace("/", "\\");
         }
 

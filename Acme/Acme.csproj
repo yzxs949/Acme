@@ -9,21 +9,22 @@
 		<Copyright>yzxs</Copyright>
 		<Description>
 			.Net通用公共类库
-				一、工具类Tool
-					1.数据转化ConvHelper
-					2.Http接口请求处理HttpHelper
-					3.MD5加密MD5Encryption
-					4.Excel和List集合操作NpolExcelHelper
-					5.随机数、验证码VerCode
-					6.类型验证VerificationHelper
-					7、json拓展方法
-						(1).ToJson
-						(2).ToEntity
-						(3).ToJObject
-				二、汉语拼音类库 NPinyin
-				三、appsettings.json配置文件读取App
-				四、公用返回参数Oh
-				五、通用常量CV
+			一、工具类Tool
+			1.数据转化ConvHelper
+			2.Http接口请求处理HttpHelper
+			3.MD5加密MD5Encryption
+			4.Excel和List集合操作NpolExcelHelper
+			5.随机数、验证码VerCode
+			6.类型验证VerificationHelper
+			7、json拓展方法
+			(1).ToJson
+			(2).ToEntity
+			(3).ToJObject
+			二、汉语拼音类库 NPinyin
+			三、appsettings.json配置文件读取App
+			四、公用返回参数Oh
+			五、通用常量CV
+			六、json文件读取类JsonFile
 		</Description>
 	</PropertyGroup>
 

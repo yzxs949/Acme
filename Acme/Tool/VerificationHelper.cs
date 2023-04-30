@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 
-namespace Acme.Tool
+namespace Acme
 {
     /// <summary>
     /// 验证

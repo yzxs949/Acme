@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using System;
 
-namespace Acme.Tool
+namespace Acme
 {
     /// <summary>
     /// Js处理类

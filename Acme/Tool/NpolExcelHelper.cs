@@ -7,7 +7,7 @@ using System.Globalization;
 using System.IO;
 using System.Reflection;
 
-namespace Acme.Tool
+namespace Acme
 {
     /// <summary>
     /// Excel帮助类
@@ -79,10 +79,7 @@ namespace Acme.Tool
             {
                 sheet = workbook.GetSheet(sheetName);
                 //如果没有找到指定的sheetName对应的sheet，则尝试获取第一个sheet
-                if (sheet == null)
-                {
-                    sheet = workbook.GetSheetAt(0);
-                }
+                sheet ??= workbook.GetSheetAt(0);
             }
             else
             {

@@ -2,7 +2,7 @@
 using System.Security.Cryptography;
 using System.Text;
 
-namespace Acme.Tool
+namespace Acme
 {
     /// <summary>
     /// MD5加密
