@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Acme</id>
+    <version>5.1.23</version>
+    <authors>yzxs</authors>
+    <description>.Net通用公共类库
+			一、工具类Tool
+			1.数据转化ConvHelper
+			2.Http接口请求处理HttpHelper
+			3.MD5加密MD5Encryption
+			4.Excel和List集合操作NpolExcelHelper
+			5.随机数、验证码VerCode
+			6.类型验证VerificationHelper
+			7、json拓展方法
+			(1).ToJson
+			(2).ToEntity
+			(3).ToJObject
+			二、汉语拼音类库 NPinyin
+			三、appsettings.json配置文件读取App
+			四、公用返回参数Oh
+			五、通用常量CV
+			六、json文件读取类JsonFile</description>
+    <copyright>yzxs</copyright>
+    <dependencies>
+      <group targetFramework="net5.0">
+        <dependency id="DotNetCore.NPOI" version="1.2.3" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.AspNetCore.Http.Features" version="5.0.17" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Caching.Abstractions" version="6.0.0" exclude="Build,Analyzers" />
+        <dependency id="Newtonsoft.Json" version="13.0.1" exclude="Build,Analyzers" />
+        <dependency id="Swashbuckle.AspNetCore" version="6.3.1" exclude="Build,Analyzers" />
+        <dependency id="System.Net.Http" version="4.3.4" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net6.0">
+        <dependency id="DotNetCore.NPOI" version="1.2.3" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.AspNetCore.Http.Features" version="5.0.17" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Caching.Abstractions" version="6.0.0" exclude="Build,Analyzers" />
+        <dependency id="Newtonsoft.Json" version="13.0.1" exclude="Build,Analyzers" />
+        <dependency id="Swashbuckle.AspNetCore" version="6.3.1" exclude="Build,Analyzers" />
+        <dependency id="System.Net.Http" version="4.3.4" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net7.0">
+        <dependency id="DotNetCore.NPOI" version="1.2.3" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.AspNetCore.Http.Features" version="5.0.17" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Caching.Abstractions" version="6.0.0" exclude="Build,Analyzers" />
+        <dependency id="Newtonsoft.Json" version="13.0.1" exclude="Build,Analyzers" />
+        <dependency id="Swashbuckle.AspNetCore" version="6.3.1" exclude="Build,Analyzers" />
+        <dependency id="System.Net.Http" version="4.3.4" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>
