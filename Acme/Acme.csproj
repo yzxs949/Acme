@@ -11,7 +11,6 @@
 			Acme框架核心库，出道即是巅峰
 		</Description>
 	</PropertyGroup>
-
 	<ItemGroup>
 		<PackageReference Include="DotNetCore.NPOI" Version="1.2.3" />
 		<PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.17" />
