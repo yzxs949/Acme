@@ -3,28 +3,12 @@
 	<PropertyGroup>
 		<TargetFrameworks>net5.0;net6.0;net7.0</TargetFrameworks>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
-		<Version>5.0.23</Version>
+		<Version>5.1.24</Version>
 		<Authors>yzxs</Authors>
 		<Company>yzxs</Company>
 		<Copyright>yzxs</Copyright>
 		<Description>
-			.Net通用公共类库
-			一、工具类Tool
-			1.数据转化ConvHelper
-			2.Http接口请求处理HttpHelper
-			3.MD5加密MD5Encryption
-			4.Excel和List集合操作NpolExcelHelper
-			5.随机数、验证码VerCode
-			6.类型验证VerificationHelper
-			7、json拓展方法
-			(1).ToJson
-			(2).ToEntity
-			(3).ToJObject
-			二、汉语拼音类库 NPinyin
-			三、appsettings.json配置文件读取App
-			四、公用返回参数Oh
-			五、通用常量CV
-			六、json文件读取类JsonFile
+			Acme框架核心库，出道即是巅峰
 		</Description>
 	</PropertyGroup>
 
