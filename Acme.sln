@@ -5,7 +5,7 @@ VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Acme", "Acme\Acme.csproj", "{14E3F405-D826-4611-BD8D-6559A5F23A45}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Acme.Dapper", "..\..\workspace\Acme\Acme.Dapper\Acme.Dapper.csproj", "{ECF8CDA6-E1DD-4A84-9E48-464A1CEAED78}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Acme.Dapper", "Acme.Dapper\Acme.Dapper.csproj", "{BC0D071C-1593-406A-9C53-2AB49DAAF620}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{14E3F405-D826-4611-BD8D-6559A5F23A45}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14E3F405-D826-4611-BD8D-6559A5F23A45}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14E3F405-D826-4611-BD8D-6559A5F23A45}.Release|Any CPU.Build.0 = Release|Any CPU
-		{ECF8CDA6-E1DD-4A84-9E48-464A1CEAED78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ECF8CDA6-E1DD-4A84-9E48-464A1CEAED78}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ECF8CDA6-E1DD-4A84-9E48-464A1CEAED78}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ECF8CDA6-E1DD-4A84-9E48-464A1CEAED78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC0D071C-1593-406A-9C53-2AB49DAAF620}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC0D071C-1593-406A-9C53-2AB49DAAF620}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC0D071C-1593-406A-9C53-2AB49DAAF620}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC0D071C-1593-406A-9C53-2AB49DAAF620}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
