@@ -210,7 +210,7 @@ namespace Acme.Dapper
                     else
                     {
                         Attribute.Append(", " + propertyInfo[i].Name);
-                        AttributeValue.Append($", @{ propertyInfo[Index].Name}");
+                        AttributeValue.Append($", @{propertyInfo[Index].Name}");
                     }
                 }
                 string InserSql = $"INSERT INTO {typeof(T).Name}({Attribute}) OUTPUT INSERTED.Id VALUES({AttributeValue})";
@@ -468,6 +468,59 @@ namespace Acme.Dapper
             {
                 return string.Empty;
             }
+        }
+
+        /// <summary>
+        /// 获取排序的sql语句
+        /// </summary>
+        /// <param name="sql">sql语句</param>
+        /// <param name="pageIndex">页码</param>
+        /// <param name="pageSize">每页显示的条数</param>
+        /// <param name="orderField">排序字段</param>
+        /// <param name="orderType">排序类型</param>
+        /// <returns></returns>
+        public string GetPageSql(
+            string sql,
+            int pageIndex,
+            int pageSize,
+            string orderField = "",
+            OrderType orderType = OrderType.ASC)
+        {
+            StringBuilder strSql = new();
+            if (pageIndex == 0)
+            {
+                pageIndex = 1;
+            }
+            if (!string.IsNullOrEmpty(orderField))
+            {
+                orderField = orderField.Trim();
+                int lo = orderField.LastIndexOf(",");
+                if (lo == orderField.Length - 1)
+                {
+                    orderField = orderField[0..^1];
+                }
+            }
+            int num = (pageIndex - 1) * pageSize;
+            int num1 = (pageIndex) * pageSize;
+            string OrderBy;
+            if (!string.IsNullOrEmpty(orderField))
+                OrderBy = "ORDER BY " + orderField + " " + orderType.ToString() + "";
+            else
+                OrderBy = "ORDER BY (SELECT 0)";
+            strSql.Append("SELECT * FROM (SELECT ROW_NUMBER() OVER (" + OrderBy + ")");
+            strSql.Append(" AS rowNum, * FROM (" + sql + ") AS T ) AS N WHERE rowNum > " + num + " AND rowNum <= " + num1 + "");
+            return strSql.ToString();
+        }
+
+        /// <summary>
+        /// 查询语句转化为获取条数Sql
+        /// </summary>
+        /// <param name="sql">sql语句</param>
+        /// <returns></returns>
+        public string GetCountSql(string sql)
+        {
+            string sqlConten= sql.MidStrEx("SELECT ", "FROM ");
+            return sql.Replace(sqlConten, " COUNT(1) ");
         }
     }
 }

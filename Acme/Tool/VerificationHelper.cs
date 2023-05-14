@@ -55,11 +55,11 @@ namespace Acme
         /// <param name="RegularExpression">正则表达式</param>
         /// <returns></returns>
         public static bool RegexVerification(
-            string ValidationParameters,
+            this string ValidationParameters,
             string RegularExpression)
         {
             Regex verIdCard = new(ValidationParameters);
-            bool IsOk = (ValidationParameters != "" && verIdCard.IsMatch(ValidationParameters.Trim()));
+            bool IsOk = (ValidationParameters != "" && verIdCard.IsMatch(RegularExpression.Trim()));
             return IsOk;
         }
     }

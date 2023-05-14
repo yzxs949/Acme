@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 namespace Acme.Dapper
 {
     /// <summary>
-    /// Dapper通用实现接口
+    /// Dapper拓展实现接口
     /// </summary>
-    public interface IDapperHelper
+    public interface IExtensions
     {
         #region 查询列表
         /// <summary>

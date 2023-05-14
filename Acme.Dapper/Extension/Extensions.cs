@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 namespace Acme.Dapper
 {
     /// <summary>
-    /// Dapper通用类
+    /// Dapper拓展类
     /// </summary>
-    public class DapperHelper : IDapperHelper
+    public class Extensions : IExtensions
     {
         /// <summary>
         /// 链接字符串
@@ -23,7 +23,7 @@ namespace Acme.Dapper
         /// 构造函数
         /// </summary>
         /// <param name="_connectionString"></param>
-        public DapperHelper(
+        public Extensions(
             string _connectionString)
         {
             ConnectionString = _connectionString;
