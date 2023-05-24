@@ -38,7 +38,7 @@ public class NpolExcelHelper<T> where T : new()
         file.CopyTo(ms);
         ms.Seek(0, SeekOrigin.Begin);
         //实例化T数组
-        List<T> list = new List<T>();
+        List<T> list = new();
         //获取数据
         list = InputExcel(ms, sheetName);
         return list;

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 namespace Acme.Dapper;
 
@@ -119,11 +120,25 @@ public interface IRepository<T>
     T GetInfo(int Id);
 
     /// <summary>
+    /// 根据Id获取单条
+    /// </summary>
+    /// <param name="Id"></param>
+    /// <returns></returns>
+    T GetInfoOrDefault(int Id);
+
+    /// <summary>
     /// 按条件获取单条
     /// </summary>
     /// <param name="SqlWhere"></param>
     /// <returns></returns>
     T GetInfo(object SqlWhere);
+
+    /// <summary>
+    /// 获取单条数据
+    /// </summary>
+    /// <param name="SqlWhere">主键Id</param>
+    /// <returns></returns>
+    T GetInfoOrDefault(object SqlWhere);
 
     /// <summary>
     /// 根据Id获取单条数据异步返回
@@ -133,11 +148,25 @@ public interface IRepository<T>
     Task<T> GetInfoAsync(int Id);
 
     /// <summary>
+    /// 根据Id获取单条数据异步返回
+    /// </summary>
+    /// <param name="Id"></param>
+    /// <returns></returns>
+    Task<T> GetInfoOrDefaultAsync(int Id);
+
+    /// <summary>
     /// 根据条件
     /// </summary>
     /// <param name="SqlWhere"></param>
     /// <returns></returns>
     Task<T> GetInfoAsync(object SqlWhere);
+
+    /// <summary>
+    /// 根据条件
+    /// </summary>
+    /// <param name="SqlWhere"></param>
+    /// <returns></returns>
+    Task<T> GetInfoOrDefaultAsync(object SqlWhere);
 
     #endregion
 
