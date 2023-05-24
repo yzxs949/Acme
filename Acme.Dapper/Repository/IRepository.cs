@@ -167,7 +167,6 @@ public interface IRepository<T>
     /// <param name="SqlWhere"></param>
     /// <returns></returns>
     Task<T> GetInfoOrDefaultAsync(object SqlWhere);
-
     #endregion
 
     #region 分页查询

@@ -353,6 +353,20 @@ namespace Acme.Dapper
                 return sql;
             }
         }
+
+        /// <summary>
+        /// sql语句拼接
+        /// </summary>
+        /// <param name="sql1">原来的sql</param>
+        /// <param name="isJudgment">是否通过</param>
+        /// <param name="sql2">要拼接的sql</param>
+        /// <returns></returns>
+        public static string SplitJoin(this string sql1, bool isJudgment, string sql2)
+        {
+            if (isJudgment)
+                sql1 += sql2;
+            return sql1;
+        }
     }
 }
 
