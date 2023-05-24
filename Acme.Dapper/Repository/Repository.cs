@@ -283,7 +283,17 @@ namespace Acme.Dapper
             {
                 throw;
             }
+        }
 
+        /// <summary>
+        /// 获取单条数据
+        /// </summary>
+        /// <param name="Id">主键Id</param>
+        /// <returns></returns>
+        public T GetInfoOrDefault(int Id)
+        {
+            var SqlWhere = new { Id };
+            return GetList(SqlWhere).FirstOrDefault();
         }
 
         /// <summary>
@@ -302,7 +312,16 @@ namespace Acme.Dapper
             {
                 throw;
             }
+        }
 
+        /// <summary>
+        /// 获取单条数据
+        /// </summary>
+        /// <param name="SqlWhere">主键Id</param>
+        /// <returns></returns>
+        public T GetInfoOrDefault(object SqlWhere)
+        {
+            return GetList(SqlWhere).FirstOrDefault();
         }
 
         /// <summary>
@@ -325,6 +344,18 @@ namespace Acme.Dapper
         }
 
         /// <summary>
+        /// 获取单条数据
+        /// </summary>
+        /// <param name="Id">主键Id</param>
+        /// <returns></returns>
+        public async Task<T> GetInfoOrDefaultAsync(int Id)
+        {
+            var SqlWhere = new { Id };
+            List<T> list = await GetListAsync(SqlWhere);
+            return list.FirstOrDefault();
+        }
+
+        /// <summary>
         /// 异步获取单条
         /// </summary>
         /// <param name="SqlWhere">条件</param>
@@ -340,6 +371,17 @@ namespace Acme.Dapper
             {
                 throw;
             }
+        }
+
+        /// <summary>
+        /// 异步获取单条
+        /// </summary>
+        /// <param name="SqlWhere">条件</param>
+        /// <returns></returns>
+        public async Task<T> GetInfoOrDefaultAsync(object SqlWhere)
+        {
+            List<T> list = await GetListAsync(SqlWhere);
+            return list.FirstOrDefault();
         }
         #endregion
 

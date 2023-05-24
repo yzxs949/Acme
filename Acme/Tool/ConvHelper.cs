@@ -220,4 +220,22 @@ public static class ConvHelper
             throw new Exception(ex.Message);
         }
     }
+
+    /// <summary>
+    /// 获取随机字符串
+    /// </summary>
+    /// <param name="strText">随机字符内容</param>
+    /// <param name="len">长度</param>
+    /// <returns></returns>
+    public static string ToRandomCode(this string strText, int len)
+    {
+        string[] strArry = strText.Split(',');
+        string code = "";
+        Random rand = new(Guid.NewGuid().GetHashCode());
+        for (int i = 0; i < len; i++)
+        {
+            code += strArry[rand.Next(0, strArry.Length)];
+        }
+        return code;
+    }
 }

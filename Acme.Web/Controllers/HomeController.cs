@@ -21,6 +21,7 @@ namespace Acme.Web.Controllers
 
         public async Task<IActionResult> Index()
         {
+           int A= VerCode.GetEquationCode(out string equationString);
             var data = await _userInfoRepository.GetPageListBySqlAsync("SELECT * FROM Role", 1, 20);
             return View();
         }

@@ -1,8 +1,11 @@
-﻿using System;
+﻿using NPOI.SS.Formula.Functions;
+using System;
+using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Linq.Expressions;
 
 namespace Acme
 {
@@ -18,15 +21,34 @@ namespace Acme
         /// <returns></returns>
         public static string GetCode(int len)
         {
-            string str = "0,1,2,3,4,5,6,7,8,9";
-            string[] strArry = str.Split(',');
+            return "0,1,2,3,4,5,6,7,8,9".ToRandomCode(len);
+        }
+
+        /// <summary>
+        /// 产生随机0--9的随机数字
+        /// </summary>
+        /// <param name="len">长度</param>
+        /// <returns></returns>
+        public static string GetCodeBy100(int len)
+        {
             string code = "";
-            Random rand = new(Guid.NewGuid().GetHashCode());
-            for (int i = 0; i < len; i++)
+            for (int i = 1; i < 100; i++)
             {
-                code += strArry[rand.Next(0, strArry.Length)];
+                if (i == 1)
+                    code = i.ToString();
+                else
+                    code += $",{i}";
             }
-            return code;
+            return code.ToRandomCode(len);
+        }
+
+        /// <summary>
+        /// 获取运算符号
+        /// </summary>
+        /// <returns></returns>
+        public static string GetOperator()
+        {
+            return "+,-,×,÷".ToRandomCode(1);
         }
 
         /// <summary>
@@ -141,6 +163,29 @@ namespace Acme
             bitmap.Save(memoryStream, ImageFormat.Jpeg);
             byte[] bytes = memoryStream.ToArray();
             return bytes;
+        }
+
+        /// <summary>
+        /// 由DataTable计算公式
+        /// </summary>
+        /// <param name="expression">表达式</param>
+        public static int CalcByDataTable(string expression)
+        {
+            object result = new DataTable().Compute(expression, "");
+            _ = int.TryParse(result + "", out int intResult);
+            return intResult;
+        }
+
+        /// <summary>
+        /// 获取算式验证码
+        /// </summary>
+        /// <param name="equationString">生成图片的算式</param>
+        /// <returns>计算结果</returns>
+        public static int GetEquationCode(out string equationString)
+        {
+            string equation = $"{GetCodeBy100(1)}{GetOperator()}{GetCodeBy100(1)}";
+            equationString = $"{equation}=?";
+            return CalcByDataTable(equation.Replace("×", "*").Replace("÷", "/"));
         }
     }
 }
