@@ -1,0 +1,13 @@
+﻿global using Acme.GlobalFilters;
+global using Microsoft.Extensions.DependencyInjection;
+global using Microsoft.AspNetCore.Mvc.Controllers;
+global using Microsoft.AspNetCore.Mvc.Filters;
+global using Microsoft.AspNetCore.Mvc;
+global using System;
+global using System.Collections.Generic;
+global using System.Linq;
+global using System.Text;
+global using System.Threading.Tasks;
+global using Microsoft.AspNetCore.Http;
+global using NLog;
+global using Microsoft.AspNetCore.Routing;

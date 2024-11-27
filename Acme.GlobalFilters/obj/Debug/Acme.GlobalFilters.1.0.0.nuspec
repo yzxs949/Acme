@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Acme.GlobalFilters</id>
+    <version>1.0.0</version>
+    <authors>yzxs</authors>
+    <description>全局异常过滤器类库</description>
+    <copyright>yzxs</copyright>
+    <repository type="git" commit="ae519fbc578522ac0855a4645b1df64bc0232c1b" />
+    <dependencies>
+      <group targetFramework="net6.0">
+        <dependency id="Acme" version="5.1.31" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net7.0">
+        <dependency id="Acme" version="5.1.31" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="D:\Acme框架\acme\Acme.GlobalFilters\bin\Debug\net6.0\Acme.GlobalFilters.dll" target="lib\net6.0\Acme.GlobalFilters.dll" />
+    <file src="D:\Acme框架\acme\Acme.GlobalFilters\bin\Debug\net6.0\Acme.GlobalFilters.xml" target="lib\net6.0\Acme.GlobalFilters.xml" />
+    <file src="D:\Acme框架\acme\Acme.GlobalFilters\bin\Debug\net7.0\Acme.GlobalFilters.dll" target="lib\net7.0\Acme.GlobalFilters.dll" />
+    <file src="D:\Acme框架\acme\Acme.GlobalFilters\bin\Debug\net7.0\Acme.GlobalFilters.xml" target="lib\net7.0\Acme.GlobalFilters.xml" />
+  </files>
+</package>

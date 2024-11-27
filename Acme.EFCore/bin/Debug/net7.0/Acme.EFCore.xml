@@ -1,0 +1,1338 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Acme.EFCore</name>
+    </assembly>
+    <members>
+        <member name="T:Acme.EFCore.BaseServices.BaseService`1">
+            <summary>
+            EFCore实现服务类
+            </summary>
+        </member>
+        <member name="P:Acme.EFCore.BaseServices.BaseService`1.dbContext">
+            <summary>
+            数据库上下文
+            </summary>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.BaseService`1.#ctor(`0)">
+            <summary>
+            依赖注入数据库上下文
+            </summary>
+            <param name="_dbContext"></param>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.BaseService`1.Add``1(``0)">
+            <summary>
+            新增
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.BaseService`1.AddAsync``1(``0)">
+            <summary>
+            新增
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.BaseService`1.AddMany``1(System.Collections.Generic.List{``0})">
+            <summary>
+            批量新增
+            </summary>
+            <param name="list"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.BaseService`1.AddManyAsync``1(System.Collections.Generic.List{``0})">
+            <summary>
+            批量新增
+            </summary>
+            <param name="list"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.BaseService`1.Delete``1(``0)">
+            <summary>
+            删除
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.BaseService`1.DeleteAsync``1(``0)">
+            <summary>
+            删除
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.BaseService`1.DelMany``1(System.Collections.Generic.List{``0})">
+            <summary>
+            批量删除
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="list"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.BaseService`1.DelManyAsync``1(System.Collections.Generic.List{``0})">
+            <summary>
+            批量删除
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="list"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.BaseService`1.Update``1(``0)">
+            <summary>
+            修改
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.BaseService`1.UpdateAsync``1(``0)">
+            <summary>
+            修改
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.BaseService`1.UpdateMany``1(System.Collections.Generic.List{``0})">
+            <summary>
+            批量修改
+            </summary>
+            <param name="list"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.BaseService`1.UpdateManyAsync``1(System.Collections.Generic.List{``0})">
+            <summary>
+            批量修改
+            </summary>
+            <param name="list"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.BaseService`1.Exist``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            是否存在
+            </summary>
+            <param name="anyLambda"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.BaseService`1.ExistAsync``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            是否存在
+            </summary>
+            <param name="anyLambda"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.BaseService`1.GetQueryable``1">
+            <summary>
+            获取Queryable
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.BaseService`1.GetQueryable``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            按条件获取Queryable
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="whereLamdba"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.BaseService`1.GetInfo``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            获取单条数据
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="whereLamdba"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.BaseService`1.GetInfoAsync``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            获取单条数据
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="whereLamdba"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.BaseService`1.GetList``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            获取集合数据
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="whereLamdba"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.BaseService`1.GetList``1">
+            <summary>
+            获取集合数据
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.BaseService`1.GetListAsync``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            获取集合数据
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="whereLamdba"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.BaseService`1.GetListAsync``1">
+            <summary>
+            获取集合数据
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.BaseService`1.GetInfoDefault``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            获取单条数据返回默认值
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="whereLamdba"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.BaseService`1.GetInfoDefaultAsync``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            获取单条数据返回默认值
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="whereLamdba"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.BaseService`1.Count``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            获取条数
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="whereLamdba"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.BaseService`1.CountAsync``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            获取条数
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="whereLamdba"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.BaseService`1.Count``1">
+            <summary>
+            获取条数
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.BaseService`1.CountAsync``1">
+            <summary>
+            获取条数
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.BaseService`1.BeginTransaction">
+            <summary>
+            开启事务
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.BaseService`1.BeginTransactionAsync">
+            <summary>
+            开启事务
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.BaseService`1.CommitTransaction">
+            <summary>
+            提交事务
+            </summary>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.BaseService`1.CommitTransactionAsync">
+            <summary>
+            提交事务
+            </summary>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.BaseService`1.RollbackTransaction">
+            <summary>
+            回滚事务
+            </summary>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.BaseService`1.RollbackTransactionAsync">
+            <summary>
+            回滚事务
+            </summary>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.BaseService`1.DisposeTransaction">
+            <summary>
+            关闭事务释放资源
+            </summary>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.BaseService`1.DisposeTransactionAsync">
+            <summary>
+            关闭事务释放资源
+            </summary>
+        </member>
+        <member name="T:Acme.EFCore.BaseServices.IBaseService`1">
+            <summary>
+            EFCore实现接口服务
+            </summary>
+        </member>
+        <member name="P:Acme.EFCore.BaseServices.IBaseService`1.dbContext">
+            <summary>
+            数据库上下文
+            </summary>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService`1.Add``1(``0)">
+            <summary>
+            新增
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService`1.AddAsync``1(``0)">
+            <summary>
+            新增
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService`1.AddMany``1(System.Collections.Generic.List{``0})">
+            <summary>
+            批量新增
+            </summary>
+            <param name="list"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService`1.AddManyAsync``1(System.Collections.Generic.List{``0})">
+            <summary>
+            批量新增
+            </summary>
+            <param name="list"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService`1.Delete``1(``0)">
+            <summary>
+            删除
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService`1.DeleteAsync``1(``0)">
+            <summary>
+            删除
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService`1.DelMany``1(System.Collections.Generic.List{``0})">
+            <summary>
+            批量删除
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="list"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService`1.DelManyAsync``1(System.Collections.Generic.List{``0})">
+            <summary>
+            批量删除
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="list"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService`1.Update``1(``0)">
+            <summary>
+            修改
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService`1.UpdateAsync``1(``0)">
+            <summary>
+            修改
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService`1.UpdateMany``1(System.Collections.Generic.List{``0})">
+            <summary>
+            批量修改
+            </summary>
+            <param name="list"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService`1.UpdateManyAsync``1(System.Collections.Generic.List{``0})">
+            <summary>
+            批量修改
+            </summary>
+            <param name="list"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService`1.Exist``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            是否存在
+            </summary>
+            <param name="anyLambda"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService`1.ExistAsync``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            是否存在
+            </summary>
+            <param name="anyLambda"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService`1.GetQueryable``1">
+            <summary>
+            获取Queryable
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService`1.GetQueryable``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            按条件获取Queryable
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="whereLamdba"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService`1.GetInfo``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            获取单条数据
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="whereLamdba"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService`1.GetInfoAsync``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            获取单条数据
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="whereLamdba"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService`1.GetList``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            获取集合数据
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="whereLamdba"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService`1.GetList``1">
+            <summary>
+            获取集合数据
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService`1.GetListAsync``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            获取集合数据
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="whereLamdba"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService`1.GetListAsync``1">
+            <summary>
+            获取集合数据
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService`1.GetInfoDefault``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            获取单条数据返回默认值
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="whereLamdba"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService`1.GetInfoDefaultAsync``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            获取单条数据返回默认值
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="whereLamdba"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService`1.Count``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            获取条数
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="whereLamdba"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService`1.CountAsync``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            获取条数
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="whereLamdba"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService`1.Count``1">
+            <summary>
+            获取条数
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService`1.CountAsync``1">
+            <summary>
+            获取条数
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService`1.BeginTransaction">
+            <summary>
+            开启事务
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService`1.BeginTransactionAsync">
+            <summary>
+            开启事务
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService`1.CommitTransaction">
+            <summary>
+            提交事务
+            </summary>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService`1.CommitTransactionAsync">
+            <summary>
+            提交事务
+            </summary>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService`1.RollbackTransaction">
+            <summary>
+            回滚事务
+            </summary>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService`1.RollbackTransactionAsync">
+            <summary>
+            回滚事务
+            </summary>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService`1.DisposeTransaction">
+            <summary>
+            关闭事务释放资源
+            </summary>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService`1.DisposeTransactionAsync">
+            <summary>
+            关闭事务释放资源
+            </summary>
+        </member>
+        <member name="T:Acme.EFCore.BaseServices.IBaseService">
+            <summary>
+            EFCore实现接口服务
+            </summary>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService.Add``1(``0)">
+            <summary>
+            新增
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService.AddAsync``1(``0)">
+            <summary>
+            新增
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService.AddMany``1(System.Collections.Generic.List{``0})">
+            <summary>
+            批量新增
+            </summary>
+            <param name="list"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService.AddManyAsync``1(System.Collections.Generic.List{``0})">
+            <summary>
+            批量新增
+            </summary>
+            <param name="list"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService.Delete``1(``0)">
+            <summary>
+            删除
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService.DeleteAsync``1(``0)">
+            <summary>
+            删除
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService.DelMany``1(System.Collections.Generic.List{``0})">
+            <summary>
+            批量删除
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="list"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService.DelManyAsync``1(System.Collections.Generic.List{``0})">
+            <summary>
+            批量删除
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="list"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService.Update``1(``0)">
+            <summary>
+            修改
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService.UpdateAsync``1(``0)">
+            <summary>
+            修改
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService.UpdateMany``1(System.Collections.Generic.List{``0})">
+            <summary>
+            批量修改
+            </summary>
+            <param name="list"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService.UpdateManyAsync``1(System.Collections.Generic.List{``0})">
+            <summary>
+            批量修改
+            </summary>
+            <param name="list"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService.Exist``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            是否存在
+            </summary>
+            <param name="anyLambda"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService.ExistAsync``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            是否存在
+            </summary>
+            <param name="anyLambda"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService.GetQueryable``1">
+            <summary>
+            获取Queryable
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService.GetQueryable``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            按条件获取Queryable
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="whereLamdba"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService.GetInfo``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            获取单条数据
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="whereLamdba"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService.GetInfoAsync``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            获取单条数据
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="whereLamdba"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService.GetList``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            获取集合数据
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="whereLamdba"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService.GetList``1">
+            <summary>
+            获取集合数据
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService.GetListAsync``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            获取集合数据
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="whereLamdba"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService.GetListAsync``1">
+            <summary>
+            获取集合数据
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService.GetInfoDefault``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            获取单条数据返回默认值
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="whereLamdba"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService.GetInfoDefaultAsync``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            获取单条数据返回默认值
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="whereLamdba"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService.Count``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            获取条数
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="whereLamdba"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService.CountAsync``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            获取条数
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="whereLamdba"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService.Count``1">
+            <summary>
+            获取条数
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService.CountAsync``1">
+            <summary>
+            获取条数
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService.BeginTransaction">
+            <summary>
+            开启事务
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService.BeginTransactionAsync">
+            <summary>
+            开启事务
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService.CommitTransaction">
+            <summary>
+            提交事务
+            </summary>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService.CommitTransactionAsync">
+            <summary>
+            提交事务
+            </summary>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService.RollbackTransaction">
+            <summary>
+            回滚事务
+            </summary>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService.RollbackTransactionAsync">
+            <summary>
+            回滚事务
+            </summary>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService.DisposeTransaction">
+            <summary>
+            关闭事务释放资源
+            </summary>
+        </member>
+        <member name="M:Acme.EFCore.BaseServices.IBaseService.DisposeTransactionAsync">
+            <summary>
+            关闭事务释放资源
+            </summary>
+        </member>
+        <member name="T:Acme.EFCore.Extensions.CollectionExtension">
+            <summary>
+            EFCore拓展方法
+            </summary>
+        </member>
+        <member name="M:Acme.EFCore.Extensions.CollectionExtension.AddTransientBaseService``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,Acme.LogConfig)">
+            <summary>
+             注册Acme.EFCore的方法
+             </summary>
+             <param name="_services">IServiceCollection</param>
+             <param name="_connectionString">数据库连接字符</param>
+             <param name="logConfig">日志配置项目</param>
+        </member>
+        <member name="M:Acme.EFCore.Extensions.CollectionExtension.AddTransientBaseService``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String)">
+            <summary>
+             注册Acme.EFCore的方法(不注入Acme通用类)
+             </summary>
+             <param name="_services">IServiceCollection</param>
+             <param name="_connectionString">数据库连接字符</param>
+        </member>
+        <member name="M:Acme.EFCore.Extensions.CollectionExtension.AddTransientRepository``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,Acme.LogConfig)">
+            <summary>
+             注册Acme.EFCore使用仓储模式
+             </summary>
+             <param name="_services">IServiceCollection</param>
+             <param name="_connectionString">数据库连接字符</param>
+             <param name="logConfig">日志配置（为null需要单独注入Acme的类库）</param>
+        </member>
+        <member name="M:Acme.EFCore.Extensions.CollectionExtension.AddSingletonBaseService``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,Acme.LogConfig)">
+            <summary>
+             注册Acme.EFCore的方法
+             </summary>
+             <param name="_services">IServiceCollection</param>
+             <param name="_connectionString">数据库连接字符</param>
+             <param name="logConfig">日志配置项目</param>
+        </member>
+        <member name="M:Acme.EFCore.Extensions.CollectionExtension.AddSingletonRepository``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,Acme.LogConfig)">
+            <summary>
+             注册Acme.EFCore使用仓储模式
+             </summary>
+             <param name="_services">IServiceCollection</param>
+             <param name="_connectionString">数据库连接字符</param>
+             <param name="logConfig">日志配置（为null需要单独注入Acme的类库）</param>
+        </member>
+        <member name="M:Acme.EFCore.Extensions.CollectionExtension.AddSingletonBaseService``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String)">
+            <summary>
+             注册Acme.EFCore的方法（不注入Acme通用类）
+             </summary>
+             <param name="_services">IServiceCollection</param>
+             <param name="_connectionString">数据库连接字符</param>
+        </member>
+        <member name="T:Acme.EFCore.Extensions.LinqExtension">
+            <summary>
+            Linq拓展类
+            </summary>
+        </member>
+        <member name="M:Acme.EFCore.Extensions.LinqExtension.WhereIf``1(System.Linq.IQueryable{``0},System.Boolean,System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            Linq验证查询方法拓展
+            </summary>
+            <typeparam name="T">泛型</typeparam>
+            <param name="source">IQueryable</param>
+            <param name="verification">验证语句</param>
+            <param name="anyLambda">Linq语句</param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.Extensions.LinqExtension.WhereIf``1(System.Collections.Generic.IEnumerable{``0},System.Boolean,System.Func{``0,System.Int32,System.Boolean})">
+            <summary>
+            Linq验证查询方法拓展
+            </summary>
+            <typeparam name="T">泛型</typeparam>
+            <param name="source">IEnumerable</param>
+            <param name="verification">验证语句</param>
+            <param name="anyLambda">Linq语句</param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.Extensions.LinqExtension.WhereIf``1(System.Collections.Generic.IEnumerable{``0},System.Boolean,System.Func{``0,System.Boolean})">
+            <summary>
+            Linq验证查询方法拓展
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="source"></param>
+            <param name="verification"></param>
+            <param name="anyLambda"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.Extensions.LinqExtension.ToPageList``1(System.Linq.IQueryable{``0},System.Int32,System.Int32)">
+            <summary>
+            分页（排序后使用）
+            </summary>
+            <typeparam name="T">实体</typeparam>
+            <param name="source">分页数据</param>
+            <param name="pageIndex">页码</param>
+            <param name="pageSize">每页显示的条数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.Extensions.LinqExtension.ToPageListAsync``1(System.Linq.IQueryable{``0},System.Int32,System.Int32)">
+            <summary>
+            分页（排序后使用）
+            </summary>
+            <typeparam name="T">实体</typeparam>
+            <param name="source">分页数据</param>
+            <param name="pageIndex">页码</param>
+            <param name="pageSize">每页显示的条数</param>
+            <returns></returns>
+        </member>
+        <member name="T:Acme.EFCore.Extensions.PageListExtension">
+            <summary>
+            分页拓展类
+            </summary>
+        </member>
+        <member name="M:Acme.EFCore.Extensions.PageListExtension.ToPageList(System.Collections.Generic.List{System.Object},System.Int32,System.Int32,System.Int32)">
+            <summary>
+            集合转化为分页实体
+            </summary>
+            <param name="items"></param>
+            <param name="total"></param>
+            <param name="PageIndex"></param>
+            <param name="PageSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.Extensions.PageListExtension.ToPageList``1(System.Collections.Generic.List{``0},System.Int32,System.Int32,System.Int32)">
+            <summary>
+            实体转化为分页实体
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="items"></param>
+            <param name="total"></param>
+            <param name="PageIndex"></param>
+            <param name="PageSize"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Acme.EFCore.Repositorys.IRepository`1">
+            <summary>
+            仓储接口
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Acme.EFCore.Repositorys.IRepository`1.Add(`0)">
+            <summary>
+            新增实体
+            </summary>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.Repositorys.IRepository`1.AddAsync(`0)">
+            <summary>
+            新增实体
+            </summary>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.Repositorys.IRepository`1.BeginTransaction">
+            <summary>
+            开启事务
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.Repositorys.IRepository`1.BeginTransactionAsync">
+            <summary>
+            开启事务
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.Repositorys.IRepository`1.CommitTransaction">
+            <summary>
+            提交事务
+            </summary>
+        </member>
+        <member name="M:Acme.EFCore.Repositorys.IRepository`1.CommitTransactionAsync">
+            <summary>
+            提交事务
+            </summary>
+        </member>
+        <member name="M:Acme.EFCore.Repositorys.IRepository`1.Count">
+            <summary>
+            获取条数
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.Repositorys.IRepository`1.Count(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            获取条数
+            </summary>
+            <param name="whereLamdba"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.Repositorys.IRepository`1.CountAsync">
+            <summary>
+            获取条数
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.Repositorys.IRepository`1.CountAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            获取条数
+            </summary>
+            <param name="whereLamdba"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.Repositorys.IRepository`1.Delete(`0)">
+            <summary>
+            删除
+            </summary>
+            <param name="entity">删除</param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.Repositorys.IRepository`1.DeleteAsync(`0)">
+            <summary>
+            删除
+            </summary>
+            <param name="entity">删除</param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.Repositorys.IRepository`1.DisposeTransaction">
+            <summary>
+            关闭事务释放资源
+            </summary>
+        </member>
+        <member name="M:Acme.EFCore.Repositorys.IRepository`1.DisposeTransactionAsync">
+            <summary>
+            关闭事务释放资源
+            </summary>
+        </member>
+        <member name="M:Acme.EFCore.Repositorys.IRepository`1.GetInfoAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            获取单条数据
+            </summary>
+            <param name="whereLamdba"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.Repositorys.IRepository`1.GetInfoDefault(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            获取单条数据返回默认值
+            </summary>
+            <param name="whereLamdba"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.Repositorys.IRepository`1.GetInfoDefaultAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            获取单条数据返回默认值
+            </summary>
+            <param name="whereLamdba"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.Repositorys.IRepository`1.GetList">
+            <summary>
+            获取集合数据
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.Repositorys.IRepository`1.GetList(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            获取集合数据
+            </summary>
+            <param name="whereLamdba"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.Repositorys.IRepository`1.GetListAsync">
+            <summary>
+            获取集合数据
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.Repositorys.IRepository`1.GetListAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            获取集合数据
+            </summary>
+            <param name="whereLamdba"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.Repositorys.IRepository`1.GetQueryable">
+            <summary>
+            获取Queryable
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.Repositorys.IRepository`1.GetQueryable(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            按条件获取Queryable
+            </summary>
+            <param name="whereLamdba">Linq语句</param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.Repositorys.IRepository`1.RollbackTransaction">
+            <summary>
+            回滚事务
+            </summary>
+        </member>
+        <member name="M:Acme.EFCore.Repositorys.IRepository`1.RollbackTransactionAsync">
+            <summary>
+            回滚事务
+            </summary>
+        </member>
+        <member name="M:Acme.EFCore.Repositorys.IRepository`1.Update(`0)">
+            <summary>
+            修改
+            </summary>
+            <param name="entity">删除</param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.Repositorys.IRepository`1.UpdateAsync(`0)">
+            <summary>
+            修改
+            </summary>
+            <param name="entity">删除</param>
+            <returns></returns>
+        </member>
+        <member name="T:Acme.EFCore.Repositorys.Repository`1">
+            <summary>
+            仓储类
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Acme.EFCore.Repositorys.Repository`1.#ctor(Acme.EFCore.BaseServices.IBaseService)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="baseService"></param>
+        </member>
+        <member name="M:Acme.EFCore.Repositorys.Repository`1.Add(`0)">
+            <summary>
+            新增实体
+            </summary>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.Repositorys.Repository`1.AddAsync(`0)">
+            <summary>
+            新增实体
+            </summary>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.Repositorys.Repository`1.Delete(`0)">
+            <summary>
+            删除
+            </summary>
+            <param name="entity">删除</param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.Repositorys.Repository`1.DeleteAsync(`0)">
+            <summary>
+            删除
+            </summary>
+            <param name="entity">删除</param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.Repositorys.Repository`1.Update(`0)">
+            <summary>
+            修改
+            </summary>
+            <param name="entity">删除</param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.Repositorys.Repository`1.UpdateAsync(`0)">
+            <summary>
+            修改
+            </summary>
+            <param name="entity">删除</param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.Repositorys.Repository`1.GetQueryable">
+            <summary>
+            获取Queryable
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.Repositorys.Repository`1.GetQueryable(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            按条件获取Queryable
+            </summary>
+            <param name="whereLamdba">Linq语句</param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.Repositorys.Repository`1.GetInfoAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            获取单条数据
+            </summary>
+            <param name="whereLamdba"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.Repositorys.Repository`1.GetList(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            获取集合数据
+            </summary>
+            <param name="whereLamdba"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.Repositorys.Repository`1.GetList">
+            <summary>
+            获取集合数据
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.Repositorys.Repository`1.GetListAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            获取集合数据
+            </summary>
+            <param name="whereLamdba"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.Repositorys.Repository`1.GetListAsync">
+            <summary>
+            获取集合数据
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.Repositorys.Repository`1.GetInfoDefault(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            获取单条数据返回默认值
+            </summary>
+            <param name="whereLamdba"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.Repositorys.Repository`1.GetInfoDefaultAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            获取单条数据返回默认值
+            </summary>
+            <param name="whereLamdba"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.Repositorys.Repository`1.Count(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            获取条数
+            </summary>
+            <param name="whereLamdba"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.Repositorys.Repository`1.CountAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            获取条数
+            </summary>
+            <param name="whereLamdba"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.Repositorys.Repository`1.Count">
+            <summary>
+            获取条数
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.Repositorys.Repository`1.CountAsync">
+            <summary>
+            获取条数
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.Repositorys.Repository`1.BeginTransaction">
+            <summary>
+            开启事务
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.Repositorys.Repository`1.BeginTransactionAsync">
+            <summary>
+            开启事务
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.EFCore.Repositorys.Repository`1.CommitTransaction">
+            <summary>
+            提交事务
+            </summary>
+        </member>
+        <member name="M:Acme.EFCore.Repositorys.Repository`1.CommitTransactionAsync">
+            <summary>
+            提交事务
+            </summary>
+        </member>
+        <member name="M:Acme.EFCore.Repositorys.Repository`1.RollbackTransaction">
+            <summary>
+            回滚事务
+            </summary>
+        </member>
+        <member name="M:Acme.EFCore.Repositorys.Repository`1.RollbackTransactionAsync">
+            <summary>
+            回滚事务
+            </summary>
+        </member>
+        <member name="M:Acme.EFCore.Repositorys.Repository`1.DisposeTransaction">
+            <summary>
+            关闭事务释放资源
+            </summary>
+        </member>
+        <member name="M:Acme.EFCore.Repositorys.Repository`1.DisposeTransactionAsync">
+            <summary>
+            关闭事务释放资源
+            </summary>
+        </member>
+        <member name="T:Acme.EFCore.Tools.PageList`1">
+            <summary>
+            分页返回结果
+            </summary>
+        </member>
+        <member name="P:Acme.EFCore.Tools.PageList`1.Total">
+            <summary>
+            总条数
+            </summary>
+        </member>
+        <member name="P:Acme.EFCore.Tools.PageList`1.PageIndex">
+            <summary>
+            索引
+            </summary>
+        </member>
+        <member name="P:Acme.EFCore.Tools.PageList`1.PageSize">
+            <summary>
+            每页大小
+            </summary>
+        </member>
+        <member name="P:Acme.EFCore.Tools.PageList`1.Items">
+            <summary>
+            集合数据
+            </summary>
+        </member>
+        <member name="T:Acme.EFCore.Tools.PageList">
+            <summary>
+             分页返回结果
+             </summary>
+        </member>
+        <member name="P:Acme.EFCore.Tools.PageList.Total">
+            <summary>
+            总条数
+            </summary>
+        </member>
+        <member name="P:Acme.EFCore.Tools.PageList.PageIndex">
+            <summary>
+            索引
+            </summary>
+        </member>
+        <member name="P:Acme.EFCore.Tools.PageList.PageSize">
+            <summary>
+            每页大小
+            </summary>
+        </member>
+        <member name="P:Acme.EFCore.Tools.PageList.Items">
+            <summary>
+            集合数据
+            </summary>
+        </member>
+    </members>
+</doc>
