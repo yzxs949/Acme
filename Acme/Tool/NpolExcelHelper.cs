@@ -16,7 +16,7 @@ public class NpolExcelHelper<T> where T : new()
     /// <summary>
     /// 合法的文件名
     /// </summary>
-    private static readonly List<string> extName = new() { ".xls", ".xlsx", ".xlsm" };
+    private static readonly List<string> extName = [".xls", ".xlsx", ".xlsm"];
 
     /// <summary>
     /// 导入Excel内容读取到list集合中
@@ -34,7 +34,7 @@ public class NpolExcelHelper<T> where T : new()
             return null;
         }
         //转成为文件流
-        MemoryStream ms = new MemoryStream();
+        MemoryStream ms = new();
         file.CopyTo(ms);
         ms.Seek(0, SeekOrigin.Begin);
         //实例化T数组
@@ -54,12 +54,8 @@ public class NpolExcelHelper<T> where T : new()
     {
         if (!File.Exists(fileName))
             return null;
-
-        //根据指定路径读取文件
         FileStream fs = new(fileName, FileMode.Open, FileAccess.Read);
-        //获取数据
-        List<T> list = InputExcel(fs, sheetName);
-        return list;
+        return InputExcel(fs, sheetName); ;
     }
 
     /// <summary>

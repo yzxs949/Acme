@@ -451,14 +451,14 @@ namespace Acme.Dapper
         /// <param name="orderField">排序字段</param>
         /// <param name="orderType">排序类型</param>
         /// <returns></returns>
-        public PageList<object> GetPageListBySql(
+        public PageList GetPageListBySql(
             string sql,
             int pageIndex,
             int pageSize,
             string orderField = "",
             OrderType orderType = OrderType.ASC)
         {
-            PageList<object> pageList = new()
+            PageList pageList = new()
             {
                 PageIndex = pageIndex,
                 PageSize = pageSize
@@ -481,14 +481,14 @@ namespace Acme.Dapper
         /// <param name="orderField">排序字段</param>
         /// <param name="orderType">排序类型</param>
         /// <returns></returns>
-        public async Task<PageList<object>> GetPageListBySqlAsync(
+        public async Task<PageList> GetPageListBySqlAsync(
             string sql,
             int pageIndex,
             int pageSize,
             string orderField = "",
             OrderType orderType = OrderType.ASC)
         {
-            PageList<object> pageList = new()
+            PageList pageList = new()
             {
                 PageIndex = pageIndex,
                 PageSize = pageSize

@@ -18,3 +18,12 @@ D:\Acme框架\acme\Acme.EFCore\obj\Debug\net6.0\refint\Acme.EFCore.dll
 D:\Acme框架\acme\Acme.EFCore\obj\Debug\net6.0\Acme.EFCore.xml
 D:\Acme框架\acme\Acme.EFCore\obj\Debug\net6.0\Acme.EFCore.pdb
 D:\Acme框架\acme\Acme.EFCore\obj\Debug\net6.0\ref\Acme.EFCore.dll
+D:\yzxs\Acme\acme\Acme.EFCore\obj\Debug\net6.0\Acme.EFCore.csproj.AssemblyReference.cache
+D:\yzxs\Acme\acme\Acme.EFCore\obj\Debug\net6.0\Acme.EFCore.GeneratedMSBuildEditorConfig.editorconfig
+D:\yzxs\Acme\acme\Acme.EFCore\obj\Debug\net6.0\Acme.EFCore.AssemblyInfoInputs.cache
+D:\yzxs\Acme\acme\Acme.EFCore\obj\Debug\net6.0\Acme.EFCore.AssemblyInfo.cs
+D:\yzxs\Acme\acme\Acme.EFCore\obj\Debug\net6.0\Acme.EFCore.csproj.CoreCompileInputs.cache
+D:\yzxs\Acme\acme\Acme.EFCore\obj\Debug\net6.0\Acme.EFCore.dll
+D:\yzxs\Acme\acme\Acme.EFCore\obj\Debug\net6.0\refint\Acme.EFCore.dll
+D:\yzxs\Acme\acme\Acme.EFCore\obj\Debug\net6.0\Acme.EFCore.xml
+D:\yzxs\Acme\acme\Acme.EFCore\obj\Debug\net6.0\Acme.EFCore.pdb

@@ -15,9 +15,9 @@ public static class AcmeDapperServiceCollectionExtensions
         this IServiceCollection _services,
         string _connectionString)
     {
-        IExtensions helper = new Extensions(_connectionString);
-        _services.AddTransient(IDapperHelper => helper);
-        _services.AddScoped(typeof(ISplicing<>), typeof(Splicing<>));
+        _services.AddTransient(IDapperHelper => new Extensions(_connectionString));
+        _services.AddScoped(typeof(ILog<>), typeof(Log<>));
         _services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+        _services.AddAcmeBuilderServer();
     }
 }

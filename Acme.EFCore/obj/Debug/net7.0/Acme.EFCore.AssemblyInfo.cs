@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCopyrightAttribute("yzxs")]
 [assembly: System.Reflection.AssemblyDescriptionAttribute("Acme Framework Database Operation Class Library Based on EFCore")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("2.0.2.6")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("2.0.2.6+3d8a4a376022e40e222492ed421be101b6da9328")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("2.0.2.6+cdf15272e26f44506143f92d9969074ab7c33fc5")]
 [assembly: System.Reflection.AssemblyProductAttribute("Acme.EFCore")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Acme.EFCore")]
 [assembly: System.Reflection.AssemblyVersionAttribute("2.0.2.6")]

@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc.Controllers;
-using System.Web.Mvc;
-
+﻿using Acme;
 namespace Acme.GlobalFilters;
 
 /// <summary>

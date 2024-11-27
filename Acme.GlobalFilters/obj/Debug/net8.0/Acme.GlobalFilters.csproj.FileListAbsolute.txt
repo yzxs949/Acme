@@ -18,3 +18,12 @@ D:\Acme框架\acme\Acme.GlobalFilters\obj\Debug\net8.0\refint\Acme.GlobalFilters
 D:\Acme框架\acme\Acme.GlobalFilters\obj\Debug\net8.0\Acme.GlobalFilters.xml
 D:\Acme框架\acme\Acme.GlobalFilters\obj\Debug\net8.0\Acme.GlobalFilters.pdb
 D:\Acme框架\acme\Acme.GlobalFilters\obj\Debug\net8.0\ref\Acme.GlobalFilters.dll
+D:\yzxs\Acme\acme\Acme.GlobalFilters\obj\Debug\net8.0\Acme.GlobalFilters.csproj.AssemblyReference.cache
+D:\yzxs\Acme\acme\Acme.GlobalFilters\obj\Debug\net8.0\Acme.GlobalFilters.GeneratedMSBuildEditorConfig.editorconfig
+D:\yzxs\Acme\acme\Acme.GlobalFilters\obj\Debug\net8.0\Acme.GlobalFilters.AssemblyInfoInputs.cache
+D:\yzxs\Acme\acme\Acme.GlobalFilters\obj\Debug\net8.0\Acme.GlobalFilters.AssemblyInfo.cs
+D:\yzxs\Acme\acme\Acme.GlobalFilters\obj\Debug\net8.0\Acme.GlobalFilters.csproj.CoreCompileInputs.cache
+D:\yzxs\Acme\acme\Acme.GlobalFilters\obj\Debug\net8.0\Acme.GlobalFilters.dll
+D:\yzxs\Acme\acme\Acme.GlobalFilters\obj\Debug\net8.0\refint\Acme.GlobalFilters.dll
+D:\yzxs\Acme\acme\Acme.GlobalFilters\obj\Debug\net8.0\Acme.GlobalFilters.xml
+D:\yzxs\Acme\acme\Acme.GlobalFilters\obj\Debug\net8.0\Acme.GlobalFilters.pdb

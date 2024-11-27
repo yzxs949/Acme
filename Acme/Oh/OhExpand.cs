@@ -11,7 +11,7 @@
         /// <param name="data">数据</param>
         /// <param name="msg">描述</param>
         /// <returns></returns>
-        public static Oh Yes(
+        public static Oh Success(
             this object data,
             string msg = CV.Yes)
         {
@@ -22,8 +22,21 @@
         /// 获取成功时的Oh值
         /// </summary>
         /// <param name="data">数据</param>
+        /// <param name="msg">描述</param>
         /// <returns></returns>
-        public static Oh Yes(
+        public static Oh<TEntity> Success<TEntity>(
+            this TEntity data,
+            string msg = CV.Yes) where TEntity : class, new()
+        {
+            return new Oh<TEntity>(CV.YesCode, msg, data);
+        }
+
+        /// <summary>
+        /// 获取成功时的Oh值
+        /// </summary>
+        /// <param name="data">数据</param>
+        /// <returns></returns>
+        public static Oh Success(
             this object data)
         {
             return new Oh(CV.YesCode, CV.Yes, data);
@@ -33,10 +46,21 @@
         /// 获取成功时的Oh值
         /// </summary>
         /// <param name="data">数据</param>
+        /// <returns></returns>
+        public static Oh<TEntity> Success<TEntity>(
+            this TEntity data) where TEntity : class, new()
+        {
+            return new Oh<TEntity>(CV.YesCode, CV.Yes, data);
+        }
+
+        /// <summary>
+        /// 获取成功时的Oh值
+        /// </summary>
+        /// <param name="data">数据</param>
         /// <param name="code">状态码</param>
         /// <param name="msg">描述</param>
         /// <returns></returns>
-        public static Oh Yes(
+        public static Oh Success(
             this object data,
             int code = CV.YesCode,
             string msg = CV.Yes)
@@ -45,12 +69,27 @@
         }
 
         /// <summary>
+        /// 获取成功时的Oh值
+        /// </summary>
+        /// <param name="data">数据</param>
+        /// <param name="code">状态码</param>
+        /// <param name="msg">描述</param>
+        /// <returns></returns>
+        public static Oh<TEntity> Success<TEntity>(
+            this TEntity data,
+            int code = CV.YesCode,
+            string msg = CV.Yes) where TEntity : class, new()
+        {
+            return new Oh<TEntity>(code, msg, data);
+        }
+
+        /// <summary>
         /// 获取失败时的Oh值
         /// </summary>
         /// <param name="data">数据</param>
         /// <param name="msg">描述</param>
         /// <returns></returns>
-        public static Oh No(
+        public static Oh Fail(
             this object data,
             string msg = CV.ErrorServer)
         {
@@ -61,8 +100,21 @@
         /// 获取失败时的Oh值
         /// </summary>
         /// <param name="data">数据</param>
+        /// <param name="msg">描述</param>
         /// <returns></returns>
-        public static Oh No(
+        public static Oh<TEntity> Fail<TEntity>(
+            this TEntity data,
+            string msg = CV.ErrorServer) where TEntity : class, new()
+        {
+            return new Oh<TEntity>(CV.NoCode, msg, data);
+        }
+
+        /// <summary>
+        /// 获取失败时的Oh值
+        /// </summary>
+        /// <param name="data">数据</param>
+        /// <returns></returns>
+        public static Oh Fail(
             this object data)
         {
             return new Oh(CV.NoCode, CV.ErrorServer, data);
@@ -72,15 +124,41 @@
         /// 获取失败时的Oh值
         /// </summary>
         /// <param name="data">数据</param>
+        /// <returns></returns>
+        public static Oh<TEntity> Fail<TEntity>(
+            this TEntity data) where TEntity : class, new()
+        {
+            return new Oh<TEntity>(CV.NoCode, CV.ErrorServer, data);
+        }
+
+        /// <summary>
+        /// 获取失败时的Oh值
+        /// </summary>
+        /// <param name="data">数据</param>
         /// <param name="code">状态码</param>
         /// <param name="msg">描述</param>
         /// <returns></returns>
-        public static Oh No(
+        public static Oh Fail(
             this object data,
             int code = CV.NoCode,
             string msg = CV.ErrorServer)
         {
             return new Oh(code, msg, data);
+        }
+
+        /// <summary>
+        /// 获取失败时的Oh值
+        /// </summary>
+        /// <param name="data">数据</param>
+        /// <param name="code">状态码</param>
+        /// <param name="msg">描述</param>
+        /// <returns></returns>
+        public static Oh<TEntity> Fail<TEntity>(
+            this TEntity data,
+            int code = CV.NoCode,
+            string msg = CV.ErrorServer) where TEntity : class, new()
+        {
+            return new Oh<TEntity>(code, msg, data);
         }
 
         /// <summary>
@@ -96,6 +174,21 @@
             string msg)
         {
             return new Oh(code, msg, data);
+        }
+
+        /// <summary>
+        /// 自定义状态码
+        /// </summary>
+        /// <param name="data">数据</param>
+        /// <param name="code">状态码</param>
+        /// <param name="msg">描述</param>
+        /// <returns></returns>
+        public static Oh<TEntity> Custom<TEntity>(
+            this TEntity data,
+            int code,
+            string msg) where TEntity : class, new()
+        {
+            return new Oh<TEntity>(code, msg, data);
         }
     }
 }

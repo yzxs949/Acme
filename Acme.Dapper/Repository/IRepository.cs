@@ -200,7 +200,7 @@ public interface IRepository<T>
     /// <param name="orderField">排序字段</param>
     /// <param name="orderType">排序类型</param>
     /// <returns></returns>
-    PageList<object> GetPageListBySql(
+    PageList GetPageListBySql(
        string sql,
        int pageIndex,
        int pageSize,
@@ -216,7 +216,7 @@ public interface IRepository<T>
     /// <param name="orderField">排序字段</param>
     /// <param name="orderType">排序类型</param>
     /// <returns></returns>
-    Task<PageList<object>> GetPageListBySqlAsync(
+    Task<PageList> GetPageListBySqlAsync(
          string sql,
          int pageIndex,
          int pageSize,

@@ -1,20 +1,29 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Acme.Cookie;
+﻿using Acme.Cookie;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+
 namespace Acme;
 
 /// <summary>
-/// 基于Acme依赖注入
+/// 基于Acme拓展方法
 /// </summary>
 public static class AcmeServiceCollectionExtensions
 {
-    
     /// <summary>
-    /// 添加Cookie服务
+    /// 添加Acme注册服务
     /// </summary>
     /// <param name="services"></param>
-    public static void AddHttpCookieServer(this IServiceCollection services)
+    /// <param name="logConfig"></param>
+    public static void AddAcmeBuilderServer(this IServiceCollection services, LogConfig logConfig = null)
     {
-        services.AddHttpContextAccessor();//配置Cookie HttpContext
-        services.AddTransient<IHttpCookieService, HttpCookieService>();//IOC配置 方便项目中使用
+        if (logConfig != null)
+        {
+            services.AddTransient<LogConfig>(opt => logConfig);
+            services.AddTransient(typeof(ILog<>), typeof(Log<>));
+        }
+        services.AddHttpContextAccessor();
+        services.AddTransient<IHttpCookieService, HttpCookieService>();
+        services.AddSession();
+        services.AddTransient<IHttpSessionService, HttpSessionService>();
     }
 }

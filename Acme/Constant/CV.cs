@@ -46,43 +46,48 @@
         public const int NoCode = 500;
 
         /// <summary>
-        /// 
+        /// 新增成功
         /// </summary>
         public const string InsertYes = "新增成功";
 
         /// <summary>
-        /// 
+        /// 新增失败
         /// </summary>
         public const string InsertNo = "新增失败";
 
         /// <summary>
-        /// 
+        /// 更新成功
         /// </summary>
         public const string UpdateYes = "更新成功";
 
         /// <summary>
-        /// 
+        /// 更新失败
         /// </summary>
         public const string UpdateNo = "更新失败";
 
         /// <summary>
-        /// 
+        /// 删除失败
         /// </summary>
         public const string DeleteNo = "删除失败";
 
         /// <summary>
-        /// 
+        /// 删除成功
         /// </summary>
         public const string DeleteYes = "删除成功";
 
         /// <summary>
-        /// 
+        /// 获取成功
         /// </summary>
         public const string GetYes = "获取成功";
 
         /// <summary>
-        /// 
+        /// 获取失败
         /// </summary>
         public const string GetNo = "获取失败";
+
+        /// <summary>
+        /// null值
+        /// </summary>
+        public const object Null = null;
     }
 }
