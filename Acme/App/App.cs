@@ -9,14 +9,14 @@ namespace Acme;
 /// </summary>
 public static class App
 {
-    private static JsonFile _jsonFileVariable { get; set; }
+    private static JsonFile JsonFileVariable { get; set; }
 
     /// <summary>
     /// 构造函数
     /// </summary>
     static App()
     {
-        _jsonFileVariable = new("appsettings.json");
+        JsonFileVariable = new("appsettings.json");
     }
 
     /// <summary>
@@ -27,7 +27,7 @@ public static class App
     /// <returns></returns>
     public static string GetValue(string key, string name)
     {
-        return _jsonFileVariable.GetValue(key, name);
+        return JsonFileVariable.GetValue(key, name);
     }
 
     /// <summary>
@@ -37,7 +37,7 @@ public static class App
     /// <returns></returns>
     public static string GetValue(string key)
     {
-        return _jsonFileVariable.GetValue(key);
+        return JsonFileVariable.GetValue(key);
     }
 
     /// <summary>

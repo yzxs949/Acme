@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Acme.GlobalFilters.Exceptions;
+using Microsoft.AspNetCore.Builder;
 
 namespace Acme.GlobalFilters;
 

@@ -1,0 +1,1219 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Acme.Dapper</name>
+    </assembly>
+    <members>
+        <member name="T:Acme.Dapper.DapperHelperServer">
+            <summary>
+            拓展类
+            </summary>
+        </member>
+        <member name="M:Acme.Dapper.DapperHelperServer.AddDapperServer(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String)">
+            <summary>
+            注册FastEnterprise.Dapper的方法
+            </summary>
+            <param name="_services">IServiceCollection</param>
+            <param name="_connectionString">数据库连接字符</param>
+        </member>
+        <member name="T:Acme.Dapper.DapperEntity`1">
+            <summary>
+            Dapper实体拓展类
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Acme.Dapper.DapperEntity`1.#ctor(Acme.Dapper.IDapperHelper,Acme.Dapper.ISplicing{`0})">
+            <summary>
+            构建函数
+            </summary>
+            <param name="dapperHelper"></param>
+            <param name="splicing"></param>
+        </member>
+        <member name="M:Acme.Dapper.DapperEntity`1.AddReturnIdAsync(`0)">
+            <summary>
+            异步新增返回Id
+            </summary>
+            <param name="t">实体</param>
+            <returns>新增项的Id</returns>
+        </member>
+        <member name="M:Acme.Dapper.DapperEntity`1.AddReturnId(`0)">
+            <summary>
+            新增返回Id
+            </summary>
+            <param name="t">实体</param>
+            <returns>新增项的Id</returns>
+        </member>
+        <member name="M:Acme.Dapper.DapperEntity`1.AddAsync(`0)">
+            <summary>
+            异步新增
+            </summary>
+            <param name="t">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.DapperEntity`1.Add(`0)">
+            <summary>
+            新增
+            </summary>
+            <param name="t">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.DapperEntity`1.DeleteAsync(`0)">
+            <summary>
+            异步删除实体
+            </summary>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.DapperEntity`1.DeleteAsync(System.Int32)">
+            <summary>
+            根据Id删除
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.DapperEntity`1.Delete(`0)">
+            <summary>
+            删除实体
+            </summary>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.DapperEntity`1.Delete(System.Int32)">
+            <summary>
+            删除实体
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.DapperEntity`1.UpdateReturnIdAsync(`0)">
+            <summary>
+            异步修改返回Id
+            </summary>
+            <param name="t">实体</param>
+            <returns>新增项的Id</returns>
+        </member>
+        <member name="M:Acme.Dapper.DapperEntity`1.UpdateByIdAsync(System.Object)">
+            <summary>
+            异步修改返回Id
+            </summary>
+            <param name="UpdateContext">实体</param>
+            <returns>新增项的Id</returns>
+        </member>
+        <member name="M:Acme.Dapper.DapperEntity`1.UpdateReturnId(`0)">
+            <summary>
+            修改返回Id
+            </summary>
+            <param name="t">实体</param>
+            <returns>新增项的Id</returns>
+        </member>
+        <member name="M:Acme.Dapper.DapperEntity`1.UpdateAsync(`0)">
+            <summary>
+            异步修改
+            </summary>
+            <param name="t">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.DapperEntity`1.Update(`0)">
+            <summary>
+            修改
+            </summary>
+            <param name="t">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.DapperEntity`1.GetInfo(System.Int32)">
+            <summary>
+            获取单条数据
+            </summary>
+            <param name="Id">主键Id</param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.DapperEntity`1.GetInfo(System.Object)">
+            <summary>
+            获取单条数据
+            </summary>
+            <param name="SqlWhere">条件</param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.DapperEntity`1.GetInfoAsync(System.Int32)">
+            <summary>
+            异步获取单条
+            </summary>
+            <param name="Id">主键Id</param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.DapperEntity`1.GetInfoAsync(System.Object)">
+            <summary>
+            异步获取单条
+            </summary>
+            <param name="SqlWhere">条件</param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.DapperEntity`1.GetList(System.Object)">
+            <summary>
+            获取列表
+            </summary>
+            <param name="SqlWhere">条件</param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.DapperEntity`1.GetListAsync(System.Object)">
+            <summary>
+            获取列表
+            </summary>
+            <param name="SqlWhere">条件</param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.DapperEntity`1.GetCountAsync(System.Object)">
+            <summary>
+            获取条数
+            </summary>
+            <param name="SqlWhere">条件</param>
+            <returns></returns>
+        </member>
+        <member name="T:Acme.Dapper.IDapperEntity`1">
+            <summary>
+            Dapper拓展实体实现接口
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Acme.Dapper.IDapperEntity`1.AddReturnIdAsync(`0)">
+            <summary>
+            异步新增返回Id
+            </summary>
+            <param name="t">实体</param>
+            <returns>新增项的Id</returns>
+        </member>
+        <member name="M:Acme.Dapper.IDapperEntity`1.AddReturnId(`0)">
+            <summary>
+            新增返回Id
+            </summary>
+            <param name="t">实体</param>
+            <returns>新增项的Id</returns>
+        </member>
+        <member name="M:Acme.Dapper.IDapperEntity`1.AddAsync(`0)">
+            <summary>
+            异步新增
+            </summary>
+            <param name="t">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.IDapperEntity`1.Add(`0)">
+            <summary>
+            新增
+            </summary>
+            <param name="t">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.IDapperEntity`1.DeleteAsync(`0)">
+            <summary>
+            异步删除实体
+            </summary>
+            <param name="t">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.IDapperEntity`1.DeleteAsync(System.Int32)">
+            <summary>
+            根据Id删除
+            </summary>
+            <param name="Id">主键Id</param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.IDapperEntity`1.Delete(`0)">
+            <summary>
+            删除实体
+            </summary>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.IDapperEntity`1.Delete(System.Int32)">
+            <summary>
+            删除实体
+            </summary>
+            <param name="Id">主键Id</param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.IDapperEntity`1.UpdateReturnIdAsync(`0)">
+            <summary>
+            异步修改返回Id
+            </summary>
+            <param name="t">实体</param>
+            <returns>新增项的Id</returns>
+        </member>
+        <member name="M:Acme.Dapper.IDapperEntity`1.UpdateReturnId(`0)">
+            <summary>
+            修改返回Id
+            </summary>
+            <param name="t">实体</param>
+            <returns>新增项的Id</returns>
+        </member>
+        <member name="M:Acme.Dapper.IDapperEntity`1.UpdateAsync(`0)">
+            <summary>
+            异步修改
+            </summary>
+            <param name="t">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.IDapperEntity`1.UpdateByIdAsync(System.Object)">
+            <summary>
+            根据Id修改实体
+            </summary>
+            <param name="UpdateContext"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.IDapperEntity`1.Update(`0)">
+            <summary>
+            修改
+            </summary>
+            <param name="t">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.IDapperEntity`1.GetInfo(System.Int32)">
+            <summary>
+            根据Id获取单条
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.IDapperEntity`1.GetInfo(System.Object)">
+            <summary>
+            按条件获取单条
+            </summary>
+            <param name="SqlWhere"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.IDapperEntity`1.GetInfoAsync(System.Int32)">
+            <summary>
+            根据Id获取单条数据异步返回
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.IDapperEntity`1.GetInfoAsync(System.Object)">
+            <summary>
+            根据条件
+            </summary>
+            <param name="SqlWhere"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.IDapperEntity`1.GetList(System.Object)">
+            <summary>
+            获取列表
+            </summary>
+            <param name="SqlWhere"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.IDapperEntity`1.GetListAsync(System.Object)">
+            <summary>
+            获取列表
+            </summary>
+            <param name="SqlWhere">条件</param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.IDapperEntity`1.GetCountAsync(System.Object)">
+            <summary>
+            获取条数
+            </summary>
+            <param name="SqlWhere"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Acme.Dapper.DapperHelper">
+            <summary>
+            Dapper通用类
+            </summary>
+        </member>
+        <member name="P:Acme.Dapper.DapperHelper.ConnectionString">
+            <summary>
+            链接字符串
+            </summary>
+        </member>
+        <member name="M:Acme.Dapper.DapperHelper.#ctor(System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="_connectionString"></param>
+        </member>
+        <member name="M:Acme.Dapper.DapperHelper.Query``1(System.String,System.Object)">
+            <summary>
+            查询列表
+            </summary>
+            <param name="sql">查询的sql</param>
+            <param name="param">替换参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.DapperHelper.QueryAsync``1(System.String,System.Object)">
+            <summary>
+            异步查询列表
+            </summary>
+            <param name="sql">查询的sql</param>
+            <param name="param">替换参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.DapperHelper.QueryFirst``1(System.String,System.Object)">
+            <summary>
+            查询第一个数据
+            </summary>
+            <param name="sql"></param>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.DapperHelper.QueryFirstAsync``1(System.String,System.Object)">
+            <summary>
+            异步查询第一个数据
+            </summary>
+            <param name="sql"></param>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.DapperHelper.QueryFirstOrDefault``1(System.String,System.Object)">
+            <summary>
+            查询第一个数据没有返回默认值
+            </summary>
+            <param name="sql"></param>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.DapperHelper.QueryFirstOrDefaultAsync``1(System.String,System.Object)">
+            <summary>
+            查询第一个数据没有返回默认值
+            </summary>
+            <param name="sql"></param>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.DapperHelper.QuerySingle``1(System.String,System.Object)">
+            <summary>
+            查询单条数据
+            </summary>
+            <param name="sql"></param>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.DapperHelper.QuerySingleAsync``1(System.String,System.Object)">
+            <summary>
+            异步查询单条数据
+            </summary>
+            <param name="sql"></param>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.DapperHelper.QuerySingleOrDefault``1(System.String,System.Object)">
+            <summary>
+            查询单条数据没有返回默认值
+            </summary>
+            <param name="sql"></param>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.DapperHelper.QuerySingleOrDefaultAsync``1(System.String,System.Object)">
+            <summary>
+            查询单条数据没有返回默认值
+            </summary>
+            <param name="sql"></param>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.DapperHelper.ExecuteAsync(System.String,System.Object)">
+            <summary>
+            异步调用执行增删改语句
+            </summary>
+            <param name="sql">sql，参数</param>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.DapperHelper.Execute(System.String,System.Object)">
+            <summary>
+            增删改
+            </summary>
+            <param name="sql"></param>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.DapperHelper.InsertAsync``1(``0,System.Data.IDbTransaction,System.Nullable{System.Int32})">
+            <summary>
+            根据实体类插入表（实体类需要加标记处理）
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="model"></param>
+            <param name="transaction"></param>
+            <param name="commandTimeout"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.DapperHelper.Insert``1(``0,System.Data.IDbTransaction,System.Nullable{System.Int32})">
+            <summary>
+            根据实体类插入表（实体类需要加标记处理）
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="model"></param>
+            <param name="transaction"></param>
+            <param name="commandTimeout"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.DapperHelper.UpdateAsync``1(``0,System.Data.IDbTransaction,System.Nullable{System.Int32})">
+            <summary>
+            根据实体类更新表（实体类需要加标记处理）
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="model"></param>
+            <param name="transaction"></param>
+            <param name="commandTimeout"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.DapperHelper.Update``1(``0,System.Data.IDbTransaction,System.Nullable{System.Int32})">
+            <summary>
+            根据实体类更新表（实体类需要加标记处理）
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="model"></param>
+            <param name="transaction"></param>
+            <param name="commandTimeout"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.DapperHelper.DeleteAsync``1(``0,System.Data.IDbTransaction,System.Nullable{System.Int32})">
+            <summary>
+            根据实体类删除表（实体类需要加标记处理）
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="model"></param>
+            <param name="transaction"></param>
+            <param name="commandTimeout"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.DapperHelper.Delete``1(``0,System.Data.IDbTransaction,System.Nullable{System.Int32})">
+            <summary>
+            根据实体类删除表（实体类需要加标记处理）
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="model"></param>
+            <param name="transaction"></param>
+            <param name="commandTimeout"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.DapperHelper.ExecuteReader(System.String,System.Object)">
+            <summary>
+            Reader获取数据
+            </summary>
+            <param name="sql"></param>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.DapperHelper.ExecuteReaderAsync(System.String,System.Object)">
+            <summary>
+            异步Reader获取数据
+            </summary>
+            <param name="sql"></param>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.DapperHelper.ExecuteScalar(System.String,System.Object)">
+            <summary>
+            Scalar获取数据
+            </summary>
+            <param name="sql"></param>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.DapperHelper.ExecuteScalarForTAsync``1(System.String,System.Object)">
+            <summary>
+            Scalar获取数据
+            </summary>
+            <param name="sql"></param>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.DapperHelper.ExecuteScalarForT``1(System.String,System.Object)">
+            <summary>
+            Scalar获取数据
+            </summary>
+            <param name="sql"></param>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.DapperHelper.ExecuteScalarAsync``1(System.String,System.Object)">
+            <summary>
+            Scalar获取数据
+            </summary>
+            <param name="sql"></param>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.DapperHelper.ExecutePro``1(System.String,System.Object)">
+            <summary>
+            带参数的存储过程
+            </summary>
+            <param name="proc">存储过程</param>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.DapperHelper.ExecuteProAsync``1(System.String,System.Object)">
+            <summary>
+            带参数的存储过程
+            </summary>
+            <param name="proc">存储过程名称</param>
+            <param name="param">参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.DapperHelper.ExecuteTransaction(System.String[])">
+            <summary>
+            事务1 - 全SQL
+            </summary>
+            <param name="sqlarr">多条SQL</param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.DapperHelper.ExecuteTransactionAsync(System.String[])">
+            <summary>
+            事务1 - 全SQL
+            </summary>
+            <param name="sqlarr">多条SQL</param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.DapperHelper.ExecuteTransaction(System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            事务2 - 声明参数
+            dic.Add("Insert into Users values (@UserName, @Email, @Address)",
+               new { UserName = "jack", Email = "380234234@qq.com", Address = "上海" });
+            </summary>
+            <param name="dic"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.DapperHelper.ExecuteTransactionAsync(System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             事务2 - 声明参数
+            demo:
+            dic.Add("Insert into Users values (@UserName, @Email, @Address)",
+                    new { UserName = "jack", Email = "380234234@qq.com", Address = "上海" });
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="T:Acme.Dapper.IDapperHelper">
+            <summary>
+            Dapper通用实现接口
+            </summary>
+        </member>
+        <member name="M:Acme.Dapper.IDapperHelper.Query``1(System.String,System.Object)">
+            <summary>
+            查询列表
+            </summary>
+            <param name="sql">查询的sql</param>
+            <param name="param">替换参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.IDapperHelper.QueryAsync``1(System.String,System.Object)">
+            <summary>
+            异步查询列表
+            </summary>
+            <param name="sql">查询的sql</param>
+            <param name="param">替换参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.IDapperHelper.QueryFirst``1(System.String,System.Object)">
+            <summary>
+            查询第一个数据
+            </summary>
+            <param name="sql">查询的sql</param>
+            <param name="param">替换参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.IDapperHelper.QueryFirstAsync``1(System.String,System.Object)">
+            <summary>
+            异步查询第一个数据
+            </summary>
+            <param name="sql"></param>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.IDapperHelper.QueryFirstOrDefault``1(System.String,System.Object)">
+            <summary>
+            查询第一个数据没有返回默认值
+            </summary>
+            <param name="sql"></param>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.IDapperHelper.QueryFirstOrDefaultAsync``1(System.String,System.Object)">
+            <summary>
+            查询第一个数据没有返回默认值
+            </summary>
+            <param name="sql"></param>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.IDapperHelper.QuerySingle``1(System.String,System.Object)">
+            <summary>
+            查询单条数据
+            </summary>
+            <param name="sql"></param>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.IDapperHelper.QuerySingleAsync``1(System.String,System.Object)">
+            <summary>
+            异步查询单条数据
+            </summary>
+            <param name="sql"></param>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.IDapperHelper.QuerySingleOrDefault``1(System.String,System.Object)">
+            <summary>
+            查询单条数据没有返回默认值
+            </summary>
+            <param name="sql"></param>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.IDapperHelper.QuerySingleOrDefaultAsync``1(System.String,System.Object)">
+            <summary>
+            查询单条数据没有返回默认值
+            </summary>
+            <param name="sql"></param>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.IDapperHelper.ExecuteAsync(System.String,System.Object)">
+            <summary>
+            异步调用执行增删改语句
+            </summary>
+            <param name="sql">sql，参数</param>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.IDapperHelper.Execute(System.String,System.Object)">
+            <summary>
+            增删改
+            </summary>
+            <param name="sql"></param>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.IDapperHelper.InsertAsync``1(``0,System.Data.IDbTransaction,System.Nullable{System.Int32})">
+            <summary>
+            根据实体类插入表（实体类需要加标记处理）
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="model"></param>
+            <param name="transaction"></param>
+            <param name="commandTimeout"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.IDapperHelper.Insert``1(``0,System.Data.IDbTransaction,System.Nullable{System.Int32})">
+            <summary>
+            根据实体类插入表（实体类需要加标记处理）
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="model"></param>
+            <param name="transaction"></param>
+            <param name="commandTimeout"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.IDapperHelper.UpdateAsync``1(``0,System.Data.IDbTransaction,System.Nullable{System.Int32})">
+            <summary>
+            根据实体类更新表（实体类需要加标记处理）
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="model"></param>
+            <param name="transaction"></param>
+            <param name="commandTimeout"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.IDapperHelper.Update``1(``0,System.Data.IDbTransaction,System.Nullable{System.Int32})">
+            <summary>
+            根据实体类更新表（实体类需要加标记处理）
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="model"></param>
+            <param name="transaction"></param>
+            <param name="commandTimeout"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.IDapperHelper.DeleteAsync``1(``0,System.Data.IDbTransaction,System.Nullable{System.Int32})">
+            <summary>
+            根据实体类删除表（实体类需要加标记处理）
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="model"></param>
+            <param name="transaction"></param>
+            <param name="commandTimeout"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.IDapperHelper.Delete``1(``0,System.Data.IDbTransaction,System.Nullable{System.Int32})">
+            <summary>
+            根据实体类删除表（实体类需要加标记处理）
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="model"></param>
+            <param name="transaction"></param>
+            <param name="commandTimeout"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.IDapperHelper.ExecuteReader(System.String,System.Object)">
+            <summary>
+            Reader获取数据
+            </summary>
+            <param name="sql"></param>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.IDapperHelper.ExecuteReaderAsync(System.String,System.Object)">
+            <summary>
+            异步Reader获取数据
+            </summary>
+            <param name="sql"></param>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.IDapperHelper.ExecuteScalar(System.String,System.Object)">
+            <summary>
+            Scalar获取数据
+            </summary>
+            <param name="sql"></param>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.IDapperHelper.ExecuteScalarForTAsync``1(System.String,System.Object)">
+            <summary>
+            Scalar获取数据
+            </summary>
+            <param name="sql"></param>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.IDapperHelper.ExecuteScalarForT``1(System.String,System.Object)">
+            <summary>
+            Scalar获取数据
+            </summary>
+            <param name="sql"></param>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.IDapperHelper.ExecuteScalarAsync``1(System.String,System.Object)">
+            <summary>
+            Scalar获取数据
+            </summary>
+            <param name="sql"></param>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.IDapperHelper.ExecutePro``1(System.String,System.Object)">
+            <summary>
+            带参数的存储过程
+            </summary>
+            <param name="proc">存储过程</param>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.IDapperHelper.ExecuteProAsync``1(System.String,System.Object)">
+            <summary>
+            带参数的存储过程
+            </summary>
+            <param name="proc">存储过程名称</param>
+            <param name="param">参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.IDapperHelper.ExecuteTransaction(System.String[])">
+            <summary>
+            事务1 - 全SQL
+            </summary>
+            <param name="sqlarr">多条SQL</param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.IDapperHelper.ExecuteTransactionAsync(System.String[])">
+            <summary>
+            事务1 - 全SQL
+            </summary>
+            <param name="sqlarr">多条SQL</param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.IDapperHelper.ExecuteTransaction(System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             事务2 - 声明参数
+            demo:
+            dic.Add("Insert into Users values (@UserName, @Email, @Address)",
+                    new { UserName = "jack", Email = "380234234@qq.com", Address = "上海" });
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.IDapperHelper.ExecuteTransactionAsync(System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             事务2 - 声明参数
+            demo:
+            dic.Add("Insert into Users values (@UserName, @Email, @Address)",
+                    new { UserName = "jack", Email = "380234234@qq.com", Address = "上海" });
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="T:Acme.Dapper.AndOrNot">
+            <summary>
+            且或非枚举
+            </summary>
+        </member>
+        <member name="F:Acme.Dapper.AndOrNot.AND">
+            <summary>
+            且
+            </summary>
+        </member>
+        <member name="F:Acme.Dapper.AndOrNot.OR">
+            <summary>
+            或
+            </summary>
+        </member>
+        <member name="T:Acme.Dapper.JoinType">
+            <summary>
+            连接查询类型
+            </summary>
+        </member>
+        <member name="F:Acme.Dapper.JoinType.INNER">
+            <summary>
+            内联接
+            </summary>
+        </member>
+        <member name="F:Acme.Dapper.JoinType.LEFT">
+            <summary>
+            左连接
+            </summary>
+        </member>
+        <member name="F:Acme.Dapper.JoinType.RIGHT">
+            <summary>
+            右连接
+            </summary>
+        </member>
+        <member name="T:Acme.Dapper.DBSqlParameter">
+            <summary>
+            sql参数通用类
+            </summary>
+        </member>
+        <member name="F:Acme.Dapper.DBSqlParameter.一">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Acme.Dapper.DBSqlParameter.SqlParame(System.Object)">
+            <summary>
+            构建SqlServer数据库的sql参数
+            </summary>
+            <param name="ParameterEntity">实体(如：new{Id=1,Name='夜殇'})</param>
+            <returns>SqlParameter类型的sql参数数组</returns>
+        </member>
+        <member name="M:Acme.Dapper.DBSqlParameter.GetSqlCondi(System.Object)">
+            <summary>
+            构建条件参数
+            </summary>
+            <param name="CondiEntity">条件实体 如：new {Id=1}</param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.DBSqlParameter.AddAndWhere(System.String,System.Object,System.Boolean,System.String,Acme.Dapper.AndOrNot)">
+            <summary>
+            拼接sql语句条件
+            </summary>
+            <param name="sql">原sql</param>
+            <param name="condiEntity">字段名和值</param>
+            <param name="isJudgment">是否验证通过（通过拼接，不通过返回原sql）</param>
+            <param name="symbol">符号（默认=）</param>
+            <param name="andOrNot">拼接关键字（AND或OR）</param>
+            <returns>新的sql字符串</returns>
+        </member>
+        <member name="M:Acme.Dapper.DBSqlParameter.AddContainWhere(System.String,System.Object,System.Boolean,Acme.Dapper.AndOrNot)">
+            <summary>
+            添加模糊查询
+            </summary>
+            <param name="sql">原sql</param>
+            <param name="condiEntity">条件</param>
+            <param name="isJudgment">是否验证通过</param>
+            <param name="andOrNot">是AND 还是or</param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.DBSqlParameter.AddLeftContainWhere(System.String,System.Object,System.Boolean,Acme.Dapper.AndOrNot)">
+            <summary>
+            拼接左模糊查询
+            </summary>
+            <param name="sql">原sql</param>
+            <param name="condiEntity">字段名和值</param>
+            <param name="isJudgment">是否验证通过（通过拼接，不通过返回原sql）</param>
+            <param name="andOrNot">拼接关键字（AND或OR）</param>
+            <returns>新的sql字符串</returns>
+        </member>
+        <member name="M:Acme.Dapper.DBSqlParameter.AddRightContainWhere(System.String,System.Object,System.Boolean,Acme.Dapper.AndOrNot)">
+            <summary>
+            拼接右模糊查询
+            </summary>
+            <param name="sql">原sql</param>
+            <param name="condiEntity">字段名和值</param>
+            <param name="isJudgment">是否验证通过（通过拼接，不通过返回原sql）</param>
+            <param name="andOrNot">拼接关键字（AND或OR）</param>
+            <returns>新的sql字符串</returns>
+        </member>
+        <member name="M:Acme.Dapper.DBSqlParameter.Select(System.String,System.Object)">
+            <summary>
+            获取的结果集
+            </summary>
+            <param name="sql"></param>
+            <param name="result"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.DBSqlParameter.Total(System.String)">
+            <summary>
+            获取数据条数
+            </summary>
+            <param name="sql"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.DBSqlParameter.Join``1(System.String,Acme.Dapper.JoinType,System.Int32)">
+            <summary>
+            链接查询
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="sql"></param>
+            <param name="join"></param>
+            <param name="index"></param>
+            <returns></returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:Acme.Dapper.DBSqlParameter.ON(System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            ON条件
+            </summary>
+            <param name="sql"></param>
+            <param name="keyValues"></param>
+            <returns></returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="T:Acme.Dapper.ISplicing`1">
+            <summary>
+            拓展实现接口
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Acme.Dapper.ISplicing`1.InsertSql(`0,System.Boolean)">
+            <summary>
+            动态生成添加的sql语句
+            </summary>
+            <param name="t">待添加的实体</param>
+            <param name="IsItKey">第一个字段是否是自增的主键（true是(默认是) false不是）</param>
+            <returns>新增的sql语句</returns>
+        </member>
+        <member name="M:Acme.Dapper.ISplicing`1.DeleteSql(System.Object)">
+            <summary>
+            动态生成按条件删除的sql语句
+            </summary>
+            <param name="CondiEntity">条件实体 如：new {Id=1}</param>
+            <returns>按条件删除的sql语句</returns>
+        </member>
+        <member name="M:Acme.Dapper.ISplicing`1.UpdateSql(`0,System.Object,System.Boolean)">
+            <summary>
+            动态生成按条件更新的sql语句
+            </summary>
+            <param name="t">待更新到数据库的实体</param>
+            <param name="CondiEntity">更新条件（如：new {Id=1}）</param>
+            <param name="IsItKey">第一个字段是否是自增的主键（true是 false不是）</param>
+            <returns>按条件更新的sql语句</returns>
+        </member>
+        <member name="M:Acme.Dapper.ISplicing`1.SelectSql(System.Object)">
+            <summary>
+            生成查询的sql语句
+            </summary>
+            <param name="CondiEntity">条件实体</param>
+            <returns>查询的sql语句</returns>
+        </member>
+        <member name="M:Acme.Dapper.ISplicing`1.SelectSql">
+            <summary>
+            动态生成按查询所有的sql语句
+            </summary>
+            <returns>查询所有的sql语句</returns>
+        </member>
+        <member name="M:Acme.Dapper.ISplicing`1.InsertSqlParam(`0,System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="t"></param>
+            <param name="IsItKey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.ISplicing`1.DeleteSqlParam(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="CondiEntity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.ISplicing`1.UpdateSqlParam(`0,System.Object,System.Boolean)">
+            <summary>
+            动态生成按条件更新的sql语句
+            </summary>
+            <param name="t">待更新到数据库的实体</param>
+            <param name="CondiEntity">更新条件（如：new {Id=1}）</param>
+            <param name="IsItKey">第一个字段是否是自增的主键（true是 false不是）</param>
+            <returns>按条件更新的sql语句</returns>
+        </member>
+        <member name="M:Acme.Dapper.ISplicing`1.UpdateSqlParam(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="UpdateContext"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.ISplicing`1.ExistenceSql(System.String)">
+            <summary>
+            生成判断是否存在的Sql
+            </summary>
+            <param name="sql"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.ISplicing`1.UpdateSqlParam(`0)">
+            <summary>
+            动态生成按条件更新的sql语句
+            </summary>
+            <param name="t">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.ISplicing`1.SelectSqlParam(System.Object)">
+            <summary>
+            生成查询的sql语句
+            </summary>
+            <param name="CondiEntity">条件实体</param>
+            <returns>查询的sql语句</returns>
+        </member>
+        <member name="M:Acme.Dapper.ISplicing`1.SelectCountParam(System.Object)">
+            <summary>
+            查询条数的Sql语句
+            </summary>
+            <param name="CondiEntity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.ISplicing`1.SelectSqlParam">
+            <summary>
+            动态生成按查询所有的sql语句
+            </summary>
+            <returns>查询所有的sql语句</returns>
+        </member>
+        <member name="M:Acme.Dapper.ISplicing`1.SelectNoResultSql">
+            <summary>
+            生成未确定查询结果的sql语句
+            </summary>
+        </member>
+        <member name="T:Acme.Dapper.Splicing`1">
+            <summary>
+            类名:动态生成不带参数的sql语句
+            </summary>
+        </member>
+        <member name="M:Acme.Dapper.Splicing`1.InsertSql(`0,System.Boolean)">
+            <summary>
+            动态生成添加的sql语句
+            </summary>
+            <param name="t">待添加的实体</param>
+            <param name="IsItKey">第一个字段是否是自增的主键（true是(默认是) false不是）</param>
+            <returns>新增的sql语句</returns>
+        </member>
+        <member name="M:Acme.Dapper.Splicing`1.DeleteSql(System.Object)">
+            <summary>
+            动态生成按条件删除的sql语句
+            </summary>
+            <param name="CondiEntity">条件实体 如：new {Id=1}</param>
+            <returns>按条件删除的sql语句</returns>
+        </member>
+        <member name="M:Acme.Dapper.Splicing`1.UpdateSql(`0,System.Object,System.Boolean)">
+            <summary>
+            动态生成按条件更新的sql语句
+            </summary>
+            <param name="t">待更新到数据库的实体</param>
+            <param name="CondiEntity">更新条件（如：new {Id=1}）</param>
+            <param name="IsItKey">第一个字段是否是自增的主键（true是 false不是）</param>
+            <returns>按条件更新的sql语句</returns>
+        </member>
+        <member name="M:Acme.Dapper.Splicing`1.SelectSql(System.Object)">
+            <summary>
+            生成查询的sql语句
+            </summary>
+            <param name="CondiEntity">条件实体</param>
+            <returns>查询的sql语句</returns>
+        </member>
+        <member name="M:Acme.Dapper.Splicing`1.SelectSql">
+            <summary>
+            动态生成按查询所有的sql语句
+            </summary>
+            <returns>查询所有的sql语句</returns>
+        </member>
+        <member name="M:Acme.Dapper.Splicing`1.InsertSqlParam(`0,System.Boolean)">
+            <summary>
+            生成带参数新增语句
+            </summary>
+            <param name="t">实体</param>
+            <param name="IsItKey">第一个是否主键</param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.Splicing`1.DeleteSqlParam(System.Object)">
+            <summary>
+            生成删除的sql语句
+            </summary>
+            <param name="CondiEntity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.Splicing`1.GetSqlCount(System.Object)">
+            <summary>
+            生成查询条数
+            </summary>
+            <param name="CondiEntity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.Splicing`1.UpdateSqlParam(`0,System.Object,System.Boolean)">
+            <summary>
+            动态生成按条件更新的sql语句
+            </summary>
+            <param name="t">待更新到数据库的实体</param>
+            <param name="CondiEntity">更新条件（如：new {Id=1}）</param>
+            <param name="IsItKey">第一个字段是否是自增的主键（true是 false不是）</param>
+            <returns>按条件更新的sql语句</returns>
+        </member>
+        <member name="M:Acme.Dapper.Splicing`1.UpdateSqlParam(System.Object)">
+            <summary>
+            动态生成按条件更新的sql语句
+            </summary>
+            <param name="UpdateContent">更新内容（如：new {Id=1}）</param>
+            <returns>按条件更新的sql语句</returns>
+        </member>
+        <member name="M:Acme.Dapper.Splicing`1.UpdateSqlParam(`0)">
+            <summary>
+            动态生成按条件更新的sql语句
+            </summary>
+            <param name="t">待更新到数据库的实体</param>
+            <returns>按条件更新的sql语句</returns>
+        </member>
+        <member name="M:Acme.Dapper.Splicing`1.SelectSqlParam(System.Object)">
+            <summary>
+            生成查询的sql语句
+            </summary>
+            <param name="CondiEntity">条件实体</param>
+            <returns>查询的sql语句</returns>
+        </member>
+        <member name="M:Acme.Dapper.Splicing`1.SelectCountParam(System.Object)">
+            <summary>
+            生成查询条数语句
+            </summary>
+            <param name="CondiEntity">条件实体</param>
+            <returns>查询的sql语句</returns>
+        </member>
+        <member name="M:Acme.Dapper.Splicing`1.SelectSqlParam">
+            <summary>
+            动态生成按查询所有的sql语句
+            </summary>
+            <returns>查询所有的sql语句</returns>
+        </member>
+        <member name="M:Acme.Dapper.Splicing`1.GetUpdateContent(System.Object)">
+            <summary>
+            构建修改参数
+            </summary>
+            <param name="UpdateContent">条件实体 如：new {Id=1}</param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.Splicing`1.ExistenceSql(System.String)">
+            <summary>
+            生成判断是否存在的Sql
+            </summary>
+            <param name="sql"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.Dapper.Splicing`1.SelectNoResultSql">
+            <summary>
+            生成未确定查询结果的sql语句
+            </summary>
+            <returns>查询的sql语句</returns>
+        </member>
+    </members>
+</doc>

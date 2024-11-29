@@ -1,0 +1,5 @@
+D:\yzxs\Acme\acme\Acme.GlobalFilters\obj\Debug\net8\Acme.GlobalFilters.csproj.AssemblyReference.cache
+D:\yzxs\Acme\acme\Acme.GlobalFilters\obj\Debug\net8\Acme.GlobalFilters.GeneratedMSBuildEditorConfig.editorconfig
+D:\yzxs\Acme\acme\Acme.GlobalFilters\obj\Debug\net8\Acme.GlobalFilters.AssemblyInfoInputs.cache
+D:\yzxs\Acme\acme\Acme.GlobalFilters\obj\Debug\net8\Acme.GlobalFilters.AssemblyInfo.cs
+D:\yzxs\Acme\acme\Acme.GlobalFilters\obj\Debug\net8\Acme.GlobalFilters.csproj.CoreCompileInputs.cache

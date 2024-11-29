@@ -1,0 +1,14 @@
+D:\workspace\Acme\Acme.Dapper\bin\Debug\net5.0\Acme.Dapper.deps.json
+D:\workspace\Acme\Acme.Dapper\bin\Debug\net5.0\Acme.Dapper.dll
+D:\workspace\Acme\Acme.Dapper\bin\Debug\net5.0\Acme.Dapper.pdb
+D:\workspace\Acme\Acme.Dapper\bin\Debug\net5.0\Acme.Dapper.xml
+D:\workspace\Acme\Acme.Dapper\obj\Debug\net5.0\Acme.Dapper.csproj.AssemblyReference.cache
+D:\workspace\Acme\Acme.Dapper\obj\Debug\net5.0\Acme.Dapper.GeneratedMSBuildEditorConfig.editorconfig
+D:\workspace\Acme\Acme.Dapper\obj\Debug\net5.0\Acme.Dapper.AssemblyInfoInputs.cache
+D:\workspace\Acme\Acme.Dapper\obj\Debug\net5.0\Acme.Dapper.AssemblyInfo.cs
+D:\workspace\Acme\Acme.Dapper\obj\Debug\net5.0\Acme.Dapper.csproj.CoreCompileInputs.cache
+D:\workspace\Acme\Acme.Dapper\obj\Debug\net5.0\Acme.Dapper.dll
+D:\workspace\Acme\Acme.Dapper\obj\Debug\net5.0\refint\Acme.Dapper.dll
+D:\workspace\Acme\Acme.Dapper\obj\Debug\net5.0\Acme.Dapper.xml
+D:\workspace\Acme\Acme.Dapper\obj\Debug\net5.0\Acme.Dapper.pdb
+D:\workspace\Acme\Acme.Dapper\obj\Debug\net5.0\ref\Acme.Dapper.dll
