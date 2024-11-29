@@ -1,28 +1,25 @@
-﻿namespace Acme.GlobalFilters.Exceptions;
+﻿using Acme.Tools;
+
+namespace Acme.GlobalFilters.Exceptions;
 
 /// <summary>
 /// 异常过滤器
 /// </summary>
-public class ExceptionFilter : IExceptionFilter
+/// <remarks>
+/// 依赖注入
+/// </remarks>
+/// <param name="log"></param>
+public class ExceptionFilter(ILog<ExceptionFilter> log) : IExceptionFilter
 {
     /// <summary>
     /// 日志类
     /// </summary>
-    private readonly ILog<ExceptionFilter> _log;
-
-    /// <summary>
-    /// 依赖注入
-    /// </summary>
-    /// <param name="log"></param>
-    public ExceptionFilter(ILog<ExceptionFilter> log)
-    {
-        _log = log;
-    }
+    private readonly ILog<ExceptionFilter> _log = log;
 
     /// <summary>
     /// 输出页面Html
     /// </summary>
-    private string stringHtml => $@"<head><meta charset=""utf-8"" /></head><h3 style=""text-align:center;color:red;"">500：{CV.ErrorPrompt}</h3><p><hr/></p><p style=""text-align:center;color:red;"">@Message</p>";
+    private static string StringHtml => $@"<head><meta charset=""utf-8"" /></head><h3 style=""text-align:center;color:red;"">500：{CV.ErrorPrompt}</h3><p><hr/></p><p style=""text-align:center;color:red;"">@Message</p>";
 
     /// <summary>
     /// 异常处理方法
@@ -30,8 +27,7 @@ public class ExceptionFilter : IExceptionFilter
     /// <param name="context"></param>
     public void OnException(ExceptionContext context)
     {
-        var actionDescriptor = context.ActionDescriptor as ControllerActionDescriptor;
-        if (actionDescriptor != null && IsPageRequest(actionDescriptor.MethodInfo.ReturnType))
+        if (context.ActionDescriptor is ControllerActionDescriptor actionDescriptor && ExceptionFilter.IsPageRequest(actionDescriptor.MethodInfo.ReturnType))
         {
             HandleException(context.Exception, context.HttpContext.Response);
         }
@@ -51,7 +47,7 @@ public class ExceptionFilter : IExceptionFilter
     {
         response.ContentType = "text/html";
         _log.Error(exception.Message);
-        response.WriteAsync(stringHtml.Replace("@Message", exception.Message).ToUtf8());
+        response.WriteAsync(ExceptionFilter.StringHtml.Replace("@Message", exception.Message).ToUtf8());
     }
 
     /// <summary>
@@ -59,7 +55,7 @@ public class ExceptionFilter : IExceptionFilter
     /// </summary>
     /// <param name="returnType"></param>
     /// <returns></returns>
-    private bool IsPageRequest(Type returnType)
+    private static bool IsPageRequest(Type returnType)
     {
         return typeof(IActionResult).IsAssignableFrom(returnType)
             || typeof(Task<IActionResult>).IsAssignableFrom(returnType)

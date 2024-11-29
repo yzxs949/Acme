@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Acme;
+using Acme.Dapper.Enums;
 
 namespace Acme.Dapper
 {

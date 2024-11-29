@@ -1,4 +1,6 @@
-﻿namespace Acme.Dapper;
+﻿using Acme.Dapper.Enums;
+
+namespace Acme.Dapper;
 
 /// <summary>
 /// 拓展实现接口

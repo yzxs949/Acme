@@ -1,24 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace Acme.Dapper.Enums;
 
-namespace Acme.Dapper
+/// <summary>
+/// 排序字段
+/// </summary>
+public enum OrderType
 {
     /// <summary>
-    /// 排序字段
+    /// 倒序
     /// </summary>
-    public enum OrderType
-    {
-        /// <summary>
-        /// 倒序
-        /// </summary>
-        DESC,
+    DESC,
 
-        /// <summary>
-        /// 正序
-        /// </summary>
-        ASC
-    }
+    /// <summary>
+    /// 正序
+    /// </summary>
+    ASC
 }

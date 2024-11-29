@@ -1,7 +1,8 @@
 ﻿using System;
 using System.IO;
 using System.Text;
-namespace Acme;
+using Acme.Apps;
+namespace Acme.Tools;
 
 /// <summary>
 /// 类型转换
@@ -110,7 +111,7 @@ public static class ConvHelper
             fsForRead.Seek(0, SeekOrigin.Begin);
             byte[] bs = new byte[fsForRead.Length];
             int log = Convert.ToInt32(fsForRead.Length);
-            fsForRead.Read(bs, 0, log);
+            _ = fsForRead.Read(bs, 0, log);
             base64Str = Convert.ToBase64String(bs);
             return base64Str;
         }
@@ -207,7 +208,7 @@ public static class ConvHelper
             startindex = sourse.IndexOf(startstr);
             if (startindex == -1)
                 return result;
-            string tmpstr = sourse.Substring(startindex + startstr.Length);
+            string tmpstr = sourse[(startindex + startstr.Length)..];
             endindex = tmpstr.IndexOf(endstr);
             if (endindex == -1)
                 return result;

@@ -3,7 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
-using Acme;
+using Acme.Dapper.Enums;
+using Acme.Tools;
 
 namespace Acme.Dapper
 {

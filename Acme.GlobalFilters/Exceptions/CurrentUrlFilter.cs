@@ -18,8 +18,7 @@ public class CurrentUrlFilter(RequestDelegate next)
     /// <returns></returns>
     public async Task Invoke(HttpContext context)
     {
-        var endpoint = context.GetEndpoint() as RouteEndpoint;
-        if (endpoint != null)
+        if (context.GetEndpoint() is RouteEndpoint endpoint)
         {
             var controllerName = endpoint.Metadata.GetMetadata<ControllerActionDescriptor>()?.ControllerName;
             var actionName = endpoint.Metadata.GetMetadata<ControllerActionDescriptor>()?.ActionName;
