@@ -15,11 +15,11 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyCopyrightAttribute("yzxs")]
 [assembly: System.Reflection.AssemblyDescriptionAttribute("Acme framework based on Dapper database operation class library")]
-[assembly: System.Reflection.AssemblyFileVersionAttribute("5.2.2.2")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("5.2.2.2+0fb2344063a5597f46ea8b0ba229471b4ff6726b")]
+[assembly: System.Reflection.AssemblyFileVersionAttribute("5.3.0.4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("5.3.0.4+4f689843f92c38673ed782f2e7d9b56a2298c0d0")]
 [assembly: System.Reflection.AssemblyProductAttribute("Acme.Dapper")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Acme.Dapper")]
-[assembly: System.Reflection.AssemblyVersionAttribute("5.2.2.2")]
+[assembly: System.Reflection.AssemblyVersionAttribute("5.3.0.4")]
 
 // 由 MSBuild WriteCodeFragment 类生成。
 

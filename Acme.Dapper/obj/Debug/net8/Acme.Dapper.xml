@@ -16,17 +16,17 @@
             <param name="_services">IServiceCollection</param>
             <param name="_connectionString">数据库连接字符</param>
         </member>
-        <member name="T:Acme.Dapper.OrderType">
+        <member name="T:Acme.Dapper.Enums.OrderType">
             <summary>
             排序字段
             </summary>
         </member>
-        <member name="F:Acme.Dapper.OrderType.DESC">
+        <member name="F:Acme.Dapper.Enums.OrderType.DESC">
             <summary>
             倒序
             </summary>
         </member>
-        <member name="F:Acme.Dapper.OrderType.ASC">
+        <member name="F:Acme.Dapper.Enums.OrderType.ASC">
             <summary>
             正序
             </summary>
@@ -730,7 +730,7 @@
             <param name="SqlWhere"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.IRepository`1.GetPageListBySql(System.String,System.Int32,System.Int32,System.String,Acme.Dapper.OrderType)">
+        <member name="M:Acme.Dapper.IRepository`1.GetPageListBySql(System.String,System.Int32,System.Int32,System.String,Acme.Dapper.Enums.OrderType)">
             <summary>
             根据sql获取分页数据
             </summary>
@@ -741,7 +741,7 @@
             <param name="orderType">排序类型</param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.IRepository`1.GetPageListBySqlAsync(System.String,System.Int32,System.Int32,System.String,Acme.Dapper.OrderType)">
+        <member name="M:Acme.Dapper.IRepository`1.GetPageListBySqlAsync(System.String,System.Int32,System.Int32,System.String,Acme.Dapper.Enums.OrderType)">
             <summary>
             根据sql获取分页数据
             </summary>
@@ -752,7 +752,7 @@
             <param name="orderType">排序类型</param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.IRepository`1.GetPageListBySql``1(System.String,System.Int32,System.Int32,System.String,Acme.Dapper.OrderType)">
+        <member name="M:Acme.Dapper.IRepository`1.GetPageListBySql``1(System.String,System.Int32,System.Int32,System.String,Acme.Dapper.Enums.OrderType)">
             <summary>
             根据sql获取分页数据
             </summary>
@@ -763,7 +763,7 @@
             <param name="orderType">排序类型</param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.IRepository`1.GetPageListBySqlAsync``1(System.String,System.Int32,System.Int32,System.String,Acme.Dapper.OrderType)">
+        <member name="M:Acme.Dapper.IRepository`1.GetPageListBySqlAsync``1(System.String,System.Int32,System.Int32,System.String,Acme.Dapper.Enums.OrderType)">
             <summary>
             根据sql获取分页数据
             </summary>
@@ -955,7 +955,7 @@
             <param name="SqlWhere">条件</param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.Repository`1.GetPageListBySql(System.String,System.Int32,System.Int32,System.String,Acme.Dapper.OrderType)">
+        <member name="M:Acme.Dapper.Repository`1.GetPageListBySql(System.String,System.Int32,System.Int32,System.String,Acme.Dapper.Enums.OrderType)">
             <summary>
             根据sql获取分页数据
             </summary>
@@ -966,7 +966,7 @@
             <param name="orderType">排序类型</param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.Repository`1.GetPageListBySqlAsync(System.String,System.Int32,System.Int32,System.String,Acme.Dapper.OrderType)">
+        <member name="M:Acme.Dapper.Repository`1.GetPageListBySqlAsync(System.String,System.Int32,System.Int32,System.String,Acme.Dapper.Enums.OrderType)">
             <summary>
             根据sql获取分页数据
             </summary>
@@ -977,7 +977,7 @@
             <param name="orderType">排序类型</param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.Repository`1.GetPageListBySql``1(System.String,System.Int32,System.Int32,System.String,Acme.Dapper.OrderType)">
+        <member name="M:Acme.Dapper.Repository`1.GetPageListBySql``1(System.String,System.Int32,System.Int32,System.String,Acme.Dapper.Enums.OrderType)">
             <summary>
             根据sql获取分页数据
             </summary>
@@ -988,7 +988,7 @@
             <param name="orderType">排序类型</param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.Repository`1.GetPageListBySqlAsync``1(System.String,System.Int32,System.Int32,System.String,Acme.Dapper.OrderType)">
+        <member name="M:Acme.Dapper.Repository`1.GetPageListBySqlAsync``1(System.String,System.Int32,System.Int32,System.String,Acme.Dapper.Enums.OrderType)">
             <summary>
             根据sql获取分页数据
             </summary>
@@ -1256,7 +1256,7 @@
             生成未确定查询结果的sql语句
             </summary>
         </member>
-        <member name="M:Acme.Dapper.ISplicing`1.GetPageSql(System.String,System.Int32,System.Int32,System.String,Acme.Dapper.OrderType)">
+        <member name="M:Acme.Dapper.ISplicing`1.GetPageSql(System.String,System.Int32,System.Int32,System.String,Acme.Dapper.Enums.OrderType)">
             <summary>
             获取排序的sql语句
             </summary>
@@ -1401,7 +1401,7 @@
             </summary>
             <returns>查询的sql语句</returns>
         </member>
-        <member name="M:Acme.Dapper.Splicing`1.GetPageSql(System.String,System.Int32,System.Int32,System.String,Acme.Dapper.OrderType)">
+        <member name="M:Acme.Dapper.Splicing`1.GetPageSql(System.String,System.Int32,System.Int32,System.String,Acme.Dapper.Enums.OrderType)">
             <summary>
             获取排序的sql语句
             </summary>
