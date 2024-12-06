@@ -11,7 +11,7 @@
         /// <param name="data">数据</param>
         /// <param name="msg">描述</param>
         /// <returns></returns>
-        public static Oh Success(
+        public static IOh Success(
             this object data,
             string msg = CV.Yes)
         {
@@ -24,7 +24,7 @@
         /// <param name="data">数据</param>
         /// <param name="msg">描述</param>
         /// <returns></returns>
-        public static Oh<TEntity> Success<TEntity>(
+        public static IOh Success<TEntity>(
             this TEntity data,
             string msg = CV.Yes) where TEntity : class, new()
         {
@@ -36,7 +36,7 @@
         /// </summary>
         /// <param name="data">数据</param>
         /// <returns></returns>
-        public static Oh Success(
+        public static IOh Success(
             this object data)
         {
             return new Oh(CV.YesCode, CV.Yes, data);
@@ -47,7 +47,7 @@
         /// </summary>
         /// <param name="data">数据</param>
         /// <returns></returns>
-        public static Oh<TEntity> Success<TEntity>(
+        public static IOh Success<TEntity>(
             this TEntity data) where TEntity : class, new()
         {
             return new Oh<TEntity>(CV.YesCode, CV.Yes, data);
@@ -60,7 +60,7 @@
         /// <param name="code">状态码</param>
         /// <param name="msg">描述</param>
         /// <returns></returns>
-        public static Oh Success(
+        public static IOh Success(
             this object data,
             int code = CV.YesCode,
             string msg = CV.Yes)
@@ -75,7 +75,7 @@
         /// <param name="code">状态码</param>
         /// <param name="msg">描述</param>
         /// <returns></returns>
-        public static Oh<TEntity> Success<TEntity>(
+        public static IOh Success<TEntity>(
             this TEntity data,
             int code = CV.YesCode,
             string msg = CV.Yes) where TEntity : class, new()
@@ -89,7 +89,7 @@
         /// <param name="data">数据</param>
         /// <param name="msg">描述</param>
         /// <returns></returns>
-        public static Oh Fail(
+        public static IOh Fail(
             this object data,
             string msg = CV.ErrorServer)
         {
@@ -102,7 +102,7 @@
         /// <param name="data">数据</param>
         /// <param name="msg">描述</param>
         /// <returns></returns>
-        public static Oh<TEntity> Fail<TEntity>(
+        public static IOh Fail<TEntity>(
             this TEntity data,
             string msg = CV.ErrorServer) where TEntity : class, new()
         {
@@ -114,7 +114,7 @@
         /// </summary>
         /// <param name="data">数据</param>
         /// <returns></returns>
-        public static Oh Fail(
+        public static IOh Fail(
             this object data)
         {
             return new Oh(CV.NoCode, CV.ErrorServer, data);
@@ -125,7 +125,7 @@
         /// </summary>
         /// <param name="data">数据</param>
         /// <returns></returns>
-        public static Oh<TEntity> Fail<TEntity>(
+        public static IOh Fail<TEntity>(
             this TEntity data) where TEntity : class, new()
         {
             return new Oh<TEntity>(CV.NoCode, CV.ErrorServer, data);
@@ -138,7 +138,7 @@
         /// <param name="code">状态码</param>
         /// <param name="msg">描述</param>
         /// <returns></returns>
-        public static Oh Fail(
+        public static IOh Fail(
             this object data,
             int code = CV.NoCode,
             string msg = CV.ErrorServer)
@@ -153,7 +153,7 @@
         /// <param name="code">状态码</param>
         /// <param name="msg">描述</param>
         /// <returns></returns>
-        public static Oh<TEntity> Fail<TEntity>(
+        public static IOh Fail<TEntity>(
             this TEntity data,
             int code = CV.NoCode,
             string msg = CV.ErrorServer) where TEntity : class, new()
@@ -168,7 +168,7 @@
         /// <param name="code">状态码</param>
         /// <param name="msg">描述</param>
         /// <returns></returns>
-        public static Oh Custom(
+        public static IOh Custom(
             this object data,
             int code,
             string msg)
@@ -183,7 +183,7 @@
         /// <param name="code">状态码</param>
         /// <param name="msg">描述</param>
         /// <returns></returns>
-        public static Oh<TEntity> Custom<TEntity>(
+        public static IOh Custom<TEntity>(
             this TEntity data,
             int code,
             string msg) where TEntity : class, new()

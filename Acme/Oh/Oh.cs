@@ -5,7 +5,7 @@ namespace Acme;
 /// <summary>
 /// 通用返回参数实体
 /// </summary>
-public class Oh<TEntity> where TEntity : class, new()
+public class Oh<TEntity> : IOh where TEntity : class, new()
 {
     /// <summary>
     /// 构造函数
@@ -66,7 +66,7 @@ public class Oh<TEntity> where TEntity : class, new()
 /// <summary>
 /// 通用返回参数实体
 /// </summary>
-public class Oh : Oh<object>
+public class Oh : Oh<object>, IOh
 {
 
     /// <summary>
