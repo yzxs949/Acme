@@ -106,7 +106,7 @@
       }
     },
     "D:\\yzxs\\Acme\\acme\\Acme\\Acme.csproj": {
-      "version": "5.3.4.1",
+      "version": "5.5.1.1",
       "restore": {
         "projectUniqueName": "D:\\yzxs\\Acme\\acme\\Acme\\Acme.csproj",
         "projectName": "Acme",
@@ -193,9 +193,9 @@
               "target": "Package",
               "version": "[7.1.0, )"
             },
-            "System.Drawing.Common": {
+            "ZKWeb.System.Drawing": {
               "target": "Package",
-              "version": "[9.0.0, )"
+              "version": "[4.0.1, )"
             }
           },
           "imports": [
@@ -253,9 +253,9 @@
               "target": "Package",
               "version": "[7.1.0, )"
             },
-            "System.Drawing.Common": {
+            "ZKWeb.System.Drawing": {
               "target": "Package",
-              "version": "[9.0.0, )"
+              "version": "[4.0.1, )"
             }
           },
           "imports": [

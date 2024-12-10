@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
-namespace Acme;
+namespace Acme.Tools;
 
 /// <summary>
 /// Js处理类

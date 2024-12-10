@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Security.Cryptography;
 using System.Text;
-namespace Acme;
+namespace Acme.Tools;
 
 /// <summary>
 /// MD5加密
@@ -29,14 +29,13 @@ public static class MD5Encryption
     /// <returns></returns>
     public static string Encrypt(string text, bool uppercase = false)
     {
-        using MD5 mD = MD5.Create();
-        byte[] array = mD.ComputeHash(Encoding.UTF8.GetBytes(text));
+        byte[] array = MD5.HashData(Encoding.UTF8.GetBytes(text));
         StringBuilder stringBuilder = new();
         foreach (var item in array)
         {
             stringBuilder.Append(item.ToString("x2"));
         }
         string text2 = stringBuilder.ToString();
-        return (!uppercase) ? text2 : text2.ToUpper();
+        return !uppercase ? text2 : text2.ToUpper();
     }
 }

@@ -1,5 +1,4 @@
-﻿using Acme.Tools;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
 using System;
@@ -7,7 +6,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Reflection;
-namespace Acme;
+namespace Acme.Tools;
 
 /// <summary>
 /// Excel帮助类
@@ -38,10 +37,8 @@ public class NpolExcelHelper<T> where T : new()
         MemoryStream ms = new();
         file.CopyTo(ms);
         ms.Seek(0, SeekOrigin.Begin);
-        //实例化T数组
-        List<T> list = new();
         //获取数据
-        list = InputExcel(ms, sheetName);
+        List<T> list = InputExcel(ms, sheetName);
         return list;
     }
 
@@ -83,7 +80,7 @@ public class NpolExcelHelper<T> where T : new()
             sheet = workbook.GetSheetAt(0);
         }
         //实例化T数组
-        List<T> list = new();
+        List<T> list = [];
         if (sheet != null)
         {
             //一行最后一个cell的编号 即总的列数
@@ -102,7 +99,7 @@ public class NpolExcelHelper<T> where T : new()
                     if (cell != null)
                     {
                         var value = row.GetCell(j).ToString();
-                        string str = (propertys[j].PropertyType).FullName;
+                        string str = propertys[j].PropertyType.FullName;
                         if (str == "System.String")
                         {
                             propertys[j].SetValue(obj, value, null);

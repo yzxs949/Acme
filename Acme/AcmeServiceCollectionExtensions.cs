@@ -1,4 +1,6 @@
 ﻿using Acme.Cookie;
+using Acme.Nlogs;
+using Acme.Sessions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 

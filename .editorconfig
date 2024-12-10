@@ -1,0 +1,4 @@
+﻿[*.cs]
+
+# CA1848: 使用 LoggerMessage 委托
+dotnet_diagnostic.CA1848.severity = none

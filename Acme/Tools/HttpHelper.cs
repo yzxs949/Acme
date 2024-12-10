@@ -3,7 +3,7 @@ using System.IO;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Text;
-namespace Acme;
+namespace Acme.Tools;
 
 /// <summary>
 /// http请求通用类

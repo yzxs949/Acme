@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 
-namespace Acme
+namespace Acme.Tools
 {
     /// <summary>
     /// 验证
@@ -59,7 +59,7 @@ namespace Acme
             string RegularExpression)
         {
             Regex verIdCard = new(ValidationParameters);
-            bool IsOk = (ValidationParameters != "" && verIdCard.IsMatch(RegularExpression.Trim()));
+            bool IsOk = ValidationParameters != "" && verIdCard.IsMatch(RegularExpression.Trim());
             return IsOk;
         }
     }

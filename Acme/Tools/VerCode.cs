@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Data;
-using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Drawing.Imaging;
+using System.DrawingCore;
+using System.DrawingCore.Drawing2D;
+using System.DrawingCore.Imaging;
 using System.IO;
-using Acme.Tools;
 
-namespace Acme;
+namespace Acme.Tools;
 
 /// <summary>
 /// 验证码
@@ -56,8 +55,7 @@ public static class VerCode
     /// <param name="validateCode">要输出到的page对象</param>
     public static byte[] CreateValidateGraphic1(string validateCode)
     {
-        Bitmap image = new((int)Math.Ceiling(validateCode.Length * 12.0), 22);
-        Graphics g = Graphics.FromImage(image);
+        Graphics g = Graphics.FromImage(new Bitmap((int)Math.Ceiling(validateCode.Length * 12.0), 22));
         //生成随机生成器
         Random random = new();
         //清空图片背景色
@@ -65,30 +63,30 @@ public static class VerCode
         //画图片的干扰线
         for (int i = 0; i < 25; i++)
         {
-            int x1 = random.Next(image.Width);
-            int x2 = random.Next(image.Width);
-            int y1 = random.Next(image.Height);
-            int y2 = random.Next(image.Height);
+            int x1 = random.Next(new Bitmap((int)Math.Ceiling(validateCode.Length * 12.0), 22).Width);
+            int x2 = random.Next(new Bitmap((int)Math.Ceiling(validateCode.Length * 12.0), 22).Width);
+            int y1 = random.Next(new Bitmap((int)Math.Ceiling(validateCode.Length * 12.0), 22).Height);
+            int y2 = random.Next(new Bitmap((int)Math.Ceiling(validateCode.Length * 12.0), 22).Height);
             g.DrawLine(new Pen(Color.Silver), x1, y1, x2, y2);
         }
-        Font font = new("Arial", 12, (FontStyle.Bold | FontStyle.Italic));
-        LinearGradientBrush brush = new(new Rectangle(0, 0, image.Width, image.Height),
+        Font font = new("Arial", 12, FontStyle.Bold | FontStyle.Italic);
+        LinearGradientBrush brush = new(new Rectangle(0, 0, new Bitmap((int)Math.Ceiling(validateCode.Length * 12.0), 22).Width, new Bitmap((int)Math.Ceiling(validateCode.Length * 12.0), 22).Height),
         Color.Blue, Color.DarkRed, 1.2f, true);
         g.DrawString(validateCode, font, brush, 3, 2);
         //画图片的前景干扰点
         for (int i = 0; i < 100; i++)
         {
-            int x = random.Next(image.Width);
-            int y = random.Next(image.Height);
-            image.SetPixel(x, y, Color.FromArgb(random.Next()));
+            int x = random.Next(new Bitmap((int)Math.Ceiling(validateCode.Length * 12.0), 22).Width);
+            int y = random.Next(new Bitmap((int)Math.Ceiling(validateCode.Length * 12.0), 22).Height);
+            new Bitmap((int)Math.Ceiling(validateCode.Length * 12.0), 22).SetPixel(x, y, Color.FromArgb(random.Next()));
         }
         //画图片的边框线
-        g.DrawRectangle(new Pen(Color.Silver), 0, 0, image.Width - 1, image.Height - 1);
+        g.DrawRectangle(new Pen(Color.Silver), 0, 0, new Bitmap((int)Math.Ceiling(validateCode.Length * 12.0), 22).Width - 1, new Bitmap((int)Math.Ceiling(validateCode.Length * 12.0), 22).Height - 1);
         //保存图片数据
         using var stream = new MemoryStream();
-        image.Save(stream, ImageFormat.Jpeg);
+        new Bitmap((int)Math.Ceiling(validateCode.Length * 12.0), 22).Save(stream, ImageFormat.Jpeg);
         g.Dispose();
-        image.Dispose();
+        new Bitmap((int)Math.Ceiling(validateCode.Length * 12.0), 22).Dispose();
         //输出图片流
         return stream.ToArray();
     }
@@ -100,14 +98,21 @@ public static class VerCode
     /// <returns></returns>
     public static byte[] CreateValidateGraphic2(string validateCode)
     {
-        Color[] colors = {
-                             Color.Red, Color.OrangeRed,Color.SaddleBrown,
-                             Color.LimeGreen,Color.Green,Color.MediumAquamarine,
-                             Color.Blue,Color.MediumOrchid,Color.Black,
-                             Color.DarkBlue,Color.Orange,Color.Brown,
-                             Color.DarkCyan,Color.Purple
-                         };
-        string[] fonts = { "Verdana", "Microsoft Sans Serif", "Comic Sans MS", "Arial", "宋体" };
+        Color[] colors = [
+            Color.Red,Color.OrangeRed,
+            Color.SaddleBrown,
+            Color.LimeGreen,
+            Color.Green,
+            Color.MediumAquamarine,
+            Color.Blue,
+            Color.MediumOrchid,
+            Color.Black,
+            Color.DarkBlue,
+            Color.Orange,
+            Color.Brown,
+            Color.DarkCyan,
+            Color.Purple];
+        string[] fonts = ["Verdana", "Microsoft Sans Serif", "Comic Sans MS", "Arial", "宋体"];
         Random random = new();
         // 创建一个 Bitmap 图片类型对象
         Bitmap bitmap = new(validateCode.Length * 18, 32);
@@ -134,12 +139,11 @@ public static class VerCode
         for (int i = 0; i < validateCode.Length; i++)
         {
             graphics.DrawString(
-                validateCode.AsSpan(i, 1),
-                new Font(fonts[random.Next(fonts.Length)], 15, FontStyle.Bold),
+                validateCode.AsSpan(i, 1).ToString(),
+                new(fonts[random.Next(fonts.Length)], 15, FontStyle.Bold),
                 new SolidBrush(colors[random.Next(colors.Length)]),
                 16 * i + 1,
-                random.Next(0, 5)
-                );
+                random.Next(0, 5));
         }
         // 绘制验证码噪点
         for (int i = 0; i < random.Next(30, 50); i++)
