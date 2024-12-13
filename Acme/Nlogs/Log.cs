@@ -37,12 +37,11 @@ public class Log<T>(ILogger<T> logger, LogConfig logConfig) : ILog<T>
     {
         if (_logConfig.IsNull())
             throw Oh.OhNo("您未注入日志配置项");
-        string printMessage = $"{DateTime.Now:yyyy-MM-dd HH:mm:ss}\t{message}";
+        string dateime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
         if (_logConfig.IsConsoleLogEnabled)
-            _logger.LogTrace(printMessage);
+            _logger.LogTrace("{dateime}\t{message}", dateime, message);
         if (_logConfig.IsFileLogEnabled)
-            _logConfig.Logger.Trace(printMessage);
-
+            LogConfig.Logger.Trace($"{dateime}\t{message}");
     }
     /// <summary>
     /// 调试日志
@@ -52,11 +51,11 @@ public class Log<T>(ILogger<T> logger, LogConfig logConfig) : ILog<T>
     {
         if (_logConfig.IsNull())
             throw Oh.OhNo("您未注入日志配置项");
-        string printMessage = $"{DateTime.Now:yyyy-MM-dd HH:mm:ss}\t{message}";
+        string dateime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
         if (_logConfig.IsConsoleLogEnabled)
-            _logger.LogDebug(printMessage);
+            _logger.LogDebug("{dateime}\t{message}", dateime, message);
         if (_logConfig.IsFileLogEnabled)
-            _logConfig.Logger.Debug(printMessage);
+            LogConfig.Logger.Debug($"{dateime}\t{message}");
     }
     /// <summary>
     /// 信息日志
@@ -66,12 +65,11 @@ public class Log<T>(ILogger<T> logger, LogConfig logConfig) : ILog<T>
     {
         if (_logConfig.IsNull())
             throw Oh.OhNo("您未注入日志配置项");
-        string printMessage = $"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}\t{message}";
+        string dateime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
         if (_logConfig.IsConsoleLogEnabled)
-            _logger.LogInformation(printMessage);
+            _logger.LogInformation("{dateime}\t{message}", dateime, message);
         if (_logConfig.IsFileLogEnabled)
-            _logConfig.Logger.Info(printMessage);
-
+            LogConfig.Logger.Info($"{dateime}\t{message}");
     }
     /// <summary>
     /// 警告日志
@@ -81,11 +79,11 @@ public class Log<T>(ILogger<T> logger, LogConfig logConfig) : ILog<T>
     {
         if (_logConfig.IsNull())
             throw Oh.OhNo("您未注入日志配置项");
-        string printMessage = $"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}\t{message}";
+        string dateime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
         if (_logConfig.IsConsoleLogEnabled)
-            _logger.LogWarning(printMessage);
+            _logger.LogWarning("{dateime}\t{message}", dateime, message);
         if (_logConfig.IsFileLogEnabled)
-            _logConfig.Logger.Warn(printMessage);
+            LogConfig.Logger.Warn($"{dateime}\t{message}");
     }
     /// <summary>
     /// 错误日志
@@ -95,11 +93,11 @@ public class Log<T>(ILogger<T> logger, LogConfig logConfig) : ILog<T>
     {
         if (_logConfig.IsNull())
             throw Oh.OhNo("您未注入日志配置项");
-        string printMessage = $"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}\t{message}";
+        string dateime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
         if (_logConfig.IsConsoleLogEnabled)
-            _logger.LogError(printMessage);
+            _logger.LogError("{dateime}\t{message}", dateime, message);
         if (_logConfig.IsFileLogEnabled)
-            _logConfig.Logger.Error(printMessage);
+            LogConfig.Logger.Error($"{dateime}\t{message}");
 
     }
     /// <summary>
@@ -110,14 +108,10 @@ public class Log<T>(ILogger<T> logger, LogConfig logConfig) : ILog<T>
     {
         if (_logConfig.IsNull())
             throw Oh.OhNo("您未注入日志配置项");
-        string printMessage = $"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}\t{message}";
+        string dateime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
         if (_logConfig.IsConsoleLogEnabled)
-        {
-            string message1 = $"严重错误：{printMessage}";
-            _logger.LogError(message1, (object[])null);
-        }
-
+            _logger.LogError("{dateime}\t{message}", dateime, message);
         if (_logConfig.IsFileLogEnabled)
-            _logConfig.Logger.Fatal(printMessage);
+            LogConfig.Logger.Fatal($"{dateime}\t{message}");
     }
 }

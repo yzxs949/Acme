@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<TargetFrameworks>net8;net9;</TargetFrameworks>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
-		<Version>5.5.1.1</Version>
+		<Version>5.5.1.2</Version>
 		<Authors>yzxs</Authors>
 		<Company>yzxs</Company>
 		<Copyright>yzxs</Copyright>

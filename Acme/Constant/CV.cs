@@ -1,4 +1,4 @@
-﻿namespace Acme
+﻿namespace Acme.Constant
 {
     /// <summary>
     /// 通用常量

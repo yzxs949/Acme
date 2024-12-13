@@ -1,4 +1,6 @@
-﻿namespace Acme.Ohs;
+﻿using Acme.Constant;
+
+namespace Acme.Ohs;
 
 /// <summary>
 /// Oh拓展类

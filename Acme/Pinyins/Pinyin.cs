@@ -80,7 +80,7 @@ public static class Pinyin
     public static string GetChineseText(string pinyin)
     {
         string str = pinyin.Trim().ToLower();
-        string[] codes = PyCode.codes;
+        var codes = PyCode.codes;
         foreach (string text in codes)
         {
             if (text.StartsWith(str + " ") || text.StartsWith(str + ":"))
@@ -156,6 +156,6 @@ public static class Pinyin
     /// <returns></returns>
     private static short GetHashIndex(char ch)
     {
-        return (short)(ch % (long)PyCode.codes.Length);
+        return (short)(ch % (long)PyCode.codes.Count);
     }
 }
