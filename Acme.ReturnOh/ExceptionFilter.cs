@@ -21,8 +21,8 @@ public class ExceptionFilter : Attribute, IAsyncExceptionFilter, IFilterMetadata
         Oh result = context.Exception switch
         {
             ArgumentException ex => new Oh(400, $"{ex.Message}{ex.InnerException?.Message}"),
-            SystemException ex => new Oh(CV.NoCode, $"{ex.Message}{ex.InnerException?.Message}"),
-            _ => new Oh(CV.NoCode, $"{context.Exception.Message}{context.Exception.InnerException?.Message}"),
+            SystemException ex => Oh.Fail($"{ex.Message}{ex.InnerException?.Message}"),
+            _ => Oh.Fail($"{context.Exception.Message}{context.Exception.InnerException?.Message}"),
         };
         await Task.Delay(20);
         context.ExceptionHandled = true;
