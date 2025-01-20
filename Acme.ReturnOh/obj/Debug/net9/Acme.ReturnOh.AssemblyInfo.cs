@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Acme.ReturnOh")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4f813fd6bc62b22de2cbdadd60df83edf1d5a201")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9f539b8d00ff4e13876dc5c545473707a5e90d4d")]
 [assembly: System.Reflection.AssemblyProductAttribute("Acme.ReturnOh")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Acme.ReturnOh")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
