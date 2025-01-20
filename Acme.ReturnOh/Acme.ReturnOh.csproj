@@ -2,8 +2,20 @@
 
 	<PropertyGroup>
 		<TargetFrameworks>net6;net7;net8;net9;</TargetFrameworks>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
+		<Version>1.5</Version>
+		<Authors>yzxs</Authors>
+		<Company>yzxs</Company>
+		<Copyright>yzxs</Copyright>
+		<Description>
+			接口返回参数处理，全局异常，参数验证，Swagger
+			1. ConfigureSwaggerOptions 配置 Swagger 选项，添加文档信息和 XML 注释文件
+			2. ConfigureApiBehaviorOptions 配置API行为选项，自定义模型验证失败时的响应格式
+			3. AddExceptionFilterService 配置MVC选项，添加自定义的异常过滤器
+		</Description>
+		<PackageTags>Acme;类库;yzxs;云中小生;net8;net9;</PackageTags>
 	</PropertyGroup>
 
 	<ItemGroup>

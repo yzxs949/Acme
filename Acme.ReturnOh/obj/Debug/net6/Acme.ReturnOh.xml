@@ -1,0 +1,383 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Acme.ReturnOh</name>
+    </assembly>
+    <members>
+        <member name="T:Acme.ReturnOh.CV">
+            <summary>
+            通用常量
+            </summary>
+        </member>
+        <member name="F:Acme.ReturnOh.CV.BlankCharacter">
+            <summary>
+            空字符串
+            </summary>
+        </member>
+        <member name="F:Acme.ReturnOh.CV.LoginUserKey">
+            <summary>
+            当前登录人员键
+            </summary>
+        </member>
+        <member name="F:Acme.ReturnOh.CV.VerCodeKey">
+            <summary>
+            验证码键
+            </summary>
+        </member>
+        <member name="F:Acme.ReturnOh.CV.Yes">
+            <summary>
+            成功
+            </summary>
+        </member>
+        <member name="F:Acme.ReturnOh.CV.ErrorPrompt">
+            <summary>
+            系统错误提示
+            </summary>
+        </member>
+        <member name="F:Acme.ReturnOh.CV.ErrorServer">
+            <summary>
+            系统错误提示
+            </summary>
+        </member>
+        <member name="F:Acme.ReturnOh.CV.YesCode">
+            <summary>
+            成功状态码
+            </summary>
+        </member>
+        <member name="F:Acme.ReturnOh.CV.NoCode">
+            <summary>
+            失败状态码
+            </summary>
+        </member>
+        <member name="F:Acme.ReturnOh.CV.InsertYes">
+            <summary>
+            新增成功
+            </summary>
+        </member>
+        <member name="F:Acme.ReturnOh.CV.InsertNo">
+            <summary>
+            新增失败
+            </summary>
+        </member>
+        <member name="F:Acme.ReturnOh.CV.UpdateYes">
+            <summary>
+            更新成功
+            </summary>
+        </member>
+        <member name="F:Acme.ReturnOh.CV.UpdateNo">
+            <summary>
+            更新失败
+            </summary>
+        </member>
+        <member name="F:Acme.ReturnOh.CV.DeleteNo">
+            <summary>
+            删除失败
+            </summary>
+        </member>
+        <member name="F:Acme.ReturnOh.CV.DeleteYes">
+            <summary>
+            删除成功
+            </summary>
+        </member>
+        <member name="F:Acme.ReturnOh.CV.GetYes">
+            <summary>
+            获取成功
+            </summary>
+        </member>
+        <member name="F:Acme.ReturnOh.CV.GetNo">
+            <summary>
+            获取失败
+            </summary>
+        </member>
+        <member name="F:Acme.ReturnOh.CV.NullData">
+            <summary>
+            表示一个空值对象，其值为 null
+            </summary>
+        </member>
+        <member name="T:Acme.ReturnOh.ExceptionFilter">
+            <summary>
+            异常过滤
+            </summary>
+        </member>
+        <member name="M:Acme.ReturnOh.ExceptionFilter.OnExceptionAsync(Microsoft.AspNetCore.Mvc.Filters.ExceptionContext)">
+            <summary>
+            异常过滤
+            </summary>
+            <param name="context"></param>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="T:Acme.ReturnOh.GlobalFilterCollectionExtension">
+            <summary>
+            全局过滤器服务类
+            </summary>
+        </member>
+        <member name="M:Acme.ReturnOh.GlobalFilterCollectionExtension.ConfigureSwaggerOptions(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,System.String,System.Collections.Generic.List{System.String})">
+            <summary>
+            配置 Swagger 选项，添加文档信息和 XML 注释文件
+            </summary>
+            <param name="services">IServiceCollection 实例</param>
+            <param name="title">Swagger 文档的标题</param>
+            <param name="version">Swagger 文档的版本，默认为 "v1"</param>
+            <param name="otherFiles">其他需要包含的 XML 注释文件列表，默认为 null</param>
+            <returns>配置后的 IServiceCollection 实例</returns>
+            <remarks>
+            该方法会自动包含当前程序集的 XML 注释文件，并在需要时包含其他指定的 XML 注释文件
+            </remarks>
+        </member>
+        <member name="M:Acme.ReturnOh.GlobalFilterCollectionExtension.ConfigureApiBehaviorOptions(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            配置API行为选项，自定义模型验证失败时的响应格式
+            </summary>
+            <param name="services">服务集合，用于注册API行为选项配置</param>
+            <returns>返回服务集合，以便进行链式调用</returns>
+        </member>
+        <member name="M:Acme.ReturnOh.GlobalFilterCollectionExtension.ConfigureMvcOptions(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            配置MVC选项，添加自定义的异常过滤器
+            </summary>
+            <param name="services">服务集合，用于注册 MVC 选项配置</param>
+            <returns>返回服务集合，以便进行链式调用</returns>
+        </member>
+        <member name="M:Acme.ReturnOh.GlobalFilterCollectionExtension.ConfigureMvcOptions``1(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            配置MVC选项，添加自定义的异常过滤器
+            </summary>
+            <param name="services">服务集合，用于注册 MVC 选项配置</param>
+            <returns>返回服务集合，以便进行链式调用</returns>
+        </member>
+        <member name="M:Acme.ReturnOh.GlobalFilterCollectionExtension.AddExceptionFilterService(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            配置ExceptionFilter异常过滤器
+            </summary>
+            <param name="services">服务集合，用于ExceptionFilter异常过滤器</param>
+            <returns>返回服务集合，以便进行链式调用</returns>
+        </member>
+        <member name="M:Acme.ReturnOh.GlobalFilterCollectionExtension.AddExceptionFilterService``1(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            配置ExceptionFilter异常过滤器
+            </summary>
+            <param name="services">服务集合，用于ExceptionFilter异常过滤器</param>
+            <returns>返回服务集合，以便进行链式调用</returns>
+        </member>
+        <member name="T:Acme.ReturnOh.Oh`1">
+            <summary>
+            通用返回参数实体
+            </summary>
+            <typeparam name="TEntity">数据类型</typeparam>
+            <param name="Code">编码</param>
+            <param name="Msg">描述</param>
+            <param name="Data">数据</param>
+        </member>
+        <member name="M:Acme.ReturnOh.Oh`1.#ctor(System.Int32,System.String,`0)">
+            <summary>
+            通用返回参数实体
+            </summary>
+            <typeparam name="TEntity">数据类型</typeparam>
+            <param name="Code">编码</param>
+            <param name="Msg">描述</param>
+            <param name="Data">数据</param>
+        </member>
+        <member name="P:Acme.ReturnOh.Oh`1.Code">
+            <summary>编码</summary>
+        </member>
+        <member name="P:Acme.ReturnOh.Oh`1.Msg">
+            <summary>描述</summary>
+        </member>
+        <member name="P:Acme.ReturnOh.Oh`1.Data">
+            <summary>数据</summary>
+        </member>
+        <member name="M:Acme.ReturnOh.Oh`1.NewOh(System.Int32,System.String,`0)">
+            <summary>
+            实例化Oh
+            </summary>
+            <param name="code">代码</param>
+            <param name="msg">描述</param>
+            <param name="data">数据</param>
+        </member>
+        <member name="M:Acme.ReturnOh.Oh`1.Exception(System.String)">
+            <summary>
+            异常处理方法
+            </summary>
+            <param name="msg"></param>
+            <exception cref="T:System.Exception">异常类</exception>
+        </member>
+        <member name="M:Acme.ReturnOh.Oh`1.ArgumentException(System.String)">
+            <summary>
+            异常处理方法
+            </summary>
+            <param name="msg"></param>
+            <exception cref="T:System.Exception">异常类</exception>
+        </member>
+        <member name="M:Acme.ReturnOh.Oh`1.SystemException(System.String)">
+            <summary>
+            异常处理方法
+            </summary>
+            <param name="msg"></param>
+            <exception cref="T:System.Exception">异常类</exception>
+        </member>
+        <member name="M:Acme.ReturnOh.Oh`1.Success(System.String)">
+            <summary>
+            获取成功时的Oh值(data为null时)
+            </summary>
+            <param name="msg">描述</param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.ReturnOh.Oh`1.Fail(System.String)">
+            <summary>
+            获取失败时的Oh值(data为null时)
+            </summary>
+            <param name="msg">描述</param>
+            <returns></returns>
+        </member>
+        <member name="T:Acme.ReturnOh.Oh">
+            <summary>
+            通用返回参数实体
+            </summary>
+            <param name="Code">编码</param>
+            <param name="Msg">描述</param>
+            <param name="Data">数据</param>
+        </member>
+        <member name="M:Acme.ReturnOh.Oh.#ctor(System.Int32,System.String,System.Object)">
+            <summary>
+            通用返回参数实体
+            </summary>
+            <param name="Code">编码</param>
+            <param name="Msg">描述</param>
+            <param name="Data">数据</param>
+        </member>
+        <member name="T:Acme.ReturnOh.OhExtension">
+            <summary>
+            Oh拓展类
+            </summary>
+        </member>
+        <member name="M:Acme.ReturnOh.OhExtension.Success(System.Object,System.String)">
+            <summary>
+            获取成功时的Oh值
+            </summary>
+            <param name="data">数据</param>
+            <param name="msg">描述</param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.ReturnOh.OhExtension.Success``1(``0,System.String)">
+            <summary>
+            获取成功时的Oh值
+            </summary>
+            <param name="data">数据</param>
+            <param name="msg">描述</param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.ReturnOh.OhExtension.Success(System.Object)">
+            <summary>
+            获取成功时的Oh值
+            </summary>
+            <param name="data">数据</param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.ReturnOh.OhExtension.Success``1(``0)">
+            <summary>
+            获取成功时的Oh值
+            </summary>
+            <param name="data">数据</param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.ReturnOh.OhExtension.Success(System.Object,System.Int32,System.String)">
+            <summary>
+            获取成功时的Oh值
+            </summary>
+            <param name="data">数据</param>
+            <param name="code">状态码</param>
+            <param name="msg">描述</param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.ReturnOh.OhExtension.Success``1(``0,System.Int32,System.String)">
+            <summary>
+            获取成功时的Oh值
+            </summary>
+            <param name="data">数据</param>
+            <param name="code">状态码</param>
+            <param name="msg">描述</param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.ReturnOh.OhExtension.Fail(System.Object,System.String)">
+            <summary>
+            获取失败时的Oh值
+            </summary>
+            <param name="data">数据</param>
+            <param name="msg">描述</param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.ReturnOh.OhExtension.Fail``1(``0,System.String)">
+            <summary>
+            获取失败时的Oh值
+            </summary>
+            <param name="data">数据</param>
+            <param name="msg">描述</param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.ReturnOh.OhExtension.Fail(System.Object)">
+            <summary>
+            获取失败时的Oh值
+            </summary>
+            <param name="data">数据</param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.ReturnOh.OhExtension.Fail``1(``0)">
+            <summary>
+            获取失败时的Oh值
+            </summary>
+            <param name="data">数据</param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.ReturnOh.OhExtension.Fail(System.Object,System.Int32,System.String)">
+            <summary>
+            获取失败时的Oh值
+            </summary>
+            <param name="data">数据</param>
+            <param name="code">状态码</param>
+            <param name="msg">描述</param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.ReturnOh.OhExtension.Fail``1(``0,System.Int32,System.String)">
+            <summary>
+            获取失败时的Oh值
+            </summary>
+            <param name="data">数据</param>
+            <param name="code">状态码</param>
+            <param name="msg">描述</param>
+            <returns></returns>
+        </member>
+        <member name="M:Acme.ReturnOh.OhExtension.Custom(System.Object,System.Int32,System.String)">
+            <summary>
+            扩展方法，用于创建一个自定义的 Oh 实例，包含指定的数据、状态码和消息。
+            </summary>
+            <param name="data">数据对象。</param>
+            <param name="code">状态码。</param>
+            <param name="msg">消息。</param>
+            <returns>包含指定数据、状态码和消息的 Oh 实例。</returns>
+            <remarks>
+            此方法用于创建一个自定义的 Oh 实例，允许用户指定任意类型的数据、状态码和消息，用于特定的业务场景。
+            </remarks>
+        </member>
+        <member name="M:Acme.ReturnOh.OhExtension.Custom``1(``0,System.Int32,System.String)">
+            <summary>
+            扩展方法，用于创建一个自定义的 Oh 实例，包含指定的实体数据、状态码和消息。
+            </summary>
+            <typeparam name="TEntity">实体类型。</typeparam>
+            <param name="data">实体数据。</param>
+            <param name="code">状态码。</param>
+            <param name="msg">消息。</param>
+            <returns>包含指定实体数据、状态码和消息的 Oh 实例。</returns>
+            <remarks>
+            此方法用于创建一个自定义的 Oh 实例，允许用户指定实体数据、状态码和消息，用于特定的业务场景。
+            实体类型必须是引用类型（class），并且必须具有无参数的公共构造函数。
+            </remarks>
+        </member>
+        <member name="M:Acme.ReturnOh.OhExtension.IsSuccess(System.Boolean,System.String,System.String)">
+            <summary>
+            扩展方法，用于将布尔值转换为表示操作成功或失败的 Oh 实例。
+            </summary>
+            <param name="isSuccess">布尔值，指示操作是否成功。</param>
+            <returns>表示操作成功或失败的 Oh 实例。</returns>
+        </member>
+    </members>
+</doc>

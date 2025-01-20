@@ -11,13 +11,17 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("Acme.ReturnOh")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("yzxs")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
-[assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9f539b8d00ff4e13876dc5c545473707a5e90d4d")]
+[assembly: System.Reflection.AssemblyCopyrightAttribute("yzxs")]
+[assembly: System.Reflection.AssemblyDescriptionAttribute("\r\n\t\t\t接口返回参数处理，全局异常，参数验证，Swagger\r\n\t\t\t1. ConfigureSwaggerOptions 配置 Swagger 选项，添加文档" +
+    "信息和 XML 注释文件\r\n\t\t\t2. ConfigureApiBehaviorOptions 配置API行为选项，自定义模型验证失败时的响应格式\r\n\t\t\t3." +
+    " AddExceptionFilterService 配置MVC选项，添加自定义的异常过滤器\r\n\t\t")]
+[assembly: System.Reflection.AssemblyFileVersionAttribute("1.5.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.5+15fa7f240fff93076cf9c918e35d8e37ce024d50")]
 [assembly: System.Reflection.AssemblyProductAttribute("Acme.ReturnOh")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Acme.ReturnOh")]
-[assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
+[assembly: System.Reflection.AssemblyVersionAttribute("1.5.0.0")]
 
 // 由 MSBuild WriteCodeFragment 类生成。
 
