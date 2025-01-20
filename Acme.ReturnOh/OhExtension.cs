@@ -173,6 +173,8 @@ public static class OhExtension
     /// 扩展方法，用于将布尔值转换为表示操作成功或失败的 Oh 实例。
     /// </summary>
     /// <param name="isSuccess">布尔值，指示操作是否成功。</param>
+    /// <param name="successMsg">成功时的描述</param>
+    /// <param name="failMsg">失败时的描述</param>
     /// <returns>表示操作成功或失败的 Oh 实例。</returns>
     public static Oh IsSuccess(this bool isSuccess, string successMsg, string failMsg)
     {

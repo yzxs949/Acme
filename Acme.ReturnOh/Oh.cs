@@ -7,7 +7,7 @@
 /// <param name="Code">编码</param>
 /// <param name="Msg">描述</param>
 /// <param name="Data">数据</param>
-public record Oh<TEntity>(int Code, string Msg, TEntity? Data) where TEntity : class, new()
+public record Oh<TEntity>(int Code, string Msg, TEntity? Data) : IOh where TEntity : class, new()
 {
     /// <summary>
     /// 实例化Oh
@@ -71,4 +71,12 @@ public record Oh<TEntity>(int Code, string Msg, TEntity? Data) where TEntity : c
 /// <param name="Code">编码</param>
 /// <param name="Msg">描述</param>
 /// <param name="Data">数据</param>
-public record Oh(int Code, string Msg, object? Data = null) : Oh<object>(Code, Msg, Data);
+public record Oh(int Code, string Msg, object? Data = null) : Oh<object>(Code, Msg, Data), IOh;
+
+/// <summary>
+/// 通用返回参数实体接口
+/// </summary>
+public interface IOh
+{
+
+}
