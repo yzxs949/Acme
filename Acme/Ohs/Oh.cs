@@ -6,9 +6,6 @@ namespace Acme.Ohs;
 /// <summary>
 /// 通用返回参数实体
 /// </summary>
-/// <remarks>
-/// 构造函数
-/// </remarks>
 /// <param name="code">代码</param>
 /// <param name="msg">描述</param>
 /// <param name="data">数据</param>

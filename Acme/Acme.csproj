@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<TargetFrameworks>net8;net9;</TargetFrameworks>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
-		<Version>5.5.1.2</Version>
+		<Version>5.5.1.3</Version>
 		<Authors>yzxs</Authors>
 		<Company>yzxs</Company>
 		<Copyright>yzxs</Copyright>
@@ -33,7 +33,7 @@
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Swashbuckle.AspNetCore" Version="7.1.0" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="7.2.0" />
 		<PackageReference Include="ZKWeb.System.Drawing" Version="4.0.1" />
 	</ItemGroup>
 	<ItemGroup>

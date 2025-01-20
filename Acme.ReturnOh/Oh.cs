@@ -1,0 +1,43 @@
+﻿using System;
+
+namespace Acme.ReturnOh
+{
+    /// <summary>
+    /// 通用返回参数实体
+    /// </summary>
+    /// <typeparam name="TEntity">数据类型</typeparam>
+    /// <param name="Code">编码</param>
+    /// <param name="Msg">描述</param>
+    /// <param name="Data">数据</param>
+    public record Oh<TEntity>(int Code, string Msg, TEntity? Data) where TEntity : class, new()
+    {
+        /// <summary>
+        /// 实例化Oh
+        /// </summary>
+        /// <param name="code">代码</param>
+        /// <param name="msg">描述</param>
+        /// <param name="data">数据</param>
+        public static Oh<TEntity> NewOh(int code, string msg, TEntity data)
+        {
+            return new Oh<TEntity>(code, msg, data);
+        }
+
+        /// <summary>
+        /// 异常处理方法
+        /// </summary>
+        /// <param name="msg"></param>
+        /// <exception cref="T:System.Exception">异常类</exception>
+        public static Exception OhNo(string msg)
+        {
+            return new Exception(msg);
+        }
+    }
+
+    /// <summary>
+    /// 通用返回参数实体
+    /// </summary>
+    /// <param name="Code">编码</param>
+    /// <param name="Msg">描述</param>
+    /// <param name="Data">数据</param>
+    public record Oh(int Code, string Msg, object? Data = null) : Oh<object>(Code, Msg, Data);
+}

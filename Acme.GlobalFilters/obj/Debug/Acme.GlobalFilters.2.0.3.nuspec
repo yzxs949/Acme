@@ -6,20 +6,20 @@
     <authors>yzxs</authors>
     <description>Global Filter Class Library</description>
     <copyright>yzxs</copyright>
-    <repository type="git" commit="4f689843f92c38673ed782f2e7d9b56a2298c0d0" />
+    <repository type="git" commit="4f813fd6bc62b22de2cbdadd60df83edf1d5a201" />
     <dependencies>
       <group targetFramework="net8.0">
-        <dependency id="Acme" version="5.3.4" exclude="Build,Analyzers" />
+        <dependency id="Acme" version="5.5.1.3" exclude="Build,Analyzers" />
       </group>
       <group targetFramework="net9.0">
-        <dependency id="Acme" version="5.3.4" exclude="Build,Analyzers" />
+        <dependency id="Acme" version="5.5.1.3" exclude="Build,Analyzers" />
       </group>
     </dependencies>
   </metadata>
   <files>
-    <file src="D:\yzxs\Acme\acme\Acme.GlobalFilters\bin\Debug\net8\Acme.GlobalFilters.dll" target="lib\net8.0\Acme.GlobalFilters.dll" />
-    <file src="D:\yzxs\Acme\acme\Acme.GlobalFilters\bin\Debug\net8\Acme.GlobalFilters.xml" target="lib\net8.0\Acme.GlobalFilters.xml" />
-    <file src="D:\yzxs\Acme\acme\Acme.GlobalFilters\bin\Debug\net9\Acme.GlobalFilters.dll" target="lib\net9.0\Acme.GlobalFilters.dll" />
-    <file src="D:\yzxs\Acme\acme\Acme.GlobalFilters\bin\Debug\net9\Acme.GlobalFilters.xml" target="lib\net9.0\Acme.GlobalFilters.xml" />
+    <file src="D:\yzxs\Code\Acme\acme\Acme.GlobalFilters\bin\Debug\net8\Acme.GlobalFilters.dll" target="lib\net8.0\Acme.GlobalFilters.dll" />
+    <file src="D:\yzxs\Code\Acme\acme\Acme.GlobalFilters\bin\Debug\net8\Acme.GlobalFilters.xml" target="lib\net8.0\Acme.GlobalFilters.xml" />
+    <file src="D:\yzxs\Code\Acme\acme\Acme.GlobalFilters\bin\Debug\net9\Acme.GlobalFilters.dll" target="lib\net9.0\Acme.GlobalFilters.dll" />
+    <file src="D:\yzxs\Code\Acme\acme\Acme.GlobalFilters\bin\Debug\net9\Acme.GlobalFilters.xml" target="lib\net9.0\Acme.GlobalFilters.xml" />
   </files>
 </package>

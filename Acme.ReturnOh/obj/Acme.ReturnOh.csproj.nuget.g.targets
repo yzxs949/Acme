@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Condition=" '$(TargetFramework)' == '' AND '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Import Project="$(NuGetPackageRoot)\nuget.build.tasks.pack\6.12.1\buildCrossTargeting\NuGet.Build.Tasks.Pack.targets" Condition="Exists('$(NuGetPackageRoot)\nuget.build.tasks.pack\6.12.1\buildCrossTargeting\NuGet.Build.Tasks.Pack.targets')" />
+  </ImportGroup>
+  <ImportGroup Condition=" '$(TargetFramework)' == 'net6' AND '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Import Project="$(NuGetPackageRoot)\nuget.build.tasks.pack\6.12.1\build\NuGet.Build.Tasks.Pack.targets" Condition="Exists('$(NuGetPackageRoot)\nuget.build.tasks.pack\6.12.1\build\NuGet.Build.Tasks.Pack.targets')" />
+  </ImportGroup>
+  <ImportGroup Condition=" '$(TargetFramework)' == 'net7' AND '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Import Project="$(NuGetPackageRoot)\nuget.build.tasks.pack\6.12.1\build\NuGet.Build.Tasks.Pack.targets" Condition="Exists('$(NuGetPackageRoot)\nuget.build.tasks.pack\6.12.1\build\NuGet.Build.Tasks.Pack.targets')" />
+  </ImportGroup>
+  <ImportGroup Condition=" '$(TargetFramework)' == 'net8' AND '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Import Project="$(NuGetPackageRoot)\nuget.build.tasks.pack\6.12.1\build\NuGet.Build.Tasks.Pack.targets" Condition="Exists('$(NuGetPackageRoot)\nuget.build.tasks.pack\6.12.1\build\NuGet.Build.Tasks.Pack.targets')" />
+  </ImportGroup>
+  <ImportGroup Condition=" '$(TargetFramework)' == 'net9' AND '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Import Project="$(NuGetPackageRoot)\nuget.build.tasks.pack\6.12.1\build\NuGet.Build.Tasks.Pack.targets" Condition="Exists('$(NuGetPackageRoot)\nuget.build.tasks.pack\6.12.1\build\NuGet.Build.Tasks.Pack.targets')" />
+  </ImportGroup>
+</Project>

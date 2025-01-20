@@ -302,13 +302,13 @@
           }
         }
       },
-      "Swashbuckle.AspNetCore/7.1.0": {
+      "Swashbuckle.AspNetCore/7.2.0": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.ApiDescription.Server": "6.0.5",
-          "Swashbuckle.AspNetCore.Swagger": "7.1.0",
-          "Swashbuckle.AspNetCore.SwaggerGen": "7.1.0",
-          "Swashbuckle.AspNetCore.SwaggerUI": "7.1.0"
+          "Swashbuckle.AspNetCore.Swagger": "7.2.0",
+          "Swashbuckle.AspNetCore.SwaggerGen": "7.2.0",
+          "Swashbuckle.AspNetCore.SwaggerUI": "7.2.0"
         },
         "build": {
           "build/_._": {}
@@ -317,7 +317,7 @@
           "buildMultiTargeting/_._": {}
         }
       },
-      "Swashbuckle.AspNetCore.Swagger/7.1.0": {
+      "Swashbuckle.AspNetCore.Swagger/7.2.0": {
         "type": "package",
         "dependencies": {
           "Microsoft.OpenApi": "1.6.22"
@@ -336,10 +336,10 @@
           "Microsoft.AspNetCore.App"
         ]
       },
-      "Swashbuckle.AspNetCore.SwaggerGen/7.1.0": {
+      "Swashbuckle.AspNetCore.SwaggerGen/7.2.0": {
         "type": "package",
         "dependencies": {
-          "Swashbuckle.AspNetCore.Swagger": "7.1.0"
+          "Swashbuckle.AspNetCore.Swagger": "7.2.0"
         },
         "compile": {
           "lib/net8.0/Swashbuckle.AspNetCore.SwaggerGen.dll": {
@@ -352,7 +352,7 @@
           }
         }
       },
-      "Swashbuckle.AspNetCore.SwaggerUI/7.1.0": {
+      "Swashbuckle.AspNetCore.SwaggerUI/7.2.0": {
         "type": "package",
         "compile": {
           "lib/net8.0/Swashbuckle.AspNetCore.SwaggerUI.dll": {
@@ -850,7 +850,7 @@
           "lib/netstandard2.0/ZKWeb.System.Drawing.dll": {}
         }
       },
-      "Acme/5.5.1.2": {
+      "Acme/5.5.1.3": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
@@ -860,7 +860,7 @@
           "NLog": "5.3.4",
           "NPOI": "2.7.2",
           "Newtonsoft.Json": "13.0.3",
-          "Swashbuckle.AspNetCore": "7.1.0",
+          "Swashbuckle.AspNetCore": "7.2.0",
           "ZKWeb.System.Drawing": "4.0.1"
         },
         "compile": {
@@ -1172,13 +1172,13 @@
           }
         }
       },
-      "Swashbuckle.AspNetCore/7.1.0": {
+      "Swashbuckle.AspNetCore/7.2.0": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.ApiDescription.Server": "6.0.5",
-          "Swashbuckle.AspNetCore.Swagger": "7.1.0",
-          "Swashbuckle.AspNetCore.SwaggerGen": "7.1.0",
-          "Swashbuckle.AspNetCore.SwaggerUI": "7.1.0"
+          "Swashbuckle.AspNetCore.Swagger": "7.2.0",
+          "Swashbuckle.AspNetCore.SwaggerGen": "7.2.0",
+          "Swashbuckle.AspNetCore.SwaggerUI": "7.2.0"
         },
         "build": {
           "build/_._": {}
@@ -1187,7 +1187,7 @@
           "buildMultiTargeting/_._": {}
         }
       },
-      "Swashbuckle.AspNetCore.Swagger/7.1.0": {
+      "Swashbuckle.AspNetCore.Swagger/7.2.0": {
         "type": "package",
         "dependencies": {
           "Microsoft.OpenApi": "1.6.22"
@@ -1206,10 +1206,10 @@
           "Microsoft.AspNetCore.App"
         ]
       },
-      "Swashbuckle.AspNetCore.SwaggerGen/7.1.0": {
+      "Swashbuckle.AspNetCore.SwaggerGen/7.2.0": {
         "type": "package",
         "dependencies": {
-          "Swashbuckle.AspNetCore.Swagger": "7.1.0"
+          "Swashbuckle.AspNetCore.Swagger": "7.2.0"
         },
         "compile": {
           "lib/net9.0/Swashbuckle.AspNetCore.SwaggerGen.dll": {
@@ -1222,7 +1222,7 @@
           }
         }
       },
-      "Swashbuckle.AspNetCore.SwaggerUI/7.1.0": {
+      "Swashbuckle.AspNetCore.SwaggerUI/7.2.0": {
         "type": "package",
         "compile": {
           "lib/net9.0/Swashbuckle.AspNetCore.SwaggerUI.dll": {
@@ -1720,7 +1720,7 @@
           "lib/netstandard2.0/ZKWeb.System.Drawing.dll": {}
         }
       },
-      "Acme/5.5.1.2": {
+      "Acme/5.5.1.3": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
@@ -1730,7 +1730,7 @@
           "NLog": "5.3.4",
           "NPOI": "2.7.2",
           "Newtonsoft.Json": "13.0.3",
-          "Swashbuckle.AspNetCore": "7.1.0",
+          "Swashbuckle.AspNetCore": "7.2.0",
           "ZKWeb.System.Drawing": "4.0.1"
         },
         "compile": {
@@ -2463,23 +2463,24 @@
         "sixlabors.imagesharp.nuspec"
       ]
     },
-    "Swashbuckle.AspNetCore/7.1.0": {
-      "sha512": "PpKwEZNCciDPczWPnuqaTVuN5jR/fG2RubQYgKHVWY2KB+TpvKkOrQJoF51S1yMJxygaofCM3BXlLy4PK/o8WA==",
+    "Swashbuckle.AspNetCore/7.2.0": {
+      "sha512": "vJv19UpWm6OOgnS9QLDnWARNVasXUfj8SFvlG7UVALm4nBnfwRnEky7C0veSDqMUmBeMPC6Ec3d6G1ts/J04Uw==",
       "type": "package",
-      "path": "swashbuckle.aspnetcore/7.1.0",
+      "path": "swashbuckle.aspnetcore/7.2.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "build/Swashbuckle.AspNetCore.props",
         "buildMultiTargeting/Swashbuckle.AspNetCore.props",
-        "swashbuckle.aspnetcore.7.1.0.nupkg.sha512",
+        "docs/package-readme.md",
+        "swashbuckle.aspnetcore.7.2.0.nupkg.sha512",
         "swashbuckle.aspnetcore.nuspec"
       ]
     },
-    "Swashbuckle.AspNetCore.Swagger/7.1.0": {
-      "sha512": "+vzt/nV82YVCJt7GIuRV9xe67dvzrVwqDgO8DiQPmUZwtvtjK4rrb+qnoXbcu90VVaz2xjEK/Ma5/3AVWifSHQ==",
+    "Swashbuckle.AspNetCore.Swagger/7.2.0": {
+      "sha512": "y27fNDfIh1vGhJjXYynLcZjl7DLOW1bSO2MDsY9wB4Zm1fdxpPsuBSiR4U+0acWlAqLmnuOPKr/OeOgwRUkBlw==",
       "type": "package",
-      "path": "swashbuckle.aspnetcore.swagger/7.1.0",
+      "path": "swashbuckle.aspnetcore.swagger/7.2.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2496,14 +2497,14 @@
         "lib/netstandard2.0/Swashbuckle.AspNetCore.Swagger.pdb",
         "lib/netstandard2.0/Swashbuckle.AspNetCore.Swagger.xml",
         "package-readme.md",
-        "swashbuckle.aspnetcore.swagger.7.1.0.nupkg.sha512",
+        "swashbuckle.aspnetcore.swagger.7.2.0.nupkg.sha512",
         "swashbuckle.aspnetcore.swagger.nuspec"
       ]
     },
-    "Swashbuckle.AspNetCore.SwaggerGen/7.1.0": {
-      "sha512": "Nd1O1rVTpeX3U2fr+4FMjTD1BqnGBZcX5t0EkhVBdQWz/anf/68xTpJpAjZ9DS9CVDVKAm7qI6eJmq9psqFpVQ==",
+    "Swashbuckle.AspNetCore.SwaggerGen/7.2.0": {
+      "sha512": "pMrTxGVuXM7t4wqft5CNNU8A0++Yw5kTLmYhB6tbEcyBfO8xEF/Y8pkJhO6BZ/2MYONrRYoQTfPFJqu8fOf5WQ==",
       "type": "package",
-      "path": "swashbuckle.aspnetcore.swaggergen/7.1.0",
+      "path": "swashbuckle.aspnetcore.swaggergen/7.2.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2520,14 +2521,14 @@
         "lib/netstandard2.0/Swashbuckle.AspNetCore.SwaggerGen.pdb",
         "lib/netstandard2.0/Swashbuckle.AspNetCore.SwaggerGen.xml",
         "package-readme.md",
-        "swashbuckle.aspnetcore.swaggergen.7.1.0.nupkg.sha512",
+        "swashbuckle.aspnetcore.swaggergen.7.2.0.nupkg.sha512",
         "swashbuckle.aspnetcore.swaggergen.nuspec"
       ]
     },
-    "Swashbuckle.AspNetCore.SwaggerUI/7.1.0": {
-      "sha512": "Tn9+gbG2wGekFDcm1+XQXPZoSZWOHn3DiEGaEw3/SMCtKdhkYiejoKpmTzZueKOBQf0Lzgvxs6Lss0WObN0RPA==",
+    "Swashbuckle.AspNetCore.SwaggerUI/7.2.0": {
+      "sha512": "hgrXeKzyp5OGN8qVvL7A+vhmU7mDJTfGpiMBRL66IcfLOyna8UTLtn3cC3CghamXpRDufcc9ciklTszUGEQK0w==",
       "type": "package",
-      "path": "swashbuckle.aspnetcore.swaggerui/7.1.0",
+      "path": "swashbuckle.aspnetcore.swaggerui/7.2.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2544,7 +2545,7 @@
         "lib/netstandard2.0/Swashbuckle.AspNetCore.SwaggerUI.pdb",
         "lib/netstandard2.0/Swashbuckle.AspNetCore.SwaggerUI.xml",
         "package-readme.md",
-        "swashbuckle.aspnetcore.swaggerui.7.1.0.nupkg.sha512",
+        "swashbuckle.aspnetcore.swaggerui.7.2.0.nupkg.sha512",
         "swashbuckle.aspnetcore.swaggerui.nuspec"
       ]
     },
@@ -4257,7 +4258,7 @@
         "zkweb.system.drawing.nuspec"
       ]
     },
-    "Acme/5.5.1.2": {
+    "Acme/5.5.1.3": {
       "type": "project",
       "path": "../Acme/Acme.csproj",
       "msbuildProject": "../Acme/Acme.csproj"
@@ -4265,31 +4266,31 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "Acme >= 5.5.1.2"
+      "Acme >= 5.5.1.3"
     ],
     "net9.0": [
-      "Acme >= 5.5.1.2"
+      "Acme >= 5.5.1.3"
     ]
   },
   "packageFolders": {
-    "D:\\yzxs\\Acme\\acme\\packages": {},
+    "D:\\yzxs\\Code\\Acme\\acme\\packages": {},
     "D:\\开发软件\\VS2022\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "2.0.3",
     "restore": {
-      "projectUniqueName": "D:\\yzxs\\Acme\\acme\\Acme.GlobalFilters\\Acme.GlobalFilters.csproj",
+      "projectUniqueName": "D:\\yzxs\\Code\\Acme\\acme\\Acme.GlobalFilters\\Acme.GlobalFilters.csproj",
       "projectName": "Acme.GlobalFilters",
-      "projectPath": "D:\\yzxs\\Acme\\acme\\Acme.GlobalFilters\\Acme.GlobalFilters.csproj",
-      "packagesPath": "D:\\yzxs\\Acme\\acme\\packages",
-      "outputPath": "D:\\yzxs\\Acme\\acme\\Acme.GlobalFilters\\obj\\",
+      "projectPath": "D:\\yzxs\\Code\\Acme\\acme\\Acme.GlobalFilters\\Acme.GlobalFilters.csproj",
+      "packagesPath": "D:\\yzxs\\Code\\Acme\\acme\\packages",
+      "outputPath": "D:\\yzxs\\Code\\Acme\\acme\\Acme.GlobalFilters\\obj\\",
       "projectStyle": "PackageReference",
       "crossTargeting": true,
       "fallbackFolders": [
         "D:\\开发软件\\VS2022\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "D:\\yzxs\\Acme\\acme\\NuGet.Config",
+        "D:\\yzxs\\Code\\Acme\\acme\\NuGet.Config",
         "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -4301,22 +4302,23 @@
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "C:\\Program Files\\dotnet\\library-packs": {},
+        "D:\\yzxs\\德瑞\\SPD重构\\HisSync.JiuZhen\\Packges": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8",
           "projectReferences": {
-            "D:\\yzxs\\Acme\\acme\\Acme\\Acme.csproj": {
-              "projectPath": "D:\\yzxs\\Acme\\acme\\Acme\\Acme.csproj"
+            "D:\\yzxs\\Code\\Acme\\acme\\Acme\\Acme.csproj": {
+              "projectPath": "D:\\yzxs\\Code\\Acme\\acme\\Acme\\Acme.csproj"
             }
           }
         },
         "net9.0": {
           "targetAlias": "net9",
           "projectReferences": {
-            "D:\\yzxs\\Acme\\acme\\Acme\\Acme.csproj": {
-              "projectPath": "D:\\yzxs\\Acme\\acme\\Acme\\Acme.csproj"
+            "D:\\yzxs\\Code\\Acme\\acme\\Acme\\Acme.csproj": {
+              "projectPath": "D:\\yzxs\\Code\\Acme\\acme\\Acme\\Acme.csproj"
             }
           }
         }
