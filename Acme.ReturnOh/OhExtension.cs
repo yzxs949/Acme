@@ -178,6 +178,6 @@ public static class OhExtension
     /// <returns>表示操作成功或失败的 Oh 实例。</returns>
     public static Oh IsSuccess(this bool isSuccess, string successMsg, string failMsg)
     {
-        return isSuccess ? CV.NullData.Success(successMsg) : CV.NullData.Fail(failMsg);
+        return isSuccess ? CV.NullValue.Success(successMsg) : CV.NullValue.Fail(failMsg);
     }
 }

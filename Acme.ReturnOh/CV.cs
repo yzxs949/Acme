@@ -88,5 +88,5 @@ public static class CV
 	/// <summary>
 	/// 表示一个空值对象，其值为 null
 	/// </summary>
-	public const object NullData = null;
+	public const object NullValue = null;
 }

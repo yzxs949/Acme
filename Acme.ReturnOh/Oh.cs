@@ -55,14 +55,14 @@ public record Oh<TEntity>(int Code, string Msg, TEntity? Data) : IOh where TEnti
     /// </summary>
     /// <param name="msg">描述</param>
     /// <returns></returns>
-    public static Oh Success(string msg) => CV.NullData.Success(msg);
+    public static Oh Success(string msg) => CV.NullValue.Success(msg);
 
     /// <summary>
     /// 获取失败时的Oh值(data为null时)
     /// </summary>
     /// <param name="msg">描述</param>
     /// <returns></returns>
-    public static Oh Fail(string msg) => CV.NullData.Fail(msg);
+    public static Oh Fail(string msg) => CV.NullValue.Fail(msg);
 }
 
 /// <summary>
