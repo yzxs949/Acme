@@ -1,4 +1,8 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Acme.Dapper.Extension;
+using Acme.Dapper.Repository;
+using Acme.Nlogs;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 namespace Acme.Dapper;
 
 /// <summary>
@@ -7,17 +11,18 @@ namespace Acme.Dapper;
 public static class AcmeDapperServiceCollectionExtensions
 {
     /// <summary>
-    /// 注册Acme.Dapper的方法
+    /// 注册Acme.Dapper相关服务
     /// </summary>
-    /// <param name="_services">IServiceCollection</param>
-    /// <param name="_connectionString">数据库连接字符</param>
-    public static void AddAcmeDapperServer(
-        this IServiceCollection _services,
-        string _connectionString)
+    /// <param name="services">IServiceCollection</param>
+    /// <param name="connectionString">数据库连接字符串</param>
+    /// <exception cref="ArgumentNullException">当 connectionString 为空时抛出</exception>
+    public static void AddAcmeDapper(this IServiceCollection services, string connectionString)
     {
-        _services.AddTransient(IDapperHelper => new Extensions(_connectionString));
-        _services.AddScoped(typeof(ILog<>), typeof(Log<>));
-        _services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-        _services.AddAcmeBuilderServer();
+        if (string.IsNullOrWhiteSpace(connectionString))
+            throw new ArgumentNullException(nameof(connectionString), "数据库连接字符串不能为空");
+        services.AddTransient<IExtensions>(provider => new Extensions(connectionString));
+        services.AddScoped(typeof(ILog<>), typeof(Log<>));
+        services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+        services.AddAcmeBuilderServer();
     }
 }

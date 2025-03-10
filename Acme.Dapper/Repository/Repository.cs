@@ -1,13 +1,13 @@
-﻿using System;
+﻿using Acme.Dapper.Enums;
+using Acme.Dapper.Extension;
+using Acme.Dapper.SqlSplice;
+using Acme.Dapper.Tools;
+using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using Acme;
-using Acme.Dapper.Enums;
 
-namespace Acme.Dapper
+namespace Acme.Dapper.Repository
 {
     /// <summary>
     /// Dapper仓储拓展类

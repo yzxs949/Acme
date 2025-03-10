@@ -1,6 +1,6 @@
 ﻿using Acme.Dapper.Enums;
 
-namespace Acme.Dapper;
+namespace Acme.Dapper.SqlSplice;
 
 /// <summary>
 /// 拓展实现接口

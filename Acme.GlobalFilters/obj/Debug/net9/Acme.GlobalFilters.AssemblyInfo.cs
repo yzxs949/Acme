@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCopyrightAttribute("yzxs")]
 [assembly: System.Reflection.AssemblyDescriptionAttribute("\n\t\t\tGlobal Filter Class Library\n\t\t")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("2.0.3.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("2.0.3+4f813fd6bc62b22de2cbdadd60df83edf1d5a201")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("2.0.3+4875c69860f6a0cfe71fc4ad5fbb242be04d5c83")]
 [assembly: System.Reflection.AssemblyProductAttribute("Acme.GlobalFilters")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Acme.GlobalFilters")]
 [assembly: System.Reflection.AssemblyVersionAttribute("2.0.3.0")]

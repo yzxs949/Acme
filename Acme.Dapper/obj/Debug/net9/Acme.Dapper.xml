@@ -9,12 +9,13 @@
             拓展类
             </summary>
         </member>
-        <member name="M:Acme.Dapper.AcmeDapperServiceCollectionExtensions.AddAcmeDapperServer(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String)">
+        <member name="M:Acme.Dapper.AcmeDapperServiceCollectionExtensions.AddAcmeDapper(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String)">
             <summary>
-            注册Acme.Dapper的方法
+            注册Acme.Dapper相关服务
             </summary>
-            <param name="_services">IServiceCollection</param>
-            <param name="_connectionString">数据库连接字符</param>
+            <param name="services">IServiceCollection</param>
+            <param name="connectionString">数据库连接字符串</param>
+            <exception cref="T:System.ArgumentNullException">当 connectionString 为空时抛出</exception>
         </member>
         <member name="T:Acme.Dapper.Enums.OrderType">
             <summary>
@@ -31,23 +32,23 @@
             正序
             </summary>
         </member>
-        <member name="T:Acme.Dapper.Extensions">
+        <member name="T:Acme.Dapper.Extension.Extensions">
             <summary>
             Dapper拓展类
             </summary>
         </member>
-        <member name="P:Acme.Dapper.Extensions.ConnectionString">
+        <member name="P:Acme.Dapper.Extension.Extensions.ConnectionString">
             <summary>
             链接字符串
             </summary>
         </member>
-        <member name="M:Acme.Dapper.Extensions.#ctor(System.String)">
+        <member name="M:Acme.Dapper.Extension.Extensions.#ctor(System.String)">
             <summary>
             构造函数
             </summary>
             <param name="_connectionString"></param>
         </member>
-        <member name="M:Acme.Dapper.Extensions.Query``1(System.String,System.Object)">
+        <member name="M:Acme.Dapper.Extension.Extensions.Query``1(System.String,System.Object)">
             <summary>
             查询列表
             </summary>
@@ -55,7 +56,7 @@
             <param name="param">替换参数</param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.Extensions.QueryAsync``1(System.String,System.Object)">
+        <member name="M:Acme.Dapper.Extension.Extensions.QueryAsync``1(System.String,System.Object)">
             <summary>
             异步查询列表
             </summary>
@@ -63,7 +64,7 @@
             <param name="param">替换参数</param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.Extensions.QueryFirst``1(System.String,System.Object)">
+        <member name="M:Acme.Dapper.Extension.Extensions.QueryFirst``1(System.String,System.Object)">
             <summary>
             查询第一个数据
             </summary>
@@ -71,7 +72,7 @@
             <param name="param"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.Extensions.QueryFirstAsync``1(System.String,System.Object)">
+        <member name="M:Acme.Dapper.Extension.Extensions.QueryFirstAsync``1(System.String,System.Object)">
             <summary>
             异步查询第一个数据
             </summary>
@@ -79,7 +80,7 @@
             <param name="param"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.Extensions.QueryFirstOrDefault``1(System.String,System.Object)">
+        <member name="M:Acme.Dapper.Extension.Extensions.QueryFirstOrDefault``1(System.String,System.Object)">
             <summary>
             查询第一个数据没有返回默认值
             </summary>
@@ -87,7 +88,7 @@
             <param name="param"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.Extensions.QueryFirstOrDefaultAsync``1(System.String,System.Object)">
+        <member name="M:Acme.Dapper.Extension.Extensions.QueryFirstOrDefaultAsync``1(System.String,System.Object)">
             <summary>
             查询第一个数据没有返回默认值
             </summary>
@@ -95,7 +96,7 @@
             <param name="param"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.Extensions.QuerySingle``1(System.String,System.Object)">
+        <member name="M:Acme.Dapper.Extension.Extensions.QuerySingle``1(System.String,System.Object)">
             <summary>
             查询单条数据
             </summary>
@@ -103,7 +104,7 @@
             <param name="param"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.Extensions.QuerySingleAsync``1(System.String,System.Object)">
+        <member name="M:Acme.Dapper.Extension.Extensions.QuerySingleAsync``1(System.String,System.Object)">
             <summary>
             异步查询单条数据
             </summary>
@@ -111,7 +112,7 @@
             <param name="param"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.Extensions.QuerySingleOrDefault``1(System.String,System.Object)">
+        <member name="M:Acme.Dapper.Extension.Extensions.QuerySingleOrDefault``1(System.String,System.Object)">
             <summary>
             查询单条数据没有返回默认值
             </summary>
@@ -119,7 +120,7 @@
             <param name="param"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.Extensions.QuerySingleOrDefaultAsync``1(System.String,System.Object)">
+        <member name="M:Acme.Dapper.Extension.Extensions.QuerySingleOrDefaultAsync``1(System.String,System.Object)">
             <summary>
             查询单条数据没有返回默认值
             </summary>
@@ -127,7 +128,7 @@
             <param name="param"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.Extensions.ExecuteAsync(System.String,System.Object)">
+        <member name="M:Acme.Dapper.Extension.Extensions.ExecuteAsync(System.String,System.Object)">
             <summary>
             异步调用执行增删改语句
             </summary>
@@ -135,7 +136,7 @@
             <param name="param"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.Extensions.Execute(System.String,System.Object)">
+        <member name="M:Acme.Dapper.Extension.Extensions.Execute(System.String,System.Object)">
             <summary>
             增删改
             </summary>
@@ -143,7 +144,7 @@
             <param name="param"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.Extensions.InsertAsync``1(``0,System.Data.IDbTransaction,System.Nullable{System.Int32})">
+        <member name="M:Acme.Dapper.Extension.Extensions.InsertAsync``1(``0,System.Data.IDbTransaction,System.Nullable{System.Int32})">
             <summary>
             根据实体类插入表（实体类需要加标记处理）
             </summary>
@@ -153,7 +154,7 @@
             <param name="commandTimeout"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.Extensions.Insert``1(``0,System.Data.IDbTransaction,System.Nullable{System.Int32})">
+        <member name="M:Acme.Dapper.Extension.Extensions.Insert``1(``0,System.Data.IDbTransaction,System.Nullable{System.Int32})">
             <summary>
             根据实体类插入表（实体类需要加标记处理）
             </summary>
@@ -163,7 +164,7 @@
             <param name="commandTimeout"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.Extensions.UpdateAsync``1(``0,System.Data.IDbTransaction,System.Nullable{System.Int32})">
+        <member name="M:Acme.Dapper.Extension.Extensions.UpdateAsync``1(``0,System.Data.IDbTransaction,System.Nullable{System.Int32})">
             <summary>
             根据实体类更新表（实体类需要加标记处理）
             </summary>
@@ -173,7 +174,7 @@
             <param name="commandTimeout"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.Extensions.Update``1(``0,System.Data.IDbTransaction,System.Nullable{System.Int32})">
+        <member name="M:Acme.Dapper.Extension.Extensions.Update``1(``0,System.Data.IDbTransaction,System.Nullable{System.Int32})">
             <summary>
             根据实体类更新表（实体类需要加标记处理）
             </summary>
@@ -183,7 +184,7 @@
             <param name="commandTimeout"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.Extensions.DeleteAsync``1(``0,System.Data.IDbTransaction,System.Nullable{System.Int32})">
+        <member name="M:Acme.Dapper.Extension.Extensions.DeleteAsync``1(``0,System.Data.IDbTransaction,System.Nullable{System.Int32})">
             <summary>
             根据实体类删除表（实体类需要加标记处理）
             </summary>
@@ -193,7 +194,7 @@
             <param name="commandTimeout"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.Extensions.Delete``1(``0,System.Data.IDbTransaction,System.Nullable{System.Int32})">
+        <member name="M:Acme.Dapper.Extension.Extensions.Delete``1(``0,System.Data.IDbTransaction,System.Nullable{System.Int32})">
             <summary>
             根据实体类删除表（实体类需要加标记处理）
             </summary>
@@ -203,7 +204,7 @@
             <param name="commandTimeout"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.Extensions.ExecuteReader(System.String,System.Object)">
+        <member name="M:Acme.Dapper.Extension.Extensions.ExecuteReader(System.String,System.Object)">
             <summary>
             Reader获取数据
             </summary>
@@ -211,7 +212,7 @@
             <param name="param"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.Extensions.ExecuteReaderAsync(System.String,System.Object)">
+        <member name="M:Acme.Dapper.Extension.Extensions.ExecuteReaderAsync(System.String,System.Object)">
             <summary>
             异步Reader获取数据
             </summary>
@@ -219,7 +220,7 @@
             <param name="param"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.Extensions.ExecuteScalar(System.String,System.Object)">
+        <member name="M:Acme.Dapper.Extension.Extensions.ExecuteScalar(System.String,System.Object)">
             <summary>
             Scalar获取数据
             </summary>
@@ -227,7 +228,7 @@
             <param name="param"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.Extensions.ExecuteScalarForTAsync``1(System.String,System.Object)">
+        <member name="M:Acme.Dapper.Extension.Extensions.ExecuteScalarForTAsync``1(System.String,System.Object)">
             <summary>
             Scalar获取数据
             </summary>
@@ -235,7 +236,7 @@
             <param name="param"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.Extensions.ExecuteScalarForT``1(System.String,System.Object)">
+        <member name="M:Acme.Dapper.Extension.Extensions.ExecuteScalarForT``1(System.String,System.Object)">
             <summary>
             Scalar获取数据
             </summary>
@@ -243,7 +244,7 @@
             <param name="param"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.Extensions.ExecuteScalarAsync``1(System.String,System.Object)">
+        <member name="M:Acme.Dapper.Extension.Extensions.ExecuteScalarAsync``1(System.String,System.Object)">
             <summary>
             Scalar获取数据
             </summary>
@@ -251,7 +252,7 @@
             <param name="param"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.Extensions.ExecutePro``1(System.String,System.Object)">
+        <member name="M:Acme.Dapper.Extension.Extensions.ExecutePro``1(System.String,System.Object)">
             <summary>
             带参数的存储过程
             </summary>
@@ -259,7 +260,7 @@
             <param name="param"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.Extensions.ExecuteProAsync``1(System.String,System.Object)">
+        <member name="M:Acme.Dapper.Extension.Extensions.ExecuteProAsync``1(System.String,System.Object)">
             <summary>
             带参数的存储过程
             </summary>
@@ -267,21 +268,21 @@
             <param name="param">参数</param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.Extensions.ExecuteTransaction(System.String[])">
+        <member name="M:Acme.Dapper.Extension.Extensions.ExecuteTransaction(System.String[])">
             <summary>
             事务1 - 全SQL
             </summary>
             <param name="sqlarr">多条SQL</param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.Extensions.ExecuteTransactionAsync(System.String[])">
+        <member name="M:Acme.Dapper.Extension.Extensions.ExecuteTransactionAsync(System.String[])">
             <summary>
             事务1 - 全SQL
             </summary>
             <param name="sqlarr">多条SQL</param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.Extensions.ExecuteTransaction(System.Collections.Generic.Dictionary{System.String,System.Object})">
+        <member name="M:Acme.Dapper.Extension.Extensions.ExecuteTransaction(System.Collections.Generic.Dictionary{System.String,System.Object})">
             <summary>
             事务2 - 声明参数
             dic.Add("Insert into Users values (@UserName, @Email, @Address)",
@@ -290,7 +291,7 @@
             <param name="dic"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.Extensions.ExecuteTransactionAsync(System.Collections.Generic.Dictionary{System.String,System.Object})">
+        <member name="M:Acme.Dapper.Extension.Extensions.ExecuteTransactionAsync(System.Collections.Generic.Dictionary{System.String,System.Object})">
              <summary>
              事务2 - 声明参数
             demo:
@@ -299,12 +300,12 @@
              </summary>
              <returns></returns>
         </member>
-        <member name="T:Acme.Dapper.IExtensions">
+        <member name="T:Acme.Dapper.Extension.IExtensions">
             <summary>
             Dapper拓展实现接口
             </summary>
         </member>
-        <member name="M:Acme.Dapper.IExtensions.Query``1(System.String,System.Object)">
+        <member name="M:Acme.Dapper.Extension.IExtensions.Query``1(System.String,System.Object)">
             <summary>
             查询列表
             </summary>
@@ -312,7 +313,7 @@
             <param name="param">替换参数</param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.IExtensions.QueryAsync``1(System.String,System.Object)">
+        <member name="M:Acme.Dapper.Extension.IExtensions.QueryAsync``1(System.String,System.Object)">
             <summary>
             异步查询列表
             </summary>
@@ -320,7 +321,7 @@
             <param name="param">替换参数</param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.IExtensions.QueryFirst``1(System.String,System.Object)">
+        <member name="M:Acme.Dapper.Extension.IExtensions.QueryFirst``1(System.String,System.Object)">
             <summary>
             查询第一个数据
             </summary>
@@ -328,7 +329,7 @@
             <param name="param">替换参数</param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.IExtensions.QueryFirstAsync``1(System.String,System.Object)">
+        <member name="M:Acme.Dapper.Extension.IExtensions.QueryFirstAsync``1(System.String,System.Object)">
             <summary>
             异步查询第一个数据
             </summary>
@@ -336,7 +337,7 @@
             <param name="param"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.IExtensions.QueryFirstOrDefault``1(System.String,System.Object)">
+        <member name="M:Acme.Dapper.Extension.IExtensions.QueryFirstOrDefault``1(System.String,System.Object)">
             <summary>
             查询第一个数据没有返回默认值
             </summary>
@@ -344,7 +345,7 @@
             <param name="param"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.IExtensions.QueryFirstOrDefaultAsync``1(System.String,System.Object)">
+        <member name="M:Acme.Dapper.Extension.IExtensions.QueryFirstOrDefaultAsync``1(System.String,System.Object)">
             <summary>
             查询第一个数据没有返回默认值
             </summary>
@@ -352,7 +353,7 @@
             <param name="param"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.IExtensions.QuerySingle``1(System.String,System.Object)">
+        <member name="M:Acme.Dapper.Extension.IExtensions.QuerySingle``1(System.String,System.Object)">
             <summary>
             查询单条数据
             </summary>
@@ -360,7 +361,7 @@
             <param name="param"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.IExtensions.QuerySingleAsync``1(System.String,System.Object)">
+        <member name="M:Acme.Dapper.Extension.IExtensions.QuerySingleAsync``1(System.String,System.Object)">
             <summary>
             异步查询单条数据
             </summary>
@@ -368,7 +369,7 @@
             <param name="param"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.IExtensions.QuerySingleOrDefault``1(System.String,System.Object)">
+        <member name="M:Acme.Dapper.Extension.IExtensions.QuerySingleOrDefault``1(System.String,System.Object)">
             <summary>
             查询单条数据没有返回默认值
             </summary>
@@ -376,7 +377,7 @@
             <param name="param"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.IExtensions.QuerySingleOrDefaultAsync``1(System.String,System.Object)">
+        <member name="M:Acme.Dapper.Extension.IExtensions.QuerySingleOrDefaultAsync``1(System.String,System.Object)">
             <summary>
             查询单条数据没有返回默认值
             </summary>
@@ -384,7 +385,7 @@
             <param name="param"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.IExtensions.ExecuteAsync(System.String,System.Object)">
+        <member name="M:Acme.Dapper.Extension.IExtensions.ExecuteAsync(System.String,System.Object)">
             <summary>
             异步调用执行增删改语句
             </summary>
@@ -392,7 +393,7 @@
             <param name="param"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.IExtensions.Execute(System.String,System.Object)">
+        <member name="M:Acme.Dapper.Extension.IExtensions.Execute(System.String,System.Object)">
             <summary>
             增删改
             </summary>
@@ -400,7 +401,7 @@
             <param name="param"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.IExtensions.InsertAsync``1(``0,System.Data.IDbTransaction,System.Nullable{System.Int32})">
+        <member name="M:Acme.Dapper.Extension.IExtensions.InsertAsync``1(``0,System.Data.IDbTransaction,System.Nullable{System.Int32})">
             <summary>
             根据实体类插入表（实体类需要加标记处理）
             </summary>
@@ -410,7 +411,7 @@
             <param name="commandTimeout"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.IExtensions.Insert``1(``0,System.Data.IDbTransaction,System.Nullable{System.Int32})">
+        <member name="M:Acme.Dapper.Extension.IExtensions.Insert``1(``0,System.Data.IDbTransaction,System.Nullable{System.Int32})">
             <summary>
             根据实体类插入表（实体类需要加标记处理）
             </summary>
@@ -420,7 +421,7 @@
             <param name="commandTimeout"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.IExtensions.UpdateAsync``1(``0,System.Data.IDbTransaction,System.Nullable{System.Int32})">
+        <member name="M:Acme.Dapper.Extension.IExtensions.UpdateAsync``1(``0,System.Data.IDbTransaction,System.Nullable{System.Int32})">
             <summary>
             根据实体类更新表（实体类需要加标记处理）
             </summary>
@@ -430,7 +431,7 @@
             <param name="commandTimeout"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.IExtensions.Update``1(``0,System.Data.IDbTransaction,System.Nullable{System.Int32})">
+        <member name="M:Acme.Dapper.Extension.IExtensions.Update``1(``0,System.Data.IDbTransaction,System.Nullable{System.Int32})">
             <summary>
             根据实体类更新表（实体类需要加标记处理）
             </summary>
@@ -440,7 +441,7 @@
             <param name="commandTimeout"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.IExtensions.DeleteAsync``1(``0,System.Data.IDbTransaction,System.Nullable{System.Int32})">
+        <member name="M:Acme.Dapper.Extension.IExtensions.DeleteAsync``1(``0,System.Data.IDbTransaction,System.Nullable{System.Int32})">
             <summary>
             根据实体类删除表（实体类需要加标记处理）
             </summary>
@@ -450,7 +451,7 @@
             <param name="commandTimeout"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.IExtensions.Delete``1(``0,System.Data.IDbTransaction,System.Nullable{System.Int32})">
+        <member name="M:Acme.Dapper.Extension.IExtensions.Delete``1(``0,System.Data.IDbTransaction,System.Nullable{System.Int32})">
             <summary>
             根据实体类删除表（实体类需要加标记处理）
             </summary>
@@ -460,7 +461,7 @@
             <param name="commandTimeout"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.IExtensions.ExecuteReader(System.String,System.Object)">
+        <member name="M:Acme.Dapper.Extension.IExtensions.ExecuteReader(System.String,System.Object)">
             <summary>
             Reader获取数据
             </summary>
@@ -468,7 +469,7 @@
             <param name="param"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.IExtensions.ExecuteReaderAsync(System.String,System.Object)">
+        <member name="M:Acme.Dapper.Extension.IExtensions.ExecuteReaderAsync(System.String,System.Object)">
             <summary>
             异步Reader获取数据
             </summary>
@@ -476,7 +477,7 @@
             <param name="param"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.IExtensions.ExecuteScalar(System.String,System.Object)">
+        <member name="M:Acme.Dapper.Extension.IExtensions.ExecuteScalar(System.String,System.Object)">
             <summary>
             Scalar获取数据
             </summary>
@@ -484,7 +485,7 @@
             <param name="param"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.IExtensions.ExecuteScalarForTAsync``1(System.String,System.Object)">
+        <member name="M:Acme.Dapper.Extension.IExtensions.ExecuteScalarForTAsync``1(System.String,System.Object)">
             <summary>
             Scalar获取数据
             </summary>
@@ -492,7 +493,7 @@
             <param name="param"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.IExtensions.ExecuteScalarForT``1(System.String,System.Object)">
+        <member name="M:Acme.Dapper.Extension.IExtensions.ExecuteScalarForT``1(System.String,System.Object)">
             <summary>
             Scalar获取数据
             </summary>
@@ -500,7 +501,7 @@
             <param name="param"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.IExtensions.ExecuteScalarAsync``1(System.String,System.Object)">
+        <member name="M:Acme.Dapper.Extension.IExtensions.ExecuteScalarAsync``1(System.String,System.Object)">
             <summary>
             Scalar获取数据
             </summary>
@@ -508,7 +509,7 @@
             <param name="param"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.IExtensions.ExecutePro``1(System.String,System.Object)">
+        <member name="M:Acme.Dapper.Extension.IExtensions.ExecutePro``1(System.String,System.Object)">
             <summary>
             带参数的存储过程
             </summary>
@@ -516,7 +517,7 @@
             <param name="param"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.IExtensions.ExecuteProAsync``1(System.String,System.Object)">
+        <member name="M:Acme.Dapper.Extension.IExtensions.ExecuteProAsync``1(System.String,System.Object)">
             <summary>
             带参数的存储过程
             </summary>
@@ -524,21 +525,21 @@
             <param name="param">参数</param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.IExtensions.ExecuteTransaction(System.String[])">
+        <member name="M:Acme.Dapper.Extension.IExtensions.ExecuteTransaction(System.String[])">
             <summary>
             事务1 - 全SQL
             </summary>
             <param name="sqlarr">多条SQL</param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.IExtensions.ExecuteTransactionAsync(System.String[])">
+        <member name="M:Acme.Dapper.Extension.IExtensions.ExecuteTransactionAsync(System.String[])">
             <summary>
             事务1 - 全SQL
             </summary>
             <param name="sqlarr">多条SQL</param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.IExtensions.ExecuteTransaction(System.Collections.Generic.Dictionary{System.String,System.Object})">
+        <member name="M:Acme.Dapper.Extension.IExtensions.ExecuteTransaction(System.Collections.Generic.Dictionary{System.String,System.Object})">
              <summary>
              事务2 - 声明参数
             demo:
@@ -547,7 +548,7 @@
              </summary>
              <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.IExtensions.ExecuteTransactionAsync(System.Collections.Generic.Dictionary{System.String,System.Object})">
+        <member name="M:Acme.Dapper.Extension.IExtensions.ExecuteTransactionAsync(System.Collections.Generic.Dictionary{System.String,System.Object})">
              <summary>
              事务2 - 声明参数
             demo:
@@ -556,181 +557,181 @@
              </summary>
              <returns></returns>
         </member>
-        <member name="T:Acme.Dapper.IRepository`1">
+        <member name="T:Acme.Dapper.Repository.IRepository`1">
             <summary>
             Dapper拓展仓储实现接口
             </summary>
             <typeparam name="T"></typeparam>
         </member>
-        <member name="M:Acme.Dapper.IRepository`1.AddReturnIdAsync(`0)">
+        <member name="M:Acme.Dapper.Repository.IRepository`1.AddReturnIdAsync(`0)">
             <summary>
             异步新增返回Id
             </summary>
             <param name="t">实体</param>
             <returns>新增项的Id</returns>
         </member>
-        <member name="M:Acme.Dapper.IRepository`1.AddReturnId(`0)">
+        <member name="M:Acme.Dapper.Repository.IRepository`1.AddReturnId(`0)">
             <summary>
             新增返回Id
             </summary>
             <param name="t">实体</param>
             <returns>新增项的Id</returns>
         </member>
-        <member name="M:Acme.Dapper.IRepository`1.AddAsync(`0)">
+        <member name="M:Acme.Dapper.Repository.IRepository`1.AddAsync(`0)">
             <summary>
             异步新增
             </summary>
             <param name="t">实体</param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.IRepository`1.Add(`0)">
+        <member name="M:Acme.Dapper.Repository.IRepository`1.Add(`0)">
             <summary>
             新增
             </summary>
             <param name="t">实体</param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.IRepository`1.DeleteAsync(`0)">
+        <member name="M:Acme.Dapper.Repository.IRepository`1.DeleteAsync(`0)">
             <summary>
             异步删除实体
             </summary>
             <param name="t">实体</param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.IRepository`1.DeleteAsync(System.Int32)">
+        <member name="M:Acme.Dapper.Repository.IRepository`1.DeleteAsync(System.Int32)">
             <summary>
             根据Id删除
             </summary>
             <param name="Id">主键Id</param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.IRepository`1.Delete(`0)">
+        <member name="M:Acme.Dapper.Repository.IRepository`1.Delete(`0)">
             <summary>
             删除实体
             </summary>
             <param name="t"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.IRepository`1.Delete(System.Int32)">
+        <member name="M:Acme.Dapper.Repository.IRepository`1.Delete(System.Int32)">
             <summary>
             删除实体
             </summary>
             <param name="Id">主键Id</param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.IRepository`1.UpdateReturnIdAsync(`0)">
+        <member name="M:Acme.Dapper.Repository.IRepository`1.UpdateReturnIdAsync(`0)">
             <summary>
             异步修改返回Id
             </summary>
             <param name="t">实体</param>
             <returns>新增项的Id</returns>
         </member>
-        <member name="M:Acme.Dapper.IRepository`1.UpdateReturnId(`0)">
+        <member name="M:Acme.Dapper.Repository.IRepository`1.UpdateReturnId(`0)">
             <summary>
             修改返回Id
             </summary>
             <param name="t">实体</param>
             <returns>新增项的Id</returns>
         </member>
-        <member name="M:Acme.Dapper.IRepository`1.UpdateAsync(`0)">
+        <member name="M:Acme.Dapper.Repository.IRepository`1.UpdateAsync(`0)">
             <summary>
             异步修改
             </summary>
             <param name="t">实体</param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.IRepository`1.UpdateByIdAsync(System.Object)">
+        <member name="M:Acme.Dapper.Repository.IRepository`1.UpdateByIdAsync(System.Object)">
             <summary>
             根据Id修改实体
             </summary>
             <param name="UpdateContext"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.IRepository`1.Update(`0)">
+        <member name="M:Acme.Dapper.Repository.IRepository`1.Update(`0)">
             <summary>
             修改
             </summary>
             <param name="t">实体</param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.IRepository`1.GetInfo(System.Int32)">
+        <member name="M:Acme.Dapper.Repository.IRepository`1.GetInfo(System.Int32)">
             <summary>
             根据Id获取单条
             </summary>
             <param name="Id"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.IRepository`1.GetInfoOrDefault(System.Int32)">
+        <member name="M:Acme.Dapper.Repository.IRepository`1.GetInfoOrDefault(System.Int32)">
             <summary>
             根据Id获取单条
             </summary>
             <param name="Id"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.IRepository`1.GetInfo(System.Object)">
+        <member name="M:Acme.Dapper.Repository.IRepository`1.GetInfo(System.Object)">
             <summary>
             按条件获取单条
             </summary>
             <param name="SqlWhere"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.IRepository`1.GetInfoOrDefault(System.Object)">
+        <member name="M:Acme.Dapper.Repository.IRepository`1.GetInfoOrDefault(System.Object)">
             <summary>
             获取单条数据
             </summary>
             <param name="SqlWhere">主键Id</param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.IRepository`1.GetInfoAsync(System.Int32)">
+        <member name="M:Acme.Dapper.Repository.IRepository`1.GetInfoAsync(System.Int32)">
             <summary>
             根据Id获取单条数据异步返回
             </summary>
             <param name="Id"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.IRepository`1.GetInfoOrDefaultAsync(System.Int32)">
+        <member name="M:Acme.Dapper.Repository.IRepository`1.GetInfoOrDefaultAsync(System.Int32)">
             <summary>
             根据Id获取单条数据异步返回
             </summary>
             <param name="Id"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.IRepository`1.GetInfoAsync(System.Object)">
+        <member name="M:Acme.Dapper.Repository.IRepository`1.GetInfoAsync(System.Object)">
             <summary>
             根据条件
             </summary>
             <param name="SqlWhere"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.IRepository`1.GetInfoOrDefaultAsync(System.Object)">
+        <member name="M:Acme.Dapper.Repository.IRepository`1.GetInfoOrDefaultAsync(System.Object)">
             <summary>
             根据条件
             </summary>
             <param name="SqlWhere"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.IRepository`1.GetList(System.Object)">
+        <member name="M:Acme.Dapper.Repository.IRepository`1.GetList(System.Object)">
             <summary>
             获取列表
             </summary>
             <param name="SqlWhere"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.IRepository`1.GetListAsync(System.Object)">
+        <member name="M:Acme.Dapper.Repository.IRepository`1.GetListAsync(System.Object)">
             <summary>
             获取列表
             </summary>
             <param name="SqlWhere">条件</param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.IRepository`1.GetCountAsync(System.Object)">
+        <member name="M:Acme.Dapper.Repository.IRepository`1.GetCountAsync(System.Object)">
             <summary>
             获取条数
             </summary>
             <param name="SqlWhere"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.IRepository`1.GetPageListBySql(System.String,System.Int32,System.Int32,System.String,Acme.Dapper.Enums.OrderType)">
+        <member name="M:Acme.Dapper.Repository.IRepository`1.GetPageListBySql(System.String,System.Int32,System.Int32,System.String,Acme.Dapper.Enums.OrderType)">
             <summary>
             根据sql获取分页数据
             </summary>
@@ -741,7 +742,7 @@
             <param name="orderType">排序类型</param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.IRepository`1.GetPageListBySqlAsync(System.String,System.Int32,System.Int32,System.String,Acme.Dapper.Enums.OrderType)">
+        <member name="M:Acme.Dapper.Repository.IRepository`1.GetPageListBySqlAsync(System.String,System.Int32,System.Int32,System.String,Acme.Dapper.Enums.OrderType)">
             <summary>
             根据sql获取分页数据
             </summary>
@@ -752,7 +753,7 @@
             <param name="orderType">排序类型</param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.IRepository`1.GetPageListBySql``1(System.String,System.Int32,System.Int32,System.String,Acme.Dapper.Enums.OrderType)">
+        <member name="M:Acme.Dapper.Repository.IRepository`1.GetPageListBySql``1(System.String,System.Int32,System.Int32,System.String,Acme.Dapper.Enums.OrderType)">
             <summary>
             根据sql获取分页数据
             </summary>
@@ -763,7 +764,7 @@
             <param name="orderType">排序类型</param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.IRepository`1.GetPageListBySqlAsync``1(System.String,System.Int32,System.Int32,System.String,Acme.Dapper.Enums.OrderType)">
+        <member name="M:Acme.Dapper.Repository.IRepository`1.GetPageListBySqlAsync``1(System.String,System.Int32,System.Int32,System.String,Acme.Dapper.Enums.OrderType)">
             <summary>
             根据sql获取分页数据
             </summary>
@@ -774,188 +775,188 @@
             <param name="orderType">排序类型</param>
             <returns></returns>
         </member>
-        <member name="T:Acme.Dapper.Repository`1">
+        <member name="T:Acme.Dapper.Repository.Repository`1">
             <summary>
             Dapper仓储拓展类
             </summary>
             <typeparam name="T"></typeparam>
         </member>
-        <member name="M:Acme.Dapper.Repository`1.#ctor(Acme.Dapper.IExtensions,Acme.Dapper.ISplicing{`0})">
+        <member name="M:Acme.Dapper.Repository.Repository`1.#ctor(Acme.Dapper.Extension.IExtensions,Acme.Dapper.SqlSplice.ISplicing{`0})">
             <summary>
             构建函数
             </summary>
             <param name="dapperHelper"></param>
             <param name="splicing"></param>
         </member>
-        <member name="M:Acme.Dapper.Repository`1.AddReturnIdAsync(`0)">
+        <member name="M:Acme.Dapper.Repository.Repository`1.AddReturnIdAsync(`0)">
             <summary>
             异步新增返回Id
             </summary>
             <param name="t">实体</param>
             <returns>新增项的Id</returns>
         </member>
-        <member name="M:Acme.Dapper.Repository`1.AddReturnId(`0)">
+        <member name="M:Acme.Dapper.Repository.Repository`1.AddReturnId(`0)">
             <summary>
             新增返回Id
             </summary>
             <param name="t">实体</param>
             <returns>新增项的Id</returns>
         </member>
-        <member name="M:Acme.Dapper.Repository`1.AddAsync(`0)">
+        <member name="M:Acme.Dapper.Repository.Repository`1.AddAsync(`0)">
             <summary>
             异步新增
             </summary>
             <param name="t">实体</param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.Repository`1.Add(`0)">
+        <member name="M:Acme.Dapper.Repository.Repository`1.Add(`0)">
             <summary>
             新增
             </summary>
             <param name="t">实体</param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.Repository`1.DeleteAsync(`0)">
+        <member name="M:Acme.Dapper.Repository.Repository`1.DeleteAsync(`0)">
             <summary>
             异步删除实体
             </summary>
             <param name="t"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.Repository`1.DeleteAsync(System.Int32)">
+        <member name="M:Acme.Dapper.Repository.Repository`1.DeleteAsync(System.Int32)">
             <summary>
             根据Id删除
             </summary>
             <param name="Id"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.Repository`1.Delete(`0)">
+        <member name="M:Acme.Dapper.Repository.Repository`1.Delete(`0)">
             <summary>
             删除实体
             </summary>
             <param name="t"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.Repository`1.Delete(System.Int32)">
+        <member name="M:Acme.Dapper.Repository.Repository`1.Delete(System.Int32)">
             <summary>
             删除实体
             </summary>
             <param name="Id"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.Repository`1.UpdateReturnIdAsync(`0)">
+        <member name="M:Acme.Dapper.Repository.Repository`1.UpdateReturnIdAsync(`0)">
             <summary>
             异步修改返回Id
             </summary>
             <param name="t">实体</param>
             <returns>新增项的Id</returns>
         </member>
-        <member name="M:Acme.Dapper.Repository`1.UpdateByIdAsync(System.Object)">
+        <member name="M:Acme.Dapper.Repository.Repository`1.UpdateByIdAsync(System.Object)">
             <summary>
             异步修改返回Id
             </summary>
             <param name="UpdateContext">实体</param>
             <returns>新增项的Id</returns>
         </member>
-        <member name="M:Acme.Dapper.Repository`1.UpdateReturnId(`0)">
+        <member name="M:Acme.Dapper.Repository.Repository`1.UpdateReturnId(`0)">
             <summary>
             修改返回Id
             </summary>
             <param name="t">实体</param>
             <returns>新增项的Id</returns>
         </member>
-        <member name="M:Acme.Dapper.Repository`1.UpdateAsync(`0)">
+        <member name="M:Acme.Dapper.Repository.Repository`1.UpdateAsync(`0)">
             <summary>
             异步修改
             </summary>
             <param name="t">实体</param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.Repository`1.Update(`0)">
+        <member name="M:Acme.Dapper.Repository.Repository`1.Update(`0)">
             <summary>
             修改
             </summary>
             <param name="t">实体</param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.Repository`1.GetInfo(System.Int32)">
+        <member name="M:Acme.Dapper.Repository.Repository`1.GetInfo(System.Int32)">
             <summary>
             获取单条数据
             </summary>
             <param name="Id">主键Id</param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.Repository`1.GetInfoOrDefault(System.Int32)">
+        <member name="M:Acme.Dapper.Repository.Repository`1.GetInfoOrDefault(System.Int32)">
             <summary>
             获取单条数据
             </summary>
             <param name="Id">主键Id</param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.Repository`1.GetInfo(System.Object)">
+        <member name="M:Acme.Dapper.Repository.Repository`1.GetInfo(System.Object)">
             <summary>
             获取单条数据
             </summary>
             <param name="SqlWhere">条件</param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.Repository`1.GetInfoOrDefault(System.Object)">
+        <member name="M:Acme.Dapper.Repository.Repository`1.GetInfoOrDefault(System.Object)">
             <summary>
             获取单条数据
             </summary>
             <param name="SqlWhere">主键Id</param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.Repository`1.GetInfoAsync(System.Int32)">
+        <member name="M:Acme.Dapper.Repository.Repository`1.GetInfoAsync(System.Int32)">
             <summary>
             异步获取单条
             </summary>
             <param name="Id">主键Id</param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.Repository`1.GetInfoOrDefaultAsync(System.Int32)">
+        <member name="M:Acme.Dapper.Repository.Repository`1.GetInfoOrDefaultAsync(System.Int32)">
             <summary>
             获取单条数据
             </summary>
             <param name="Id">主键Id</param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.Repository`1.GetInfoAsync(System.Object)">
+        <member name="M:Acme.Dapper.Repository.Repository`1.GetInfoAsync(System.Object)">
             <summary>
             异步获取单条
             </summary>
             <param name="SqlWhere">条件</param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.Repository`1.GetInfoOrDefaultAsync(System.Object)">
+        <member name="M:Acme.Dapper.Repository.Repository`1.GetInfoOrDefaultAsync(System.Object)">
             <summary>
             异步获取单条
             </summary>
             <param name="SqlWhere">条件</param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.Repository`1.GetList(System.Object)">
+        <member name="M:Acme.Dapper.Repository.Repository`1.GetList(System.Object)">
             <summary>
             获取列表
             </summary>
             <param name="SqlWhere">条件</param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.Repository`1.GetListAsync(System.Object)">
+        <member name="M:Acme.Dapper.Repository.Repository`1.GetListAsync(System.Object)">
             <summary>
             获取列表
             </summary>
             <param name="SqlWhere">条件</param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.Repository`1.GetCountAsync(System.Object)">
+        <member name="M:Acme.Dapper.Repository.Repository`1.GetCountAsync(System.Object)">
             <summary>
             获取条数
             </summary>
             <param name="SqlWhere">条件</param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.Repository`1.GetPageListBySql(System.String,System.Int32,System.Int32,System.String,Acme.Dapper.Enums.OrderType)">
+        <member name="M:Acme.Dapper.Repository.Repository`1.GetPageListBySql(System.String,System.Int32,System.Int32,System.String,Acme.Dapper.Enums.OrderType)">
             <summary>
             根据sql获取分页数据
             </summary>
@@ -966,7 +967,7 @@
             <param name="orderType">排序类型</param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.Repository`1.GetPageListBySqlAsync(System.String,System.Int32,System.Int32,System.String,Acme.Dapper.Enums.OrderType)">
+        <member name="M:Acme.Dapper.Repository.Repository`1.GetPageListBySqlAsync(System.String,System.Int32,System.Int32,System.String,Acme.Dapper.Enums.OrderType)">
             <summary>
             根据sql获取分页数据
             </summary>
@@ -977,7 +978,7 @@
             <param name="orderType">排序类型</param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.Repository`1.GetPageListBySql``1(System.String,System.Int32,System.Int32,System.String,Acme.Dapper.Enums.OrderType)">
+        <member name="M:Acme.Dapper.Repository.Repository`1.GetPageListBySql``1(System.String,System.Int32,System.Int32,System.String,Acme.Dapper.Enums.OrderType)">
             <summary>
             根据sql获取分页数据
             </summary>
@@ -988,7 +989,7 @@
             <param name="orderType">排序类型</param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.Repository`1.GetPageListBySqlAsync``1(System.String,System.Int32,System.Int32,System.String,Acme.Dapper.Enums.OrderType)">
+        <member name="M:Acme.Dapper.Repository.Repository`1.GetPageListBySqlAsync``1(System.String,System.Int32,System.Int32,System.String,Acme.Dapper.Enums.OrderType)">
             <summary>
             根据sql获取分页数据
             </summary>
@@ -999,66 +1000,66 @@
             <param name="orderType">排序类型</param>
             <returns></returns>
         </member>
-        <member name="T:Acme.Dapper.AndOrNot">
+        <member name="T:Acme.Dapper.SqlSplice.AndOrNot">
             <summary>
             且或非枚举
             </summary>
         </member>
-        <member name="F:Acme.Dapper.AndOrNot.AND">
+        <member name="F:Acme.Dapper.SqlSplice.AndOrNot.AND">
             <summary>
             且
             </summary>
         </member>
-        <member name="F:Acme.Dapper.AndOrNot.OR">
+        <member name="F:Acme.Dapper.SqlSplice.AndOrNot.OR">
             <summary>
             或
             </summary>
         </member>
-        <member name="T:Acme.Dapper.JoinType">
+        <member name="T:Acme.Dapper.SqlSplice.JoinType">
             <summary>
             连接查询类型
             </summary>
         </member>
-        <member name="F:Acme.Dapper.JoinType.INNER">
+        <member name="F:Acme.Dapper.SqlSplice.JoinType.INNER">
             <summary>
             内联接
             </summary>
         </member>
-        <member name="F:Acme.Dapper.JoinType.LEFT">
+        <member name="F:Acme.Dapper.SqlSplice.JoinType.LEFT">
             <summary>
             左连接
             </summary>
         </member>
-        <member name="F:Acme.Dapper.JoinType.RIGHT">
+        <member name="F:Acme.Dapper.SqlSplice.JoinType.RIGHT">
             <summary>
             右连接
             </summary>
         </member>
-        <member name="T:Acme.Dapper.DBSqlParameter">
+        <member name="T:Acme.Dapper.SqlSplice.DBSqlParameter">
             <summary>
             sql参数通用类
             </summary>
         </member>
-        <member name="F:Acme.Dapper.DBSqlParameter.一">
+        <member name="F:Acme.Dapper.SqlSplice.DBSqlParameter.一">
             <summary>
             
             </summary>
         </member>
-        <member name="M:Acme.Dapper.DBSqlParameter.SqlParame(System.Object)">
+        <member name="M:Acme.Dapper.SqlSplice.DBSqlParameter.SqlParame(System.Object)">
             <summary>
             构建SqlServer数据库的sql参数
             </summary>
             <param name="ParameterEntity">实体(如：new{Id=1,Name='夜殇'})</param>
             <returns>SqlParameter类型的sql参数数组</returns>
         </member>
-        <member name="M:Acme.Dapper.DBSqlParameter.GetSqlCondi(System.Object)">
+        <member name="M:Acme.Dapper.SqlSplice.DBSqlParameter.GetSqlCondi(System.Object)">
             <summary>
             构建条件参数
             </summary>
             <param name="CondiEntity">条件实体 如：new {Id=1}</param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.DBSqlParameter.AddAndWhere(System.String,System.Object,System.Boolean,System.String,Acme.Dapper.AndOrNot)">
+        <member name="M:Acme.Dapper.SqlSplice.DBSqlParameter.AddAndWhere(System.String,System.Object,System.Boolean,System.String,Acme.Dapper.SqlSplice.AndOrNot)">
             <summary>
             拼接sql语句条件
             </summary>
@@ -1069,7 +1070,7 @@
             <param name="andOrNot">拼接关键字（AND或OR）</param>
             <returns>新的sql字符串</returns>
         </member>
-        <member name="M:Acme.Dapper.DBSqlParameter.AddContainWhere(System.String,System.Object,System.Boolean,Acme.Dapper.AndOrNot)">
+        <member name="M:Acme.Dapper.SqlSplice.DBSqlParameter.AddContainWhere(System.String,System.Object,System.Boolean,Acme.Dapper.SqlSplice.AndOrNot)">
             <summary>
             添加模糊查询
             </summary>
@@ -1079,7 +1080,7 @@
             <param name="andOrNot">是AND 还是or</param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.DBSqlParameter.AddLeftContainWhere(System.String,System.Object,System.Boolean,Acme.Dapper.AndOrNot)">
+        <member name="M:Acme.Dapper.SqlSplice.DBSqlParameter.AddLeftContainWhere(System.String,System.Object,System.Boolean,Acme.Dapper.SqlSplice.AndOrNot)">
             <summary>
             拼接左模糊查询
             </summary>
@@ -1089,7 +1090,7 @@
             <param name="andOrNot">拼接关键字（AND或OR）</param>
             <returns>新的sql字符串</returns>
         </member>
-        <member name="M:Acme.Dapper.DBSqlParameter.AddRightContainWhere(System.String,System.Object,System.Boolean,Acme.Dapper.AndOrNot)">
+        <member name="M:Acme.Dapper.SqlSplice.DBSqlParameter.AddRightContainWhere(System.String,System.Object,System.Boolean,Acme.Dapper.SqlSplice.AndOrNot)">
             <summary>
             拼接右模糊查询
             </summary>
@@ -1099,7 +1100,7 @@
             <param name="andOrNot">拼接关键字（AND或OR）</param>
             <returns>新的sql字符串</returns>
         </member>
-        <member name="M:Acme.Dapper.DBSqlParameter.Select(System.String,System.Object)">
+        <member name="M:Acme.Dapper.SqlSplice.DBSqlParameter.Select(System.String,System.Object)">
             <summary>
             获取的结果集
             </summary>
@@ -1107,14 +1108,14 @@
             <param name="result"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.DBSqlParameter.Total(System.String)">
+        <member name="M:Acme.Dapper.SqlSplice.DBSqlParameter.Total(System.String)">
             <summary>
             获取数据条数
             </summary>
             <param name="sql"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.DBSqlParameter.Join``1(System.String,Acme.Dapper.JoinType,System.Int32)">
+        <member name="M:Acme.Dapper.SqlSplice.DBSqlParameter.Join``1(System.String,Acme.Dapper.SqlSplice.JoinType,System.Int32)">
             <summary>
             链接查询
             </summary>
@@ -1125,7 +1126,7 @@
             <returns></returns>
             <exception cref="T:System.Exception"></exception>
         </member>
-        <member name="M:Acme.Dapper.DBSqlParameter.ON(System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+        <member name="M:Acme.Dapper.SqlSplice.DBSqlParameter.ON(System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
             <summary>
             ON条件
             </summary>
@@ -1134,7 +1135,7 @@
             <returns></returns>
             <exception cref="T:System.Exception"></exception>
         </member>
-        <member name="M:Acme.Dapper.DBSqlParameter.SplitJoin(System.String,System.Boolean,System.String)">
+        <member name="M:Acme.Dapper.SqlSplice.DBSqlParameter.SplitJoin(System.String,System.Boolean,System.String)">
             <summary>
             sql语句拼接
             </summary>
@@ -1143,13 +1144,13 @@
             <param name="sql2">要拼接的sql</param>
             <returns></returns>
         </member>
-        <member name="T:Acme.Dapper.ISplicing`1">
+        <member name="T:Acme.Dapper.SqlSplice.ISplicing`1">
             <summary>
             拓展实现接口
             </summary>
             <typeparam name="T"></typeparam>
         </member>
-        <member name="M:Acme.Dapper.ISplicing`1.InsertSql(`0,System.Boolean)">
+        <member name="M:Acme.Dapper.SqlSplice.ISplicing`1.InsertSql(`0,System.Boolean)">
             <summary>
             动态生成添加的sql语句
             </summary>
@@ -1157,14 +1158,14 @@
             <param name="IsItKey">第一个字段是否是自增的主键（true是(默认是) false不是）</param>
             <returns>新增的sql语句</returns>
         </member>
-        <member name="M:Acme.Dapper.ISplicing`1.DeleteSql(System.Object)">
+        <member name="M:Acme.Dapper.SqlSplice.ISplicing`1.DeleteSql(System.Object)">
             <summary>
             动态生成按条件删除的sql语句
             </summary>
             <param name="CondiEntity">条件实体 如：new {Id=1}</param>
             <returns>按条件删除的sql语句</returns>
         </member>
-        <member name="M:Acme.Dapper.ISplicing`1.UpdateSql(`0,System.Object,System.Boolean)">
+        <member name="M:Acme.Dapper.SqlSplice.ISplicing`1.UpdateSql(`0,System.Object,System.Boolean)">
             <summary>
             动态生成按条件更新的sql语句
             </summary>
@@ -1173,20 +1174,20 @@
             <param name="IsItKey">第一个字段是否是自增的主键（true是 false不是）</param>
             <returns>按条件更新的sql语句</returns>
         </member>
-        <member name="M:Acme.Dapper.ISplicing`1.SelectSql(System.Object)">
+        <member name="M:Acme.Dapper.SqlSplice.ISplicing`1.SelectSql(System.Object)">
             <summary>
             生成查询的sql语句
             </summary>
             <param name="CondiEntity">条件实体</param>
             <returns>查询的sql语句</returns>
         </member>
-        <member name="M:Acme.Dapper.ISplicing`1.SelectSql">
+        <member name="M:Acme.Dapper.SqlSplice.ISplicing`1.SelectSql">
             <summary>
             动态生成按查询所有的sql语句
             </summary>
             <returns>查询所有的sql语句</returns>
         </member>
-        <member name="M:Acme.Dapper.ISplicing`1.InsertSqlParam(`0,System.Boolean)">
+        <member name="M:Acme.Dapper.SqlSplice.ISplicing`1.InsertSqlParam(`0,System.Boolean)">
             <summary>
             
             </summary>
@@ -1194,14 +1195,14 @@
             <param name="IsItKey"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.ISplicing`1.DeleteSqlParam(System.Object)">
+        <member name="M:Acme.Dapper.SqlSplice.ISplicing`1.DeleteSqlParam(System.Object)">
             <summary>
             
             </summary>
             <param name="CondiEntity"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.ISplicing`1.UpdateSqlParam(`0,System.Object,System.Boolean)">
+        <member name="M:Acme.Dapper.SqlSplice.ISplicing`1.UpdateSqlParam(`0,System.Object,System.Boolean)">
             <summary>
             动态生成按条件更新的sql语句
             </summary>
@@ -1210,53 +1211,53 @@
             <param name="IsItKey">第一个字段是否是自增的主键（true是 false不是）</param>
             <returns>按条件更新的sql语句</returns>
         </member>
-        <member name="M:Acme.Dapper.ISplicing`1.UpdateSqlParam(System.Object)">
+        <member name="M:Acme.Dapper.SqlSplice.ISplicing`1.UpdateSqlParam(System.Object)">
             <summary>
             
             </summary>
             <param name="UpdateContext"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.ISplicing`1.ExistenceSql(System.String)">
+        <member name="M:Acme.Dapper.SqlSplice.ISplicing`1.ExistenceSql(System.String)">
             <summary>
             生成判断是否存在的Sql
             </summary>
             <param name="sql"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.ISplicing`1.UpdateSqlParam(`0)">
+        <member name="M:Acme.Dapper.SqlSplice.ISplicing`1.UpdateSqlParam(`0)">
             <summary>
             动态生成按条件更新的sql语句
             </summary>
             <param name="t">实体</param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.ISplicing`1.SelectSqlParam(System.Object)">
+        <member name="M:Acme.Dapper.SqlSplice.ISplicing`1.SelectSqlParam(System.Object)">
             <summary>
             生成查询的sql语句
             </summary>
             <param name="CondiEntity">条件实体</param>
             <returns>查询的sql语句</returns>
         </member>
-        <member name="M:Acme.Dapper.ISplicing`1.SelectCountParam(System.Object)">
+        <member name="M:Acme.Dapper.SqlSplice.ISplicing`1.SelectCountParam(System.Object)">
             <summary>
             查询条数的Sql语句
             </summary>
             <param name="CondiEntity"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.ISplicing`1.SelectSqlParam">
+        <member name="M:Acme.Dapper.SqlSplice.ISplicing`1.SelectSqlParam">
             <summary>
             动态生成按查询所有的sql语句
             </summary>
             <returns>查询所有的sql语句</returns>
         </member>
-        <member name="M:Acme.Dapper.ISplicing`1.SelectNoResultSql">
+        <member name="M:Acme.Dapper.SqlSplice.ISplicing`1.SelectNoResultSql">
             <summary>
             生成未确定查询结果的sql语句
             </summary>
         </member>
-        <member name="M:Acme.Dapper.ISplicing`1.GetPageSql(System.String,System.Int32,System.Int32,System.String,Acme.Dapper.Enums.OrderType)">
+        <member name="M:Acme.Dapper.SqlSplice.ISplicing`1.GetPageSql(System.String,System.Int32,System.Int32,System.String,Acme.Dapper.Enums.OrderType)">
             <summary>
             获取排序的sql语句
             </summary>
@@ -1267,19 +1268,19 @@
             <param name="orderType">排序类型</param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.ISplicing`1.GetCountSql(System.String)">
+        <member name="M:Acme.Dapper.SqlSplice.ISplicing`1.GetCountSql(System.String)">
             <summary>
             查询语句转化为获取条数Sql
             </summary>
             <param name="sql">sql语句</param>
             <returns></returns>
         </member>
-        <member name="T:Acme.Dapper.Splicing`1">
+        <member name="T:Acme.Dapper.SqlSplice.Splicing`1">
             <summary>
             类名:动态生成不带参数的sql语句
             </summary>
         </member>
-        <member name="M:Acme.Dapper.Splicing`1.InsertSql(`0,System.Boolean)">
+        <member name="M:Acme.Dapper.SqlSplice.Splicing`1.InsertSql(`0,System.Boolean)">
             <summary>
             动态生成添加的sql语句
             </summary>
@@ -1287,14 +1288,14 @@
             <param name="IsItKey">第一个字段是否是自增的主键（true是(默认是) false不是）</param>
             <returns>新增的sql语句</returns>
         </member>
-        <member name="M:Acme.Dapper.Splicing`1.DeleteSql(System.Object)">
+        <member name="M:Acme.Dapper.SqlSplice.Splicing`1.DeleteSql(System.Object)">
             <summary>
             动态生成按条件删除的sql语句
             </summary>
             <param name="CondiEntity">条件实体 如：new {Id=1}</param>
             <returns>按条件删除的sql语句</returns>
         </member>
-        <member name="M:Acme.Dapper.Splicing`1.UpdateSql(`0,System.Object,System.Boolean)">
+        <member name="M:Acme.Dapper.SqlSplice.Splicing`1.UpdateSql(`0,System.Object,System.Boolean)">
             <summary>
             动态生成按条件更新的sql语句
             </summary>
@@ -1303,20 +1304,20 @@
             <param name="IsItKey">第一个字段是否是自增的主键（true是 false不是）</param>
             <returns>按条件更新的sql语句</returns>
         </member>
-        <member name="M:Acme.Dapper.Splicing`1.SelectSql(System.Object)">
+        <member name="M:Acme.Dapper.SqlSplice.Splicing`1.SelectSql(System.Object)">
             <summary>
             生成查询的sql语句
             </summary>
             <param name="CondiEntity">条件实体</param>
             <returns>查询的sql语句</returns>
         </member>
-        <member name="M:Acme.Dapper.Splicing`1.SelectSql">
+        <member name="M:Acme.Dapper.SqlSplice.Splicing`1.SelectSql">
             <summary>
             动态生成按查询所有的sql语句
             </summary>
             <returns>查询所有的sql语句</returns>
         </member>
-        <member name="M:Acme.Dapper.Splicing`1.InsertSqlParam(`0,System.Boolean)">
+        <member name="M:Acme.Dapper.SqlSplice.Splicing`1.InsertSqlParam(`0,System.Boolean)">
             <summary>
             生成带参数新增语句
             </summary>
@@ -1324,21 +1325,21 @@
             <param name="IsItKey">第一个是否主键</param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.Splicing`1.DeleteSqlParam(System.Object)">
+        <member name="M:Acme.Dapper.SqlSplice.Splicing`1.DeleteSqlParam(System.Object)">
             <summary>
             生成删除的sql语句
             </summary>
             <param name="CondiEntity"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.Splicing`1.GetSqlCount(System.Object)">
+        <member name="M:Acme.Dapper.SqlSplice.Splicing`1.GetSqlCount(System.Object)">
             <summary>
             生成查询条数
             </summary>
             <param name="CondiEntity"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.Splicing`1.UpdateSqlParam(`0,System.Object,System.Boolean)">
+        <member name="M:Acme.Dapper.SqlSplice.Splicing`1.UpdateSqlParam(`0,System.Object,System.Boolean)">
             <summary>
             动态生成按条件更新的sql语句
             </summary>
@@ -1347,61 +1348,61 @@
             <param name="IsItKey">第一个字段是否是自增的主键（true是 false不是）</param>
             <returns>按条件更新的sql语句</returns>
         </member>
-        <member name="M:Acme.Dapper.Splicing`1.UpdateSqlParam(System.Object)">
+        <member name="M:Acme.Dapper.SqlSplice.Splicing`1.UpdateSqlParam(System.Object)">
             <summary>
             动态生成按条件更新的sql语句
             </summary>
             <param name="UpdateContent">更新内容（如：new {Id=1}）</param>
             <returns>按条件更新的sql语句</returns>
         </member>
-        <member name="M:Acme.Dapper.Splicing`1.UpdateSqlParam(`0)">
+        <member name="M:Acme.Dapper.SqlSplice.Splicing`1.UpdateSqlParam(`0)">
             <summary>
             动态生成按条件更新的sql语句
             </summary>
             <param name="t">待更新到数据库的实体</param>
             <returns>按条件更新的sql语句</returns>
         </member>
-        <member name="M:Acme.Dapper.Splicing`1.SelectSqlParam(System.Object)">
+        <member name="M:Acme.Dapper.SqlSplice.Splicing`1.SelectSqlParam(System.Object)">
             <summary>
             生成查询的sql语句
             </summary>
             <param name="CondiEntity">条件实体</param>
             <returns>查询的sql语句</returns>
         </member>
-        <member name="M:Acme.Dapper.Splicing`1.SelectCountParam(System.Object)">
+        <member name="M:Acme.Dapper.SqlSplice.Splicing`1.SelectCountParam(System.Object)">
             <summary>
             生成查询条数语句
             </summary>
             <param name="CondiEntity">条件实体</param>
             <returns>查询的sql语句</returns>
         </member>
-        <member name="M:Acme.Dapper.Splicing`1.SelectSqlParam">
+        <member name="M:Acme.Dapper.SqlSplice.Splicing`1.SelectSqlParam">
             <summary>
             动态生成按查询所有的sql语句
             </summary>
             <returns>查询所有的sql语句</returns>
         </member>
-        <member name="M:Acme.Dapper.Splicing`1.GetUpdateContent(System.Object)">
+        <member name="M:Acme.Dapper.SqlSplice.Splicing`1.GetUpdateContent(System.Object)">
             <summary>
             构建修改参数
             </summary>
             <param name="UpdateContent">条件实体 如：new {Id=1}</param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.Splicing`1.ExistenceSql(System.String)">
+        <member name="M:Acme.Dapper.SqlSplice.Splicing`1.ExistenceSql(System.String)">
             <summary>
             生成判断是否存在的Sql
             </summary>
             <param name="sql"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.Splicing`1.SelectNoResultSql">
+        <member name="M:Acme.Dapper.SqlSplice.Splicing`1.SelectNoResultSql">
             <summary>
             生成未确定查询结果的sql语句
             </summary>
             <returns>查询的sql语句</returns>
         </member>
-        <member name="M:Acme.Dapper.Splicing`1.GetPageSql(System.String,System.Int32,System.Int32,System.String,Acme.Dapper.Enums.OrderType)">
+        <member name="M:Acme.Dapper.SqlSplice.Splicing`1.GetPageSql(System.String,System.Int32,System.Int32,System.String,Acme.Dapper.Enums.OrderType)">
             <summary>
             获取排序的sql语句
             </summary>
@@ -1412,69 +1413,69 @@
             <param name="orderType">排序类型</param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.Splicing`1.GetCountSql(System.String)">
+        <member name="M:Acme.Dapper.SqlSplice.Splicing`1.GetCountSql(System.String)">
             <summary>
             查询语句转化为获取条数Sql
             </summary>
             <param name="sql">sql语句</param>
             <returns></returns>
         </member>
-        <member name="T:Acme.Dapper.PageList`1">
+        <member name="T:Acme.Dapper.Tools.PageList`1">
             <summary>
             分页返回结果
             </summary>
         </member>
-        <member name="P:Acme.Dapper.PageList`1.Total">
+        <member name="P:Acme.Dapper.Tools.PageList`1.Total">
             <summary>
             总条数
             </summary>
         </member>
-        <member name="P:Acme.Dapper.PageList`1.PageIndex">
+        <member name="P:Acme.Dapper.Tools.PageList`1.PageIndex">
             <summary>
             索引
             </summary>
         </member>
-        <member name="P:Acme.Dapper.PageList`1.PageSize">
+        <member name="P:Acme.Dapper.Tools.PageList`1.PageSize">
             <summary>
             每页大小
             </summary>
         </member>
-        <member name="P:Acme.Dapper.PageList`1.Items">
+        <member name="P:Acme.Dapper.Tools.PageList`1.Items">
             <summary>
             集合数据
             </summary>
         </member>
-        <member name="T:Acme.Dapper.PageList">
+        <member name="T:Acme.Dapper.Tools.PageList">
             <summary>
              分页返回结果
              </summary>
         </member>
-        <member name="P:Acme.Dapper.PageList.Total">
+        <member name="P:Acme.Dapper.Tools.PageList.Total">
             <summary>
             总条数
             </summary>
         </member>
-        <member name="P:Acme.Dapper.PageList.PageIndex">
+        <member name="P:Acme.Dapper.Tools.PageList.PageIndex">
             <summary>
             索引
             </summary>
         </member>
-        <member name="P:Acme.Dapper.PageList.PageSize">
+        <member name="P:Acme.Dapper.Tools.PageList.PageSize">
             <summary>
             每页大小
             </summary>
         </member>
-        <member name="P:Acme.Dapper.PageList.Items">
+        <member name="P:Acme.Dapper.Tools.PageList.Items">
             <summary>
             集合数据
             </summary>
         </member>
-        <member name="T:Acme.Dapper.PageListEx">
+        <member name="T:Acme.Dapper.Tools.PageListEx">
             <summary>
             分页拓展类
             </summary>
         </member>
-        <member name="M:Acme.Dapper.PageListEx.ToPageList(System.Collections.Generic.List{System.Object},System.Int32,System.Int32,System.Int32)">
+        <member name="M:Acme.Dapper.Tools.PageListEx.ToPageList(System.Collections.Generic.List{System.Object},System.Int32,System.Int32,System.Int32)">
             <summary>
             集合转化为分页实体
             </summary>
@@ -1484,7 +1485,7 @@
             <param name="PageSize"></param>
             <returns></returns>
         </member>
-        <member name="M:Acme.Dapper.PageListEx.ToPageList``1(System.Collections.Generic.List{``0},System.Int32,System.Int32,System.Int32)">
+        <member name="M:Acme.Dapper.Tools.PageListEx.ToPageList``1(System.Collections.Generic.List{``0},System.Int32,System.Int32,System.Int32)">
             <summary>
             实体转化为分页实体
             </summary>

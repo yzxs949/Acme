@@ -7,7 +7,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Acme.Dapper
+namespace Acme.Dapper.Extension
 {
     /// <summary>
     /// Dapper拓展类
@@ -280,7 +280,7 @@ namespace Acme.Dapper
             try
             {
                 using var conn = new SqlConnection(ConnectionString);
-                return await conn.InsertAsync<T>(model, transaction, commandTimeout);
+                return await conn.InsertAsync(model, transaction, commandTimeout);
             }
             catch
             {
@@ -302,7 +302,7 @@ namespace Acme.Dapper
             try
             {
                 using var conn = new SqlConnection(ConnectionString);
-                return (int)conn.Insert<T>(model, transaction, commandTimeout);
+                return (int)conn.Insert(model, transaction, commandTimeout);
             }
             catch (Exception)
             {
@@ -325,7 +325,7 @@ namespace Acme.Dapper
             try
             {
                 using var conn = new SqlConnection(ConnectionString);
-                return await conn.UpdateAsync<T>(model, transaction, commandTimeout);
+                return await conn.UpdateAsync(model, transaction, commandTimeout);
             }
             catch (Exception)
             {
@@ -346,7 +346,7 @@ namespace Acme.Dapper
             try
             {
                 using var conn = new SqlConnection(ConnectionString);
-                return conn.Update<T>(model, transaction, commandTimeout);
+                return conn.Update(model, transaction, commandTimeout);
             }
             catch (Exception)
             {
@@ -369,7 +369,7 @@ namespace Acme.Dapper
             try
             {
                 using var conn = new SqlConnection(ConnectionString);
-                return await conn.DeleteAsync<T>(model, transaction, commandTimeout);
+                return await conn.DeleteAsync(model, transaction, commandTimeout);
             }
             catch (Exception)
             {
@@ -390,7 +390,7 @@ namespace Acme.Dapper
             try
             {
                 using var conn = new SqlConnection(ConnectionString);
-                return conn.Delete<T>(model, transaction, commandTimeout);
+                return conn.Delete(model, transaction, commandTimeout);
             }
             catch (Exception)
             {

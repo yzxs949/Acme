@@ -3,8 +3,9 @@ using System;
 using System.Reflection;
 using System.Text;
 using Acme.Dapper.Enums;
+using Acme.Tools;
 
-namespace Acme.Dapper
+namespace Acme.Dapper.SqlSplice
 {
 
     /// <summary>
@@ -28,7 +29,7 @@ namespace Acme.Dapper
 
                 StringBuilder AttributeValue = new();
 
-                System.Reflection.PropertyInfo[] propertyInfo = t.GetType().GetProperties();
+                PropertyInfo[] propertyInfo = t.GetType().GetProperties();
 
                 int Index;
 
@@ -94,7 +95,7 @@ namespace Acme.Dapper
             try
             {
                 StringBuilder SETAppend = new();
-                System.Reflection.PropertyInfo[] propertyInfo = t.GetType().GetProperties();
+                PropertyInfo[] propertyInfo = t.GetType().GetProperties();
                 int Index;
                 if (IsItKey) Index = 1;
                 else Index = 0;
@@ -124,7 +125,7 @@ namespace Acme.Dapper
             {
                 T t = Activator.CreateInstance<T>();
                 StringBuilder AttributeValue = new();
-                System.Reflection.PropertyInfo[] propertyInfo = t.GetType().GetProperties();
+                PropertyInfo[] propertyInfo = t.GetType().GetProperties();
                 for (int i = 0; i < propertyInfo.Length; i++)
                 {
                     if (i == 0) AttributeValue.Append(propertyInfo[0].Name);
@@ -150,7 +151,7 @@ namespace Acme.Dapper
             {
                 T t = Activator.CreateInstance<T>();
                 StringBuilder AttributeValue = new();
-                System.Reflection.PropertyInfo[] propertyInfo = t.GetType().GetProperties();
+                PropertyInfo[] propertyInfo = t.GetType().GetProperties();
                 for (int i = 0; i < propertyInfo.Length; i++)
                 {
                     if (i == 0) AttributeValue.Append(propertyInfo[0].Name);
@@ -314,7 +315,7 @@ namespace Acme.Dapper
             {
                 StringBuilder SETAppend = new();
                 object Id = default;
-                System.Reflection.PropertyInfo[] propertyInfo = t.GetType().GetProperties();
+                PropertyInfo[] propertyInfo = t.GetType().GetProperties();
                 for (int i = 0; i < propertyInfo.Length; i++)
                 {
                     if (propertyInfo[i].Name.ToUpper() == "id".ToUpper())
@@ -347,7 +348,7 @@ namespace Acme.Dapper
             {
                 T t = Activator.CreateInstance<T>();
                 StringBuilder AttributeValue = new();
-                System.Reflection.PropertyInfo[] propertyInfo = t.GetType().GetProperties();
+                PropertyInfo[] propertyInfo = t.GetType().GetProperties();
                 for (int i = 0; i < propertyInfo.Length; i++)
                 {
                     if (i == 0)
@@ -378,7 +379,7 @@ namespace Acme.Dapper
             try
             {
                 T t = Activator.CreateInstance<T>();
-                System.Reflection.PropertyInfo[] propertyInfo = t.GetType().GetProperties();
+                PropertyInfo[] propertyInfo = t.GetType().GetProperties();
                 string SelectSql;
                 if (CondiEntity != null)
                     SelectSql = $"SELECT COUNT(*) FROM {typeof(T).Name} WHERE {DBSqlParameter.GetSqlCondi(CondiEntity)}";
@@ -402,7 +403,7 @@ namespace Acme.Dapper
             {
                 T t = Activator.CreateInstance<T>();
                 StringBuilder AttributeValue = new();
-                System.Reflection.PropertyInfo[] propertyInfo = t.GetType().GetProperties();
+                PropertyInfo[] propertyInfo = t.GetType().GetProperties();
                 for (int i = 0; i < propertyInfo.Length; i++)
                 {
                     if (i == 0)
@@ -500,7 +501,7 @@ namespace Acme.Dapper
                 }
             }
             int num = (pageIndex - 1) * pageSize;
-            int num1 = (pageIndex) * pageSize;
+            int num1 = pageIndex * pageSize;
             string OrderBy;
             if (!string.IsNullOrEmpty(orderField))
                 OrderBy = "ORDER BY " + orderField + " " + orderType.ToString() + "";

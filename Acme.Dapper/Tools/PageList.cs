@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Acme.Dapper;
+namespace Acme.Dapper.Tools;
 
 /// <summary>
 /// 分页返回结果

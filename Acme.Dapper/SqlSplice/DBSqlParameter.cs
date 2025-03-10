@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace Acme.Dapper
+namespace Acme.Dapper.SqlSplice
 {
     /// <summary>
     /// 且或非枚举

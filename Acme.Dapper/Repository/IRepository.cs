@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using Acme.Dapper.Enums;
+using Acme.Dapper.Tools;
+using System.Collections.Generic;
 using System.Threading.Tasks;
-using Acme.Dapper.Enums;
-namespace Acme.Dapper;
+namespace Acme.Dapper.Repository;
 
 /// <summary>
 /// Dapper拓展仓储实现接口
