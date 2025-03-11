@@ -107,7 +107,7 @@
       }
     },
     "D:\\yzxs\\Code\\Acme\\acme\\Acme\\Acme.csproj": {
-      "version": "5.5.1.3",
+      "version": "5.5.1.4",
       "restore": {
         "projectUniqueName": "D:\\yzxs\\Code\\Acme\\acme\\Acme\\Acme.csproj",
         "projectName": "Acme",
@@ -163,19 +163,19 @@
           "dependencies": {
             "Microsoft.Extensions.Caching.Abstractions": {
               "target": "Package",
-              "version": "[9.0.0, )"
+              "version": "[9.0.2, )"
             },
             "Microsoft.Extensions.DependencyInjection": {
               "target": "Package",
-              "version": "[9.0.0, )"
+              "version": "[9.0.2, )"
             },
             "Microsoft.Extensions.Features": {
               "target": "Package",
-              "version": "[9.0.0, )"
+              "version": "[9.0.2, )"
             },
             "NLog": {
               "target": "Package",
-              "version": "[5.3.4, )"
+              "version": "[5.4.0, )"
             },
             "NPOI": {
               "target": "Package",
@@ -189,11 +189,11 @@
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[6.12.1, )"
+              "version": "[6.13.2, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[7.2.0, )"
+              "version": "[7.3.1, )"
             },
             "ZKWeb.System.Drawing": {
               "target": "Package",
@@ -223,19 +223,19 @@
           "dependencies": {
             "Microsoft.Extensions.Caching.Abstractions": {
               "target": "Package",
-              "version": "[9.0.0, )"
+              "version": "[9.0.2, )"
             },
             "Microsoft.Extensions.DependencyInjection": {
               "target": "Package",
-              "version": "[9.0.0, )"
+              "version": "[9.0.2, )"
             },
             "Microsoft.Extensions.Features": {
               "target": "Package",
-              "version": "[9.0.0, )"
+              "version": "[9.0.2, )"
             },
             "NLog": {
               "target": "Package",
-              "version": "[5.3.4, )"
+              "version": "[5.4.0, )"
             },
             "NPOI": {
               "target": "Package",
@@ -249,11 +249,11 @@
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[6.12.1, )"
+              "version": "[6.13.2, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[7.2.0, )"
+              "version": "[7.3.1, )"
             },
             "ZKWeb.System.Drawing": {
               "target": "Package",
