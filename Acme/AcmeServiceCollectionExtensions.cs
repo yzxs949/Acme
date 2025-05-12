@@ -1,8 +1,6 @@
 ﻿using Acme.Cookie;
-using Acme.Nlogs;
 using Acme.Sessions;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace Acme;
 
@@ -15,14 +13,8 @@ public static class AcmeServiceCollectionExtensions
     /// 添加Acme注册服务
     /// </summary>
     /// <param name="services"></param>
-    /// <param name="logConfig"></param>
-    public static void AddAcmeBuilderServer(this IServiceCollection services, LogConfig logConfig = null)
+    public static void AddAcmeBuilderServer(this IServiceCollection services)
     {
-        if (logConfig != null)
-        {
-            services.AddTransient<LogConfig>(opt => logConfig);
-            services.AddTransient(typeof(ILog<>), typeof(Log<>));
-        }
         services.AddHttpContextAccessor();
         services.AddTransient<IHttpCookieService, HttpCookieService>();
         services.AddSession();
