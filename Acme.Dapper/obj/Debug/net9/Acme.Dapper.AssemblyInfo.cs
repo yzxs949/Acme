@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCopyrightAttribute("yzxs")]
 [assembly: System.Reflection.AssemblyDescriptionAttribute("Acme framework based on Dapper database operation class library")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("5.3.0.6")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("5.3.0.6+cdf3585f53c28790da5a4097d337419e5975b747")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("5.3.0.6+b51335b6d6f969a5f93eae9904dd1949ddcf2a0e")]
 [assembly: System.Reflection.AssemblyProductAttribute("Acme.Dapper")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Acme.Dapper")]
 [assembly: System.Reflection.AssemblyVersionAttribute("5.3.0.6")]

@@ -238,4 +238,41 @@ public static class ConvHelper
         }
         return code;
     }
+
+    /// <summary>
+    /// 计算时间间隔
+    /// </summary>
+    /// <param name="startDate">开始时间</param>
+    /// <param name="endDate">结束时间</param>
+    /// <returns>时间间隔</returns>
+    public static string LastMonth(this DateTime startDate, DateTime endDate)
+    {
+        // 计算两个日期之间的年、月、天间隔
+        int years = endDate.Year - startDate.Year;
+        int months = endDate.Month - startDate.Month;
+        int days = endDate.Day - startDate.Day;
+
+        // 调整月份和天数
+        if (days < 0)
+        {
+            months--;
+            DateTime lastMonth = endDate.AddMonths(-1);
+            days += DateTime.DaysInMonth(lastMonth.Year, lastMonth.Month);
+        }
+
+        if (months < 0)
+        {
+            years--;
+            months += 12;
+        }
+
+        string result = "";
+        if (years > 0)
+            result += $"{years}年";
+        if (months > 0)
+            result += $"{months}月";
+        if (days > 0)
+            result += $"{days}天";
+        return result;
+    }
 }
