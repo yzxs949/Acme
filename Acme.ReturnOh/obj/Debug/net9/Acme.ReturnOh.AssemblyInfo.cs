@@ -18,7 +18,7 @@ using System.Reflection;
     "信息和 XML 注释文件\r\n\t\t\t2. ConfigureApiBehaviorOptions 配置API行为选项，自定义模型验证失败时的响应格式\r\n\t\t\t3." +
     " AddExceptionFilterService 配置MVC选项，添加自定义的异常过滤器\r\n\t\t")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.5.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.5+b51335b6d6f969a5f93eae9904dd1949ddcf2a0e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.5+e43d941ef1e3288f95396b1b68de67b8dd758d55")]
 [assembly: System.Reflection.AssemblyProductAttribute("Acme.ReturnOh")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Acme.ReturnOh")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.5.0.0")]

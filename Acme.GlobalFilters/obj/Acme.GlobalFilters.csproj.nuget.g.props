@@ -17,6 +17,6 @@
     <PkgMicrosoft_Extensions_ApiDescription_Server Condition=" '$(PkgMicrosoft_Extensions_ApiDescription_Server)' == '' ">D:\yzxs\Code\Acme\acme\packages\microsoft.extensions.apidescription.server\8.0.0</PkgMicrosoft_Extensions_ApiDescription_Server>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(TargetFramework)' == 'net9' AND '$(ExcludeRestorePackageImports)' != 'true' ">
-    <PkgMicrosoft_Extensions_ApiDescription_Server Condition=" '$(PkgMicrosoft_Extensions_ApiDescription_Server)' == '' ">D:\yzxs\Code\Acme\acme\packages\microsoft.extensions.apidescription.server\8.0.0</PkgMicrosoft_Extensions_ApiDescription_Server>
+    <PkgMicrosoft_Extensions_ApiDescription_Server Condition=" '$(PkgMicrosoft_Extensions_ApiDescription_Server)' == '' ">D:\yzxs\Code\Acme\acme\packages\microsoft.extensions.apidescription.server\9.0.0</PkgMicrosoft_Extensions_ApiDescription_Server>
   </PropertyGroup>
 </Project>
