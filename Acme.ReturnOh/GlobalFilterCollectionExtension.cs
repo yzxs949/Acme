@@ -59,8 +59,7 @@ public static class GlobalFilterCollectionExtension
         {
             options.InvalidModelStateResponseFactory = delegate (ActionContext context)
             {
-                string? msg = (from e in context.ModelState.Values.SelectMany((ModelStateEntry v) => v.Errors)
-                               select e.ErrorMessage).FirstOrDefault<string>();
+                string? msg = (from e in context.ModelState.Values.SelectMany((ModelStateEntry v) => v.Errors) select e.ErrorMessage).FirstOrDefault<string>();
                 return new BadRequestObjectResult(new Oh(400, msg ?? "", null));
             };
         });
