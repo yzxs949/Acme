@@ -1,189 +1,494 @@
-Acme 类库文档
-概述
-Acme 是一个 .NET 工具类库，提供了一系列常用的功能扩展和工具类，旨在简化日常开发工作。当前版本为 5.5.2.1，支持 .NET 6.0、7.0、8.0 和 9.0。该类库包含 JSON 处理、数据类型转换、HTTP 请求、加密工具等功能模块。
-核心功能模块与代码示例
-1. JSON 处理 (Json.cs)
-功能描述：提供 JSON 序列化和反序列化的扩展方法。
-using Acme.Tools;
+# Acme .NET 工具类库文档
 
-// 序列化示例
-var obj = new { Name = "Test", Value = 123 };
-string json = obj.ToJson();
-Console.WriteLine(json); // 输出: {"Name":"Test","Value":123}
+## 概述
 
-// 反序列化示例
-string jsonString = "{\"Name\":\"Test\",\"Value\":123}";
-var result = jsonString.ToEntity<dynamic>();
-Console.WriteLine(result.Name); // 输出: Test
+Acme 是一个功能丰富的 .NET 工具类库，提供了一系列常用的功能扩展和工具类，旨在简化日常开发工作。
 
-2. 数据类型转换 (ConvHelper.cs)
-功能描述：提供各种数据类型转换的扩展方法。
-using Acme.Tools;
+**版本信息**
+- 当前版本：5.5.2.1
+- 支持框架：.NET 6.0、7.0、8.0、9.0
+- 许可证：Apache License 2.0
 
-// 字符串转数字
-string numStr = "123";
-int num = numStr.ToInt(); // 返回 123
-string invalidStr = "abc";
-int defaultNum = invalidStr.ToInt(0); // 返回 0（默认值）
+## 快速开始
 
-// 路径转换
-string absolutePath = @"C:\project\files\test.txt";
-string relativePath = absolutePath.ToUrlPath(); // 转换为相对路径
+### 安装与配置
 
-// 随机码生成
-string randomCode = "0,1,2,3,4,5".ToRandomCode(6); // 生成6位随机数字串
-
-// 时间戳获取
-long timestamp = ConvHelper.GetTimeStamp(); // 获取13位时间戳
-
-3. HTTP 请求 (HttpHelper.cs)
-功能描述：提供 HTTP 请求的简单封装。
-using Acme.Tools;
-
-// POST 请求示例
-var postData = new { userId = 1, action = "query" };
-string postResponse = HttpHelper.HttpClientPost(" https://api.example.com/post ", postData);
-Console.WriteLine(postResponse);
-
-// GET 请求示例
-string getResponse = HttpHelper.HttpClientGet(" https://api.example.com/get?id=1 ");
-Console.WriteLine(getResponse);
-
-4. 依赖注入扩展 (AcmeServiceCollectionExtensions.cs)
-功能描述：提供 DI 容器的扩展方法，用于注册 Acme 相关服务。
-using Microsoft.Extensions.DependencyInjection;
+```csharp
+// Program.cs 或 Startup.cs
 using Acme;
 
-// 在 Startup.cs 或 Program.cs 中配置服务
-var services = new ServiceCollection();
-services.AddAcmeBuilderServer(); // 注册 HTTP 上下文、Cookie 和 Session 服务
+var builder = WebApplication.CreateBuilder(args);
 
-// 使用示例：在控制器中注入服务
-public class HomeController
+// 注册 Acme 服务
+builder.Services.AddAcmeBuilderServer();
+
+var app = builder.Build();
+```
+
+## 核心功能模块
+
+### 1. JSON 处理
+
+**所在文件：** `Json.cs`
+
+```csharp
+using Acme.Tools;
+
+// 对象序列化
+var user = new { Name = "张三", Age = 25, Email = "zhangsan@example.com" };
+string json = user.ToJson();
+// 输出: {"Name":"张三","Age":25,"Email":"zhangsan@example.com"}
+
+// JSON 反序列化
+string jsonString = "{\"Name\":\"李四\",\"Age\":30}";
+var person = jsonString.ToEntity<dynamic>();
+Console.WriteLine(person.Name); // 输出: 李四
+
+// 泛型反序列化
+var specificPerson = jsonString.ToEntity<User>();
+```
+
+### 2. 数据类型转换
+
+**所在文件：** `ConvHelper.cs`
+
+```csharp
+using Acme.Tools;
+
+// 安全类型转换
+string numStr = "123";
+int number = numStr.ToInt();           // 返回 123
+int safeNumber = "abc".ToInt(0);       // 返回默认值 0
+double doubleNum = "45.67".ToDouble();
+
+// 路径处理
+string absolutePath = @"C:\project\files\image.jpg";
+string webPath = absolutePath.ToUrlPath(); // 转换为 Web 可用路径
+
+// 随机数据生成
+string randomCode = "0,1,2,3,4,5,6,7,8,9".ToRandomCode(6); // 6位数字验证码
+string customRandom = "A,B,C,D,E".ToRandomCode(8); // 8位字母码
+
+// 时间处理
+long timestamp = ConvHelper.GetTimeStamp(); // 13位时间戳
+```
+
+### 3. HTTP 请求封装
+
+**所在文件：** `HttpHelper.cs`
+
+```csharp
+using Acme.Tools;
+
+// GET 请求示例
+string apiUrl = "https://api.example.com/users?id=1";
+string response = HttpHelper.HttpClientGet(apiUrl);
+Console.WriteLine(response);
+
+// POST 请求示例
+var postData = new { 
+    UserId = 1, 
+    Action = "update", 
+    Data = new { Name = "新名称" }
+};
+string postResponse = HttpHelper.HttpClientPost(
+    "https://api.example.com/update", 
+    postData
+);
+
+// 建议的错误处理方式
+try
 {
-    private readonly IHttpCookieService _cookieService;
+    string result = HttpHelper.HttpClientGet(apiUrl);
+    // 处理结果
+}
+catch (Exception ex)
+{
+    Console.WriteLine($"请求失败: {ex.Message}");
+}
+```
+
+### 4. 加密工具
+
+**所在文件：** `MD5Encryption.cs`
+
+```csharp
+using Acme.Tools;
+
+// 基本加密
+string password = "mypassword123";
+string encrypted = MD5Encryption.Encrypt(password);        // 小写MD5
+string encryptedUpper = MD5Encryption.Encrypt(password, true); // 大写MD5
+
+// 密码验证
+bool isValid = MD5Encryption.Compare(inputPassword, storedHash);
+
+// 使用示例 - 用户密码处理
+public class UserService
+{
+    public bool ValidateUser(string inputPassword, string storedHash)
+    {
+        return MD5Encryption.Compare(inputPassword, storedHash);
+    }
+    
+    public string HashPassword(string password)
+    {
+        return MD5Encryption.Encrypt(password);
+    }
+}
+```
+
+### 5. Session 管理
+
+**接口：** `IHttpSessionService`  
+**实现：** `HttpSessionService`
+
+```csharp
+using Acme.Sessions;
+
+// 在控制器中使用
+public class AccountController : Controller
+{
     private readonly IHttpSessionService _sessionService;
     
-    public HomeController(IHttpCookieService cookieService, IHttpSessionService sessionService)
+    public AccountController(IHttpSessionService sessionService)
+    {
+        _sessionService = sessionService;
+    }
+    
+    public IActionResult Login(string username)
+    {
+        // 存储字符串
+        _sessionService.SetSession("CurrentUser", username);
+        
+        // 存储对象
+        var userInfo = new { 
+            UserName = username, 
+            LoginTime = DateTime.Now,
+            Role = "Admin"
+        };
+        _sessionService.SetObjectAsJson("UserInfo", userInfo);
+        
+        return RedirectToAction("Index");
+    }
+    
+    public IActionResult GetUserInfo()
+    {
+        // 读取数据
+        string username = _sessionService.GetSession("CurrentUser");
+        var userInfo = _sessionService.GetObjectFromJson<dynamic>("UserInfo");
+        
+        // 清理 Session
+        _sessionService.RemoveSession("CurrentUser");
+        
+        return View(userInfo);
+    }
+}
+```
+
+### 6. Cookie 管理
+
+**接口：** `IHttpCookieService`  
+**实现：** `HttpCookieService`
+
+```csharp
+using Acme.Cookie;
+
+public class HomeController : Controller
+{
+    private readonly IHttpCookieService _cookieService;
+    
+    public HomeController(IHttpCookieService cookieService)
     {
         _cookieService = cookieService;
-        _sessionService = sessionService;
+    }
+    
+    public IActionResult SetCookie()
+    {
+        // 设置 Cookie（300分钟过期）
+        _cookieService.SetCookies("UserPreferences", "theme=dark", 300);
+        
+        // 自定义过期时间（60分钟）
+        _cookieService.SetCookies("AuthToken", "abc123xyz", 60);
+        
+        return View();
+    }
+    
+    public IActionResult ReadCookie()
+    {
+        string token = _cookieService.GetCookies("AuthToken");
+        string preferences = _cookieService.GetCookies("UserPreferences");
+        
+        ViewData["Token"] = token;
+        return View();
+    }
+    
+    public IActionResult DeleteCookie()
+    {
+        _cookieService.DeleteCookies("AuthToken");
+        return RedirectToAction("Index");
+    }
+}
+```
+
+### 7. 拼音处理
+
+**所在文件：** `Pinyin.cs`
+
+```csharp
+using Acme.Pinyins;
+
+// 中文转拼音首字母
+string chinese = "中文拼音处理";
+string initials = Pinyin.GetInitials(chinese); // 输出: "ZWPYCL"
+
+// 编码转换（如果可用）
+string encodedText = Pinyin.ConvertEncoding("文本内容", "UTF-8");
+
+// 使用场景示例
+public class SearchService
+{
+    public string GenerateSearchKey(string chineseName)
+    {
+        return Pinyin.GetInitials(chineseName).ToLower();
+    }
+}
+```
+
+### 8. Excel 处理
+
+**基于 NPOI 的 Excel 操作**
+
+```csharp
+using Acme.Excel;
+
+// 定义数据模型
+public class Product
+{
+    public string Name { get; set; }
+    public decimal Price { get; set; }
+    public int Stock { get; set; }
+}
+
+public class ExcelService
+{
+    // 导入 Excel 数据
+    public List<Product> ImportProducts(string filePath)
+    {
+        var excelService = new NpolExcelService<Product>();
+        return excelService.ImportFromExcel(filePath);
+    }
+    
+    // 导出数据到 Excel
+    public void ExportProducts(List<Product> products, string outputPath)
+    {
+        var excelService = new NpolExcelService<Product>();
+        excelService.ExportToExcel(products, outputPath);
     }
 }
 
-5. 加密工具 (MD5Encryption.cs)
-功能描述：提供 MD5 加密功能。
+// 使用示例
+var products = new List<Product>
+{
+    new Product { Name = "笔记本电脑", Price = 5999.99m, Stock = 50 },
+    new Product { Name = "无线鼠标", Price = 89.90m, Stock = 100 }
+};
+
+excelService.ExportProducts(products, "products.xlsx");
+```
+
+### 9. 验证码生成
+
+**所在文件：** `VerCode.cs`
+
+```csharp
 using Acme.Tools;
 
-string originalText = "password123";
-string encrypted = MD5Encryption.Encrypt(originalText); // 默认小写
-string encryptedUpper = MD5Encryption.Encrypt(originalText, true); // 大写输出
-
-// 比较 MD5 值
-bool isMatch = MD5Encryption.Compare("inputText", "storedHash");
-
-6. Session 管理 (IHttpSessionService.cs, HttpSessionService.cs)
-功能描述：提供 Session 操作的接口和实现。
-using Acme.Sessions;
-
-// 设置和获取字符串 Session
-_sessionService.SetSession("user", "admin");
-string user = _sessionService.GetSession("user"); // 返回 "admin"
-
-// 设置和获取对象 Session
-var userInfo = new { Name = "John", Age = 30 };
-_sessionService.SetObjectAsJson("userInfo", userInfo);
-var retrievedUser = _sessionService.GetObjectFromJson<dynamic>("userInfo");
-
-// 移除 Session
-_sessionService.RemoveSession("user");
-
-7. Cookie 管理 (IHttpCookieService.cs, HttpCookieService.cs)
-功能描述：提供 Cookie 操作的接口和实现。
-using Acme.Cookie;
-
-// 设置 Cookie（过期时间默认为300分钟）
-_cookieService.SetCookies("authToken", "abc123", 60); // 60分钟后过期
-
-// 获取 Cookie
-string token = _cookieService.GetCookies("authToken");
-
-// 删除 Cookie
-_cookieService.DeleteCookies("authToken");
-
-8. 拼音处理 (Pinyin.cs)
-功能描述：提供中文转拼音的功能。
-using Acme.Pinyins;
-
-string chineseText = "中文拼音";
-string initials = Pinyin.GetInitials(chineseText); // 获取首字母缩写，如 "ZWPY"
-
-// 编码转换示例（如果方法可用）
-string converted = Pinyin.ConvertEncoding("text", "UTF-8");
-
-9. Excel 处理 (NpolExcelHelper.cs, NpolExcelService.cs)
-功能描述：基于 NPOI 的 Excel 导入导出功能。
-using Acme.Excel;
-
-// 导入 Excel 数据
-var excelService = new NpolExcelService<MyEntity>();
-List<MyEntity> dataList = excelService.ImportFromExcel("path/to/file.xlsx");
-
-// 导出数据到 Excel
-List<MyEntity> entities = new List<MyEntity> { ... };
-excelService.ExportToExcel(entities, "output.xlsx");
-
-10. 验证码生成 (VerCode.cs)
-功能描述：提供验证码生成功能。
-using Acme.Tools;
-
-// 生成数字验证码
+// 数字验证码
 string numericCode = VerCode.GetCode(6); // 6位数字验证码
+string fourDigitCode = VerCode.GetCode(4); // 4位数字验证码
 
-// 生成算式验证码（如果方法可用）
-var equationCode = VerCode.GetEquationCode(); // 返回算式和答案
+// 算式验证码（如果可用）
+// var equation = VerCode.GetEquationCode(); // 返回算式和答案
 
-11. 验证工具 (VerificationHelper.cs)
-功能描述：提供验证相关的扩展方法。
+// 在注册流程中使用
+public class VerificationService
+{
+    public string GeneratePhoneVerificationCode()
+    {
+        return VerCode.GetCode(6); // 生成6位手机验证码
+    }
+    
+    public string GenerateEmailVerificationCode()
+    {
+        return VerCode.GetCode(8); // 生成8位邮箱验证码
+    }
+}
+```
+
+### 10. 验证工具
+
+**所在文件：** `VerificationHelper.cs`
+
+```csharp
 using Acme.Tools;
 
-// 检查 Guid 是否为默认值
+// Guid 验证
 Guid testGuid = Guid.NewGuid();
-bool isDefault = testGuid.IsDefault(); // 返回 false
+bool isDefaultGuid = testGuid.IsDefault(); // 检查是否为默认值
 
-// 正则表达式验证（示例：验证邮箱）
-string email = "test@example.com";
-bool isValid = email.RegexVerification(@"^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$");
+// 正则表达式验证
+string email = "user@example.com";
+bool isValidEmail = email.RegexVerification(@"^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$");
 
-12. 配置管理 (JsonFile.cs, App.cs)
-功能描述：提供配置文件读取功能。
+string phone = "13800138000";
+bool isValidPhone = phone.RegexVerification(@"^1[3-9]\d{9}$");
+
+// 扩展方法使用
+public class UserValidator
+{
+    public bool ValidateUserInput(User user)
+    {
+        if (user.Id.IsDefault())
+            return false;
+            
+        if (!user.Email.RegexVerification(emailPattern))
+            return false;
+            
+        return true;
+    }
+}
+```
+
+### 11. 配置管理
+
+**配置文件读取工具**
+
+```csharp
 using Acme.Apps;
 using Acme.JsonFiles;
 
 // 使用 App 类读取配置
-string databaseConnection = App.GetValue("ConnectionStrings", "DefaultConnection");
-string appName = App.GetValue("AppSettings:Name");
+string dbConnection = App.GetValue("ConnectionStrings:DefaultConnection");
+string appName = App.GetValue("AppSettings:ApplicationName");
+string logLevel = App.GetValue("Logging:LogLevel:Default");
 
-// 直接使用 JsonFile 类
-var jsonFile = new JsonFile("custom.json");
-string value = jsonFile.GetValue("Section", "Key");
+// 自定义配置文件
+var customConfig = new JsonFile("customSettings.json");
+string apiKey = customConfig.GetValue("ThirdParty:ApiKey");
+string endpoint = customConfig.GetValue("ThirdParty:Endpoint");
 
-// 获取系统路径
-string currentPath = App.Path; // 应用程序域基础目录
-string systemPath = App.SystemPath; // 当前工作目录
+// 路径信息
+string basePath = App.Path;           // 应用程序域基础目录
+string workingPath = App.SystemPath;  // 当前工作目录
 
-注意事项
+// 配置类封装示例
+public class AppConfig
+{
+    public static string DatabaseConnection => 
+        App.GetValue("ConnectionStrings:DefaultConnection");
+        
+    public static string ApiBaseUrl => 
+        App.GetValue("AppSettings:ApiBaseUrl");
+        
+    public static bool EnableCache => 
+        bool.Parse(App.GetValue("AppSettings:EnableCache") ?? "false");
+}
+```
 
-版本兼容性：当前版本为 5.5.2.1，支持 .NET 6.0 及以上版本。
-代码问题：部分类中存在重复定义的方法或属性（如 Json.cs 中的方法重载冲突），使用时需参考具体代码实现。
-错误处理：HTTP 请求等方法返回异常信息字符串，建议在实际使用中添加异常处理。
+## 最佳实践
 
-依赖项
+### 1. 依赖注入配置
 
-Newtonsoft.Json（用于 JSON 处理）
-NPOI（用于 Excel 操作）
-Microsoft.Extensions.DependencyInjection（用于依赖注入）
-Microsoft.AspNetCore.Http（用于 HTTP 上下文访问）
+```csharp
+// Program.cs
+var builder = WebApplication.CreateBuilder(args);
 
-许可证
-Apache License 2.0
+// 注册 Acme 服务
+builder.Services.AddAcmeBuilderServer();
+
+// 注册自定义服务
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddTransient<IExcelService, ExcelService>();
+
+var app = builder.Build();
+```
+
+### 2. 错误处理策略
+
+```csharp
+public class SafeDataProcessor
+{
+    public int? SafeConvertToInt(string input)
+    {
+        try
+        {
+            return input.ToInt();
+        }
+        catch
+        {
+            return null;
+        }
+    }
+    
+    public T SafeJsonDeserialize<T>(string json) where T : new()
+    {
+        try
+        {
+            return json.ToEntity<T>();
+        }
+        catch
+        {
+            return new T();
+        }
+    }
+}
+```
+
+### 3. 配置管理示例
+
+```csharp
+public static class GlobalSettings
+{
+    public static class Paths
+    {
+        public static string Temp => Path.Combine(App.Path, "temp");
+        public static string Logs => Path.Combine(App.Path, "logs");
+        public static string Uploads => Path.Combine(App.Path, "uploads");
+    }
+    
+    public static class Api
+    {
+        public static string BaseUrl => App.GetValue("Api:BaseUrl");
+        public static int Timeout => int.Parse(App.GetValue("Api:Timeout") ?? "30");
+    }
+}
+```
+
+## 依赖项说明
+
+| 依赖包 | 用途 |
+|--------|------|
+| Newtonsoft.Json | JSON 序列化/反序列化 |
+| NPOI | Excel 文件操作 |
+| Microsoft.Extensions.DependencyInjection | 依赖注入容器 |
+| Microsoft.AspNetCore.Http | HTTP 上下文访问 |
+
+## 注意事项
+
+1. **版本兼容性**：确保使用的 .NET 版本在 6.0 及以上
+2. **错误处理**：HTTP 请求等方法返回字符串结果，建议封装异常处理
+3. **性能考虑**：频繁的 Session/Cookie 操作可能影响性能，请合理使用
+4. **安全建议**：敏感数据建议使用更安全的加密方式，MD5 适用于非敏感场景
+
+## 技术支持
+
+如在使用过程中遇到问题，请检查：
+- 是否正确注册了依赖注入服务
+- 配置文件中相关配置项是否存在
+- 使用的 .NET 版本是否受支持
+- 相关依赖包版本是否兼容
+
+---
+
+*本文档基于 Acme 类库版本 5.5.2.1 AI编写，具体实现可能因版本更新而有所变化。*
