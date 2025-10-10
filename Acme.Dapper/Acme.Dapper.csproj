@@ -3,18 +3,20 @@
 	<PropertyGroup>
 		<TargetFrameworks>net8;net9;</TargetFrameworks>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
-		<Version>5.3.0.6</Version>
+		<Version>5.3.0.7</Version>
 		<Authors>yzxs</Authors>
 		<Company>yzxs</Company>
 		<Copyright>yzxs</Copyright>
 		<Description>Acme framework based on Dapper database operation class library</Description>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="Acme" Version="5.5.1.4" />
 		<PackageReference Include="Dapper" Version="2.1.66" />
 		<PackageReference Include="Dapper.Contrib" Version="2.0.78" />
-		<PackageReference Include="Microsoft.Data.SqlClient" Version="6.0.1" />
-		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.3" />
+		<PackageReference Include="Microsoft.Data.SqlClient" Version="6.1.1" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.9" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\Acme\Acme.csproj" />
 	</ItemGroup>
 
 </Project>

@@ -12,3 +12,5 @@ D:\yzxs\Code\Acme\acme\Acme.ReturnOh\obj\Debug\net6\refint\Acme.ReturnOh.dll
 D:\yzxs\Code\Acme\acme\Acme.ReturnOh\obj\Debug\net6\Acme.ReturnOh.xml
 D:\yzxs\Code\Acme\acme\Acme.ReturnOh\obj\Debug\net6\Acme.ReturnOh.pdb
 D:\yzxs\Code\Acme\acme\Acme.ReturnOh\obj\Debug\net6\ref\Acme.ReturnOh.dll
+D:\yzxs\Code\Acme\acme\Acme.ReturnOh\bin\Debug\net6\Acme.ReturnOh.runtimeconfig.json
+D:\yzxs\Code\Acme\acme\Acme.ReturnOh\obj\Debug\net6\Acme.ReturnOh.genruntimeconfig.cache

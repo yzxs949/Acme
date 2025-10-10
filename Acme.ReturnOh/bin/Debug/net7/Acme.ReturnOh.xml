@@ -89,7 +89,7 @@
             获取失败
             </summary>
         </member>
-        <member name="F:Acme.ReturnOh.CV.NullData">
+        <member name="F:Acme.ReturnOh.CV.NullValue">
             <summary>
             表示一个空值对象，其值为 null
             </summary>
@@ -245,6 +245,11 @@
             <param name="Msg">描述</param>
             <param name="Data">数据</param>
         </member>
+        <member name="T:Acme.ReturnOh.IOh">
+            <summary>
+            通用返回参数实体接口
+            </summary>
+        </member>
         <member name="T:Acme.ReturnOh.OhExtension">
             <summary>
             Oh拓展类
@@ -377,6 +382,8 @@
             扩展方法，用于将布尔值转换为表示操作成功或失败的 Oh 实例。
             </summary>
             <param name="isSuccess">布尔值，指示操作是否成功。</param>
+            <param name="successMsg">成功时的描述</param>
+            <param name="failMsg">失败时的描述</param>
             <returns>表示操作成功或失败的 Oh 实例。</returns>
         </member>
     </members>

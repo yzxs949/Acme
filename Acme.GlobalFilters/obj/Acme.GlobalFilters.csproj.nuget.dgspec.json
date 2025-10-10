@@ -5,7 +5,7 @@
   },
   "projects": {
     "D:\\yzxs\\Code\\Acme\\acme\\Acme.GlobalFilters\\Acme.GlobalFilters.csproj": {
-      "version": "2.0.3",
+      "version": "2.0.4",
       "restore": {
         "projectUniqueName": "D:\\yzxs\\Code\\Acme\\acme\\Acme.GlobalFilters\\Acme.GlobalFilters.csproj",
         "projectName": "Acme.GlobalFilters",
@@ -28,9 +28,7 @@
           "net9"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
-          "D:\\yzxs\\德瑞\\SPD重构\\HisSync.JiuZhen\\Packges": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -82,7 +80,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
         },
         "net9.0": {
           "targetAlias": "net9",
@@ -102,12 +100,12 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
     "D:\\yzxs\\Code\\Acme\\acme\\Acme\\Acme.csproj": {
-      "version": "5.5.1.9",
+      "version": "5.5.2.1",
       "restore": {
         "projectUniqueName": "D:\\yzxs\\Code\\Acme\\acme\\Acme\\Acme.csproj",
         "projectName": "Acme",
@@ -130,9 +128,7 @@
           "net9"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
-          "D:\\yzxs\\德瑞\\SPD重构\\HisSync.JiuZhen\\Packges": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -163,15 +159,15 @@
           "dependencies": {
             "Microsoft.Extensions.Caching.Abstractions": {
               "target": "Package",
-              "version": "[9.0.7, )"
+              "version": "[9.0.9, )"
             },
             "Microsoft.Extensions.DependencyInjection": {
               "target": "Package",
-              "version": "[9.0.7, )"
+              "version": "[9.0.9, )"
             },
             "Microsoft.Extensions.Features": {
               "target": "Package",
-              "version": "[9.0.7, )"
+              "version": "[9.0.9, )"
             },
             "NPOI": {
               "target": "Package",
@@ -179,7 +175,7 @@
             },
             "Newtonsoft.Json": {
               "target": "Package",
-              "version": "[13.0.3, )"
+              "version": "[13.0.4, )"
             },
             "NuGet.Build.Tasks.Pack": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
@@ -189,7 +185,7 @@
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[9.0.3, )"
+              "version": "[9.0.4, )"
             },
             "ZKWeb.System.Drawing": {
               "target": "Package",
@@ -212,22 +208,22 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
         },
         "net9.0": {
           "targetAlias": "net9",
           "dependencies": {
             "Microsoft.Extensions.Caching.Abstractions": {
               "target": "Package",
-              "version": "[9.0.7, )"
+              "version": "[9.0.9, )"
             },
             "Microsoft.Extensions.DependencyInjection": {
               "target": "Package",
-              "version": "[9.0.7, )"
+              "version": "[9.0.9, )"
             },
             "Microsoft.Extensions.Features": {
               "target": "Package",
-              "version": "[9.0.7, )"
+              "version": "[9.0.9, )"
             },
             "NPOI": {
               "target": "Package",
@@ -235,7 +231,7 @@
             },
             "Newtonsoft.Json": {
               "target": "Package",
-              "version": "[13.0.3, )"
+              "version": "[13.0.4, )"
             },
             "NuGet.Build.Tasks.Pack": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
@@ -245,7 +241,7 @@
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[9.0.3, )"
+              "version": "[9.0.4, )"
             },
             "ZKWeb.System.Drawing": {
               "target": "Package",
@@ -268,7 +264,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

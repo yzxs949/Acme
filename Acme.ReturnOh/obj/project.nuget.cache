@@ -1,13 +1,81 @@
 {
   "version": 2,
-  "dgSpecHash": "ckJeJu66mIo=",
-  "success": true,
+  "dgSpecHash": "fDYd86rSo+M=",
+  "success": false,
   "projectFilePath": "D:\\yzxs\\Code\\Acme\\acme\\Acme.ReturnOh\\Acme.ReturnOh.csproj",
   "expectedPackageFiles": [
+    "D:\\yzxs\\Code\\Acme\\acme\\packages\\asp.versioning.abstractions\\8.1.0\\asp.versioning.abstractions.8.1.0.nupkg.sha512",
+    "D:\\yzxs\\Code\\Acme\\acme\\packages\\asp.versioning.http\\8.1.0\\asp.versioning.http.8.1.0.nupkg.sha512",
+    "D:\\yzxs\\Code\\Acme\\acme\\packages\\asp.versioning.mvc\\8.1.0\\asp.versioning.mvc.8.1.0.nupkg.sha512",
+    "D:\\yzxs\\Code\\Acme\\acme\\packages\\entityframework\\6.5.1\\entityframework.6.5.1.nupkg.sha512",
+    "D:\\yzxs\\Code\\Acme\\acme\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "D:\\yzxs\\Code\\Acme\\acme\\packages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512",
     "D:\\yzxs\\Code\\Acme\\acme\\packages\\microsoft.openapi\\1.6.22\\microsoft.openapi.1.6.22.nupkg.sha512",
+    "D:\\yzxs\\Code\\Acme\\acme\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
+    "D:\\yzxs\\Code\\Acme\\acme\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
     "D:\\yzxs\\Code\\Acme\\acme\\packages\\nuget.build.tasks.pack\\6.12.1\\nuget.build.tasks.pack.6.12.1.nupkg.sha512",
+    "D:\\yzxs\\Code\\Acme\\acme\\packages\\oracle.manageddataaccess\\23.9.0\\oracle.manageddataaccess.23.9.0.nupkg.sha512",
+    "D:\\yzxs\\Code\\Acme\\acme\\packages\\oracle.manageddataaccess.entityframework\\23.9.0\\oracle.manageddataaccess.entityframework.23.9.0.nupkg.sha512",
+    "D:\\yzxs\\Code\\Acme\\acme\\packages\\runtime.native.system.data.sqlclient.sni\\4.7.0\\runtime.native.system.data.sqlclient.sni.4.7.0.nupkg.sha512",
+    "D:\\yzxs\\Code\\Acme\\acme\\packages\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
+    "D:\\yzxs\\Code\\Acme\\acme\\packages\\runtime.win-x64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
+    "D:\\yzxs\\Code\\Acme\\acme\\packages\\runtime.win-x86.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "D:\\yzxs\\Code\\Acme\\acme\\packages\\swashbuckle.aspnetcore.swagger\\7.2.0\\swashbuckle.aspnetcore.swagger.7.2.0.nupkg.sha512",
-    "D:\\yzxs\\Code\\Acme\\acme\\packages\\swashbuckle.aspnetcore.swaggergen\\7.2.0\\swashbuckle.aspnetcore.swaggergen.7.2.0.nupkg.sha512"
+    "D:\\yzxs\\Code\\Acme\\acme\\packages\\swashbuckle.aspnetcore.swaggergen\\7.2.0\\swashbuckle.aspnetcore.swaggergen.7.2.0.nupkg.sha512",
+    "D:\\yzxs\\Code\\Acme\\acme\\packages\\system.codedom\\6.0.0\\system.codedom.6.0.0.nupkg.sha512",
+    "D:\\yzxs\\Code\\Acme\\acme\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512",
+    "D:\\yzxs\\Code\\Acme\\acme\\packages\\system.configuration.configurationmanager\\6.0.1\\system.configuration.configurationmanager.6.0.1.nupkg.sha512",
+    "D:\\yzxs\\Code\\Acme\\acme\\packages\\system.data.sqlclient\\4.8.6\\system.data.sqlclient.4.8.6.nupkg.sha512",
+    "D:\\yzxs\\Code\\Acme\\acme\\packages\\system.diagnostics.diagnosticsource\\6.0.2\\system.diagnostics.diagnosticsource.6.0.2.nupkg.sha512",
+    "D:\\yzxs\\Code\\Acme\\acme\\packages\\system.drawing.common\\6.0.0\\system.drawing.common.6.0.0.nupkg.sha512",
+    "D:\\yzxs\\Code\\Acme\\acme\\packages\\system.formats.asn1\\8.0.1\\system.formats.asn1.8.0.1.nupkg.sha512",
+    "D:\\yzxs\\Code\\Acme\\acme\\packages\\system.memory\\4.6.0\\system.memory.4.6.0.nupkg.sha512",
+    "D:\\yzxs\\Code\\Acme\\acme\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "D:\\yzxs\\Code\\Acme\\acme\\packages\\system.security.accesscontrol\\6.0.0\\system.security.accesscontrol.6.0.0.nupkg.sha512",
+    "D:\\yzxs\\Code\\Acme\\acme\\packages\\system.security.cryptography.protecteddata\\6.0.0\\system.security.cryptography.protecteddata.6.0.0.nupkg.sha512",
+    "D:\\yzxs\\Code\\Acme\\acme\\packages\\system.security.permissions\\6.0.0\\system.security.permissions.6.0.0.nupkg.sha512",
+    "D:\\yzxs\\Code\\Acme\\acme\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512",
+    "D:\\yzxs\\Code\\Acme\\acme\\packages\\system.text.encodings.web\\8.0.0\\system.text.encodings.web.8.0.0.nupkg.sha512",
+    "D:\\yzxs\\Code\\Acme\\acme\\packages\\system.text.json\\8.0.5\\system.text.json.8.0.5.nupkg.sha512",
+    "D:\\yzxs\\Code\\Acme\\acme\\packages\\system.threading.tasks.extensions\\4.6.0\\system.threading.tasks.extensions.4.6.0.nupkg.sha512",
+    "D:\\yzxs\\Code\\Acme\\acme\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1102",
+      "level": "Error",
+      "message": "找不到版本为 (>= 9.0.9) 的包 Swashbuckle.AspNetCore.SwaggerUI\r\n  - 在 nuget.org 中找到 91 个版本[ 最接近版本: 9.0.6 ]\r\n  - 在 C:\\Program Files\\dotnet\\library-packs 中找到 0 个版本",
+      "projectPath": "D:\\yzxs\\Code\\Acme\\acme\\Acme.ReturnOh\\Acme.ReturnOh.csproj",
+      "filePath": "D:\\yzxs\\Code\\Acme\\acme\\Acme.ReturnOh\\Acme.ReturnOh.csproj",
+      "libraryId": "Swashbuckle.AspNetCore.SwaggerUI",
+      "targetGraphs": [
+        "net8.0",
+        "net9.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "message": "已使用“.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1”而不是项目目标框架“net6.0”还原包“Oracle.ManagedDataAccess 23.9.0”。此包可能与项目不完全兼容。",
+      "projectPath": "D:\\yzxs\\Code\\Acme\\acme\\Acme.ReturnOh\\Acme.ReturnOh.csproj",
+      "warningLevel": 1,
+      "filePath": "D:\\yzxs\\Code\\Acme\\acme\\Acme.ReturnOh\\Acme.ReturnOh.csproj",
+      "libraryId": "Oracle.ManagedDataAccess",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "message": "已使用“.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1”而不是项目目标框架“net6.0”还原包“Oracle.ManagedDataAccess.EntityFramework 23.9.0”。此包可能与项目不完全兼容。",
+      "projectPath": "D:\\yzxs\\Code\\Acme\\acme\\Acme.ReturnOh\\Acme.ReturnOh.csproj",
+      "warningLevel": 1,
+      "filePath": "D:\\yzxs\\Code\\Acme\\acme\\Acme.ReturnOh\\Acme.ReturnOh.csproj",
+      "libraryId": "Oracle.ManagedDataAccess.EntityFramework",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    }
+  ]
 }

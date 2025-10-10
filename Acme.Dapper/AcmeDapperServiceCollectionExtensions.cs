@@ -1,6 +1,5 @@
 ﻿using Acme.Dapper.Extension;
 using Acme.Dapper.Repository;
-using Acme.Nlogs;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 namespace Acme.Dapper;
@@ -21,7 +20,6 @@ public static class AcmeDapperServiceCollectionExtensions
         if (string.IsNullOrWhiteSpace(connectionString))
             throw new ArgumentNullException(nameof(connectionString), "数据库连接字符串不能为空");
         services.AddTransient<IExtensions>(provider => new Extensions(connectionString));
-        services.AddScoped(typeof(ILog<>), typeof(Log<>));
         services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
         services.AddAcmeBuilderServer();
     }
