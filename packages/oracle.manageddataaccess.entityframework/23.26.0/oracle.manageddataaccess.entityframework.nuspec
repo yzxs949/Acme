@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Oracle.ManagedDataAccess.EntityFramework</id>
+    <version>23.26.0</version>
+    <title>Oracle Data Provider for .NET, Managed Entity Framework Driver</title>
+    <authors>Oracle</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="file">LICENSE.txt</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <icon>oracle.png</icon>
+    <readme>README.md</readme>
+    <projectUrl>https://www.oracle.com/database/technologies/appdev/dotnet.html</projectUrl>
+    <iconUrl>https://www.oracle.com/a/tech/img/collateral/nuget-oracle.png</iconUrl>
+    <description>This NuGet package is for ODP.NET, Managed Driver applications that use Code First and/or Entity Framework 6 applications. It will add and configure the Oracle Entity Framework assembly for your application.</description>
+    <copyright>Copyright © 2025, Oracle and/or its affiliates</copyright>
+    <tags>ODP.NET Oracle DB database EF Entity Framework</tags>
+    <dependencies>
+      <group targetFramework=".NETFramework4.7.2">
+        <dependency id="EntityFramework" version="[6.5.1, 7.0.0)" />
+        <dependency id="Oracle.ManagedDataAccess" version="[23.26.0, 24.0.0)" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

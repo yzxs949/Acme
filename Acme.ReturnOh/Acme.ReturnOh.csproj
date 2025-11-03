@@ -5,7 +5,7 @@
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
-		<Version>1.5</Version>
+		<Version>1.6</Version>
 		<Authors>yzxs</Authors>
 		<Company>yzxs</Company>
 		<Copyright>yzxs</Copyright>
@@ -19,7 +19,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="NuGet.Build.Tasks.Pack" Version="6.12.1">
+		<PackageReference Include="NuGet.Build.Tasks.Pack" Version="6.14.0">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
@@ -35,6 +35,9 @@
 	  <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI">
 	    <Version>9.0.9</Version>
 	  </PackageReference>
+	 <PackageReference Include="Oracle.ManagedDataAccess.EntityFramework" Version="23.26.0" />
+	 <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="9.6.0" />
+	 <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="9.6.0" />
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'net9'">
@@ -44,6 +47,10 @@
 	  <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI">
 	    <Version>9.0.9</Version>
 	  </PackageReference>
+	<PackageReference Include="Oracle.ManagedDataAccess.EntityFramework" Version="23.26.0" />
+	<PackageReference Include="Oracle.ManagedDataAccess.EntityFramework" Version="23.26.0" />
+	<PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="9.6.0" />
+	<PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="9.6.0" />
 	</ItemGroup>
 
 </Project>

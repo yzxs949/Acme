@@ -15,11 +15,11 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyCopyrightAttribute("yzxs")]
 [assembly: System.Reflection.AssemblyDescriptionAttribute("\n\t\t\tGlobal Filter Class Library\n\t\t")]
-[assembly: System.Reflection.AssemblyFileVersionAttribute("2.0.4.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("2.0.4+2e1cd8afb84c41ed2f016d42cc67339147707907")]
+[assembly: System.Reflection.AssemblyFileVersionAttribute("2.0.5.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("2.0.5+23bad5ab44b7489e6e6be9a1c2cd866f43101f42")]
 [assembly: System.Reflection.AssemblyProductAttribute("Acme.GlobalFilters")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Acme.GlobalFilters")]
-[assembly: System.Reflection.AssemblyVersionAttribute("2.0.4.0")]
+[assembly: System.Reflection.AssemblyVersionAttribute("2.0.5.0")]
 
 // 由 MSBuild WriteCodeFragment 类生成。
 

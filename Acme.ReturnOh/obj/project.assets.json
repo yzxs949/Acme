@@ -103,7 +103,7 @@
           }
         }
       },
-      "NuGet.Build.Tasks.Pack/6.12.1": {
+      "NuGet.Build.Tasks.Pack/6.14.0": {
         "type": "package",
         "build": {
           "build/NuGet.Build.Tasks.Pack.targets": {}
@@ -640,7 +640,7 @@
           }
         }
       },
-      "NuGet.Build.Tasks.Pack/6.12.1": {
+      "NuGet.Build.Tasks.Pack/6.14.0": {
         "type": "package",
         "build": {
           "build/NuGet.Build.Tasks.Pack.targets": {}
@@ -1224,7 +1224,7 @@
           }
         }
       },
-      "NuGet.Build.Tasks.Pack/6.12.1": {
+      "NuGet.Build.Tasks.Pack/6.14.0": {
         "type": "package",
         "build": {
           "build/NuGet.Build.Tasks.Pack.targets": {}
@@ -1783,7 +1783,7 @@
           }
         }
       },
-      "NuGet.Build.Tasks.Pack/6.12.1": {
+      "NuGet.Build.Tasks.Pack/6.14.0": {
         "type": "package",
         "build": {
           "build/NuGet.Build.Tasks.Pack.targets": {}
@@ -2479,10 +2479,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "NuGet.Build.Tasks.Pack/6.12.1": {
-      "sha512": "BrpIf7XUZi3vbe8dg/6ctkwIoQHBdHLcyZNbkVRpsju06cz1u31NVFPOGzfhPs9zSO3bJ8UPmfDdbbZ9J6tKiA==",
+    "NuGet.Build.Tasks.Pack/6.14.0": {
+      "sha512": "7Ifs+oDx77GaKOUUattH5EaGraG0J/UFQ5/nklmAxON4u7eyvMD6s8H76xebVE8TrHRaPA4N+LEPd5coeONkEA==",
       "type": "package",
-      "path": "nuget.build.tasks.pack/6.12.1",
+      "path": "nuget.build.tasks.pack/6.14.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2519,7 +2519,7 @@
         "build/NuGet.Build.Tasks.Pack.targets",
         "buildCrossTargeting/NuGet.Build.Tasks.Pack.targets",
         "icon.png",
-        "nuget.build.tasks.pack.6.12.1.nupkg.sha512",
+        "nuget.build.tasks.pack.6.14.0.nupkg.sha512",
         "nuget.build.tasks.pack.nuspec"
       ]
     },
@@ -3343,20 +3343,20 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "NuGet.Build.Tasks.Pack >= 6.12.1",
+      "NuGet.Build.Tasks.Pack >= 6.14.0",
       "Oracle.ManagedDataAccess.EntityFramework >= 23.9.0",
       "Swashbuckle.AspNetCore.Swagger >= 7.2.0",
       "Swashbuckle.AspNetCore.SwaggerGen >= 7.2.0"
     ],
     "net7.0": [
-      "NuGet.Build.Tasks.Pack >= 6.12.1",
+      "NuGet.Build.Tasks.Pack >= 6.14.0",
       "Oracle.ManagedDataAccess.EntityFramework >= 23.9.0",
       "Swashbuckle.AspNetCore.Swagger >= 7.2.0",
       "Swashbuckle.AspNetCore.SwaggerGen >= 7.2.0"
     ],
     "net8.0": [
       "Asp.Versioning.Mvc >= 8.1.0",
-      "NuGet.Build.Tasks.Pack >= 6.12.1",
+      "NuGet.Build.Tasks.Pack >= 6.14.0",
       "Oracle.ManagedDataAccess.EntityFramework >= 23.9.0",
       "Swashbuckle.AspNetCore.Swagger >= 7.2.0",
       "Swashbuckle.AspNetCore.SwaggerGen >= 7.2.0",
@@ -3364,7 +3364,7 @@
     ],
     "net9.0": [
       "Asp.Versioning.Mvc >= 8.1.0",
-      "NuGet.Build.Tasks.Pack >= 6.12.1",
+      "NuGet.Build.Tasks.Pack >= 6.14.0",
       "Oracle.ManagedDataAccess.EntityFramework >= 23.9.0",
       "Swashbuckle.AspNetCore.Swagger >= 7.2.0",
       "Swashbuckle.AspNetCore.SwaggerGen >= 7.2.0",
@@ -3376,7 +3376,7 @@
     "D:\\开发软件\\VS2022\\Shared\\NuGetPackages": {}
   },
   "project": {
-    "version": "1.5.0",
+    "version": "1.6.0",
     "restore": {
       "projectUniqueName": "D:\\yzxs\\Code\\Acme\\acme\\Acme.ReturnOh\\Acme.ReturnOh.csproj",
       "projectName": "Acme.ReturnOh",
@@ -3442,7 +3442,7 @@
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
             "suppressParent": "All",
             "target": "Package",
-            "version": "[6.12.1, )"
+            "version": "[6.14.0, )"
           },
           "Oracle.ManagedDataAccess.EntityFramework": {
             "target": "Package",
@@ -3473,7 +3473,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306\\RuntimeIdentifierGraph.json"
       },
       "net7.0": {
         "targetAlias": "net7",
@@ -3482,7 +3482,7 @@
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
             "suppressParent": "All",
             "target": "Package",
-            "version": "[6.12.1, )"
+            "version": "[6.14.0, )"
           },
           "Oracle.ManagedDataAccess.EntityFramework": {
             "target": "Package",
@@ -3513,7 +3513,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306\\RuntimeIdentifierGraph.json"
       },
       "net8.0": {
         "targetAlias": "net8",
@@ -3526,7 +3526,7 @@
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
             "suppressParent": "All",
             "target": "Package",
-            "version": "[6.12.1, )"
+            "version": "[6.14.0, )"
           },
           "Oracle.ManagedDataAccess.EntityFramework": {
             "target": "Package",
@@ -3561,7 +3561,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
       },
       "net9.0": {
         "targetAlias": "net9",
@@ -3574,7 +3574,7 @@
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
             "suppressParent": "All",
             "target": "Package",
-            "version": "[6.12.1, )"
+            "version": "[6.14.0, )"
           },
           "Oracle.ManagedDataAccess.EntityFramework": {
             "target": "Package",
@@ -3609,7 +3609,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
       }
     }
   },

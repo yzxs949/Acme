@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "fDYd86rSo+M=",
+  "dgSpecHash": "I4bJXCbCs8M=",
   "success": false,
   "projectFilePath": "D:\\yzxs\\Code\\Acme\\acme\\Acme.ReturnOh\\Acme.ReturnOh.csproj",
   "expectedPackageFiles": [
@@ -13,7 +13,7 @@
     "D:\\yzxs\\Code\\Acme\\acme\\packages\\microsoft.openapi\\1.6.22\\microsoft.openapi.1.6.22.nupkg.sha512",
     "D:\\yzxs\\Code\\Acme\\acme\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "D:\\yzxs\\Code\\Acme\\acme\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
-    "D:\\yzxs\\Code\\Acme\\acme\\packages\\nuget.build.tasks.pack\\6.12.1\\nuget.build.tasks.pack.6.12.1.nupkg.sha512",
+    "D:\\yzxs\\Code\\Acme\\acme\\packages\\nuget.build.tasks.pack\\6.14.0\\nuget.build.tasks.pack.6.14.0.nupkg.sha512",
     "D:\\yzxs\\Code\\Acme\\acme\\packages\\oracle.manageddataaccess\\23.9.0\\oracle.manageddataaccess.23.9.0.nupkg.sha512",
     "D:\\yzxs\\Code\\Acme\\acme\\packages\\oracle.manageddataaccess.entityframework\\23.9.0\\oracle.manageddataaccess.entityframework.23.9.0.nupkg.sha512",
     "D:\\yzxs\\Code\\Acme\\acme\\packages\\runtime.native.system.data.sqlclient.sni\\4.7.0\\runtime.native.system.data.sqlclient.sni.4.7.0.nupkg.sha512",

@@ -10,7 +10,7 @@ namespace Acme.Apps;
 /// </summary>
 public static class App
 {
-    private static JsonFile JsonFileVariable { get; set; }
+    private static readonly JsonFile JsonFileVariable;
 
     /// <summary>
     /// 构造函数
@@ -27,9 +27,7 @@ public static class App
     /// <param name="name">名称</param>
     /// <returns></returns>
     public static string GetValue(string key, string name)
-    {
-        return JsonFileVariable.GetValue(key, name);
-    }
+        => JsonFileVariable.GetValue(key, name);
 
     /// <summary>
     /// 获取配置文件中的值
@@ -37,9 +35,7 @@ public static class App
     /// <param name="key">键</param>
     /// <returns></returns>
     public static string GetValue(string key)
-    {
-        return JsonFileVariable.GetValue(key);
-    }
+        => JsonFileVariable.GetValue(key);
 
     /// <summary>
     /// 系统路径
