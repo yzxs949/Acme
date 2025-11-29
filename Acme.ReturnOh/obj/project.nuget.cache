@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "dgSpecHash": "I4bJXCbCs8M=",
-  "success": false,
+  "dgSpecHash": "zbTygIDbPLU=",
+  "success": true,
   "projectFilePath": "D:\\yzxs\\Code\\Acme\\acme\\Acme.ReturnOh\\Acme.ReturnOh.csproj",
   "expectedPackageFiles": [
     "D:\\yzxs\\Code\\Acme\\acme\\packages\\asp.versioning.abstractions\\8.1.0\\asp.versioning.abstractions.8.1.0.nupkg.sha512",
@@ -22,6 +22,7 @@
     "D:\\yzxs\\Code\\Acme\\acme\\packages\\runtime.win-x86.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "D:\\yzxs\\Code\\Acme\\acme\\packages\\swashbuckle.aspnetcore.swagger\\7.2.0\\swashbuckle.aspnetcore.swagger.7.2.0.nupkg.sha512",
     "D:\\yzxs\\Code\\Acme\\acme\\packages\\swashbuckle.aspnetcore.swaggergen\\7.2.0\\swashbuckle.aspnetcore.swaggergen.7.2.0.nupkg.sha512",
+    "D:\\yzxs\\Code\\Acme\\acme\\packages\\swashbuckle.aspnetcore.swaggerui\\10.0.0\\swashbuckle.aspnetcore.swaggerui.10.0.0.nupkg.sha512",
     "D:\\yzxs\\Code\\Acme\\acme\\packages\\system.codedom\\6.0.0\\system.codedom.6.0.0.nupkg.sha512",
     "D:\\yzxs\\Code\\Acme\\acme\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512",
     "D:\\yzxs\\Code\\Acme\\acme\\packages\\system.configuration.configurationmanager\\6.0.1\\system.configuration.configurationmanager.6.0.1.nupkg.sha512",
@@ -42,10 +43,11 @@
   ],
   "logs": [
     {
-      "code": "NU1102",
-      "level": "Error",
-      "message": "找不到版本为 (>= 9.0.9) 的包 Swashbuckle.AspNetCore.SwaggerUI\r\n  - 在 nuget.org 中找到 91 个版本[ 最接近版本: 9.0.6 ]\r\n  - 在 C:\\Program Files\\dotnet\\library-packs 中找到 0 个版本",
+      "code": "NU1603",
+      "level": "Warning",
+      "message": "Acme.ReturnOh 依赖于 Swashbuckle.AspNetCore.SwaggerUI (>= 9.0.9)，但没有找到 Swashbuckle.AspNetCore.SwaggerUI 9.0.9。已改为解析 Swashbuckle.AspNetCore.SwaggerUI 10.0.0。",
       "projectPath": "D:\\yzxs\\Code\\Acme\\acme\\Acme.ReturnOh\\Acme.ReturnOh.csproj",
+      "warningLevel": 1,
       "filePath": "D:\\yzxs\\Code\\Acme\\acme\\Acme.ReturnOh\\Acme.ReturnOh.csproj",
       "libraryId": "Swashbuckle.AspNetCore.SwaggerUI",
       "targetGraphs": [

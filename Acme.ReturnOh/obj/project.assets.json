@@ -1332,6 +1332,22 @@
           }
         }
       },
+      "Swashbuckle.AspNetCore.SwaggerUI/10.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/Swashbuckle.AspNetCore.SwaggerUI.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Swashbuckle.AspNetCore.SwaggerUI.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
       "System.CodeDom/6.0.0": {
         "type": "package",
         "compile": {
@@ -1890,6 +1906,22 @@
             "related": ".pdb;.xml"
           }
         }
+      },
+      "Swashbuckle.AspNetCore.SwaggerUI/10.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net9.0/Swashbuckle.AspNetCore.SwaggerUI.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net9.0/Swashbuckle.AspNetCore.SwaggerUI.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "System.CodeDom/6.0.0": {
         "type": "package",
@@ -2680,6 +2712,27 @@
         "swashbuckle.aspnetcore.swaggergen.nuspec"
       ]
     },
+    "Swashbuckle.AspNetCore.SwaggerUI/10.0.0": {
+      "sha512": "KfOQg2fFUBrKNRZKeXDKB6qnyRnAMhv7hKUXYdDuL3tPndwBZEh9K4w5gj+FJBvCpR24J7Z9nt1zVZ+J0ZVe2g==",
+      "type": "package",
+      "path": "swashbuckle.aspnetcore.swaggerui/10.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net10.0/Swashbuckle.AspNetCore.SwaggerUI.dll",
+        "lib/net10.0/Swashbuckle.AspNetCore.SwaggerUI.pdb",
+        "lib/net10.0/Swashbuckle.AspNetCore.SwaggerUI.xml",
+        "lib/net8.0/Swashbuckle.AspNetCore.SwaggerUI.dll",
+        "lib/net8.0/Swashbuckle.AspNetCore.SwaggerUI.pdb",
+        "lib/net8.0/Swashbuckle.AspNetCore.SwaggerUI.xml",
+        "lib/net9.0/Swashbuckle.AspNetCore.SwaggerUI.dll",
+        "lib/net9.0/Swashbuckle.AspNetCore.SwaggerUI.pdb",
+        "lib/net9.0/Swashbuckle.AspNetCore.SwaggerUI.xml",
+        "package-readme.md",
+        "swashbuckle.aspnetcore.swaggerui.10.0.0.nupkg.sha512",
+        "swashbuckle.aspnetcore.swaggerui.nuspec"
+      ]
+    },
     "System.CodeDom/6.0.0": {
       "sha512": "CPc6tWO1LAer3IzfZufDBRL+UZQcj5uS207NHALQzP84Vp/z6wF0Aa0YZImOQY8iStY0A2zI/e3ihKNPfUm8XA==",
       "type": "package",
@@ -3432,7 +3485,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.300"
+      "SdkAnalysisLevel": "10.0.100"
     },
     "frameworks": {
       "net6.0": {
@@ -3473,7 +3526,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100\\RuntimeIdentifierGraph.json"
       },
       "net7.0": {
         "targetAlias": "net7",
@@ -3513,7 +3566,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100\\RuntimeIdentifierGraph.json"
       },
       "net8.0": {
         "targetAlias": "net8",
@@ -3561,7 +3614,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100/PortableRuntimeIdentifierGraph.json"
       },
       "net9.0": {
         "targetAlias": "net9",
@@ -3609,15 +3662,16 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100/PortableRuntimeIdentifierGraph.json"
       }
     }
   },
   "logs": [
     {
-      "code": "NU1102",
-      "level": "Error",
-      "message": "找不到版本为 (>= 9.0.9) 的包 Swashbuckle.AspNetCore.SwaggerUI\r\n  - 在 nuget.org 中找到 91 个版本[ 最接近版本: 9.0.6 ]\r\n  - 在 C:\\Program Files\\dotnet\\library-packs 中找到 0 个版本",
+      "code": "NU1603",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Acme.ReturnOh 依赖于 Swashbuckle.AspNetCore.SwaggerUI (>= 9.0.9)，但没有找到 Swashbuckle.AspNetCore.SwaggerUI 9.0.9。已改为解析 Swashbuckle.AspNetCore.SwaggerUI 10.0.0。",
       "libraryId": "Swashbuckle.AspNetCore.SwaggerUI",
       "targetGraphs": [
         "net8.0",

@@ -13,7 +13,7 @@
 		<PackageReference Include="Dapper" Version="2.1.66" />
 		<PackageReference Include="Dapper.Contrib" Version="2.0.78" />
 		<PackageReference Include="Microsoft.Data.SqlClient" Version="6.1.2" />
-		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.10" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.0" />
 	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\Acme\Acme.csproj" />
