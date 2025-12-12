@@ -3,14 +3,14 @@
 	<PropertyGroup>
 		<TargetFrameworks>net8;net9;net10.0</TargetFrameworks>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
-		<Version>5.6</Version>
+		<Version>5.6.1</Version>
 		<Authors>yzxs</Authors>
 		<Company>yzxs</Company>
 		<Copyright>yzxs</Copyright>
 		<Description>Acme framework based on Dapper database operation class library</Description>
 		<PackageTags>Acme;Dapper;Acme.Dapper;yzxs;云中小生;.NET8;.NET9;.NET10</PackageTags>
 		<PackageReleaseNotes>
-			1. 添加对 .NET 10 的支持
+			1. .NET10依赖升级版本为10.0.1
 		</PackageReleaseNotes>
 	</PropertyGroup>
 	<ItemGroup>

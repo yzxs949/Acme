@@ -379,7 +379,7 @@
     "D:\\开发软件\\VS2022\\Shared\\NuGetPackages": {}
   },
   "project": {
-    "version": "1.7.0",
+    "version": "1.7.1",
     "restore": {
       "projectUniqueName": "D:\\yzxs\\Code\\Acme\\acme\\Acme.ReturnOh\\Acme.ReturnOh.csproj",
       "projectName": "Acme.ReturnOh",
