@@ -13,28 +13,4 @@
     <SourceRoot Include="D:\yzxs\Code\Acme\acme\packages\" />
     <SourceRoot Include="D:\开发软件\VS2022\Shared\NuGetPackages\" />
   </ItemGroup>
-  <ImportGroup Condition=" '$(TargetFramework)' == 'net6' AND '$(ExcludeRestorePackageImports)' != 'true' ">
-    <Import Project="$(NuGetPackageRoot)\entityframework\6.5.1\buildTransitive\net6.0\EntityFramework.props" Condition="Exists('$(NuGetPackageRoot)\entityframework\6.5.1\buildTransitive\net6.0\EntityFramework.props')" />
-  </ImportGroup>
-  <ImportGroup Condition=" '$(TargetFramework)' == 'net7' AND '$(ExcludeRestorePackageImports)' != 'true' ">
-    <Import Project="$(NuGetPackageRoot)\entityframework\6.5.1\buildTransitive\net6.0\EntityFramework.props" Condition="Exists('$(NuGetPackageRoot)\entityframework\6.5.1\buildTransitive\net6.0\EntityFramework.props')" />
-  </ImportGroup>
-  <ImportGroup Condition=" '$(TargetFramework)' == 'net8' AND '$(ExcludeRestorePackageImports)' != 'true' ">
-    <Import Project="$(NuGetPackageRoot)\entityframework\6.5.1\buildTransitive\net6.0\EntityFramework.props" Condition="Exists('$(NuGetPackageRoot)\entityframework\6.5.1\buildTransitive\net6.0\EntityFramework.props')" />
-  </ImportGroup>
-  <ImportGroup Condition=" '$(TargetFramework)' == 'net9' AND '$(ExcludeRestorePackageImports)' != 'true' ">
-    <Import Project="$(NuGetPackageRoot)\entityframework\6.5.1\buildTransitive\net6.0\EntityFramework.props" Condition="Exists('$(NuGetPackageRoot)\entityframework\6.5.1\buildTransitive\net6.0\EntityFramework.props')" />
-  </ImportGroup>
-  <PropertyGroup Condition=" '$(TargetFramework)' == 'net6' AND '$(ExcludeRestorePackageImports)' != 'true' ">
-    <PkgEntityFramework Condition=" '$(PkgEntityFramework)' == '' ">D:\yzxs\Code\Acme\acme\packages\entityframework\6.5.1</PkgEntityFramework>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(TargetFramework)' == 'net7' AND '$(ExcludeRestorePackageImports)' != 'true' ">
-    <PkgEntityFramework Condition=" '$(PkgEntityFramework)' == '' ">D:\yzxs\Code\Acme\acme\packages\entityframework\6.5.1</PkgEntityFramework>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(TargetFramework)' == 'net8' AND '$(ExcludeRestorePackageImports)' != 'true' ">
-    <PkgEntityFramework Condition=" '$(PkgEntityFramework)' == '' ">D:\yzxs\Code\Acme\acme\packages\entityframework\6.5.1</PkgEntityFramework>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(TargetFramework)' == 'net9' AND '$(ExcludeRestorePackageImports)' != 'true' ">
-    <PkgEntityFramework Condition=" '$(PkgEntityFramework)' == '' ">D:\yzxs\Code\Acme\acme\packages\entityframework\6.5.1</PkgEntityFramework>
-  </PropertyGroup>
 </Project>
