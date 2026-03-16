@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Acme.ReturnOh</id>
+    <version>1.7.3</version>
+    <authors>yzxs</authors>
+    <description>接口返回参数处理，全局异常，参数验证，Swagger
+			1. ConfigureSwaggerOptions 配置 Swagger 选项，添加文档信息和 XML 注释文件
+			2. ConfigureApiBehaviorOptions 配置API行为选项，自定义模型验证失败时的响应格式
+			3. AddExceptionFilterService 配置MVC选项，添加自定义的异常过滤器</description>
+    <copyright>yzxs</copyright>
+    <tags>Acme 类库 yzxs 云中小生 net8 net9 net10</tags>
+    <repository type="git" commit="5c3b08f1cc2802d9f443c6ea438761481044fef9" />
+    <dependencies>
+      <group targetFramework="net8.0">
+        <dependency id="Microsoft.OpenApi" version="3.4.0" exclude="Build,Analyzers" />
+        <dependency id="Swashbuckle.AspNetCore.Swagger" version="10.1.5" exclude="Build,Analyzers" />
+        <dependency id="Swashbuckle.AspNetCore.SwaggerGen" version="10.1.5" exclude="Build,Analyzers" />
+        <dependency id="Swashbuckle.AspNetCore.SwaggerUI" version="10.1.5" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net9.0">
+        <dependency id="Microsoft.OpenApi" version="3.4.0" exclude="Build,Analyzers" />
+        <dependency id="Swashbuckle.AspNetCore.Swagger" version="10.1.5" exclude="Build,Analyzers" />
+        <dependency id="Swashbuckle.AspNetCore.SwaggerGen" version="10.1.5" exclude="Build,Analyzers" />
+        <dependency id="Swashbuckle.AspNetCore.SwaggerUI" version="10.1.5" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net10.0">
+        <dependency id="Microsoft.OpenApi" version="3.4.0" exclude="Build,Analyzers" />
+        <dependency id="Swashbuckle.AspNetCore.Swagger" version="10.1.5" exclude="Build,Analyzers" />
+        <dependency id="Swashbuckle.AspNetCore.SwaggerGen" version="10.1.5" exclude="Build,Analyzers" />
+        <dependency id="Swashbuckle.AspNetCore.SwaggerUI" version="10.1.5" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="D:\yzxs\Code\Acme\acme\Acme.ReturnOh\bin\Debug\net10.0\Acme.ReturnOh.dll" target="lib\net10.0\Acme.ReturnOh.dll" />
+    <file src="D:\yzxs\Code\Acme\acme\Acme.ReturnOh\bin\Debug\net10.0\Acme.ReturnOh.xml" target="lib\net10.0\Acme.ReturnOh.xml" />
+    <file src="D:\yzxs\Code\Acme\acme\Acme.ReturnOh\bin\Debug\net8.0\Acme.ReturnOh.dll" target="lib\net8.0\Acme.ReturnOh.dll" />
+    <file src="D:\yzxs\Code\Acme\acme\Acme.ReturnOh\bin\Debug\net8.0\Acme.ReturnOh.xml" target="lib\net8.0\Acme.ReturnOh.xml" />
+    <file src="D:\yzxs\Code\Acme\acme\Acme.ReturnOh\bin\Debug\net9.0\Acme.ReturnOh.dll" target="lib\net9.0\Acme.ReturnOh.dll" />
+    <file src="D:\yzxs\Code\Acme\acme\Acme.ReturnOh\bin\Debug\net9.0\Acme.ReturnOh.xml" target="lib\net9.0\Acme.ReturnOh.xml" />
+  </files>
+</package>

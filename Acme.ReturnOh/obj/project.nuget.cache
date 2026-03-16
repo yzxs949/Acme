@@ -1,14 +1,17 @@
 {
   "version": 2,
-  "dgSpecHash": "9I0t5cVRaRE=",
+  "dgSpecHash": "9SAOU0gRO7w=",
   "success": true,
   "projectFilePath": "D:\\yzxs\\Code\\Acme\\acme\\Acme.ReturnOh\\Acme.ReturnOh.csproj",
   "expectedPackageFiles": [
-    "D:\\yzxs\\Code\\Acme\\acme\\packages\\microsoft.openapi\\2.3.0\\microsoft.openapi.2.3.0.nupkg.sha512",
+    "D:\\yzxs\\Code\\Acme\\acme\\packages\\microsoft.openapi\\3.4.0\\microsoft.openapi.3.4.0.nupkg.sha512",
     "D:\\yzxs\\Code\\Acme\\acme\\packages\\nuget.build.tasks.pack\\6.14.0\\nuget.build.tasks.pack.6.14.0.nupkg.sha512",
-    "D:\\yzxs\\Code\\Acme\\acme\\packages\\swashbuckle.aspnetcore.swagger\\10.0.1\\swashbuckle.aspnetcore.swagger.10.0.1.nupkg.sha512",
-    "D:\\yzxs\\Code\\Acme\\acme\\packages\\swashbuckle.aspnetcore.swaggergen\\10.0.1\\swashbuckle.aspnetcore.swaggergen.10.0.1.nupkg.sha512",
-    "D:\\yzxs\\Code\\Acme\\acme\\packages\\swashbuckle.aspnetcore.swaggerui\\10.0.1\\swashbuckle.aspnetcore.swaggerui.10.0.1.nupkg.sha512"
+    "D:\\yzxs\\Code\\Acme\\acme\\packages\\swashbuckle.aspnetcore.swagger\\10.1.5\\swashbuckle.aspnetcore.swagger.10.1.5.nupkg.sha512",
+    "D:\\yzxs\\Code\\Acme\\acme\\packages\\swashbuckle.aspnetcore.swaggergen\\10.1.5\\swashbuckle.aspnetcore.swaggergen.10.1.5.nupkg.sha512",
+    "D:\\yzxs\\Code\\Acme\\acme\\packages\\swashbuckle.aspnetcore.swaggerui\\10.1.5\\swashbuckle.aspnetcore.swaggerui.10.1.5.nupkg.sha512",
+    "D:\\yzxs\\Code\\Acme\\acme\\packages\\microsoft.windowsdesktop.app.ref\\9.0.14\\microsoft.windowsdesktop.app.ref.9.0.14.nupkg.sha512",
+    "D:\\yzxs\\Code\\Acme\\acme\\packages\\microsoft.netcore.app.ref\\9.0.14\\microsoft.netcore.app.ref.9.0.14.nupkg.sha512",
+    "D:\\yzxs\\Code\\Acme\\acme\\packages\\microsoft.aspnetcore.app.ref\\9.0.14\\microsoft.aspnetcore.app.ref.9.0.14.nupkg.sha512"
   ],
   "logs": []
 }

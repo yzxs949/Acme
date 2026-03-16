@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<TargetFrameworks>net8.0;net9.0;net10.0;</TargetFrameworks>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
-		<Version>5.6.1</Version>
+		<Version>5.6.3</Version>
 		<Authors>云中小生</Authors>
 		<Company>云中小生</Company>
 		<Copyright>云中小生</Copyright>
@@ -12,7 +12,11 @@
 		</Description>
 		<PackageTags>Acme;类库;yzxs;云中小生;.NET8;.NET9;.NET10</PackageTags>
 		<PackageReleaseNotes>
-			1. .NET10依赖升级版本为10.0.1
+			一、更新.NET10依赖
+				1..NET10（Microsoft.Extensions.Caching.Abstractions、Microsoft.Extensions.DependencyInjection、icrosoft.Extensions.Features）依赖升级版本为10.0.5
+				2.NPOI（NPOI.Core、NPOI.OOXML）依赖升级版本为2.7.6
+				3.Swashbuckle.AspNetCore（Swashbuckle.AspNetCore.Swagger、Swashbuckle.AspNetCore.SwaggerUI）依赖升级版本为10.1.5
+		    二、修复已知BUG……
 		</PackageReleaseNotes>
 	</PropertyGroup>
 	<ItemGroup>
@@ -40,12 +44,12 @@
 		<PackageReference Include="ZKWeb.System.Drawing" Version="4.0.1" />
 	</ItemGroup>
 	<ItemGroup Condition="'$(TargetFramework)' == 'net10.0'">
-		<PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="10.0.1" />
-		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.1" />
-		<PackageReference Include="Microsoft.Extensions.Features" Version="10.0.1" />
+		<PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="10.0.5" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.5" />
+		<PackageReference Include="Microsoft.Extensions.Features" Version="10.0.5" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
-		<PackageReference Include="NPOI" Version="2.7.5" />
-		<PackageReference Include="Swashbuckle.AspNetCore" Version="10.0.1" />
+		<PackageReference Include="NPOI" Version="2.7.6" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="10.1.5" />
 		<PackageReference Include="ZKWeb.System.Drawing" Version="4.0.1" />
 	</ItemGroup>
 </Project>

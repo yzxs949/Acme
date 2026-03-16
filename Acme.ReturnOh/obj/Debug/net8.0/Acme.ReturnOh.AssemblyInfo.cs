@@ -17,11 +17,11 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyDescriptionAttribute("\r\n\t\t\t接口返回参数处理，全局异常，参数验证，Swagger\r\n\t\t\t1. ConfigureSwaggerOptions 配置 Swagger 选项，添加文档" +
     "信息和 XML 注释文件\r\n\t\t\t2. ConfigureApiBehaviorOptions 配置API行为选项，自定义模型验证失败时的响应格式\r\n\t\t\t3." +
     " AddExceptionFilterService 配置MVC选项，添加自定义的异常过滤器\r\n\t\t")]
-[assembly: System.Reflection.AssemblyFileVersionAttribute("1.7.1.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.7.1+7dbdeac577d6dee3e9c68f84a2b750c80ae59954")]
+[assembly: System.Reflection.AssemblyFileVersionAttribute("1.7.3.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.7.3+5c3b08f1cc2802d9f443c6ea438761481044fef9")]
 [assembly: System.Reflection.AssemblyProductAttribute("Acme.ReturnOh")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Acme.ReturnOh")]
-[assembly: System.Reflection.AssemblyVersionAttribute("1.7.1.0")]
+[assembly: System.Reflection.AssemblyVersionAttribute("1.7.3.0")]
 
 // 由 MSBuild WriteCodeFragment 类生成。
 
