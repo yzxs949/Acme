@@ -3,23 +3,24 @@
 	<PropertyGroup>
 		<TargetFrameworks>net8.0;net9.0;net10.0;</TargetFrameworks>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<!-- 关键：把 XML 复制到引用它的启动项目 -->
+		<CopyDocumentationFileToOutputDirectory>true</CopyDocumentationFileToOutputDirectory>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
-		<Version>1.7.3</Version>
+		<Version>1.7.4</Version>
 		<Authors>yzxs</Authors>
 		<Company>yzxs</Company>
 		<Copyright>yzxs</Copyright>
 		<Description>
 			接口返回参数处理，全局异常，参数验证，Swagger
-			1. ConfigureSwaggerOptions 配置 Swagger 选项，添加文档信息和 XML 注释文件
-			2. ConfigureApiBehaviorOptions 配置API行为选项，自定义模型验证失败时的响应格式
-			3. AddExceptionFilterService 配置MVC选项，添加自定义的异常过滤器
+			1. 修复引用包版本不匹配报错问题。
+			2. xml文件不会复制到启动项目中。
+			3. 修复的多个版本注入的问题
 		</Description>
 		<PackageTags>Acme;类库;yzxs;云中小生;net8;net9;net10;</PackageTags>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.OpenApi" Version="3.4.0" />
 		<PackageReference Include="NuGet.Build.Tasks.Pack" Version="6.14.0">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

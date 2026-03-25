@@ -1,14 +1,29 @@
-# Acme.ReturnOh 使用文档
+﻿# Acme.ReturnOh 使用文档
 
 ## 项目简介
 
 Acme.ReturnOh 是一个用于 .NET 项目的通用返回参数处理库，提供了统一的 API 响应格式、全局异常处理、参数验证和 Swagger 配置功能。
 
+## 当前版本 1.7.4
+ ### 更新内容
+ - 修复引用包版本不匹配报错问题。
+ - xml文件不会复制到启动项目中。
+ - 修复的多个版本注入的问题
+ - 新增多版本 Swagger 支持
+ - 新增 JWT 认证支持
+ - 新增 API 方法排序功能
+ - 新增 SwaggerDocDto 数据传输对象
+ - 新增 UseBathSwagger 和 UseSingSwagger 扩展方法
+ - 新增 SecuritySchemeId 常量
+ - 新增 LoginUserKey 和 VerCodeKey 常量
+
 ### 主要功能
+
 - 统一的 API 响应格式
 - 全局异常处理
 - 参数验证错误处理
-- Swagger 文档配置
+- Swagger 文档配置（支持多版本、JWT 认证）
+- 自定义异常过滤器支持
 
 ## 安装方法
 
@@ -19,6 +34,7 @@ dotnet add package Acme.ReturnOh
 ```
 
 ### 支持的框架版本
+
 - .NET 8.0
 - .NET 9.0
 - .NET 10.0
@@ -34,7 +50,7 @@ using Acme.ReturnOh;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// 配置 Swagger
+// 配置 Swagger（默认启用 JWT 认证和方法排序）
 builder.Services.ConfigureSwaggerOptions("API 文档");
 
 // 配置 API 行为选项（参数验证）
@@ -48,12 +64,8 @@ builder.Services.AddControllers();
 
 var app = builder.Build();
 
-// 启用 Swagger
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+// 启用 Swagger（单版本）
+app.UseSingSwagger("API 文档");
 
 app.UseAuthorization();
 app.MapControllers();
@@ -115,6 +127,15 @@ return data.Custom(403, "权限不足"); // 自定义状态码和消息
 
 // 布尔值转换
 return isSuccess.IsSuccess("成功消息", "失败消息");
+
+// 静态方法（data 为 null 时）
+return Oh.Success("操作成功");
+return Oh.Fail("操作失败");
+
+// 泛型版本
+return data.Success<UserDto>("获取成功");
+return data.Fail<UserDto>("操作失败");
+return data.Custom<UserDto>(403, "权限不足");
 ```
 
 ### 2. 异常处理
@@ -122,6 +143,7 @@ return isSuccess.IsSuccess("成功消息", "失败消息");
 #### 全局异常过滤器
 
 库会自动捕获并处理以下异常：
+
 - `ArgumentException` - 返回 400 状态码
 - `SystemException` - 返回 500 状态码
 - 其他异常 - 返回 500 状态码
@@ -169,22 +191,71 @@ public class UserDto
 
 ### 4. Swagger 配置
 
-#### 基本配置
+#### 基本配置（单版本）
 
 ```csharp
+// 配置 Swagger
 builder.Services.ConfigureSwaggerOptions("API 文档");
+
+// 启用 Swagger
+app.UseSingSwagger("API 文档");
 ```
 
-#### 高级配置
+#### 高级配置（单版本）
 
 ```csharp
-// 自定义版本
-builder.Services.ConfigureSwaggerOptions("API 文档", "v2");
+// 配置 Swagger（自定义参数）
+builder.Services.ConfigureSwaggerOptions(
+    title: "API 文档",
+    version: "v1",
+    otherFiles: null,           // 其他 XML 注释文件
+    isActionOrder: true,        // 是否启用方法排序
+    enableJwtBearerAuth: true   // 是否启用 JWT 认证
+);
 
-// 包含其他 XML 注释文件
-var otherXmlFiles = new List<string> { "MyProject.Model", "MyProject.Service" };
+// 启用 Swagger（自定义路由前缀）
+app.UseSingSwagger(
+    title: "API 文档",
+    version: "v1",
+    routePrefix: "swagger"      // 访问路径：/swagger
+);
+```
+
+#### 多版本配置
+
+```csharp
+// 配置多版本 Swagger
+var swaggerDocs = new List<SwaggerDocDto>
+{
+    new("后台管理 API", "v1"),
+    new("移动端 API", "v2"),
+    new("第三方 API", "v3")
+};
+
+builder.Services.ConfigureSwaggerOptions(swaggerDocs);
+
+// 启用多版本 Swagger
+app.UseBathSwagger(swaggerDocs, "swagger");
+```
+
+#### 包含其他 XML 注释文件
+
+```csharp
+// 包含其他项目的 XML 注释文件
+var otherXmlFiles = new List<string> 
+{ 
+    "MyProject.Model", 
+    "MyProject.Service" 
+};
+
 builder.Services.ConfigureSwaggerOptions("API 文档", "v1", otherXmlFiles);
 ```
+
+#### JWT 认证配置
+
+Swagger 默认启用 JWT 认证，认证方案 ID 为 `CV.SecuritySchemeId`（值为 "Bearer"）。
+
+在 Swagger UI 中，点击右上角的 "Authorize" 按钮，输入格式为 `Bearer {token}` 的 JWT token 即可。
 
 ## 高级用法
 
@@ -231,25 +302,37 @@ public Oh<UserDto> Get(int id)
 }
 ```
 
+### 3. 使用 NewOh 静态方法
+
+```csharp
+// 使用静态方法创建 Oh 实例
+var result = Oh<UserDto>.NewOh(200, "操作成功", userDto);
+```
+
 ## 常量定义
 
 库中定义了一些常用常量，可直接使用：
 
-| 常量名 | 值 | 说明 |
-|-------|-----|------|
-| `CV.Yes` | "成功！" | 成功消息 |
-| `CV.ErrorPrompt` | "系统错误！请联系管理员" | 系统错误提示 |
-| `CV.ErrorServer` | "服务器错误！请联系管理员" | 服务器错误提示 |
-| `CV.YesCode` | 200 | 成功状态码 |
-| `CV.NoCode` | 500 | 失败状态码 |
-| `CV.InsertYes` | "新增成功" | 新增成功消息 |
-| `CV.InsertNo` | "新增失败" | 新增失败消息 |
-| `CV.UpdateYes` | "更新成功" | 更新成功消息 |
-| `CV.UpdateNo` | "更新失败" | 更新失败消息 |
-| `CV.DeleteYes` | "删除成功" | 删除成功消息 |
-| `CV.DeleteNo` | "删除失败" | 删除失败消息 |
-| `CV.GetYes` | "获取成功" | 获取成功消息 |
-| `CV.GetNo` | "获取失败" | 获取失败消息 |
+| 常量名                   | 值              | 说明      |
+| --------------------- | -------------- | ------- |
+| `CV.BlankCharacter`   | ""             | 空字符串    |
+| `CV.LoginUserKey`     | "LoginUserKey" | 当前登录人员键 |
+| `CV.VerCodeKey`       | "ImgVerCode"   | 验证码键    |
+| `CV.Yes`              | "成功！"          | 成功消息    |
+| `CV.ErrorPrompt`      | "系统错误！请联系管理员"  | 系统错误提示  |
+| `CV.ErrorServer`      | "服务器错误！请联系管理员" | 服务器错误提示 |
+| `CV.YesCode`          | 200            | 成功状态码   |
+| `CV.NoCode`           | 500            | 失败状态码   |
+| `CV.InsertYes`        | "新增成功"         | 新增成功消息  |
+| `CV.InsertNo`         | "新增失败"         | 新增失败消息  |
+| `CV.UpdateYes`        | "更新成功"         | 更新成功消息  |
+| `CV.UpdateNo`         | "更新失败"         | 更新失败消息  |
+| `CV.DeleteYes`        | "删除成功"         | 删除成功消息  |
+| `CV.DeleteNo`         | "删除失败"         | 删除失败消息  |
+| `CV.GetYes`           | "获取成功"         | 获取成功消息  |
+| `CV.GetNo`            | "获取失败"         | 获取失败消息  |
+| `CV.SecuritySchemeId` | "Bearer"       | 认证方案 ID |
+| `CV.NullValue`        | null           | 空值对象    |
 
 ## 示例代码
 
@@ -381,6 +464,36 @@ namespace MyProject.Services
 }
 ```
 
+### 多版本 Swagger 配置示例
+
+```csharp
+using Acme.ReturnOh;
+using Acme.ReturnOh.Dtos;
+
+var builder = WebApplication.CreateBuilder(args);
+
+// 配置多版本 Swagger
+var swaggerDocs = new List<SwaggerDocDto>
+{
+    new("后台管理 API", "v1"),
+    new("移动端 API", "v2")
+};
+
+builder.Services.ConfigureSwaggerOptions(swaggerDocs);
+builder.Services.ConfigureApiBehaviorOptions();
+builder.Services.AddExceptionFilterService();
+builder.Services.AddControllers();
+
+var app = builder.Build();
+
+// 启用多版本 Swagger
+app.UseBathSwagger(swaggerDocs, "swagger");
+
+app.UseAuthorization();
+app.MapControllers();
+app.Run();
+```
+
 ## 常见问题
 
 ### 1. 如何自定义异常处理逻辑？
@@ -403,13 +516,47 @@ return data.Custom(403, "权限不足");
 
 确保项目已启用 XML 文档生成，并在 `ConfigureSwaggerOptions` 方法中包含相应的 XML 文件。
 
+### 5. 如何禁用 JWT 认证？
+
+在 `ConfigureSwaggerOptions` 方法中设置 `enableJwtBearerAuth` 参数为 `false`：
+
+```csharp
+builder.Services.ConfigureSwaggerOptions("API 文档", enableJwtBearerAuth: false);
+```
+
+### 6. 如何修改 Swagger 访问路径？
+
+在 `UseSingSwagger` 或 `UseBathSwagger` 方法中设置 `routePrefix` 参数：
+
+```csharp
+// 根路径访问
+app.UseSingSwagger("API 文档", routePrefix: "");
+
+// 通过 /swagger 访问
+app.UseSingSwagger("API 文档", routePrefix: "swagger");
+
+// 通过 /api-docs 访问
+app.UseSingSwagger("API 文档", routePrefix: "api-docs");
+```
+
+### 7. 如何禁用 API 方法排序？
+
+在 `ConfigureSwaggerOptions` 方法中设置 `isActionOrder` 参数为 `false`：
+
+```csharp
+builder.Services.ConfigureSwaggerOptions("API 文档", isActionOrder: false);
+```
+
 ## 版本历史
 
-- 1.7.3 - 当前版本
-- 1.7.2 - 修复了一些小问题
-- 1.7.1 - 优化了异常处理逻辑
-- 1.7.0 - 增加了泛型返回类型支持
-- 1.5.0 - 初始版本
+- 1.7.4 - 当前版本
+  - 新增多版本 Swagger 支持
+  - 新增 JWT 认证支持
+  - 新增 API 方法排序功能
+  - 新增 SwaggerDocDto 数据传输对象
+  - 新增 UseBathSwagger 和 UseSingSwagger 扩展方法
+  - 新增 SecuritySchemeId 常量
+  - 新增 LoginUserKey 和 VerCodeKey 常量
 
 ## 总结
 
@@ -418,6 +565,7 @@ Acme.ReturnOh 是一个简单而强大的库，为 .NET 项目提供了统一的
 1. 统一 API 响应格式，提高前端开发效率
 2. 自动处理异常，减少重复代码
 3. 简化参数验证错误处理
-4. 快速配置 Swagger 文档
+4. 快速配置 Swagger 文档（支持多版本和 JWT 认证）
+5. 灵活的自定义异常过滤器支持
 
 希望这个库能帮助您更高效地开发 .NET 项目！

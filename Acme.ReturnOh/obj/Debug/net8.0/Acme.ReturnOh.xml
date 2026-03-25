@@ -94,6 +94,31 @@
             表示一个空值对象，其值为 null
             </summary>
         </member>
+        <member name="F:Acme.ReturnOh.CV.SecuritySchemeId">
+            <summary>
+            认证方案ID
+            </summary>
+        </member>
+        <member name="T:Acme.ReturnOh.Dtos.SwaggerDocDto">
+            <summary>
+            Swagger配置
+            </summary>
+            <param name="Title">Swagger 文档的标题</param>
+            <param name="Version">Swagger 文档的版本，默认为 "v1"</param>
+        </member>
+        <member name="M:Acme.ReturnOh.Dtos.SwaggerDocDto.#ctor(System.String,System.String)">
+            <summary>
+            Swagger配置
+            </summary>
+            <param name="Title">Swagger 文档的标题</param>
+            <param name="Version">Swagger 文档的版本，默认为 "v1"</param>
+        </member>
+        <member name="P:Acme.ReturnOh.Dtos.SwaggerDocDto.Title">
+            <summary>Swagger 文档的标题</summary>
+        </member>
+        <member name="P:Acme.ReturnOh.Dtos.SwaggerDocDto.Version">
+            <summary>Swagger 文档的版本，默认为 "v1"</summary>
+        </member>
         <member name="T:Acme.ReturnOh.ExceptionFilter">
             <summary>
             异常过滤
@@ -111,7 +136,7 @@
             全局过滤器服务类
             </summary>
         </member>
-        <member name="M:Acme.ReturnOh.GlobalFilterCollectionExtension.ConfigureSwaggerOptions(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,System.String,System.Collections.Generic.List{System.String})">
+        <member name="M:Acme.ReturnOh.GlobalFilterCollectionExtension.ConfigureSwaggerOptions(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,System.String,System.Collections.Generic.List{System.String},System.Boolean,System.Boolean)">
             <summary>
             配置 Swagger 选项，添加文档信息和 XML 注释文件
             </summary>
@@ -119,10 +144,51 @@
             <param name="title">Swagger 文档的标题</param>
             <param name="version">Swagger 文档的版本，默认为 "v1"</param>
             <param name="otherFiles">其他需要包含的 XML 注释文件列表，默认为 null</param>
+            <param name="isActionOrder">是否方法排序（默认添加）</param>
+            <param name="enableJwtBearerAuth">是否添加JWT认证（默认添加）</param>
             <returns>配置后的 IServiceCollection 实例</returns>
             <remarks>
             该方法会自动包含当前程序集的 XML 注释文件，并在需要时包含其他指定的 XML 注释文件
             </remarks>
+        </member>
+        <member name="M:Acme.ReturnOh.GlobalFilterCollectionExtension.ConfigureSwaggerOptions(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Collections.Generic.List{Acme.ReturnOh.Dtos.SwaggerDocDto},System.Collections.Generic.List{System.String},System.Boolean,System.Boolean)">
+            <summary>
+            配置 Swagger 选项，添加文档信息和 XML 注释文件
+            </summary>
+            <param name="services">IServiceCollection 实例</param>
+            <param name="swaggerDocs">多个版本集合</param>
+            <param name="otherFiles">其他需要包含的 XML 注释文件列表，默认为 null</param>
+            <param name="isActionOrder">是否方法排序（默认添加）</param>
+            <param name="enableJwtBearerAuth">是否添加JWT认证（默认添加）</param>
+            <returns>配置后的 IServiceCollection 实例</returns>
+            <remarks>
+            该方法会自动包含当前程序集的 XML 注释文件，并在需要时包含其他指定的 XML 注释文件
+            </remarks>
+        </member>
+        <member name="M:Acme.ReturnOh.GlobalFilterCollectionExtension.UseBathSwagger(Microsoft.AspNetCore.Builder.WebApplication,System.Collections.Generic.List{Acme.ReturnOh.Dtos.SwaggerDocDto},System.String)">
+            <summary>
+            启用并配置多版本Swagger中间件，支持同时展示多个版本的API文档
+            </summary>
+            <param name="app">WebApplication 应用程序实例</param>
+            <param name="swaggerDocs">多版本文档配置集合，包含每个版本的标题与版本号</param>
+            <param name="routePrefix">Swagger访问路由前缀
+            空字符串：根域名直接访问（https://xxx:port）
+            swagger：通过 https://xxx:port/swagger 访问
+            </param>
+            <returns>WebApplication 实例，支持链式调用</returns>
+        </member>
+        <member name="M:Acme.ReturnOh.GlobalFilterCollectionExtension.UseSingSwagger(Microsoft.AspNetCore.Builder.WebApplication,System.String,System.String,System.String)">
+            <summary>
+            启用并配置单个版本的Swagger中间件
+            </summary>
+            <param name="app">WebApplication 应用实例</param>
+            <param name="title">Swagger界面显示的文档标题（如：后台管理API）</param>
+            <param name="version">API版本号，默认值 v1</param>
+            <param name="routePrefix">Swagger访问路由前缀
+            为空字符串：根域名直接访问（https://localhost:port）
+            填写 swagger：通过 https://localhost:port/swagger 访问
+            </param>
+            <returns>WebApplication 实例，支持链式调用</returns>
         </member>
         <member name="M:Acme.ReturnOh.GlobalFilterCollectionExtension.ConfigureApiBehaviorOptions(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
             <summary>

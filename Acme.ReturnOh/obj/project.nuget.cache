@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "9SAOU0gRO7w=",
+  "dgSpecHash": "O7nnY9U3z04=",
   "success": true,
   "projectFilePath": "D:\\yzxs\\Code\\Acme\\acme\\Acme.ReturnOh\\Acme.ReturnOh.csproj",
   "expectedPackageFiles": [
-    "D:\\yzxs\\Code\\Acme\\acme\\packages\\microsoft.openapi\\3.4.0\\microsoft.openapi.3.4.0.nupkg.sha512",
+    "D:\\yzxs\\Code\\Acme\\acme\\packages\\microsoft.openapi\\2.4.1\\microsoft.openapi.2.4.1.nupkg.sha512",
     "D:\\yzxs\\Code\\Acme\\acme\\packages\\nuget.build.tasks.pack\\6.14.0\\nuget.build.tasks.pack.6.14.0.nupkg.sha512",
     "D:\\yzxs\\Code\\Acme\\acme\\packages\\swashbuckle.aspnetcore.swagger\\10.1.5\\swashbuckle.aspnetcore.swagger.10.1.5.nupkg.sha512",
     "D:\\yzxs\\Code\\Acme\\acme\\packages\\swashbuckle.aspnetcore.swaggergen\\10.1.5\\swashbuckle.aspnetcore.swaggergen.10.1.5.nupkg.sha512",

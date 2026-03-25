@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     "net10.0": {
-      "Microsoft.OpenApi/3.4.0": {
+      "Microsoft.OpenApi/2.4.1": {
         "type": "package",
         "compile": {
           "lib/net8.0/Microsoft.OpenApi.dll": {
@@ -77,7 +77,7 @@
       }
     },
     "net8.0": {
-      "Microsoft.OpenApi/3.4.0": {
+      "Microsoft.OpenApi/2.4.1": {
         "type": "package",
         "compile": {
           "lib/net8.0/Microsoft.OpenApi.dll": {
@@ -152,7 +152,7 @@
       }
     },
     "net9.0": {
-      "Microsoft.OpenApi/3.4.0": {
+      "Microsoft.OpenApi/2.4.1": {
         "type": "package",
         "compile": {
           "lib/net8.0/Microsoft.OpenApi.dll": {
@@ -228,10 +228,10 @@
     }
   },
   "libraries": {
-    "Microsoft.OpenApi/3.4.0": {
-      "sha512": "5XsxYU401xZqrpBuSciVhYy4vzbzXM7zuYHjZDy+5QzYf6Iw9QdpFN/2E7WLT2gBcyz0BCKUNppm7ehWNfd8zQ==",
+    "Microsoft.OpenApi/2.4.1": {
+      "sha512": "u7QhXCISMQuab3flasb1hoaiERmUqyWsW7tmQODyILoQ7mJV5IRGM+2KKZYo0QUfC13evEOcHAb6TPWgqEQtrw==",
       "type": "package",
-      "path": "microsoft.openapi/3.4.0",
+      "path": "microsoft.openapi/2.4.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -242,7 +242,7 @@
         "lib/netstandard2.0/Microsoft.OpenApi.dll",
         "lib/netstandard2.0/Microsoft.OpenApi.pdb",
         "lib/netstandard2.0/Microsoft.OpenApi.xml",
-        "microsoft.openapi.3.4.0.nupkg.sha512",
+        "microsoft.openapi.2.4.1.nupkg.sha512",
         "microsoft.openapi.nuspec"
       ]
     },
@@ -356,21 +356,18 @@
   },
   "projectFileDependencyGroups": {
     "net10.0": [
-      "Microsoft.OpenApi >= 3.4.0",
       "NuGet.Build.Tasks.Pack >= 6.14.0",
       "Swashbuckle.AspNetCore.Swagger >= 10.1.5",
       "Swashbuckle.AspNetCore.SwaggerGen >= 10.1.5",
       "Swashbuckle.AspNetCore.SwaggerUI >= 10.1.5"
     ],
     "net8.0": [
-      "Microsoft.OpenApi >= 3.4.0",
       "NuGet.Build.Tasks.Pack >= 6.14.0",
       "Swashbuckle.AspNetCore.Swagger >= 10.1.5",
       "Swashbuckle.AspNetCore.SwaggerGen >= 10.1.5",
       "Swashbuckle.AspNetCore.SwaggerUI >= 10.1.5"
     ],
     "net9.0": [
-      "Microsoft.OpenApi >= 3.4.0",
       "NuGet.Build.Tasks.Pack >= 6.14.0",
       "Swashbuckle.AspNetCore.Swagger >= 10.1.5",
       "Swashbuckle.AspNetCore.SwaggerGen >= 10.1.5",
@@ -382,7 +379,7 @@
     "D:\\开发软件\\VS2022\\Shared\\NuGetPackages": {}
   },
   "project": {
-    "version": "1.7.3",
+    "version": "1.7.4",
     "restore": {
       "projectUniqueName": "D:\\yzxs\\Code\\Acme\\acme\\Acme.ReturnOh\\Acme.ReturnOh.csproj",
       "projectName": "Acme.ReturnOh",
@@ -439,10 +436,6 @@
       "net8.0": {
         "targetAlias": "net8.0",
         "dependencies": {
-          "Microsoft.OpenApi": {
-            "target": "Package",
-            "version": "[3.4.0, )"
-          },
           "NuGet.Build.Tasks.Pack": {
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
             "suppressParent": "All",
@@ -765,10 +758,6 @@
       "net9.0": {
         "targetAlias": "net9.0",
         "dependencies": {
-          "Microsoft.OpenApi": {
-            "target": "Package",
-            "version": "[3.4.0, )"
-          },
           "NuGet.Build.Tasks.Pack": {
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
             "suppressParent": "All",
@@ -1107,10 +1096,6 @@
       "net10.0": {
         "targetAlias": "net10.0",
         "dependencies": {
-          "Microsoft.OpenApi": {
-            "target": "Package",
-            "version": "[3.4.0, )"
-          },
           "NuGet.Build.Tasks.Pack": {
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
             "suppressParent": "All",
