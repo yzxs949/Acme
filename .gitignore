@@ -5,3 +5,8 @@
 /Acme
 /Acme.Dapper/obj/Debug
 /.vs
+/packages
+/Acme.ReturnOh/bin
+/Acme.ReturnOh/obj
+/Acme.GlobalFilters/bin
+/Acme.GlobalFilters/obj
