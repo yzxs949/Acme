@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
 using Microsoft.OpenApi;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Reflection;
@@ -44,37 +43,7 @@ public static class GlobalFilterCollectionExtension
                 Title = title,
                 Version = version
             });
-            string path = Assembly.GetExecutingAssembly().GetName().Name + ".xml";
-            string text = Path.Combine(AppContext.BaseDirectory, path);
-            options.IncludeXmlComments(text, true);
-            if (otherFiles is not null)
-            {
-                foreach (string str in otherFiles)
-                {
-                    string text2 = Path.Combine(AppContext.BaseDirectory, str + ".xml");
-                    options.IncludeXmlComments(text2, true);
-                }
-            }
-            if (isActionOrder)
-            {
-                options.OrderActionsBy(o => o.RelativePath);
-            }
-            if (enableJwtBearerAuth)
-            {
-                options.AddSecurityDefinition(CV.SecuritySchemeId, new OpenApiSecurityScheme
-                {
-                    Type = SecuritySchemeType.Http,
-                    Scheme = CV.SecuritySchemeId,
-                    BearerFormat = "JWT",
-                    In = ParameterLocation.Header,
-                    Name = "Authorization",
-                    Description = "格式：Bearer {token}"
-                });
-            }
-            options.AddSecurityRequirement(doc => new OpenApiSecurityRequirement
-            {
-                { new OpenApiSecuritySchemeReference("Bearer"), new List<string>() }
-            });
+            ConfigureSwaggerCommentsAndSecurity(options, otherFiles, isActionOrder, enableJwtBearerAuth);
         });
         return services;
     }
@@ -102,47 +71,61 @@ public static class GlobalFilterCollectionExtension
         {
             foreach (SwaggerDocDto swaggerDoc in swaggerDocs)
             {
-                string title = swaggerDoc.Title;
-                string version = swaggerDoc.Version;
-                options.SwaggerDoc(version, new OpenApiInfo
+                options.SwaggerDoc(swaggerDoc.Version, new OpenApiInfo
                 {
-                    Title = title,
-                    Version = version
+                    Title = swaggerDoc.Title,
+                    Version = swaggerDoc.Version
                 });
             }
-            string path = Assembly.GetExecutingAssembly().GetName().Name + ".xml";
-            string text = Path.Combine(AppContext.BaseDirectory, path);
-            options.IncludeXmlComments(text, true);
-            if (otherFiles is not null)
+            ConfigureSwaggerCommentsAndSecurity(options, otherFiles, isActionOrder, enableJwtBearerAuth);
+        });
+        return services;
+    }
+
+    /// <summary>
+    /// 公共 Swagger 配置：XML 注释、方法排序、JWT 认证
+    /// </summary>
+    private static void ConfigureSwaggerCommentsAndSecurity(
+        SwaggerGenOptions options,
+        List<string>? otherFiles,
+        bool isActionOrder,
+        bool enableJwtBearerAuth)
+    {
+        string xmlFile = Assembly.GetExecutingAssembly().GetName().Name + ".xml";
+        string xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+        options.IncludeXmlComments(xmlPath, true);
+
+        if (otherFiles is not null)
+        {
+            foreach (string fileName in otherFiles)
             {
-                foreach (string str in otherFiles)
-                {
-                    string text2 = Path.Combine(AppContext.BaseDirectory, str + ".xml");
-                    options.IncludeXmlComments(text2, true);
-                }
+                string otherXmlPath = Path.Combine(AppContext.BaseDirectory, fileName + ".xml");
+                options.IncludeXmlComments(otherXmlPath, true);
             }
-            if (isActionOrder)
+        }
+
+        if (isActionOrder)
+        {
+            options.OrderActionsBy(o => o.RelativePath);
+        }
+
+        if (enableJwtBearerAuth)
+        {
+            options.AddSecurityDefinition(CV.SecuritySchemeId, new OpenApiSecurityScheme
             {
-                options.OrderActionsBy(o => o.RelativePath);
-            }
-            if (enableJwtBearerAuth)
-            {
-                options.AddSecurityDefinition(CV.SecuritySchemeId, new OpenApiSecurityScheme
-                {
-                    Type = SecuritySchemeType.Http,
-                    Scheme = CV.SecuritySchemeId,
-                    BearerFormat = "JWT",
-                    In = ParameterLocation.Header,
-                    Name = "Authorization",
-                    Description = "格式：Bearer {token}"
-                });
-            }
+                Type = SecuritySchemeType.Http,
+                Scheme = CV.SecuritySchemeId,
+                BearerFormat = "JWT",
+                In = ParameterLocation.Header,
+                Name = "Authorization",
+                Description = "格式：Bearer {token}"
+            });
+
             options.AddSecurityRequirement(doc => new OpenApiSecurityRequirement
             {
                 { new OpenApiSecuritySchemeReference("Bearer"), new List<string>() }
             });
-        });
-        return services;
+        }
     }
 
     /// <summary>

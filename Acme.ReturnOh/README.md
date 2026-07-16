@@ -4,18 +4,15 @@
 
 Acme.ReturnOh 是一个用于 .NET 项目的通用返回参数处理库，提供了统一的 API 响应格式、全局异常处理、参数验证和 Swagger 配置功能。
 
-## 当前版本 1.7.4
+## 当前版本 1.8.0
  ### 更新内容
- - 修复引用包版本不匹配报错问题。
- - xml文件不会复制到启动项目中。
- - 修复的多个版本注入的问题
- - 新增多版本 Swagger 支持
- - 新增 JWT 认证支持
- - 新增 API 方法排序功能
- - 新增 SwaggerDocDto 数据传输对象
- - 新增 UseBathSwagger 和 UseSingSwagger 扩展方法
- - 新增 SecuritySchemeId 常量
- - 新增 LoginUserKey 和 VerCodeKey 常量
+ - 修复 ArgumentException/SystemException 抛出错误类型的问题（现抛对应类型异常）
+ - 移除异常过滤器中多余的 20ms 延迟，加快异常响应速度
+ - 修复禁用 JWT 认证时仍添加 SecurityRequirement 的问题
+ - 精简方法重载，消除编译器歧义，API 更清晰
+ - 代码重构：抽取公共 Swagger 配置方法，消除大量重复代码
+ - 使用 CV 常量替代硬编码字符串，提升可维护性
+ - 移除未使用的 using 引用
 
 ### 主要功能
 
@@ -106,7 +103,7 @@ public class WeatherForecastController : ControllerBase
 
 ```csharp
 public record Oh(int Code, string Msg, object? Data = null);
-public record Oh<TEntity>(int Code, string Msg, TEntity? Data) where TEntity : class, new();
+public record Oh<TEntity>(int Code, string Msg, TEntity? Data) where TEntity : class;
 ```
 
 #### 常用方法
@@ -142,11 +139,13 @@ return data.Custom<UserDto>(403, "权限不足");
 
 #### 全局异常过滤器
 
+> **安全改进**：v1.8.0 起异常过滤器不再将 `InnerException?.Message` 拼接返回给客户端，防止内部实现细节泄露。异常信息由服务器日志记录，客户端仅收到通用友好提示。
+
 库会自动捕获并处理以下异常：
 
-- `ArgumentException` - 返回 400 状态码
-- `SystemException` - 返回 500 状态码
-- 其他异常 - 返回 500 状态码
+- `ArgumentException` - 返回 400 状态码，提示"请求参数错误"
+- `SystemException` - 返回 500 状态码，提示"服务器错误！请联系管理员"
+- 其他异常 - 返回 500 状态码，提示"系统错误！请联系管理员"
 
 #### 手动抛出异常
 
@@ -154,9 +153,9 @@ return data.Custom<UserDto>(403, "权限不足");
 // 抛出普通异常
 Oh<MyData>.Exception("操作失败");
 
-// 抛出自定义异常
-Oh<MyData>.ArgumentException("参数错误");
-Oh<MyData>.SystemException("系统错误");
+// 抛出参数异常（推荐使用具体的异常类型）
+Oh<MyData>.ArgumentException("参数错误");   // 抛出 ArgumentException
+Oh<MyData>.SystemException("系统错误");       // 抛出 SystemException
 ```
 
 ### 3. 参数验证
@@ -332,7 +331,7 @@ var result = Oh<UserDto>.NewOh(200, "操作成功", userDto);
 | `CV.GetYes`           | "获取成功"         | 获取成功消息  |
 | `CV.GetNo`            | "获取失败"         | 获取失败消息  |
 | `CV.SecuritySchemeId` | "Bearer"       | 认证方案 ID |
-| `CV.NullValue`        | null           | 空值对象    |
+| `CV.NullValue`        | `null` (object?)  | 空值对象    |
 
 ## 示例代码
 
@@ -549,7 +548,22 @@ builder.Services.ConfigureSwaggerOptions("API 文档", isActionOrder: false);
 
 ## 版本历史
 
-- 1.7.4 - 当前版本
+- **1.8.1** — 当前版本
+  - **安全修复**：异常过滤器不再暴露 `InnerException.Message` 到客户端，防止信息泄露
+  - **优化**：移除 `Oh<TEntity>` 中不必要的 `new()` 约束，`where TEntity : class` 即可
+  - **优化**：`ExceptionFilter` 的 `AttributeUsage` 改为 `Class | Method`（原为 `All`）
+
+- **1.8.0**
+  - 修复 `ArgumentException`/`SystemException` 抛出错误类型的问题
+  - 移除异常过滤器中多余的 20ms 延迟，加快异常响应速度
+  - 修复禁用 JWT 认证时仍添加 SecurityRequirement 的问题
+  - 精简方法重载，消除编译器歧义，API 更清晰
+  - 代码重构：抽取公共 Swagger 配置方法，消除代码重复
+  - 使用 CV 常量替代硬编码字符串，提升可维护性
+  - 优化 `CV.NullValue` 类型声明（`static readonly object?`）
+  - 移除未使用的 using 引用
+
+- **1.7.4**
   - 新增多版本 Swagger 支持
   - 新增 JWT 认证支持
   - 新增 API 方法排序功能

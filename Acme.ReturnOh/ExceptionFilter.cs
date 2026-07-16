@@ -1,33 +1,39 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.Extensions.Logging;
 
 namespace Acme.ReturnOh;
 
 /// <summary>
 /// 异常过滤
 /// </summary>
-[AttributeUsage(AttributeTargets.All)]
+[AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
 public class ExceptionFilter : Attribute, IAsyncExceptionFilter, IFilterMetadata
 {
     /// <summary>
     /// 异常过滤
     /// </summary>
     /// <param name="context"></param>
-    /// <exception cref="NotImplementedException"></exception>
     public async Task OnExceptionAsync(ExceptionContext context)
     {
         if (context.ExceptionHandled)
             return;
-        Oh result = context.Exception switch
+
+        // 生产环境不暴露内部异常细节到客户端
+        string userFriendlyMsg = context.Exception switch
         {
-            ArgumentException ex =>
-                new Oh(400, $"{ex.Message}{ex.InnerException?.Message}"),
-            SystemException ex =>
-                Oh.Fail($"{ex.Message}{ex.InnerException?.Message}"),
-            _ =>
-                Oh.Fail($"{context.Exception.Message}{context.Exception.InnerException?.Message}"),
+            ArgumentException => "请求参数错误",
+            SystemException => CV.ErrorServer,
+            _ => CV.ErrorPrompt,
         };
-        await Task.Delay(20);
+
+        int statusCode = context.Exception switch
+        {
+            ArgumentException => 400,
+            _ => 500,
+        };
+
+        Oh result = new Oh(statusCode, userFriendlyMsg, null);
         context.ExceptionHandled = true;
         context.Result = new ObjectResult(result);
     }

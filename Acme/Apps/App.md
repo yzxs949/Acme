@@ -213,8 +213,6 @@ public class Program
 
 ## 版本兼容性
 
-- .NET 6.0：支持
-- .NET 7.0：支持
 - .NET 8.0：支持
 - .NET 9.0：支持
 - .NET 10.0：支持

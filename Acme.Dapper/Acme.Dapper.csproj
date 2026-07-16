@@ -16,10 +16,10 @@
 		</PackageReleaseNotes>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="Dapper" Version="2.1.72" />
+		<PackageReference Include="Dapper" Version="2.1.79" />
 		<PackageReference Include="Dapper.Contrib" Version="2.0.78" />
-		<PackageReference Include="Microsoft.Data.SqlClient" Version="6.1.4" />
-		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.5" />
+		<PackageReference Include="Microsoft.Data.SqlClient" Version="7.0.2" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.10" />
 	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\Acme\Acme.csproj" />

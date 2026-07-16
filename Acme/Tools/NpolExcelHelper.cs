@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 namespace Acme.Tools;
 
@@ -52,8 +53,8 @@ public class NpolExcelHelper<T> where T : new()
     {
         if (!File.Exists(fileName))
             return null;
-        FileStream fs = new(fileName, FileMode.Open, FileAccess.Read);
-        return InputExcel(fs, sheetName); ;
+        using FileStream fs = new(fileName, FileMode.Open, FileAccess.Read);
+        return InputExcel(fs, sheetName);
     }
 
     /// <summary>
@@ -166,6 +167,11 @@ public class NpolExcelHelper<T> where T : new()
     {
         if (listData.Count == 0)
             throw new Exception("没有可导出的数据");
+
+        // 路径安全检查：防止路径遍历
+        string safeFileName = SanitizeFileName(fileName);
+        string safeDepositPath = SanitizePath(depositPath);
+
         XSSFWorkbook hssfworkbook;
         using FileStream file = new(templatePath, FileMode.Open, FileAccess.Read);
         hssfworkbook = new(file);
@@ -178,18 +184,40 @@ public class NpolExcelHelper<T> where T : new()
                 XSSFRow rowdata = (XSSFRow)sheet.CreateRow(startRow);
                 for (int i = 0; i < propertyInfo.Length; i++)
                 {
-                    rowdata.CreateCell(i).SetCellValue(propertyInfo[i].GetValue(item).ToString());
+                    var val = propertyInfo[i].GetValue(item);
+                    rowdata.CreateCell(i).SetCellValue(val?.ToString() ?? "");
                 }
                 startRow++;
             }
         }
-        string ExcelFileName = $"{fileName}{DateTime.Now.ToDataTimeString("", "", "")}.xlsx";
-        string ExcelFilePath = $"{Directory.GetCurrentDirectory()}/{depositPath}{ExcelFileName}";
-        ExcelFilePath = ExcelFilePath.Replace("/", "\\");
-        FileStream newfile = new(ExcelFilePath, FileMode.Create);
+        string ExcelFileName = $"{safeFileName}{DateTime.Now.ToDataTimeString("", "", "")}.xlsx";
+        string saveDir = Path.Combine(Directory.GetCurrentDirectory(), safeDepositPath);
+        Directory.CreateDirectory(saveDir);
+        string ExcelFilePath = Path.Combine(saveDir, ExcelFileName);
+        using FileStream newfile = new(ExcelFilePath, FileMode.Create);
         hssfworkbook.Write(newfile);
-        newfile.Flush();
-        newfile.Close();
         return ExcelFilePath;
+    }
+
+    /// <summary>
+    /// 净化文件名，移除路径遍历字符
+    /// </summary>
+    private static string SanitizeFileName(string name)
+    {
+        if (string.IsNullOrEmpty(name)) return "";
+        // 移除路径分隔符
+        return name.Replace("\\", "").Replace("/", "").Replace("..", "");
+    }
+
+    /// <summary>
+    /// 净化路径，移除路径遍历字符
+    /// </summary>
+    private static string SanitizePath(string path)
+    {
+        if (string.IsNullOrEmpty(path)) return "";
+        // 只允许相对路径，移除..防止路径遍历
+        var invalid = Path.GetInvalidPathChars();
+        var sanitized = new string(path.Where(c => !invalid.Contains(c)).ToArray());
+        return sanitized.Replace("..", "").Trim(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
     }
 }

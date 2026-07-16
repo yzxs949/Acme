@@ -88,7 +88,7 @@ public static class CV
     /// <summary>
     /// 表示一个空值对象，其值为 null
     /// </summary>
-    public const object NullValue = null;
+    public static readonly object? NullValue = null;
 
     /// <summary>
     /// 认证方案ID

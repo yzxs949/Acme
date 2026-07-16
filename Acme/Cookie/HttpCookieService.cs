@@ -31,7 +31,10 @@ public class HttpCookieService : IHttpCookieService
     {
         _httpContextAccessor.HttpContext.Response.Cookies.Append(key, value, new CookieOptions
         {
-            Expires = DateTime.Now.AddMinutes(minutes)
+            Expires = DateTime.Now.AddMinutes(minutes),
+            HttpOnly = true,
+            SameSite = SameSiteMode.Lax
+            // Secure 标记由 AspNetCore 根据请求自动设置（当 UseHttps 时可开启全局 HSTS）
         });
     }
 

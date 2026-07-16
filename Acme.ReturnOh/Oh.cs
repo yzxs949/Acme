@@ -7,7 +7,7 @@
 /// <param name="Code">编码</param>
 /// <param name="Msg">描述</param>
 /// <param name="Data">数据</param>
-public record Oh<TEntity>(int Code, string Msg, TEntity? Data) : IOh where TEntity : class, new()
+public record Oh<TEntity>(int Code, string Msg, TEntity? Data) : IOh where TEntity : class
 {
     /// <summary>
     /// 实例化Oh
@@ -31,23 +31,23 @@ public record Oh<TEntity>(int Code, string Msg, TEntity? Data) : IOh where TEnti
     }
 
     /// <summary>
-    /// 异常处理方法
+    /// 抛出参数异常
     /// </summary>
-    /// <param name="msg"></param>
-    /// <exception cref="T:System.Exception">异常类</exception>
+    /// <param name="msg">异常消息</param>
+    /// <exception cref="T:System.ArgumentException">参数异常</exception>
     public static void ArgumentException(string msg)
     {
-        throw new Exception(msg);
+        throw new ArgumentException(msg);
     }
 
     /// <summary>
-    /// 异常处理方法
+    /// 抛出系统异常
     /// </summary>
-    /// <param name="msg"></param>
-    /// <exception cref="T:System.Exception">异常类</exception>
+    /// <param name="msg">异常消息</param>
+    /// <exception cref="T:System.SystemException">系统异常</exception>
     public static void SystemException(string msg)
     {
-        throw new Exception(msg);
+        throw new SystemException(msg);
     }
 
     /// <summary>

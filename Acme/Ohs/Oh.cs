@@ -12,7 +12,7 @@ namespace Acme.Ohs;
 public class Oh<TEntity>(
     int code = CV.YesCode,
     string msg = CV.BlankCharacter,
-    TEntity data = null) : IOh where TEntity : class, new()
+    TEntity? data = null) : IOh where TEntity : class
 {
 
     /// <summary>

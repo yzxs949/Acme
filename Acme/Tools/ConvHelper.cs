@@ -104,24 +104,14 @@ public static class ConvHelper
     /// <returns></returns>
     public static string ToBase64String(this string FilesPath)
     {
-        FileStream fsForRead = new(FilesPath, FileMode.Open);
-        string base64Str = "";
         try
         {
-            fsForRead.Seek(0, SeekOrigin.Begin);
-            byte[] bs = new byte[fsForRead.Length];
-            int log = Convert.ToInt32(fsForRead.Length);
-            _ = fsForRead.Read(bs, 0, log);
-            base64Str = Convert.ToBase64String(bs);
-            return base64Str;
+            byte[] bs = File.ReadAllBytes(FilesPath);
+            return Convert.ToBase64String(bs);
         }
         catch
         {
-            return base64Str;
-        }
-        finally
-        {
-            fsForRead.Close();
+            return "";
         }
     }
 
@@ -179,16 +169,17 @@ public static class ConvHelper
     }
 
     /// <summary>
-    /// 中文乱码转Utf8
+    /// 将字符串从系统默认编码转换为 UTF-8（修复乱码）
     /// </summary>
     /// <param name="strText">字符串</param>
     /// <returns></returns>
     public static string ToUtf8(this string strText)
     {
-        byte[] buffer1 = Encoding.Default.GetBytes(strText);
-        byte[] buffer2 = Encoding.Convert(Encoding.UTF8, Encoding.Default, buffer1, 0, buffer1.Length);
-        string strBuffer = Encoding.Default.GetString(buffer2, 0, buffer2.Length);
-        return strBuffer;
+        if (string.IsNullOrEmpty(strText))
+            return strText;
+        byte[] sourceBytes = Encoding.Default.GetBytes(strText);
+        byte[] utf8Bytes = Encoding.Convert(Encoding.Default, Encoding.UTF8, sourceBytes, 0, sourceBytes.Length);
+        return Encoding.UTF8.GetString(utf8Bytes, 0, utf8Bytes.Length);
     }
 
     /// <summary>
@@ -222,21 +213,23 @@ public static class ConvHelper
     }
 
     /// <summary>
-    /// 获取随机字符串
+    /// 获取随机字符串（使用密码学安全随机数）
     /// </summary>
-    /// <param name="strText">随机字符内容</param>
+    /// <param name="strText">随机字符内容（逗号分隔）</param>
     /// <param name="len">长度</param>
     /// <returns></returns>
     public static string ToRandomCode(this string strText, int len)
     {
-        string[] strArry = strText.Split(',');
-        string code = "";
-        Random rand = new(Guid.NewGuid().GetHashCode());
+        string[] strArry = strText.Split(',', StringSplitOptions.RemoveEmptyEntries);
+        if (strArry.Length == 0 || len <= 0) return "";
+
+        var sb = new System.Text.StringBuilder(len);
         for (int i = 0; i < len; i++)
         {
-            code += strArry[rand.Next(0, strArry.Length)];
+            int index = System.Security.Cryptography.RandomNumberGenerator.GetInt32(strArry.Length);
+            sb.Append(strArry[index]);
         }
-        return code;
+        return sb.ToString();
     }
 
     /// <summary>

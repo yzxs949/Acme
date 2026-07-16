@@ -28,7 +28,7 @@ public static class OhExpand
     /// <returns></returns>
     public static IOh Success<TEntity>(
         this TEntity data,
-        string msg = CV.Yes) where TEntity : class, new()
+        string msg = CV.Yes) where TEntity : class
     {
         return new Oh<TEntity>(CV.YesCode, msg, data);
     }
@@ -50,7 +50,7 @@ public static class OhExpand
     /// <param name="data">数据</param>
     /// <returns></returns>
     public static IOh Success<TEntity>(
-        this TEntity data) where TEntity : class, new()
+        this TEntity data) where TEntity : class
     {
         return new Oh<TEntity>(CV.YesCode, CV.Yes, data);
     }
@@ -80,7 +80,7 @@ public static class OhExpand
     public static IOh Success<TEntity>(
         this TEntity data,
         int code = CV.YesCode,
-        string msg = CV.Yes) where TEntity : class, new()
+        string msg = CV.Yes) where TEntity : class
     {
         return new Oh<TEntity>(code, msg, data);
     }
@@ -106,7 +106,7 @@ public static class OhExpand
     /// <returns></returns>
     public static IOh Fail<TEntity>(
         this TEntity data,
-        string msg = CV.ErrorServer) where TEntity : class, new()
+        string msg = CV.ErrorServer) where TEntity : class
     {
         return new Oh<TEntity>(CV.NoCode, msg, data);
     }
@@ -128,7 +128,7 @@ public static class OhExpand
     /// <param name="data">数据</param>
     /// <returns></returns>
     public static IOh Fail<TEntity>(
-        this TEntity data) where TEntity : class, new()
+        this TEntity data) where TEntity : class
     {
         return new Oh<TEntity>(CV.NoCode, CV.ErrorServer, data);
     }
@@ -158,7 +158,7 @@ public static class OhExpand
     public static IOh Fail<TEntity>(
         this TEntity data,
         int code = CV.NoCode,
-        string msg = CV.ErrorServer) where TEntity : class, new()
+        string msg = CV.ErrorServer) where TEntity : class
     {
         return new Oh<TEntity>(code, msg, data);
     }
@@ -188,7 +188,7 @@ public static class OhExpand
     public static IOh Custom<TEntity>(
         this TEntity data,
         int code,
-        string msg) where TEntity : class, new()
+        string msg) where TEntity : class
     {
         return new Oh<TEntity>(code, msg, data);
     }
