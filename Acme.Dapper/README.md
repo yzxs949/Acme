@@ -643,7 +643,7 @@ await _extensions.ExecuteTransactionAsync(new[]
 
 欢迎提交 Issue 与 Pull Request。
 
-- 仓库：<https://gitee.com/yzxs949/acme-v2>
+- 仓库：<https://gitee.com/yzxs949/acme>
 - 提交前请确保 `dotnet build` 零警告零错误
 - 涉及 SQL 拼接的改动，请补充覆盖该类场景的用例
 

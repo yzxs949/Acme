@@ -6,7 +6,7 @@
 [![NuGet Downloads](https://img.shields.io/nuget/dt/Acme.svg)](https://www.nuget.org/packages/Acme)
 [![.NET](https://img.shields.io/badge/.NET-8.0%20%7C%209.0%20%7C%2010.0-512BD4.svg)](https://dotnet.microsoft.com/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Gitee](https://img.shields.io/badge/Gitee-yzxs949%2Facme--v2-C71D23.svg)](https://gitee.com/yzxs949/acme-v2)
+[![Gitee](https://img.shields.io/badge/Gitee-yzxs949%2Facme-C71D23.svg)](https://gitee.com/yzxs949/acme)
 
 Acme 是一个面向 **.NET 8 / 9 / 10** 的轻量级工具类库，聚合了日常开发中最常用的能力：JSON、类型转换、HTTP、加密、Session / Cookie、拼音、Excel、验证码、统一响应体、Swagger / JWT 与配置读取等。开箱即用，帮助你专注于业务本身。
 
@@ -429,7 +429,7 @@ string apiKey = custom.GetValue("ThirdParty:ApiKey");
 
 ## 贡献
 
-欢迎通过 [Gitee Issues](https://gitee.com/yzxs949/acme-v2/issues) 反馈问题或提出建议。
+欢迎通过 [Gitee Issues](https://gitee.com/yzxs949/acme/issues) 反馈问题或提出建议。
 
 1. Fork 本仓库
 2. 新建分支：`git checkout -b feature/your-feature`
@@ -447,6 +447,6 @@ string apiKey = custom.GetValue("ThirdParty:ApiKey");
 
 - 邮箱：<yzxs949@163.com>
 - 微信公众号：.NET修仙日记
-- 仓库地址：<https://gitee.com/yzxs949/acme-v2>
+- 仓库地址：<https://gitee.com/yzxs949/acme>
 
 ![.NET修仙日记](https://raw.githubusercontent.com/yzxs949/FilePath/refs/heads/main/Image/%E4%BA%8C%E7%BB%B4%E7%A0%81.jpg)

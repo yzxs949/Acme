@@ -8,7 +8,7 @@
 [![NuGet Acme.Dapper](https://img.shields.io/nuget/v/Acme.Dapper.svg)](https://www.nuget.org/packages/Acme.Dapper)
 [![.NET](https://img.shields.io/badge/.NET-8.0%20%7C%209.0%20%7C%2010.0-512BD4.svg)](https://dotnet.microsoft.com/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](https://opensource.org/licenses/MIT)
-[![Gitee](https://img.shields.io/badge/Gitee-yzxs949%2Facme--v2-C71D23.svg)](https://gitee.com/yzxs949/acme-v2)
+[![Gitee](https://img.shields.io/badge/Gitee-yzxs949%2Facme-C71D23.svg)](https://gitee.com/yzxs949/acme)
 
 ## 目录
 
@@ -188,7 +188,7 @@ public class UserService(IRepository<User> repo)
 ## 仓库结构
 
 ```text
-acme-v2/
+acme/
 ├─ Acme/                  通用工具库（NuGet: Acme）
 │  ├─ Tools/              Json、ConvHelper、HttpHelper、MD5、VerCode…
 │  ├─ Sessions/           IHttpSessionService
@@ -247,7 +247,7 @@ dotnet build ApiDemo/ApiDemo.csproj
 
 ## 贡献
 
-欢迎通过 [Gitee Issues](https://gitee.com/yzxs949/acme-v2/issues) 反馈问题或提交 Pull Request。
+欢迎通过 [Gitee Issues](https://gitee.com/yzxs949/acme/issues) 反馈问题或提交 Pull Request。
 
 1. Fork 本仓库
 2. 新建分支：`git checkout -b feature/your-feature`
@@ -257,7 +257,7 @@ dotnet build ApiDemo/ApiDemo.csproj
 
 提交前请确保 `dotnet build Acme.sln` 通过。
 
-- 仓库：<https://gitee.com/yzxs949/acme-v2>
+- 仓库：<https://gitee.com/yzxs949/acme>
 - 邮箱：<yzxs949@163.com>
 - 公众号：.NET修仙日记
 
