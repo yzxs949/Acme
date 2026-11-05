@@ -6,7 +6,7 @@
 [![NuGet Downloads](https://img.shields.io/nuget/dt/Acme.svg)](https://www.nuget.org/packages/Acme)
 [![.NET](https://img.shields.io/badge/.NET-8.0%20%7C%209.0%20%7C%2010.0-512BD4.svg)](https://dotnet.microsoft.com/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Gitee](https://img.shields.io/badge/Gitee-yzxs949%2Facme-C71D23.svg)](https://gitee.com/yzxs949/acme)
+[![Gitee](https://img.shields.io/badge/Gitee-yzxs949%2Facme-C71D23.svg?style=flat&v=2)](https://gitee.com/yzxs949/acme)
 
 Acme 是一个面向 **.NET 8 / 9 / 10** 的轻量级工具类库，聚合了日常开发中最常用的能力：JSON、类型转换、HTTP、加密、Session / Cookie、拼音、Excel、验证码、统一响应体、Swagger / JWT 与配置读取等。开箱即用，帮助你专注于业务本身。
 
