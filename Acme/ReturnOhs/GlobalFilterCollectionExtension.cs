@@ -1,14 +1,22 @@
-﻿using Acme.ReturnOh.Dtos;
+﻿using Acme.Constant;
+using Acme.Ohs;
+using Acme.ReturnOh.Dtos;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi;
 using Swashbuckle.AspNetCore.SwaggerGen;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Reflection;
 
-namespace Acme.ReturnOh;
+namespace Acme.ReturnOhs;
 
 /// <summary>
 /// 全局过滤器服务类
@@ -32,7 +40,7 @@ public static class GlobalFilterCollectionExtension
         this IServiceCollection services,
         string title,
         string version = "v1",
-        List<string>? otherFiles = null,
+        List<string> otherFiles = null,
         bool isActionOrder = true,
         bool enableJwtBearerAuth = true)
     {
@@ -43,7 +51,7 @@ public static class GlobalFilterCollectionExtension
                 Title = title,
                 Version = version
             });
-            ConfigureSwaggerCommentsAndSecurity(options, otherFiles, isActionOrder, enableJwtBearerAuth);
+            ConfigureSwaggerGenCommon(options, otherFiles, isActionOrder, enableJwtBearerAuth);
         });
         return services;
     }
@@ -63,7 +71,7 @@ public static class GlobalFilterCollectionExtension
     public static IServiceCollection ConfigureSwaggerOptions(
        this IServiceCollection services,
        List<SwaggerDocDto> swaggerDocs,
-       List<string>? otherFiles = null,
+       List<string> otherFiles = null,
        bool isActionOrder = true,
        bool enableJwtBearerAuth = true)
     {
@@ -77,38 +85,34 @@ public static class GlobalFilterCollectionExtension
                     Version = swaggerDoc.Version
                 });
             }
-            ConfigureSwaggerCommentsAndSecurity(options, otherFiles, isActionOrder, enableJwtBearerAuth);
+            ConfigureSwaggerGenCommon(options, otherFiles, isActionOrder, enableJwtBearerAuth);
         });
         return services;
     }
 
     /// <summary>
-    /// 公共 Swagger 配置：XML 注释、方法排序、JWT 认证
+    /// 单/多版本共用的 SwaggerGen 配置：XML 注释、排序、JWT 安全定义与要求
     /// </summary>
-    private static void ConfigureSwaggerCommentsAndSecurity(
+    private static void ConfigureSwaggerGenCommon(
         SwaggerGenOptions options,
-        List<string>? otherFiles,
+        List<string> otherFiles,
         bool isActionOrder,
         bool enableJwtBearerAuth)
     {
-        string xmlFile = Assembly.GetExecutingAssembly().GetName().Name + ".xml";
-        string xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-        options.IncludeXmlComments(xmlPath, true);
-
+        string path = Assembly.GetExecutingAssembly().GetName().Name + ".xml";
+        options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, path), true);
         if (otherFiles is not null)
         {
-            foreach (string fileName in otherFiles)
+            foreach (string str in otherFiles)
             {
-                string otherXmlPath = Path.Combine(AppContext.BaseDirectory, fileName + ".xml");
-                options.IncludeXmlComments(otherXmlPath, true);
+                string text2 = Path.Combine(AppContext.BaseDirectory, str + ".xml");
+                options.IncludeXmlComments(text2, true);
             }
         }
-
         if (isActionOrder)
         {
             options.OrderActionsBy(o => o.RelativePath);
         }
-
         if (enableJwtBearerAuth)
         {
             options.AddSecurityDefinition(CV.SecuritySchemeId, new OpenApiSecurityScheme
@@ -120,12 +124,11 @@ public static class GlobalFilterCollectionExtension
                 Name = "Authorization",
                 Description = "格式：Bearer {token}"
             });
-
-            options.AddSecurityRequirement(doc => new OpenApiSecurityRequirement
-            {
-                { new OpenApiSecuritySchemeReference("Bearer"), new List<string>() }
-            });
         }
+        options.AddSecurityRequirement(doc => new OpenApiSecurityRequirement
+        {
+            { new OpenApiSecuritySchemeReference("Bearer"), new List<string>() }
+        });
     }
 
     /// <summary>
@@ -191,7 +194,7 @@ public static class GlobalFilterCollectionExtension
         {
             options.InvalidModelStateResponseFactory = delegate (ActionContext context)
             {
-                string? msg = (from e in context.ModelState.Values.SelectMany((ModelStateEntry v) => v.Errors) select e.ErrorMessage).FirstOrDefault<string>();
+                string msg = (from e in context.ModelState.Values.SelectMany(v => v.Errors) select e.ErrorMessage).FirstOrDefault<string>();
                 return new BadRequestObjectResult(new Oh(400, msg ?? "", null));
             };
         });
@@ -247,6 +250,32 @@ public static class GlobalFilterCollectionExtension
         where TExceptionFilter : IAsyncExceptionFilter
     {
         services.ConfigureMvcOptions<TExceptionFilter>();
+        return services;
+    }
+
+    /// <summary>
+    /// 配置认证服务
+    /// </summary>
+    /// <param name="services"></param>
+    /// <returns></returns>
+    public static IServiceCollection AddOhAuthentication(this IServiceCollection services)
+    {
+        services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            .AddJwtBearer(options =>
+            {
+                options.Events = new JwtBearerEvents
+                {
+                    OnChallenge = context =>
+                    {
+                        context.HandleResponse();
+                        context.Response.StatusCode = 401;
+                        context.Response.ContentType = "application/json";
+                        Oh result = new(401, "未授权，请登录后访问", null);
+                        return context.Response.WriteAsJsonAsync(result);
+                    }
+                };
+            });
+        services.AddAuthorization();
         return services;
     }
 }

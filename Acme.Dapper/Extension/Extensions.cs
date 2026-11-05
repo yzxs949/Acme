@@ -1,10 +1,11 @@
-﻿using Dapper;
+﻿using Acme.Dapper.SqlSplice;
+using Dapper;
 using Dapper.Contrib.Extensions;
 using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Acme.Dapper.Extension
@@ -17,17 +18,24 @@ namespace Acme.Dapper.Extension
         /// <summary>
         /// 链接字符串
         /// </summary>
-        public string ConnectionString { get; set; }
+        public string ConnectionString { get; }
 
         /// <summary>
         /// 构造函数
         /// </summary>
-        /// <param name="_connectionString"></param>
-        public Extensions(
-            string _connectionString)
+        /// <param name="_connectionString">数据库连接字符串</param>
+        public Extensions(string _connectionString)
         {
+            if (string.IsNullOrWhiteSpace(_connectionString))
+                throw new ArgumentNullException(nameof(_connectionString), "数据库连接字符串不能为空");
+
             ConnectionString = _connectionString;
         }
+
+        /// <summary>
+        /// 创建数据库连接
+        /// </summary>
+        private SqlConnection CreateConnection() => new(ConnectionString);
 
         #region 查询列表
         /// <summary>
@@ -38,15 +46,8 @@ namespace Acme.Dapper.Extension
         /// <returns></returns>
         public List<T> Query<T>(string sql, object param)
         {
-            try
-            {
-                using IDbConnection con = new SqlConnection(ConnectionString);
-                return con.Query<T>(sql, param).ToList();
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            using SqlConnection con = CreateConnection();
+            return new List<T>(con.Query<T>(sql, param));
         }
 
         /// <summary>
@@ -54,18 +55,14 @@ namespace Acme.Dapper.Extension
         /// </summary>
         /// <param name="sql">查询的sql</param>
         /// <param name="param">替换参数</param>
+        /// <param name="cancellationToken">取消令牌</param>
         /// <returns></returns>
-        public async Task<List<T>> QueryAsync<T>(string sql, object param)
+        public async Task<List<T>> QueryAsync<T>(string sql, object param, CancellationToken cancellationToken = default)
         {
-            try
-            {
-                using IDbConnection con = new SqlConnection(ConnectionString);
-                return new List<T>(await con.QueryAsync<T>(sql, param));
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            await using SqlConnection con = CreateConnection();
+            IEnumerable<T> result = await con.QueryAsync<T>(new CommandDefinition(sql, param, cancellationToken: cancellationToken))
+                .ConfigureAwait(false);
+            return new List<T>(result);
         }
         #endregion
 
@@ -78,15 +75,8 @@ namespace Acme.Dapper.Extension
         /// <returns></returns>
         public T QueryFirst<T>(string sql, object param)
         {
-            try
-            {
-                using IDbConnection con = new SqlConnection(ConnectionString);
-                return con.QueryFirst<T>(sql, param);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            using SqlConnection con = CreateConnection();
+            return con.QueryFirst<T>(sql, param);
         }
 
         /// <summary>
@@ -94,18 +84,13 @@ namespace Acme.Dapper.Extension
         /// </summary>
         /// <param name="sql"></param>
         /// <param name="param"></param>
+        /// <param name="cancellationToken">取消令牌</param>
         /// <returns></returns>
-        public async Task<T> QueryFirstAsync<T>(string sql, object param)
+        public async Task<T> QueryFirstAsync<T>(string sql, object param, CancellationToken cancellationToken = default)
         {
-            try
-            {
-                using IDbConnection con = new SqlConnection(ConnectionString);
-                return await con.QueryFirstAsync<T>(sql, param);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            await using SqlConnection con = CreateConnection();
+            return await con.QueryFirstAsync<T>(new CommandDefinition(sql, param, cancellationToken: cancellationToken))
+                .ConfigureAwait(false);
         }
 
         /// <summary>
@@ -116,15 +101,8 @@ namespace Acme.Dapper.Extension
         /// <returns></returns>
         public T QueryFirstOrDefault<T>(string sql, object param)
         {
-            try
-            {
-                using IDbConnection con = new SqlConnection(ConnectionString);
-                return con.QueryFirstOrDefault<T>(sql, param);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            using SqlConnection con = CreateConnection();
+            return con.QueryFirstOrDefault<T>(sql, param);
         }
 
         /// <summary>
@@ -132,18 +110,13 @@ namespace Acme.Dapper.Extension
         /// </summary>
         /// <param name="sql"></param>
         /// <param name="param"></param>
+        /// <param name="cancellationToken">取消令牌</param>
         /// <returns></returns>
-        public async Task<T> QueryFirstOrDefaultAsync<T>(string sql, object param)
+        public async Task<T> QueryFirstOrDefaultAsync<T>(string sql, object param, CancellationToken cancellationToken = default)
         {
-            try
-            {
-                using IDbConnection con = new SqlConnection(ConnectionString);
-                return await con.QueryFirstOrDefaultAsync<T>(sql, param);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            await using SqlConnection con = CreateConnection();
+            return await con.QueryFirstOrDefaultAsync<T>(new CommandDefinition(sql, param, cancellationToken: cancellationToken))
+                .ConfigureAwait(false);
         }
         #endregion
 
@@ -156,15 +129,8 @@ namespace Acme.Dapper.Extension
         /// <returns></returns>
         public T QuerySingle<T>(string sql, object param)
         {
-            try
-            {
-                using IDbConnection con = new SqlConnection(ConnectionString);
-                return con.QuerySingle<T>(sql, param);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            using SqlConnection con = CreateConnection();
+            return con.QuerySingle<T>(sql, param);
         }
 
         /// <summary>
@@ -172,18 +138,13 @@ namespace Acme.Dapper.Extension
         /// </summary>
         /// <param name="sql"></param>
         /// <param name="param"></param>
+        /// <param name="cancellationToken">取消令牌</param>
         /// <returns></returns>
-        public async Task<T> QuerySingleAsync<T>(string sql, object param)
+        public async Task<T> QuerySingleAsync<T>(string sql, object param, CancellationToken cancellationToken = default)
         {
-            try
-            {
-                using IDbConnection con = new SqlConnection(ConnectionString);
-                return await con.QuerySingleAsync<T>(sql, param);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            await using SqlConnection con = CreateConnection();
+            return await con.QuerySingleAsync<T>(new CommandDefinition(sql, param, cancellationToken: cancellationToken))
+                .ConfigureAwait(false);
         }
 
         /// <summary>
@@ -194,15 +155,8 @@ namespace Acme.Dapper.Extension
         /// <returns></returns>
         public T QuerySingleOrDefault<T>(string sql, object param)
         {
-            try
-            {
-                using IDbConnection con = new SqlConnection(ConnectionString);
-                return con.QuerySingleOrDefault<T>(sql, param);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            using SqlConnection con = CreateConnection();
+            return con.QuerySingleOrDefault<T>(sql, param);
         }
 
         /// <summary>
@@ -210,18 +164,13 @@ namespace Acme.Dapper.Extension
         /// </summary>
         /// <param name="sql"></param>
         /// <param name="param"></param>
+        /// <param name="cancellationToken">取消令牌</param>
         /// <returns></returns>
-        public async Task<T> QuerySingleOrDefaultAsync<T>(string sql, object param)
+        public async Task<T> QuerySingleOrDefaultAsync<T>(string sql, object param, CancellationToken cancellationToken = default)
         {
-            try
-            {
-                using IDbConnection con = new SqlConnection(ConnectionString);
-                return await con.QuerySingleOrDefaultAsync<T>(sql, param);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            await using SqlConnection con = CreateConnection();
+            return await con.QuerySingleOrDefaultAsync<T>(new CommandDefinition(sql, param, cancellationToken: cancellationToken))
+                .ConfigureAwait(false);
         }
         #endregion
 
@@ -231,18 +180,13 @@ namespace Acme.Dapper.Extension
         /// </summary>
         /// <param name="sql">sql，参数</param>
         /// <param name="param"></param>
+        /// <param name="cancellationToken">取消令牌</param>
         /// <returns></returns>
-        public async Task<int> ExecuteAsync(string sql, object param)
+        public async Task<int> ExecuteAsync(string sql, object param, CancellationToken cancellationToken = default)
         {
-            try
-            {
-                using IDbConnection con = new SqlConnection(ConnectionString);
-                return await con.ExecuteAsync(sql, param);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            await using SqlConnection con = CreateConnection();
+            return await con.ExecuteAsync(new CommandDefinition(sql, param, cancellationToken: cancellationToken))
+                .ConfigureAwait(false);
         }
 
         /// <summary>
@@ -253,15 +197,8 @@ namespace Acme.Dapper.Extension
         /// <returns></returns>
         public int Execute(string sql, object param)
         {
-            try
-            {
-                using IDbConnection con = new SqlConnection(ConnectionString);
-                return con.Execute(sql, param);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            using SqlConnection con = CreateConnection();
+            return con.Execute(sql, param);
         }
         #endregion
 
@@ -274,20 +211,14 @@ namespace Acme.Dapper.Extension
         /// <param name="model"></param>
         /// <param name="transaction"></param>
         /// <param name="commandTimeout"></param>
+        /// <param name="cancellationToken">取消令牌</param>
         /// <returns></returns>
-        public async Task<int> InsertAsync<T>(T model, IDbTransaction transaction = null, int? commandTimeout = null) where T : class, new()
+        public async Task<int> InsertAsync<T>(T model, IDbTransaction transaction = null, int? commandTimeout = null, CancellationToken cancellationToken = default) where T : class, new()
         {
-            try
-            {
-                using var conn = new SqlConnection(ConnectionString);
-                return await conn.InsertAsync(model, transaction, commandTimeout);
-            }
-            catch
-            {
-                throw;
-            }
+            await using SqlConnection con = CreateConnection();
+            long id = await con.InsertAsync(model, transaction, commandTimeout).ConfigureAwait(false);
+            return ToInt32(id);
         }
-
 
         /// <summary>
         /// 根据实体类插入表（实体类需要加标记处理）
@@ -299,15 +230,8 @@ namespace Acme.Dapper.Extension
         /// <returns></returns>
         public int Insert<T>(T model, IDbTransaction transaction = null, int? commandTimeout = null) where T : class, new()
         {
-            try
-            {
-                using var conn = new SqlConnection(ConnectionString);
-                return (int)conn.Insert(model, transaction, commandTimeout);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            using SqlConnection con = CreateConnection();
+            return ToInt32(con.Insert(model, transaction, commandTimeout));
         }
         #endregion
 
@@ -319,18 +243,12 @@ namespace Acme.Dapper.Extension
         /// <param name="model"></param>
         /// <param name="transaction"></param>
         /// <param name="commandTimeout"></param>
+        /// <param name="cancellationToken">取消令牌</param>
         /// <returns></returns>
-        public async Task<bool> UpdateAsync<T>(T model, IDbTransaction transaction = null, int? commandTimeout = null) where T : class, new()
+        public async Task<bool> UpdateAsync<T>(T model, IDbTransaction transaction = null, int? commandTimeout = null, CancellationToken cancellationToken = default) where T : class, new()
         {
-            try
-            {
-                using var conn = new SqlConnection(ConnectionString);
-                return await conn.UpdateAsync(model, transaction, commandTimeout);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            await using SqlConnection con = CreateConnection();
+            return await con.UpdateAsync(model, transaction, commandTimeout).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -343,15 +261,8 @@ namespace Acme.Dapper.Extension
         /// <returns></returns>
         public bool Update<T>(T model, IDbTransaction transaction = null, int? commandTimeout = null) where T : class, new()
         {
-            try
-            {
-                using var conn = new SqlConnection(ConnectionString);
-                return conn.Update(model, transaction, commandTimeout);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            using SqlConnection con = CreateConnection();
+            return con.Update(model, transaction, commandTimeout);
         }
         #endregion
 
@@ -363,18 +274,12 @@ namespace Acme.Dapper.Extension
         /// <param name="model"></param>
         /// <param name="transaction"></param>
         /// <param name="commandTimeout"></param>
+        /// <param name="cancellationToken">取消令牌</param>
         /// <returns></returns>
-        public async Task<bool> DeleteAsync<T>(T model, IDbTransaction transaction = null, int? commandTimeout = null) where T : class, new()
+        public async Task<bool> DeleteAsync<T>(T model, IDbTransaction transaction = null, int? commandTimeout = null, CancellationToken cancellationToken = default) where T : class, new()
         {
-            try
-            {
-                using var conn = new SqlConnection(ConnectionString);
-                return await conn.DeleteAsync(model, transaction, commandTimeout);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            await using SqlConnection con = CreateConnection();
+            return await con.DeleteAsync(model, transaction, commandTimeout).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -387,46 +292,57 @@ namespace Acme.Dapper.Extension
         /// <returns></returns>
         public bool Delete<T>(T model, IDbTransaction transaction = null, int? commandTimeout = null) where T : class, new()
         {
-            try
-            {
-                using var conn = new SqlConnection(ConnectionString);
-                return conn.Delete(model, transaction, commandTimeout);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            using SqlConnection con = CreateConnection();
+            return con.Delete(model, transaction, commandTimeout);
         }
         #endregion
 
         #region Reader获取数据
         /// <summary>
-        /// Reader获取数据
+        /// Reader获取数据。返回的 Reader 通过 CommandBehavior.CloseConnection 绑定连接，关闭 Reader 即关闭连接。
         /// </summary>
         /// <param name="sql"></param>
         /// <param name="param"></param>
         /// <returns></returns>
         public IDataReader ExecuteReader(string sql, object param)
         {
-            using IDbConnection con = new SqlConnection(ConnectionString);
-            return con.ExecuteReader(sql, param);
+            SqlConnection con = CreateConnection();
+            try
+            {
+                con.Open();
+                SqlCommand command = con.CreateCommand();
+                command.CommandText = sql;
+                command.Parameters.AddRange(DBSqlParameter.SqlParame(param));
+                return command.ExecuteReader(CommandBehavior.CloseConnection);
+            }
+            catch
+            {
+                con.Dispose();
+                throw;
+            }
         }
 
         /// <summary>
-        /// 异步Reader获取数据
+        /// 异步Reader获取数据。返回的 Reader 通过 CommandBehavior.CloseConnection 绑定连接，关闭 Reader 即关闭连接。
         /// </summary>
         /// <param name="sql"></param>
         /// <param name="param"></param>
+        /// <param name="cancellationToken">取消令牌</param>
         /// <returns></returns>
-        public async Task<IDataReader> ExecuteReaderAsync(string sql, object param)
+        public async Task<IDataReader> ExecuteReaderAsync(string sql, object param, CancellationToken cancellationToken = default)
         {
+            SqlConnection con = CreateConnection();
             try
             {
-                using IDbConnection con = new SqlConnection(ConnectionString);
-                return await con.ExecuteReaderAsync(sql, param);
+                await con.OpenAsync(cancellationToken).ConfigureAwait(false);
+                SqlCommand command = con.CreateCommand();
+                command.CommandText = sql;
+                command.Parameters.AddRange(DBSqlParameter.SqlParame(param));
+                return await command.ExecuteReaderAsync(CommandBehavior.CloseConnection, cancellationToken).ConfigureAwait(false);
             }
-            catch (Exception)
+            catch
             {
+                await con.DisposeAsync().ConfigureAwait(false);
                 throw;
             }
         }
@@ -441,15 +357,8 @@ namespace Acme.Dapper.Extension
         /// <returns></returns>
         public object ExecuteScalar(string sql, object param)
         {
-            try
-            {
-                using IDbConnection con = new SqlConnection(ConnectionString);
-                return con.ExecuteScalar(sql, param);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            using SqlConnection con = CreateConnection();
+            return con.ExecuteScalar(sql, param);
         }
 
         /// <summary>
@@ -457,20 +366,10 @@ namespace Acme.Dapper.Extension
         /// </summary>
         /// <param name="sql"></param>
         /// <param name="param"></param>
+        /// <param name="cancellationToken">取消令牌</param>
         /// <returns></returns>
-        public async Task<T> ExecuteScalarForTAsync<T>(string sql, object param)
-        {
-            try
-            {
-                using IDbConnection con = new SqlConnection(ConnectionString);
-                return await con.ExecuteScalarAsync<T>(sql, param);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-
-        }
+        public Task<T> ExecuteScalarForTAsync<T>(string sql, object param, CancellationToken cancellationToken = default)
+            => ExecuteScalarAsync<T>(sql, param, cancellationToken);
         #endregion
 
         #region Scalar获取数据返回T
@@ -482,7 +381,7 @@ namespace Acme.Dapper.Extension
         /// <returns></returns>
         public T ExecuteScalarForT<T>(string sql, object param)
         {
-            using IDbConnection con = new SqlConnection(ConnectionString);
+            using SqlConnection con = CreateConnection();
             return con.ExecuteScalar<T>(sql, param);
         }
 
@@ -491,11 +390,13 @@ namespace Acme.Dapper.Extension
         /// </summary>
         /// <param name="sql"></param>
         /// <param name="param"></param>
+        /// <param name="cancellationToken">取消令牌</param>
         /// <returns></returns>
-        public async Task<T> ExecuteScalarAsync<T>(string sql, object param)
+        public async Task<T> ExecuteScalarAsync<T>(string sql, object param, CancellationToken cancellationToken = default)
         {
-            using IDbConnection con = new SqlConnection(ConnectionString);
-            return await con.ExecuteScalarAsync<T>(sql, param);
+            await using SqlConnection con = CreateConnection();
+            return await con.ExecuteScalarAsync<T>(new CommandDefinition(sql, param, cancellationToken: cancellationToken))
+                .ConfigureAwait(false);
         }
         #endregion
 
@@ -508,21 +409,8 @@ namespace Acme.Dapper.Extension
         /// <returns></returns>
         public List<T> ExecutePro<T>(string proc, object param)
         {
-            try
-            {
-                using IDbConnection con = new SqlConnection(ConnectionString);
-                List<T> list = con.Query<T>(proc,
-                    param,
-                    null,
-                    true,
-                    null,
-                    CommandType.StoredProcedure).ToList();
-                return list;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            using SqlConnection con = CreateConnection();
+            return new List<T>(con.Query<T>(proc, param, commandType: CommandType.StoredProcedure));
         }
 
         /// <summary>
@@ -530,23 +418,15 @@ namespace Acme.Dapper.Extension
         /// </summary>
         /// <param name="proc">存储过程名称</param>
         /// <param name="param">参数</param>
+        /// <param name="cancellationToken">取消令牌</param>
         /// <returns></returns>
-        public async Task<List<T>> ExecuteProAsync<T>(string proc, object param)
+        public async Task<List<T>> ExecuteProAsync<T>(string proc, object param, CancellationToken cancellationToken = default)
         {
-            try
-            {
-                using IDbConnection con = new SqlConnection(ConnectionString);
-                List<T> list = new(await con.QueryAsync<T>(proc,
-                    param,
-                    null,
-                    null,
-                    CommandType.StoredProcedure));
-                return list;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            await using SqlConnection con = CreateConnection();
+            IEnumerable<T> result = await con.QueryAsync<T>(
+                    new CommandDefinition(proc, param, commandType: CommandType.StoredProcedure, cancellationToken: cancellationToken))
+                .ConfigureAwait(false);
+            return new List<T>(result);
         }
         #endregion
 
@@ -555,31 +435,26 @@ namespace Acme.Dapper.Extension
         /// 事务1 - 全SQL
         /// </summary>
         /// <param name="sqlarr">多条SQL</param>
-        /// <returns></returns>
+        /// <returns>受影响的行数合计</returns>
         public int ExecuteTransaction(string[] sqlarr)
         {
+            ArgumentNullException.ThrowIfNull(sqlarr);
+
+            using SqlConnection con = CreateConnection();
+            con.Open();
+            using SqlTransaction transaction = con.BeginTransaction();
             try
             {
-                using IDbConnection con = new SqlConnection(ConnectionString);
-                using var transaction = con.BeginTransaction();
-                try
-                {
-                    int result = 0;
-                    foreach (var sql in sqlarr)
-                    {
-                        result += con.Execute(sql, null, transaction);
-                    }
-                    transaction.Commit();
-                    return result;
-                }
-                catch (Exception)
-                {
-                    transaction.Rollback();
-                    return 0;
-                }
+                int result = 0;
+                foreach (string sql in sqlarr)
+                    result += con.Execute(sql, null, transaction);
+
+                transaction.Commit();
+                return result;
             }
-            catch (Exception)
+            catch
             {
+                transaction.Rollback();
                 throw;
             }
         }
@@ -588,32 +463,30 @@ namespace Acme.Dapper.Extension
         /// 事务1 - 全SQL
         /// </summary>
         /// <param name="sqlarr">多条SQL</param>
-        /// <returns></returns>
-        public async Task<int> ExecuteTransactionAsync(string[] sqlarr)
+        /// <param name="cancellationToken">取消令牌</param>
+        /// <returns>受影响的行数合计</returns>
+        public async Task<int> ExecuteTransactionAsync(string[] sqlarr, CancellationToken cancellationToken = default)
         {
+            ArgumentNullException.ThrowIfNull(sqlarr);
+
+            await using SqlConnection con = CreateConnection();
+            await con.OpenAsync(cancellationToken).ConfigureAwait(false);
+            await using SqlTransaction transaction = (SqlTransaction)await con.BeginTransactionAsync(cancellationToken).ConfigureAwait(false);
             try
             {
-                using IDbConnection con = new SqlConnection(ConnectionString);
-                using var transaction = con.BeginTransaction();
-                try
+                int result = 0;
+                foreach (string sql in sqlarr)
                 {
-                    int result = 0;
-                    foreach (var sql in sqlarr)
-                    {
-                        result += await con.ExecuteAsync(sql, null, transaction);
-                    }
+                    result += await con.ExecuteAsync(new CommandDefinition(sql, cancellationToken: cancellationToken, transaction: transaction))
+                        .ConfigureAwait(false);
+                }
 
-                    transaction.Commit();
-                    return result;
-                }
-                catch (Exception)
-                {
-                    transaction.Rollback();
-                    return 0;
-                }
+                await transaction.CommitAsync(cancellationToken).ConfigureAwait(false);
+                return result;
             }
-            catch (Exception)
+            catch
             {
+                await transaction.RollbackAsync(CancellationToken.None).ConfigureAwait(false);
                 throw;
             }
         }
@@ -626,33 +499,27 @@ namespace Acme.Dapper.Extension
         /// dic.Add("Insert into Users values (@UserName, @Email, @Address)",
         ///    new { UserName = "jack", Email = "380234234@qq.com", Address = "上海" });
         /// </summary>
-        /// <param name="dic"></param>
-        /// <returns></returns>
+        /// <param name="dic">SQL 与参数的映射</param>
+        /// <returns>受影响的行数合计</returns>
         public int ExecuteTransaction(Dictionary<string, object> dic)
         {
+            ArgumentNullException.ThrowIfNull(dic);
+
+            using SqlConnection con = CreateConnection();
+            con.Open();
+            using SqlTransaction transaction = con.BeginTransaction();
             try
             {
-                using IDbConnection con = new SqlConnection(ConnectionString);
-                using var transaction = con.BeginTransaction();
-                try
-                {
-                    int result = 0;
-                    foreach (var sql in dic)
-                    {
-                        result += con.Execute(sql.Key, sql.Value, transaction);
-                    }
+                int result = 0;
+                foreach (KeyValuePair<string, object> sql in dic)
+                    result += con.Execute(sql.Key, sql.Value, transaction);
 
-                    transaction.Commit();
-                    return result;
-                }
-                catch (Exception)
-                {
-                    transaction.Rollback();
-                    return 0;
-                }
+                transaction.Commit();
+                return result;
             }
-            catch (Exception)
+            catch
             {
+                transaction.Rollback();
                 throw;
             }
         }
@@ -663,34 +530,42 @@ namespace Acme.Dapper.Extension
         ///dic.Add("Insert into Users values (@UserName, @Email, @Address)",
         ///        new { UserName = "jack", Email = "380234234@qq.com", Address = "上海" });
         /// </summary>
-        /// <returns></returns>
-        public async Task<int> ExecuteTransactionAsync(Dictionary<string, object> dic)
+        /// <param name="dic">SQL 与参数的映射</param>
+        /// <param name="cancellationToken">取消令牌</param>
+        /// <returns>受影响的行数合计</returns>
+        public async Task<int> ExecuteTransactionAsync(Dictionary<string, object> dic, CancellationToken cancellationToken = default)
         {
+            ArgumentNullException.ThrowIfNull(dic);
+
+            await using SqlConnection con = CreateConnection();
+            await con.OpenAsync(cancellationToken).ConfigureAwait(false);
+            await using SqlTransaction transaction = (SqlTransaction)await con.BeginTransactionAsync(cancellationToken).ConfigureAwait(false);
             try
             {
-                using IDbConnection con = new SqlConnection(ConnectionString);
-                using var transaction = con.BeginTransaction();
-                try
+                int result = 0;
+                foreach (KeyValuePair<string, object> sql in dic)
                 {
-                    int result = 0;
-                    foreach (var sql in dic)
-                    {
-                        result += await con.ExecuteAsync(sql.Key, sql.Value, transaction);
-                    }
-                    transaction.Commit();
-                    return result;
+                    result += await con.ExecuteAsync(
+                            new CommandDefinition(sql.Key, sql.Value, transaction, cancellationToken: cancellationToken))
+                        .ConfigureAwait(false);
                 }
-                catch (Exception)
-                {
-                    transaction.Rollback();
-                    return 0;
-                }
+
+                await transaction.CommitAsync(cancellationToken).ConfigureAwait(false);
+                return result;
             }
-            catch (Exception)
+            catch
             {
+                await transaction.RollbackAsync(CancellationToken.None).ConfigureAwait(false);
                 throw;
             }
         }
         #endregion
+
+        /// <summary>
+        /// 把自增主键安全转换为 int，超出范围时明确抛出而不是产生溢出
+        /// </summary>
+        /// <param name="value">自增主键</param>
+        private static int ToInt32(long value)
+            => checked((int)value);
     }
 }

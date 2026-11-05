@@ -25,16 +25,18 @@ public class HttpCookieService : IHttpCookieService
     /// 设置本地cookie
     /// </summary>
     /// <param name="key">键</param>
-    /// <param name="value">值</param>  
-    /// <param name="minutes">过期时长，单位：分钟</param>      
-    public void SetCookies(string key, string value, int minutes = 300)
+    /// <param name="value">值</param>
+    /// <param name="minutes">过期时长，单位：分钟</param>
+    /// <param name="httpOnly">是否设置为 HttpOnly（默认 true，防止前端脚本读取，提升安全性）</param>
+    public void SetCookies(string key, string value, int minutes = 300, bool httpOnly = true)
     {
         _httpContextAccessor.HttpContext.Response.Cookies.Append(key, value, new CookieOptions
         {
             Expires = DateTime.Now.AddMinutes(minutes),
-            HttpOnly = true,
+            // 默认开启 HttpOnly，避免前端脚本（XSS）窃取 Cookie
+            HttpOnly = httpOnly,
+            // 限制跨站发送，缓解 CSRF
             SameSite = SameSiteMode.Lax
-            // Secure 标记由 AspNetCore 根据请求自动设置（当 UseHttps 时可开启全局 HSTS）
         });
     }
 

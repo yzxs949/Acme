@@ -4,7 +4,7 @@ using System.DrawingCore;
 using System.DrawingCore.Drawing2D;
 using System.DrawingCore.Imaging;
 using System.IO;
-using System.Security.Cryptography;
+using System.Text.RegularExpressions;
 
 namespace Acme.Tools;
 
@@ -14,7 +14,7 @@ namespace Acme.Tools;
 public static class VerCode
 {
     /// <summary>
-    /// 产生随机0--9的随机数字（使用密码学安全随机数）
+    /// 产生随机0--9的随机数字
     /// </summary>
     /// <param name="len">长度</param>
     /// <returns></returns>
@@ -24,21 +24,21 @@ public static class VerCode
     }
 
     /// <summary>
-    /// 产生随机1--99的数字
+    /// 产生随机0--9的随机数字
     /// </summary>
     /// <param name="len">长度</param>
     /// <returns></returns>
     public static string GetCodeBy100(int len)
     {
-        // 使用 StringBuilder 避免循环字符串拼接
-        var sb = new System.Text.StringBuilder();
+        string code = "";
         for (int i = 1; i < 100; i++)
         {
-            if (sb.Length > 0)
-                sb.Append(',');
-            sb.Append(i);
+            if (i == 1)
+                code = i.ToString();
+            else
+                code += $",{i}";
         }
-        return sb.ToString().ToRandomCode(len);
+        return code.ToRandomCode(len);
     }
 
     /// <summary>
@@ -51,63 +51,54 @@ public static class VerCode
     }
 
     /// <summary>
-    /// 创建验证码的图片（方法1：简单风格）
+    /// 创建验证码的图片
     /// </summary>
-    /// <param name="validateCode">验证码字符串</param>
+    /// <param name="validateCode">验证码文本</param>
     public static byte[] CreateValidateGraphic1(string validateCode)
     {
         int width = (int)Math.Ceiling(validateCode.Length * 12.0);
         const int height = 22;
-
-        using var bitmap = new Bitmap(width, height);
+        using Bitmap bitmap = new(width, height);
         using Graphics g = Graphics.FromImage(bitmap);
-        // 清空图片背景色
+        Random random = new();
         g.Clear(Color.White);
-
-        // 画图片的干扰线
+        //画图片的干扰线
         for (int i = 0; i < 25; i++)
         {
-            int x1 = RandomNumberGenerator.GetInt32(bitmap.Width);
-            int x2 = RandomNumberGenerator.GetInt32(bitmap.Width);
-            int y1 = RandomNumberGenerator.GetInt32(bitmap.Height);
-            int y2 = RandomNumberGenerator.GetInt32(bitmap.Height);
+            int x1 = random.Next(width);
+            int x2 = random.Next(width);
+            int y1 = random.Next(height);
+            int y2 = random.Next(height);
             g.DrawLine(new Pen(Color.Silver), x1, y1, x2, y2);
         }
-
-        using Font font = new("Arial", 12, FontStyle.Bold | FontStyle.Italic);
-        using LinearGradientBrush brush = new(
-            new Rectangle(0, 0, bitmap.Width, bitmap.Height),
+        Font font = new("Arial", 12, FontStyle.Bold | FontStyle.Italic);
+        using LinearGradientBrush brush = new(new Rectangle(0, 0, width, height),
             Color.Blue, Color.DarkRed, 1.2f, true);
         g.DrawString(validateCode, font, brush, 3, 2);
-
-        // 画图片的前景干扰点
-        using var noiseBitmap = new Bitmap(width, height);
+        //画图片的前景干扰点
         for (int i = 0; i < 100; i++)
         {
-            int x = RandomNumberGenerator.GetInt32(noiseBitmap.Width);
-            int y = RandomNumberGenerator.GetInt32(noiseBitmap.Height);
-            noiseBitmap.SetPixel(x, y, Color.FromArgb(RandomNumberGenerator.GetInt32(int.MaxValue) | unchecked((int)0xFF000000)));
+            int x = random.Next(width);
+            int y = random.Next(height);
+            bitmap.SetPixel(x, y, Color.FromArgb(random.Next()));
         }
-        g.DrawImage(noiseBitmap, 0, 0);
-
-        // 画图片的边框线
-        g.DrawRectangle(new Pen(Color.Silver), 0, 0, bitmap.Width - 1, bitmap.Height - 1);
-
-        // 保存图片数据
+        //画图片的边框线
+        g.DrawRectangle(new Pen(Color.Silver), 0, 0, width - 1, height - 1);
+        //保存图片数据
         using var stream = new MemoryStream();
         bitmap.Save(stream, ImageFormat.Jpeg);
         return stream.ToArray();
     }
 
     /// <summary>
-    /// 创建验证码的图片（方法2：多彩风格）
+    /// 创建验证码的图片
     /// </summary>
-    /// <param name="validateCode">验证码字符串</param>
+    /// <param name="validateCode">要输出到的page对象</param>
     /// <returns></returns>
     public static byte[] CreateValidateGraphic2(string validateCode)
     {
         Color[] colors = [
-            Color.Red, Color.OrangeRed,
+            Color.Red,Color.OrangeRed,
             Color.SaddleBrown,
             Color.LimeGreen,
             Color.Green,
@@ -121,82 +112,71 @@ public static class VerCode
             Color.DarkCyan,
             Color.Purple];
         string[] fonts = ["Verdana", "Microsoft Sans Serif", "Comic Sans MS", "Arial", "宋体"];
-
+        Random random = new();
         // 创建一个 Bitmap 图片类型对象
         using Bitmap bitmap = new(validateCode.Length * 18, 32);
         // 创建一个图形画笔
         using Graphics graphics = Graphics.FromImage(bitmap);
         // 将图片背景填充成白色
         graphics.Clear(Color.White);
-
         // 绘制验证码噪点
-        int noiseCount = RandomNumberGenerator.GetInt32(60, 80);
-        for (int i = 0; i < noiseCount; i++)
+        for (int i = 0; i < random.Next(60, 80); i++)
         {
-            int pointX = RandomNumberGenerator.GetInt32(bitmap.Width);
-            int pointY = RandomNumberGenerator.GetInt32(bitmap.Height);
+            int pointX = random.Next(bitmap.Width);
+            int pointY = random.Next(bitmap.Height);
             graphics.DrawLine(new Pen(Color.LightGray, 1), pointX, pointY, pointX + 1, pointY);
         }
-
         // 绘制随机线条 1 条
         graphics.DrawLine(
-                new Pen(colors[RandomNumberGenerator.GetInt32(colors.Length)], RandomNumberGenerator.GetInt32(1, 4)),
+                new Pen(colors[random.Next(colors.Length)], random.Next(3)),
                 new Point(
-                    RandomNumberGenerator.GetInt32(bitmap.Width),
-                    RandomNumberGenerator.GetInt32(bitmap.Height)),
-                new Point(RandomNumberGenerator.GetInt32(bitmap.Width),
-                RandomNumberGenerator.GetInt32(bitmap.Height)));
-
+                    random.Next(bitmap.Width),
+                    random.Next(bitmap.Height)),
+                new Point(random.Next(bitmap.Width),
+                random.Next(bitmap.Height)));
         // 绘制验证码
         for (int i = 0; i < validateCode.Length; i++)
         {
-            using Font font = new(fonts[RandomNumberGenerator.GetInt32(fonts.Length)], 15, FontStyle.Bold);
             graphics.DrawString(
                 validateCode.AsSpan(i, 1).ToString(),
-                font,
-                new SolidBrush(colors[RandomNumberGenerator.GetInt32(colors.Length)]),
+                new(fonts[random.Next(fonts.Length)], 15, FontStyle.Bold),
+                new SolidBrush(colors[random.Next(colors.Length)]),
                 16 * i + 1,
-                RandomNumberGenerator.GetInt32(0, 6));
+                random.Next(0, 5));
         }
-
-        // 绘制验证码噪点2
-        noiseCount = RandomNumberGenerator.GetInt32(30, 50);
-        for (int i = 0; i < noiseCount; i++)
+        // 绘制验证码噪点
+        for (int i = 0; i < random.Next(30, 50); i++)
         {
-            int pointX = RandomNumberGenerator.GetInt32(bitmap.Width);
-            int pointY = RandomNumberGenerator.GetInt32(bitmap.Height);
-            graphics.DrawLine(new Pen(colors[RandomNumberGenerator.GetInt32(colors.Length)], 1), pointX, pointY, pointX, pointY + 1);
+            int pointX = random.Next(bitmap.Width);
+            int pointY = random.Next(bitmap.Height);
+            graphics.DrawLine(new Pen(colors[random.Next(colors.Length)], 1), pointX, pointY, pointX, pointY + 1);
         }
-
-        // 绘制随机线条 2 条
+        // 绘制随机线条 1 条
         graphics.DrawLine(
-                new Pen(colors[RandomNumberGenerator.GetInt32(colors.Length)], RandomNumberGenerator.GetInt32(1, 4)),
+                new Pen(colors[random.Next(colors.Length)], random.Next(3)),
                 new Point(
-                    RandomNumberGenerator.GetInt32(bitmap.Width),
-                    RandomNumberGenerator.GetInt32(bitmap.Height)),
-                new Point(RandomNumberGenerator.GetInt32(bitmap.Width),
-                RandomNumberGenerator.GetInt32(bitmap.Height)));
+                    random.Next(bitmap.Width),
+                    random.Next(bitmap.Height)),
+                new Point(random.Next(bitmap.Width),
+                random.Next(bitmap.Height)));
 
         using MemoryStream memoryStream = new();
         bitmap.Save(memoryStream, ImageFormat.Jpeg);
-        return memoryStream.ToArray();
+        byte[] bytes = memoryStream.ToArray();
+        return bytes;
     }
 
     /// <summary>
-    /// 由DataTable计算公式（仅限数学运算，防止表达式注入）
+    /// 由DataTable计算公式
     /// </summary>
     /// <param name="expression">表达式</param>
     public static int CalcByDataTable(string expression)
     {
-        // 安全检查：只允许数字和运算符
-        if (string.IsNullOrWhiteSpace(expression) ||
-            !System.Text.RegularExpressions.Regex.IsMatch(expression, @"^[\d+\-*/.]+$"))
-        {
+        // 仅允许数字、基本四则运算符、括号与空白，避免传入非法表达式造成注入风险
+        if (string.IsNullOrWhiteSpace(expression) || !Regex.IsMatch(expression, @"^[\d+\-*/().\s]+$"))
             return 0;
-        }
-
         object result = new DataTable().Compute(expression, "");
-        _ = int.TryParse(result?.ToString(), out int intResult);
+        _ = int.TryParse(result + "", out int intResult);
         return intResult;
     }
 

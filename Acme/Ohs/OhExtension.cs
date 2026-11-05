@@ -1,4 +1,6 @@
-﻿namespace Acme.ReturnOh;
+﻿using Acme.Constant;
+
+namespace Acme.Ohs;
 
 /// <summary>
 /// Oh拓展类
@@ -6,7 +8,7 @@
 public static class OhExtension
 {
     /// <summary>
-    /// 获取成功时的Oh值（默认状态码200）
+    /// 获取成功时的Oh值
     /// </summary>
     /// <param name="data">数据</param>
     /// <param name="msg">描述</param>
@@ -17,42 +19,62 @@ public static class OhExtension
     }
 
     /// <summary>
-    /// 获取成功时的Oh泛型值（默认状态码200）
+    /// 获取成功时的Oh值
     /// </summary>
     /// <param name="data">数据</param>
     /// <param name="msg">描述</param>
     /// <returns></returns>
     public static Oh<TEntity> Success<TEntity>(this TEntity data, string msg = "成功！") where TEntity : class
     {
-        return new Oh<TEntity>(CV.YesCode, msg, data);
+        return new Oh<TEntity>(200, msg, data);
     }
 
     /// <summary>
-    /// 获取成功时的Oh值（自定义状态码和消息）
+    /// 获取成功时的Oh值
+    /// </summary>
+    /// <param name="data">数据</param>
+    /// <returns></returns>
+    public static Oh Success(this object data)
+    {
+        return new Oh(200, "成功！", data);
+    }
+
+    /// <summary>
+    /// 获取成功时的Oh值
+    /// </summary>
+    /// <param name="data">数据</param>
+    /// <returns></returns>
+    public static Oh<TEntity> Success<TEntity>(this TEntity data) where TEntity : class
+    {
+        return new Oh<TEntity>(200, "成功！", data);
+    }
+
+    /// <summary>
+    /// 获取成功时的Oh值
     /// </summary>
     /// <param name="data">数据</param>
     /// <param name="code">状态码</param>
     /// <param name="msg">描述</param>
     /// <returns></returns>
-    public static Oh Success(this object data, int code, string msg)
+    public static Oh Success(this object data, int code = 200, string msg = "成功！")
     {
         return new Oh(code, msg, data);
     }
 
     /// <summary>
-    /// 获取成功时的Oh泛型值（自定义状态码和消息）
+    /// 获取成功时的Oh值
     /// </summary>
     /// <param name="data">数据</param>
     /// <param name="code">状态码</param>
     /// <param name="msg">描述</param>
     /// <returns></returns>
-    public static Oh<TEntity> Success<TEntity>(this TEntity data, int code, string msg) where TEntity : class
+    public static Oh<TEntity> Success<TEntity>(this TEntity data, int code = 200, string msg = "成功！") where TEntity : class
     {
         return new Oh<TEntity>(code, msg, data);
     }
 
     /// <summary>
-    /// 获取失败时的Oh值（默认状态码500）
+    /// 获取失败时的Oh值
     /// </summary>
     /// <param name="data">数据</param>
     /// <param name="msg">描述</param>
@@ -63,36 +85,56 @@ public static class OhExtension
     }
 
     /// <summary>
-    /// 获取失败时的Oh泛型值（默认状态码500）
+    /// 获取失败时的Oh值
     /// </summary>
     /// <param name="data">数据</param>
     /// <param name="msg">描述</param>
     /// <returns></returns>
     public static Oh<TEntity> Fail<TEntity>(this TEntity data, string msg = "服务器错误！请联系管理员") where TEntity : class
     {
-        return new Oh<TEntity>(CV.NoCode, msg, data);
+        return new Oh<TEntity>(500, msg, data);
     }
 
     /// <summary>
-    /// 获取失败时的Oh值（自定义状态码和消息）
+    /// 获取失败时的Oh值
+    /// </summary>
+    /// <param name="data">数据</param>
+    /// <returns></returns>
+    public static Oh Fail(this object data)
+    {
+        return new Oh(500, "服务器错误！请联系管理员", data);
+    }
+
+    /// <summary>
+    /// 获取失败时的Oh值
+    /// </summary>
+    /// <param name="data">数据</param>
+    /// <returns></returns>
+    public static Oh<TEntity> Fail<TEntity>(this TEntity data) where TEntity : class
+    {
+        return new Oh<TEntity>(500, "服务器错误！请联系管理员", data);
+    }
+
+    /// <summary>
+    /// 获取失败时的Oh值
     /// </summary>
     /// <param name="data">数据</param>
     /// <param name="code">状态码</param>
     /// <param name="msg">描述</param>
     /// <returns></returns>
-    public static Oh Fail(this object data, int code, string msg)
+    public static Oh Fail(this object data, int code = 500, string msg = "服务器错误！请联系管理员")
     {
         return new Oh(code, msg, data);
     }
 
     /// <summary>
-    /// 获取失败时的Oh泛型值（自定义状态码和消息）
+    /// 获取失败时的Oh值
     /// </summary>
     /// <param name="data">数据</param>
     /// <param name="code">状态码</param>
     /// <param name="msg">描述</param>
     /// <returns></returns>
-    public static Oh<TEntity> Fail<TEntity>(this TEntity data, int code, string msg) where TEntity : class
+    public static Oh<TEntity> Fail<TEntity>(this TEntity data, int code = 500, string msg = "服务器错误！请联系管理员") where TEntity : class
     {
         return new Oh<TEntity>(code, msg, data);
     }
@@ -138,6 +180,6 @@ public static class OhExtension
     /// <returns>表示操作成功或失败的 Oh 实例。</returns>
     public static Oh IsSuccess(this bool isSuccess, string successMsg, string failMsg)
     {
-        return isSuccess ? CV.NullValue.Success(successMsg) : CV.NullValue.Fail(failMsg);
+        return isSuccess ? new Oh(CV.YesCode, successMsg, null) : new Oh(CV.NoCode, failMsg, null);
     }
 }

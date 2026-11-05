@@ -1,6 +1,7 @@
 ﻿using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 
@@ -49,9 +50,24 @@ namespace Acme.Dapper.SqlSplice
     public static class DBSqlParameter
     {
         /// <summary>
-        /// 
+        /// 将 .NET 值格式化为 SQL 字面量（仅用于本就不支持参数化的拼接场景）
         /// </summary>
-        public const string 一 = "-";
+        /// <param name="value">原始值</param>
+        /// <returns>SQL 字面量</returns>
+        internal static string SqlLiteral(object value) => value switch
+        {
+            null or DBNull => "NULL",
+            bool b => b ? "1" : "0",
+            string s => "N'" + s.Replace("'", "''") + "'",
+            char c => "N'" + c.ToString().Replace("'", "''") + "'",
+            DateTime dt => "'" + dt.ToString("yyyy-MM-dd HH:mm:ss.fff", CultureInfo.InvariantCulture) + "'",
+            DateTimeOffset dto => "'" + dto.ToString("yyyy-MM-dd HH:mm:ss.fff zzz", CultureInfo.InvariantCulture) + "'",
+            Guid g => "'" + g.ToString() + "'",
+            byte[] bytes => "0x" + Convert.ToHexString(bytes),
+            Enum e => Convert.ToInt64(e, CultureInfo.InvariantCulture).ToString(CultureInfo.InvariantCulture),
+            IFormattable f => f.ToString(null, CultureInfo.InvariantCulture),
+            _ => "N'" + value.ToString().Replace("'", "''") + "'",
+        };
 
         /// <summary>
         /// 构建SqlServer数据库的sql参数
@@ -60,25 +76,16 @@ namespace Acme.Dapper.SqlSplice
         /// <returns>SqlParameter类型的sql参数数组</returns>
         public static SqlParameter[] SqlParame(this object ParameterEntity)
         {
-            object values;
-            List<SqlParameter> Listparameter = new();
-            foreach (PropertyInfo p in ParameterEntity.GetType().GetProperties())
+            if (ParameterEntity == null)
+                return Array.Empty<SqlParameter>();
+
+            List<SqlParameter> parameters = new();
+            foreach (PropertyInfo p in GetReadableProperties(ParameterEntity))
             {
-                try
-                {
-                    //接收属性名和属性值
-                    string attribute = "@" + p.Name;
-                    values = p.GetValue(ParameterEntity, null);//参数值
-                    SqlParameter parameter = new(attribute, values);
-                    Listparameter.Add(parameter);
-                }
-                catch
-                {
-                    continue;
-                }
+                parameters.Add(new SqlParameter("@" + p.Name, p.GetValue(ParameterEntity) ?? DBNull.Value));
             }
-            SqlParameter[] Arrayparameter = Listparameter.ToArray();
-            return Arrayparameter;
+
+            return parameters.ToArray();
         }
 
         /// <summary>
@@ -88,24 +95,33 @@ namespace Acme.Dapper.SqlSplice
         /// <returns></returns>
         public static string GetSqlCondi(object CondiEntity)
         {
-            string RetSqlCondi = "";
-            try
-            {
-                PropertyInfo[] property = CondiEntity.GetType().GetProperties();
-                foreach (var item in property)
-                {
-                    if (property.First() == item)
-                        RetSqlCondi = $"{item.Name} = @{item.Name}";
-                    else
-                        RetSqlCondi += $" AND {item.Name} = @{item.Name}";
-                }
-            }
-            catch
-            {
-                throw;
-            }
-            return RetSqlCondi;
+            ArgumentNullException.ThrowIfNull(CondiEntity);
+
+            PropertyInfo[] properties = GetReadableProperties(CondiEntity);
+            if (properties.Length == 0)
+                throw new ArgumentException("条件实体不包含任何可读属性", nameof(CondiEntity));
+
+            return string.Join(
+                " AND ",
+                properties.Select(p => $"{EntityMetadata.QuoteIdentifier(p.Name)} = @{p.Name}"));
         }
+
+        /// <summary>
+        /// 把属性值当作列表达式：字符串原样输出（如 <c>T1.Id</c>），其余按 SQL 字面量处理
+        /// </summary>
+        /// <param name="value">属性值</param>
+        private static string AsColumnExpression(object value)
+            => value is string text ? text : SqlLiteral(value);
+
+        /// <summary>
+        /// 取对象的可读实例属性
+        /// </summary>
+        /// <param name="entity">对象</param>
+        private static PropertyInfo[] GetReadableProperties(object entity)
+            => entity.GetType()
+                .GetProperties(BindingFlags.Public | BindingFlags.Instance)
+                .Where(p => p.CanRead && p.GetIndexParameters().Length == 0)
+                .ToArray();
 
         /// <summary>
         /// 拼接sql语句条件
@@ -123,28 +139,24 @@ namespace Acme.Dapper.SqlSplice
             string symbol = "=",
             AndOrNot andOrNot = AndOrNot.AND)
         {
-            if (isJudgment && condiEntity != null)
+            if (!isJudgment || condiEntity == null)
+                return sql;
+
+            string logic = andOrNot == AndOrNot.OR ? "OR" : "AND";
+            foreach (PropertyInfo item in GetReadableProperties(condiEntity))
             {
-                PropertyInfo[] property = condiEntity.GetType().GetProperties();
-                string AndOrNotName = Enum.GetName(andOrNot.GetType(), andOrNot);
-                foreach (var item in property)
-                {
-                    object Values = item.GetValue(condiEntity);
-                    if (Values != null)
-                    {
-                        sql += $" " +
-                            $"{AndOrNotName}" +
-                            $" {item.Name} " +
-                            $"{symbol} " +
-                            $"'{item.GetValue(condiEntity)}'";
-                    }
-                }
+                object value = item.GetValue(condiEntity);
+                if (value == null)
+                    continue;
+
+                sql += $" {logic} {EntityMetadata.QuoteIdentifier(item.Name)} {symbol} {SqlLiteral(value)}";
             }
+
             return sql;
         }
 
         /// <summary>
-        /// 添加模糊查询
+        /// 添加模糊查询（两侧通配）
         /// </summary>
         /// <param name="sql">原sql</param>
         /// <param name="condiEntity">条件</param>
@@ -152,33 +164,14 @@ namespace Acme.Dapper.SqlSplice
         /// <param name="andOrNot">是AND 还是or</param>
         /// <returns></returns>
         public static string AddContainWhere(
-          this string sql,
-          object condiEntity,
-          bool isJudgment = true,
-          AndOrNot andOrNot = AndOrNot.AND)
-        {
-            try
-            {
-                if (isJudgment && condiEntity != null)
-                {
-                    PropertyInfo[] property = condiEntity.GetType().GetProperties();
-                    string AndOrNotName = Enum.GetName(andOrNot.GetType(), andOrNot);
-                    object Values = property[0].GetValue(condiEntity);
-                    if (Values != null)
-                    {
-                        sql += $" {AndOrNotName} {property[0].Name} LIKE '%{Values}%'";
-                    }
-                }
-                return sql;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
+            this string sql,
+            object condiEntity,
+            bool isJudgment = true,
+            AndOrNot andOrNot = AndOrNot.AND)
+            => AddLikeWhere(sql, condiEntity, isJudgment, andOrNot, "%{0}%");
 
         /// <summary>
-        /// 拼接左模糊查询
+        /// 拼接后缀通配的模糊查询
         /// </summary>
         /// <param name="sql">原sql</param>
         /// <param name="condiEntity">字段名和值</param>
@@ -186,36 +179,14 @@ namespace Acme.Dapper.SqlSplice
         /// <param name="andOrNot">拼接关键字（AND或OR）</param>
         /// <returns>新的sql字符串</returns>
         public static string AddLeftContainWhere(
-          this string sql,
-          object condiEntity,
-          bool isJudgment = true,
-          AndOrNot andOrNot = AndOrNot.AND)
-        {
-            try
-            {
-                if (isJudgment && condiEntity != null)
-                {
-                    PropertyInfo[] property = condiEntity.GetType().GetProperties();
-                    string AndOrNotName = Enum.GetName(andOrNot.GetType(), andOrNot);
-                    object Values = property[0].GetValue(condiEntity);
-                    if (Values != null)
-                    {
-                        sql += $" " +
-                               $"{AndOrNotName}" +
-                               $" {property[0].Name}" +
-                               $" LIKE '{Values}%'";
-                    }
-                }
-                return sql;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
+            this string sql,
+            object condiEntity,
+            bool isJudgment = true,
+            AndOrNot andOrNot = AndOrNot.AND)
+            => AddLikeWhere(sql, condiEntity, isJudgment, andOrNot, "{0}%");
 
         /// <summary>
-        /// 拼接右模糊查询
+        /// 拼接前缀通配的模糊查询
         /// </summary>
         /// <param name="sql">原sql</param>
         /// <param name="condiEntity">字段名和值</param>
@@ -223,33 +194,41 @@ namespace Acme.Dapper.SqlSplice
         /// <param name="andOrNot">拼接关键字（AND或OR）</param>
         /// <returns>新的sql字符串</returns>
         public static string AddRightContainWhere(
-          this string sql,
-          object condiEntity,
-          bool isJudgment = true,
-          AndOrNot andOrNot = AndOrNot.AND)
-        {
-            try
-            {
-                if (isJudgment && condiEntity != null)
-                {
-                    PropertyInfo[] property = condiEntity.GetType().GetProperties();
-                    object Values = property[0].GetValue(condiEntity);
-                    if (Values != null)
-                    {
-                        string AndOrNotName = Enum.GetName(andOrNot.GetType(), andOrNot);
-                        sql += $" " +
-                               $"{AndOrNotName}" +
-                               $" {property[0].Name}" +
-                               $" LIKE '%{Values}'";
-                    }
-                }
-                return sql;
-            }
-            catch
-            {
-                throw;
-            }
+            this string sql,
+            object condiEntity,
+            bool isJudgment = true,
+            AndOrNot andOrNot = AndOrNot.AND)
+            => AddLikeWhere(sql, condiEntity, isJudgment, andOrNot, "%{0}");
 
+        /// <summary>
+        /// 拼接 LIKE 条件（取条件实体的第一个属性）
+        /// </summary>
+        /// <param name="sql">原sql</param>
+        /// <param name="condiEntity">条件</param>
+        /// <param name="isJudgment">是否验证通过</param>
+        /// <param name="andOrNot">拼接关键字</param>
+        /// <param name="pattern">通配模板，如 <c>%{0}%</c></param>
+        private static string AddLikeWhere(
+            string sql,
+            object condiEntity,
+            bool isJudgment,
+            AndOrNot andOrNot,
+            string pattern)
+        {
+            if (!isJudgment || condiEntity == null)
+                return sql;
+
+            PropertyInfo[] properties = GetReadableProperties(condiEntity);
+            if (properties.Length == 0)
+                return sql;
+
+            object value = properties[0].GetValue(condiEntity);
+            if (value == null)
+                return sql;
+
+            string logic = andOrNot == AndOrNot.OR ? "OR" : "AND";
+            string wildcard = string.Format(pattern, value.ToString().Replace("'", "''"));
+            return sql + $" {logic} {EntityMetadata.QuoteIdentifier(properties[0].Name)} LIKE N'{wildcard}'";
         }
 
         /// <summary>
@@ -260,23 +239,18 @@ namespace Acme.Dapper.SqlSplice
         /// <returns></returns>
         public static string Select(this string sql, object result)
         {
-            if (sql.Contains("#Result"))
-            {
-                string strResult = "";
-                PropertyInfo[] propertyInfo = result.GetType().GetProperties();
-                for (int i = 0; i < propertyInfo.Length; i++)
-                {
-                    if (strResult.Length <= 0)
-                        strResult = $"{propertyInfo[i].GetValue(propertyInfo)} as {propertyInfo[i].Name}";
-                    else
-                        strResult = $",{propertyInfo[i].GetValue(propertyInfo)}, {propertyInfo[i].Name}";
-                }
-                return sql.Replace("#Result", strResult);
-            }
-            else
-            {
-                throw new Exception("sql参数错误");
-            }
+            ArgumentException.ThrowIfNullOrWhiteSpace(sql);
+            ArgumentNullException.ThrowIfNull(result);
+
+            if (!sql.Contains("#Result", StringComparison.Ordinal))
+                throw new ArgumentException("sql 中缺少 #Result 占位符", nameof(sql));
+
+            string strResult = string.Join(
+                ", ",
+                GetReadableProperties(result).Select(
+                    p => $"{AsColumnExpression(p.GetValue(result))} AS {EntityMetadata.QuoteIdentifier(p.Name)}"));
+
+            return sql.Replace("#Result", strResult);
         }
 
         /// <summary>
@@ -286,14 +260,12 @@ namespace Acme.Dapper.SqlSplice
         /// <returns></returns>
         public static string Total(this string sql)
         {
-            if (sql.Contains("#Result"))
-            {
-                return sql.Replace("#Result", "Count(*)");
-            }
-            else
-            {
-                throw new Exception("sql参数错误");
-            }
+            ArgumentException.ThrowIfNullOrWhiteSpace(sql);
+
+            if (!sql.Contains("#Result", StringComparison.Ordinal))
+                throw new ArgumentException("sql 中缺少 #Result 占位符", nameof(sql));
+
+            return sql.Replace("#Result", "COUNT(1)");
         }
 
         /// <summary>
@@ -310,15 +282,10 @@ namespace Acme.Dapper.SqlSplice
             JoinType join = JoinType.INNER,
             int index = 1) where T : class, new()
         {
-            if (sql.Contains("#Result"))
-            {
-                sql += $" AS T{index} {join} JOIN {typeof(T).Name} AS T{index + 1}";
-                return sql;
-            }
-            else
-            {
-                throw new Exception("sql参数错误");
-            }
+            if (sql == null || !sql.Contains("#Result", StringComparison.Ordinal))
+                throw new ArgumentException("sql 中缺少 #Result 占位符", nameof(sql));
+
+            return sql + $" AS T{index} {join} JOIN {EntityMetadata.TableNameOf(typeof(T))} AS T{index + 1}";
         }
 
         /// <summary>
@@ -330,28 +297,10 @@ namespace Acme.Dapper.SqlSplice
         /// <exception cref="Exception"></exception>
         public static string ON(this string sql, Dictionary<string, string> keyValues)
         {
-            if (keyValues.Count == 0)
-            {
-                throw new Exception("sql参数错误");
-            }
-            else
-            {
-                sql += " ON";
-                int row = 0;
-                foreach (var item in keyValues)
-                {
-                    if (row == 0)
-                    {
-                        sql += $" {item.Key}={item.Value}";
-                    }
-                    else
-                    {
-                        sql += $"AND {item.Key}={item.Value}";
-                    }
-                    row++;
-                }
-                return sql;
-            }
+            if (keyValues == null || keyValues.Count == 0)
+                throw new ArgumentException("ON 条件不能为空", nameof(keyValues));
+
+            return sql + " ON " + string.Join(" AND ", keyValues.Select(kv => $"{kv.Key} = {kv.Value}"));
         }
 
         /// <summary>

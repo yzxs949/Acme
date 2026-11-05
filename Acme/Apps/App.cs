@@ -43,7 +43,7 @@ public static class App
     public static string SystemPath => Directory.GetCurrentDirectory();
 
     /// <summary>
-    /// 系统路径
+    /// 应用程序域基础目录
     /// </summary>
     public static string Path => AppDomain.CurrentDomain.BaseDirectory;
 }

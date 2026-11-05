@@ -1,30 +1,24 @@
-﻿using System;
-using Acme.Constant;
+﻿using Acme.Constant;
+using System;
 
 namespace Acme.Ohs;
 
 /// <summary>
 /// 通用返回参数实体
 /// </summary>
-/// <param name="code">代码</param>
-/// <param name="msg">描述</param>
-/// <param name="data">数据</param>
-public class Oh<TEntity>(
-    int code = CV.YesCode,
-    string msg = CV.BlankCharacter,
-    TEntity? data = null) : IOh where TEntity : class
+/// <typeparam name="TEntity">数据类型</typeparam>
+/// <param name="Code">编码</param>
+/// <param name="Msg">描述</param>
+/// <param name="Data">数据</param>
+public record Oh<TEntity>(int Code, string Msg, TEntity Data) where TEntity : class
 {
-
     /// <summary>
     /// 实例化Oh
     /// </summary>
     /// <param name="code">代码</param>
     /// <param name="msg">描述</param>
     /// <param name="data">数据</param>
-    public static Oh<TEntity> NewOh(
-        int code = CV.YesCode,
-        string msg = CV.BlankCharacter,
-        TEntity data = null)
+    public static Oh<TEntity> NewOh(int code, string msg, TEntity data)
     {
         return new Oh<TEntity>(code, msg, data);
     }
@@ -33,47 +27,51 @@ public class Oh<TEntity>(
     /// 异常处理方法
     /// </summary>
     /// <param name="msg"></param>
-    /// <exception cref="Exception">异常类</exception>
-    public static Exception OhNo(string msg)
+    /// <exception cref="T:System.Exception">异常类</exception>
+    public static void Exception(string msg)
     {
-        return new Exception(msg);
+        throw new Exception(msg);
     }
 
     /// <summary>
-    /// 代码
+    /// 参数异常
     /// </summary>
-    public int Code { get; set; } = code;
+    /// <param name="msg"></param>
+    /// <exception cref="T:System.ArgumentException">参数异常</exception>
+    public static void ArgumentException(string msg)
+    {
+        throw new ArgumentException(msg);
+    }
 
     /// <summary>
-    /// 描述
+    /// 系统异常
     /// </summary>
-    public string Msg { get; set; } = msg;
+    /// <param name="msg"></param>
+    /// <exception cref="T:System.SystemException">系统异常</exception>
+    public static void SystemException(string msg)
+    {
+        throw new SystemException(msg);
+    }
 
     /// <summary>
-    /// 数据
+    /// 获取成功时的Oh值(data为null时)
     /// </summary>
-    public TEntity Data { get; set; } = data;
+    /// <param name="msg">描述</param>
+    /// <returns></returns>
+    public static Oh Success(string msg) => new(CV.YesCode, msg, null);
+
+    /// <summary>
+    /// 获取失败时的Oh值(data为null时)
+    /// </summary>
+    /// <param name="msg">描述</param>
+    /// <returns></returns>
+    public static Oh Fail(string msg) => new(CV.NoCode, msg, null);
 }
 
 /// <summary>
 /// 通用返回参数实体
 /// </summary>
-public class Oh : Oh<object>, IOh
-{
-
-    /// <summary>
-    /// 构造函数
-    /// </summary>
-    /// <param name="code">代码</param>
-    /// <param name="msg">描述</param>
-    /// <param name="data">数据</param>
-    public Oh(
-        int code = CV.YesCode,
-        string msg = CV.BlankCharacter,
-        object data = null)
-    {
-        Code = code;
-        Msg = msg;
-        Data = data;
-    }
-}
+/// <param name="Code">编码</param>
+/// <param name="Msg">描述</param>
+/// <param name="Data">数据</param>
+public record Oh(int Code, string Msg, object Data = null) : Oh<object>(Code, Msg, Data);

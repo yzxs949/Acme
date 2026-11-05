@@ -1,28 +1,42 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net8;net9;net10.0</TargetFrameworks>
+		<TargetFrameworks>net8.0;net9.0;net10.0</TargetFrameworks>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
-		<Version>5.6.4</Version>
+		<Version>5.7.0</Version>
 		<Authors>yzxs</Authors>
 		<Company>yzxs</Company>
 		<Copyright>yzxs</Copyright>
 		<Description>Acme framework based on Dapper database operation class library</Description>
 		<PackageTags>Acme;Dapper;Acme.Dapper;yzxs;云中小生;.NET8;.NET9;.NET10</PackageTags>
+		<PackageProjectUrl>https://gitee.com/yzxs949/acme-v2</PackageProjectUrl>
+		<RepositoryUrl>https://gitee.com/yzxs949/acme-v2</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageReleaseNotes>
-			1. .NET10依赖升级版本为10.0.5
-			1.Dapper.Contrib
-			2.修复已知bug
+			1. 修复 ISplicing 未注册导致 IRepository 无法解析
+			2. 修复 InsertSqlParam / GetUpdateContent / UpdateReturnId 等拼接错误
+			3. 支持 [Table] / [Key] / [Computed] 特性与标识符转义
+			4. 分页排序字段增加白名单校验，GetCountSql 支持子查询
+			5. 全部异步方法支持 CancellationToken，补 ConfigureAwait(false)
+			6. 事务失败改为回滚后抛出，不再吞异常返回 0
 		</PackageReleaseNotes>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
 	</PropertyGroup>
+
 	<ItemGroup>
-		<PackageReference Include="Dapper" Version="2.1.79" />
+		<PackageReference Include="Dapper" Version="2.1.89" />
 		<PackageReference Include="Dapper.Contrib" Version="2.0.78" />
-		<PackageReference Include="Microsoft.Data.SqlClient" Version="7.0.2" />
-		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.10" />
+		<PackageReference Include="Microsoft.Data.SqlClient" Version="7.1.1" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.14" />
 	</ItemGroup>
+
 	<ItemGroup>
-	  <ProjectReference Include="..\Acme\Acme.csproj" />
+		<ProjectReference Include="..\Acme\Acme.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="README.md" Pack="true" PackagePath="\" />
 	</ItemGroup>
 
 </Project>

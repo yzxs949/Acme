@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Data;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Acme.Dapper.Extension
@@ -23,8 +24,9 @@ namespace Acme.Dapper.Extension
         /// </summary>
         /// <param name="sql">查询的sql</param>
         /// <param name="param">替换参数</param>
+        /// <param name="cancellationToken">取消令牌</param>
         /// <returns></returns>
-        Task<List<T>> QueryAsync<T>(string sql, object param);
+        Task<List<T>> QueryAsync<T>(string sql, object param, CancellationToken cancellationToken = default);
 
         #endregion
 
@@ -42,8 +44,9 @@ namespace Acme.Dapper.Extension
         /// </summary>
         /// <param name="sql"></param>
         /// <param name="param"></param>
+        /// <param name="cancellationToken">取消令牌</param>
         /// <returns></returns>
-        Task<T> QueryFirstAsync<T>(string sql, object param);
+        Task<T> QueryFirstAsync<T>(string sql, object param, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 查询第一个数据没有返回默认值
@@ -53,15 +56,15 @@ namespace Acme.Dapper.Extension
         /// <returns></returns>
         T QueryFirstOrDefault<T>(string sql, object param);
 
-
         /// <summary>
         /// 查询第一个数据没有返回默认值
         /// </summary>
         /// <param name="sql"></param>
         /// <param name="param"></param>
+        /// <param name="cancellationToken">取消令牌</param>
         /// <returns></returns>
-        Task<T> QueryFirstOrDefaultAsync<T>(string sql, object param);
-        
+        Task<T> QueryFirstOrDefaultAsync<T>(string sql, object param, CancellationToken cancellationToken = default);
+
         #endregion
 
         #region 查询单条数据
@@ -78,8 +81,9 @@ namespace Acme.Dapper.Extension
         /// </summary>
         /// <param name="sql"></param>
         /// <param name="param"></param>
+        /// <param name="cancellationToken">取消令牌</param>
         /// <returns></returns>
-        Task<T> QuerySingleAsync<T>(string sql, object param);
+        Task<T> QuerySingleAsync<T>(string sql, object param, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 查询单条数据没有返回默认值
@@ -94,8 +98,9 @@ namespace Acme.Dapper.Extension
         /// </summary>
         /// <param name="sql"></param>
         /// <param name="param"></param>
+        /// <param name="cancellationToken">取消令牌</param>
         /// <returns></returns>
-        Task<T> QuerySingleOrDefaultAsync<T>(string sql, object param);
+        Task<T> QuerySingleOrDefaultAsync<T>(string sql, object param, CancellationToken cancellationToken = default);
 
         #endregion
 
@@ -105,9 +110,9 @@ namespace Acme.Dapper.Extension
         /// </summary>
         /// <param name="sql">sql，参数</param>
         /// <param name="param"></param>
+        /// <param name="cancellationToken">取消令牌</param>
         /// <returns></returns>
-        Task<int> ExecuteAsync(string sql, object param);
-
+        Task<int> ExecuteAsync(string sql, object param, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 增删改
@@ -128,9 +133,9 @@ namespace Acme.Dapper.Extension
         /// <param name="model"></param>
         /// <param name="transaction"></param>
         /// <param name="commandTimeout"></param>
+        /// <param name="cancellationToken">取消令牌</param>
         /// <returns></returns>
-        Task<int> InsertAsync<T>(T model, IDbTransaction transaction = null, int? commandTimeout = null) where T : class, new();
-
+        Task<int> InsertAsync<T>(T model, IDbTransaction transaction = null, int? commandTimeout = null, CancellationToken cancellationToken = default) where T : class, new();
 
         /// <summary>
         /// 根据实体类插入表（实体类需要加标记处理）
@@ -152,9 +157,9 @@ namespace Acme.Dapper.Extension
         /// <param name="model"></param>
         /// <param name="transaction"></param>
         /// <param name="commandTimeout"></param>
+        /// <param name="cancellationToken">取消令牌</param>
         /// <returns></returns>
-        Task<bool> UpdateAsync<T>(T model, IDbTransaction transaction = null, int? commandTimeout = null) where T : class, new();
-
+        Task<bool> UpdateAsync<T>(T model, IDbTransaction transaction = null, int? commandTimeout = null, CancellationToken cancellationToken = default) where T : class, new();
 
         /// <summary>
         /// 根据实体类更新表（实体类需要加标记处理）
@@ -164,7 +169,7 @@ namespace Acme.Dapper.Extension
         /// <param name="transaction"></param>
         /// <param name="commandTimeout"></param>
         /// <returns></returns>
-        public bool Update<T>(T model, IDbTransaction transaction = null, int? commandTimeout = null) where T : class, new();
+        bool Update<T>(T model, IDbTransaction transaction = null, int? commandTimeout = null) where T : class, new();
 
         #endregion
 
@@ -176,9 +181,9 @@ namespace Acme.Dapper.Extension
         /// <param name="model"></param>
         /// <param name="transaction"></param>
         /// <param name="commandTimeout"></param>
+        /// <param name="cancellationToken">取消令牌</param>
         /// <returns></returns>
-        Task<bool> DeleteAsync<T>(T model, IDbTransaction transaction = null, int? commandTimeout = null) where T : class, new();
-
+        Task<bool> DeleteAsync<T>(T model, IDbTransaction transaction = null, int? commandTimeout = null, CancellationToken cancellationToken = default) where T : class, new();
 
         /// <summary>
         /// 根据实体类删除表（实体类需要加标记处理）
@@ -194,7 +199,7 @@ namespace Acme.Dapper.Extension
 
         #region Reader获取数据
         /// <summary>
-        /// Reader获取数据
+        /// Reader获取数据。返回的 Reader 已绑定连接，关闭 Reader 会同时关闭连接。
         /// </summary>
         /// <param name="sql"></param>
         /// <param name="param"></param>
@@ -202,12 +207,13 @@ namespace Acme.Dapper.Extension
         IDataReader ExecuteReader(string sql, object param);
 
         /// <summary>
-        /// 异步Reader获取数据
+        /// 异步Reader获取数据。返回的 Reader 已绑定连接，关闭 Reader 会同时关闭连接。
         /// </summary>
         /// <param name="sql"></param>
         /// <param name="param"></param>
+        /// <param name="cancellationToken">取消令牌</param>
         /// <returns></returns>
-        Task<IDataReader> ExecuteReaderAsync(string sql, object param);
+        Task<IDataReader> ExecuteReaderAsync(string sql, object param, CancellationToken cancellationToken = default);
 
         #endregion
 
@@ -220,14 +226,14 @@ namespace Acme.Dapper.Extension
         /// <returns></returns>
         object ExecuteScalar(string sql, object param);
 
-
         /// <summary>
         /// Scalar获取数据
         /// </summary>
         /// <param name="sql"></param>
         /// <param name="param"></param>
+        /// <param name="cancellationToken">取消令牌</param>
         /// <returns></returns>
-        Task<T> ExecuteScalarForTAsync<T>(string sql, object param);
+        Task<T> ExecuteScalarForTAsync<T>(string sql, object param, CancellationToken cancellationToken = default);
 
         #endregion
 
@@ -245,8 +251,9 @@ namespace Acme.Dapper.Extension
         /// </summary>
         /// <param name="sql"></param>
         /// <param name="param"></param>
+        /// <param name="cancellationToken">取消令牌</param>
         /// <returns></returns>
-        Task<T> ExecuteScalarAsync<T>(string sql, object param);
+        Task<T> ExecuteScalarAsync<T>(string sql, object param, CancellationToken cancellationToken = default);
 
         #endregion
 
@@ -259,14 +266,14 @@ namespace Acme.Dapper.Extension
         /// <returns></returns>
         List<T> ExecutePro<T>(string proc, object param);
 
-
         /// <summary>
         /// 带参数的存储过程
         /// </summary>
         /// <param name="proc">存储过程名称</param>
         /// <param name="param">参数</param>
+        /// <param name="cancellationToken">取消令牌</param>
         /// <returns></returns>
-        Task<List<T>> ExecuteProAsync<T>(string proc, object param);
+        Task<List<T>> ExecuteProAsync<T>(string proc, object param, CancellationToken cancellationToken = default);
 
         #endregion
 
@@ -275,16 +282,16 @@ namespace Acme.Dapper.Extension
         /// 事务1 - 全SQL
         /// </summary>
         /// <param name="sqlarr">多条SQL</param>
-        /// <returns></returns>
+        /// <returns>受影响的行数合计</returns>
         int ExecuteTransaction(string[] sqlarr);
-
 
         /// <summary>
         /// 事务1 - 全SQL
         /// </summary>
         /// <param name="sqlarr">多条SQL</param>
-        /// <returns></returns>
-        Task<int> ExecuteTransactionAsync(string[] sqlarr);
+        /// <param name="cancellationToken">取消令牌</param>
+        /// <returns>受影响的行数合计</returns>
+        Task<int> ExecuteTransactionAsync(string[] sqlarr, CancellationToken cancellationToken = default);
 
         #endregion
 
@@ -295,7 +302,8 @@ namespace Acme.Dapper.Extension
         ///dic.Add("Insert into Users values (@UserName, @Email, @Address)",
         ///        new { UserName = "jack", Email = "380234234@qq.com", Address = "上海" });
         /// </summary>
-        /// <returns></returns>
+        /// <param name="dic">SQL 与参数的映射</param>
+        /// <returns>受影响的行数合计</returns>
         int ExecuteTransaction(Dictionary<string, object> dic);
 
         /// <summary>
@@ -304,9 +312,10 @@ namespace Acme.Dapper.Extension
         ///dic.Add("Insert into Users values (@UserName, @Email, @Address)",
         ///        new { UserName = "jack", Email = "380234234@qq.com", Address = "上海" });
         /// </summary>
-        /// <returns></returns>
-        Task<int> ExecuteTransactionAsync(Dictionary<string, object> dic);
-
+        /// <param name="dic">SQL 与参数的映射</param>
+        /// <param name="cancellationToken">取消令牌</param>
+        /// <returns>受影响的行数合计</returns>
+        Task<int> ExecuteTransactionAsync(Dictionary<string, object> dic, CancellationToken cancellationToken = default);
 
         #endregion
     }

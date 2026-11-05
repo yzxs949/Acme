@@ -13,19 +13,4 @@
     <SourceRoot Include="D:\DevTools\nuget\packages\" />
     <SourceRoot Include="D:\开发软件\VS2026\Shared\NuGetPackages\" />
   </ItemGroup>
-  <PropertyGroup Condition=" '$(TargetFramework)' == 'net10.0' AND '$(ExcludeRestorePackageImports)' != 'true' ">
-    <PkgMicrosoft_Extensions_ApiDescription_Server Condition=" '$(PkgMicrosoft_Extensions_ApiDescription_Server)' == '' ">D:\DevTools\nuget\packages\microsoft.extensions.apidescription.server\10.0.0</PkgMicrosoft_Extensions_ApiDescription_Server>
-    <PkgMicrosoft_SourceLink_Common Condition=" '$(PkgMicrosoft_SourceLink_Common)' == '' ">D:\DevTools\nuget\packages\microsoft.sourcelink.common\8.0.0</PkgMicrosoft_SourceLink_Common>
-    <PkgMicrosoft_Build_Tasks_Git Condition=" '$(PkgMicrosoft_Build_Tasks_Git)' == '' ">D:\DevTools\nuget\packages\microsoft.build.tasks.git\8.0.0</PkgMicrosoft_Build_Tasks_Git>
-    <PkgMicrosoft_SourceLink_GitHub Condition=" '$(PkgMicrosoft_SourceLink_GitHub)' == '' ">D:\DevTools\nuget\packages\microsoft.sourcelink.github\8.0.0</PkgMicrosoft_SourceLink_GitHub>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(TargetFramework)' == 'net8' AND '$(ExcludeRestorePackageImports)' != 'true' ">
-    <PkgMicrosoft_Extensions_ApiDescription_Server Condition=" '$(PkgMicrosoft_Extensions_ApiDescription_Server)' == '' ">D:\DevTools\nuget\packages\microsoft.extensions.apidescription.server\8.0.0</PkgMicrosoft_Extensions_ApiDescription_Server>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(TargetFramework)' == 'net9' AND '$(ExcludeRestorePackageImports)' != 'true' ">
-    <PkgMicrosoft_Extensions_ApiDescription_Server Condition=" '$(PkgMicrosoft_Extensions_ApiDescription_Server)' == '' ">D:\DevTools\nuget\packages\microsoft.extensions.apidescription.server\9.0.0</PkgMicrosoft_Extensions_ApiDescription_Server>
-    <PkgMicrosoft_SourceLink_Common Condition=" '$(PkgMicrosoft_SourceLink_Common)' == '' ">D:\DevTools\nuget\packages\microsoft.sourcelink.common\8.0.0</PkgMicrosoft_SourceLink_Common>
-    <PkgMicrosoft_Build_Tasks_Git Condition=" '$(PkgMicrosoft_Build_Tasks_Git)' == '' ">D:\DevTools\nuget\packages\microsoft.build.tasks.git\8.0.0</PkgMicrosoft_Build_Tasks_Git>
-    <PkgMicrosoft_SourceLink_GitHub Condition=" '$(PkgMicrosoft_SourceLink_GitHub)' == '' ">D:\DevTools\nuget\packages\microsoft.sourcelink.github\8.0.0</PkgMicrosoft_SourceLink_GitHub>
-  </PropertyGroup>
 </Project>

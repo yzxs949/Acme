@@ -1,5 +1,4 @@
-﻿using System.Text;
-using Acme.Tools;
+﻿using Acme.Tools;
 using Microsoft.AspNetCore.Http;
 
 namespace Acme.Sessions;
@@ -54,7 +53,7 @@ public class HttpSessionService(IHttpContextAccessor httpContextAccessor) : IHtt
     public T GetObjectFromJson<T>(string key)
     {
         string strJson = _httpContextAccessor.HttpContext.Session.GetString(key);
-        return strJson.IsNotNull() ? default : strJson.ToEntity<T>();
+        return strJson.IsNotNull() ? strJson.ToEntity<T>() : default;
     }
 
     /// <summary>

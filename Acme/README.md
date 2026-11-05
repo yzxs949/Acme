@@ -1,343 +1,452 @@
-﻿# Acme .NET 工具类库
+﻿﻿# Acme
 
-**版本：5.6.5** | **支持框架：.NET 8.0 / 9.0 / 10.0**
+> 极简 .NET 开发，高效触手可及
 
-Acme 是一个 .NET 工具类库，提供 JSON 处理、类型转换、HTTP 请求、加密、Session/Cookie、拼音、Excel、验证码、通用返回格式等功能模块。
+[![NuGet](https://img.shields.io/nuget/v/Acme.svg)](https://www.nuget.org/packages/Acme)
+[![NuGet Downloads](https://img.shields.io/nuget/dt/Acme.svg)](https://www.nuget.org/packages/Acme)
+[![.NET](https://img.shields.io/badge/.NET-8.0%20%7C%209.0%20%7C%2010.0-512BD4.svg)](https://dotnet.microsoft.com/)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![Gitee](https://img.shields.io/badge/Gitee-yzxs949%2Facme--v2-C71D23.svg)](https://gitee.com/yzxs949/acme-v2)
+
+Acme 是一个面向 **.NET 8 / 9 / 10** 的轻量级工具类库，聚合了日常开发中最常用的能力：JSON、类型转换、HTTP、加密、Session / Cookie、拼音、Excel、验证码、统一响应体、Swagger / JWT 与配置读取等。开箱即用，帮助你专注于业务本身。
 
 ---
 
-## 快速开始
+## 特性
 
-### 安装
+- **零负担**：大量核心能力以静态扩展方法提供，随取随用
+- **多框架**：单个包同时支持 `net8.0` / `net9.0` / `net10.0`
+- **模块化**：按需引用，互不耦合
+- **安全默认**：Cookie 默认 `HttpOnly`、验证码使用加密安全随机数、异常详情不外泄
+- **依赖注入友好**：一行 `AddAcmeBuilderServer()` 即可注册 Session / Cookie 服务
+- **中文文档**：完整的 XML 注释，IDE 智能提示友好
+
+## 支持框架
+
+| 目标框架 | 标识 |
+| :------- | :--- |
+| .NET 8   | `net8.0`  |
+| .NET 9   | `net9.0`  |
+| .NET 10  | `net10.0` |
+
+## 安装
+
+使用 .NET CLI：
 
 ```bash
 dotnet add package Acme
 ```
 
-### 服务注册
+或使用 Package Manager：
+
+```powershell
+Install-Package Acme
+```
+
+## 快速开始
+
+### 1. 注册服务（Session / Cookie）
 
 ```csharp
 using Acme;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddAcmeBuilderServer(); // 注册 HttpContext、Session、Cookie 服务
+
+// 注册 HttpContextAccessor、Session、Cookie、Session 服务
+builder.Services.AddAcmeBuilderServer();
+
 var app = builder.Build();
+
+// 使用 Session 时必须启用会话中间件
+app.UseSession();
+app.Run();
 ```
 
-### 基本使用
+### 2. 直接使用工具方法
 
 ```csharp
 using Acme.Tools;
 
-// JSON 序列化
+// 序列化 / 反序列化
 string json = new { Name = "张三", Age = 25 }.ToJson();
+var user = json.ToEntity<User>();
 
-// 类型安全转换
-int number = "123".ToInt();
+// 安全类型转换
+int number = "123".ToInt();          // 123
+int fallback = "abc".ToInt(0);       // 0
 
 // MD5 加密
 string hash = MD5Encryption.Encrypt("password123");
+bool ok = MD5Encryption.Compare("password123", hash);
 ```
 
 ---
 
-## 核心功能
+## 功能模块
 
-### 1. JSON 处理
+| 模块 | 命名空间 | 说明 |
+| :--- | :------- | :--- |
+| [JSON 处理](#json-处理) | `Acme.Tools` | 基于 Newtonsoft.Json 的序列化/反序列化 |
+| [类型转换](#数据类型转换) | `Acme.Tools` | 字符串安全转换、路径、时间、Base64、随机码 |
+| [HTTP 请求](#http-请求) | `Acme.Tools` | 健壮的 HttpClient 封装 |
+| [加密工具](#加密工具) | `Acme.Tools` | MD5 加密与校验 |
+| [Session 管理](#session-管理) | `Acme.Sessions` | HTTP Session 读写 |
+| [Cookie 管理](#cookie-管理) | `Acme.Cookie` | HTTP Cookie 读写（安全默认） |
+| [拼音处理](#拼音处理) | `Acme.Pinyins` | 中文转拼音 / 首字母 |
+| [Excel 处理](#excel-处理) | `Acme.Excel` / `Acme.Tools` | 基于 NPOI 的导入导出 |
+| [验证码](#验证码) | `Acme.Tools` | 数字 / 算式 / 图片验证码 |
+| [验证工具](#验证工具) | `Acme.Tools` | 空值、Guid、正则校验 |
+| [通用返回对象](#通用返回对象) | `Acme.Ohs` / `Acme.Constant` | 统一 API 响应体 `Oh` |
+| [全局过滤器与 Swagger](#全局过滤器与-swagger) | `Acme.ReturnOhs` | 异常过滤、Swagger、JWT |
+| [配置管理](#配置管理) | `Acme.Apps` / `Acme.JsonFiles` | JSON 配置读取与路径 |
 
-> 基于 `Newtonsoft.Json`
+### JSON 处理
+
+基于 `Newtonsoft.Json`，提供对象与 JSON 字符串互转。
+
+| 方法 | 说明 |
+| :--- | :--- |
+| `obj.ToJson()` | 序列化为 JSON 字符串 |
+| `str.ToEntity<T>()` | 反序列化为实体 |
+| `Json.ToJObject(str)` | 反序列化为 `JObject` |
 
 ```csharp
 using Acme.Tools;
 
-// 对象 → JSON
-string json = obj.ToJson();
+var user = new { Name = "张三", Age = 25, Address = new { City = "北京" } };
+string json = user.ToJson();
 
-// JSON → 实体
-var user = jsonString.ToEntity<User>();
-var dyn = jsonString.ToEntity<dynamic>();
-
-// JSON → JObject
-JObject jo = Json.ToJObject(str);
+var entity = json.ToEntity<User>();
+var jobj = Json.ToJObject(json);
 ```
 
-### 2. 数据类型转换
+### 数据类型转换
 
-> 安全转换，失败返回默认值，不抛异常
+`ConvHelper` 提供字符串到常见类型的安全转换及多种实用工具。
+
+| 方法 | 说明 |
+| :--- | :--- |
+| `str.ToInt(default)` / `str.ToShort(default)` | 安全转换为 `int` / `short` |
+| `str.ToDate()` / `str.ToDate(default)` | 安全转换为 `DateTime` |
+| `dt.ToChWeekName()` | 日期转中文星期 |
+| `dt.ToTimeHHmmssString()` | 输出 `HH:mm:ss` |
+| `dt.ToDataTimeString(...)` | 自定义分隔符的日期时间字符串 |
+| `ConvHelper.GetTimeStamp()` | 13 位毫秒时间戳 |
+| `path.ToBase64String()` | 文件转 Base64 |
+| `path.ToUrlPath()` / `path.ToPath()` | 绝对路径与 Web 路径互转 |
+| `str.MidStrEx(start, end)` | 截取两字符串中间内容 |
+| `str.ToUtf8()` | 编码转 UTF-8 |
+| `csv.ToRandomCode(len)` | 从字符集生成随机码 |
+| `dt.LastMonth(endDate)` | 计算年月天间隔 |
 
 ```csharp
 using Acme.Tools;
 
-// 安全类型转换
-int  i   = "123".ToInt();          // 123
-int  i2  = "abc".ToInt(0);         // 0（默认值）
-short s  = "45".ToShort();         // 45
-DateTime d = "2025-01-15".ToDate(); // 失败返回 1970-1-1
-
-// 路径处理
-string webPath   = @"C:\app\file.jpg".ToUrlPath();  // 绝对→相对
-string filePath  = "/files/img.jpg".ToPath();        // 相对→绝对
-string base64    = @"C:\img\photo.jpg".ToBase64String();
-
-// 随机码（密码学安全）
-string code = "0,1,2,3,4,5,6,7,8,9".ToRandomCode(6);
-
-// 时间处理
-long stamp = ConvHelper.GetTimeStamp();               // 13位毫秒
-string wd  = DateTime.Now.ToChWeekName();              // "一"~"日"
-string tm  = DateTime.Now.ToTimeHHmmssString();        // "14:30:00"
-string dt  = DateTime.Now.ToDataTimeString("/", ":");  // "2025/01/15 14:30:00"
-string gap = DateTime.Now.LastMonth(DateTime.Now.AddMonths(-3)); // "3月"
-
-// 字符串截取
-string mid = "Hello【world】End".MidStrEx("【", "】"); // "world"
-
-// 编码修复
-string utf8 = garbledText.ToUtf8();
+int n = "123".ToInt();
+DateTime d = "2024-01-15".ToDate();
+string ts = $"时间戳：{ConvHelper.GetTimeStamp()}";
+string interval = new DateTime(2020, 1, 1).LastMonth(new DateTime(2024, 5, 15)); // 4年4月14天
 ```
 
-### 3. HTTP 请求
+### HTTP 请求
 
-> 使用全局复用 `HttpClient` 单例，避免端口耗尽。推荐使用异步方法。
+`HttpHelper` 复用单一 `HttpClient`，内置 30 秒超时、连接池 DNS 刷新、状态码校验，统一使用 Newtonsoft.Json 序列化请求体。
+
+| 方法 | 说明 |
+| :--- | :--- |
+| `HttpClientPostAsync(url, data, ct)` | 异步 POST，请求体自动 JSON 序列化 |
+| `HttpClientGetAsync(url, ct)` | 异步 GET |
+| `HttpClientPost(url, data)` | 同步 POST（兼容旧版） |
+| `HttpClientGet(url)` | 同步 GET（兼容旧版） |
+
+> 非 2xx 状态码或网络异常将抛出 `HttpRequestException`。
 
 ```csharp
 using Acme.Tools;
 
-// GET（同步）
-string res = HttpHelper.HttpClientGet("https://api.example.com/users?id=1");
+// 推荐异步 + 可取消
+using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(5));
+string text = await HttpHelper.HttpClientGetAsync("https://api.example.com/users?id=1", cts.Token);
 
-// POST（同步）
-string res2 = HttpHelper.HttpClientPost("https://api.example.com/update",
+string resp = await HttpHelper.HttpClientPostAsync(
+    "https://api.example.com/update",
     new { UserId = 1, Action = "update" });
-
-// 异步方法（推荐）
-string res3 = await HttpHelper.HttpClientGetAsync(url);
-string res4 = await HttpHelper.HttpClientPostAsync(url, data);
-
-// 错误处理
-try
-{
-    string result = await HttpHelper.HttpClientGetAsync(url);
-    var data = result.ToEntity<dynamic>();
-}
-catch (Exception ex)
-{
-    // 失败时返回 "请求失败：{错误信息}"
-}
 ```
 
-### 4. MD5 加密
+### 加密工具
+
+`MD5Encryption` 提供 MD5 加密与校验。
 
 ```csharp
 using Acme.Tools;
 
-string hash      = MD5Encryption.Encrypt("text");          // 小写
-string hashUpper = MD5Encryption.Encrypt("text", true);   // 大写
-bool match       = MD5Encryption.Compare("text", hash);   // true
+string lower = MD5Encryption.Encrypt("password123");        // 小写
+string upper = MD5Encryption.Encrypt("password123", true);  // 大写
+bool match = MD5Encryption.Compare("password123", lower);
 ```
 
-> **注意**：MD5 适用于非敏感场景。敏感数据建议使用 BCrypt、Argon2 等。
+> MD5 不适用于高敏感数据，密码场景建议使用 BCrypt / Argon2 等。
 
-### 5. Session 管理
+### Session 管理
 
-**接口：** `IHttpSessionService` → **实现：** `HttpSessionService`
+通过 `IHttpSessionService` 读写 Session，支持字符串与对象（JSON）。
 
 ```csharp
 using Acme.Sessions;
 
-// 字符串存储
-_sessionService.SetSession("UserId", "123");
-string val = _sessionService.GetSession("UserId");
+public class AccountController(IHttpSessionService session)
+{
+    public void Login(string userName)
+    {
+        session.SetSession("CurrentUser", userName);
+        session.SetObjectAsJson("UserInfo", new { UserName = userName, Role = "Admin" });
+    }
 
-// 对象存储（JSON 序列化）
-_sessionService.SetObjectAsJson("Cart", cartData);
-var cart = _sessionService.GetObjectFromJson<Cart>("Cart");
+    public object GetInfo()
+    {
+        string user = session.GetSession("CurrentUser");
+        var info = session.GetObjectFromJson<dynamic>("UserInfo");
+        return new { user, info };
+    }
 
-// 移除
-_sessionService.RemoveSession("UserId");
+    public void Logout() => session.RemoveSession("CurrentUser");
+}
 ```
 
-### 6. Cookie 管理
+### Cookie 管理
 
-**接口：** `IHttpCookieService` → **实现：** `HttpCookieService`
+通过 `IHttpCookieService` 读写 Cookie。`SetCookies` 默认开启 `HttpOnly` 与 `SameSite=Lax`。
 
-> Cookie 默认启用 `HttpOnly` 和 `SameSite=Lax`。
+| 方法 | 说明 |
+| :--- | :--- |
+| `SetCookies(key, value, minutes = 300, httpOnly = true)` | 写入 Cookie |
+| `GetCookies(key)` | 读取 Cookie（不存在返回空串） |
+| `DeleteCookies(key)` | 删除 Cookie |
 
 ```csharp
 using Acme.Cookie;
 
-// 设置（默认300分钟）
-_cookieService.SetCookies("Token", "abc123", 60);
+public class HomeController(IHttpCookieService cookie)
+{
+    public void Set()
+    {
+        // 安全 Cookie（HttpOnly，前端脚本不可读）
+        cookie.SetCookies("AuthToken", "abc123", minutes: 60);
 
-// 读取
-string token = _cookieService.GetCookies("Token");
+        // 需要前端 JS 读取时（如主题、语言偏好）关闭 HttpOnly
+        cookie.SetCookies("UserPreferences", "theme=dark", httpOnly: false);
+    }
 
-// 删除
-_cookieService.DeleteCookies("Token");
+    public string Read() => cookie.GetCookies("AuthToken");
+}
 ```
 
-### 7. 通用返回格式（Oh）
+### 拼音处理
 
-**所在文件：** `Ohs/Oh.cs`、`Ohs/OhExpand.cs`
+将中文转换为完整拼音或拼音首字母。
 
-```csharp
-using Acme.Ohs;
-
-// 成功
-return data.Success();              // { Code: 200, Msg: "成功！", Data: data }
-return data.Success("操作成功");
-
-// 失败
-return data.Fail();                 // { Code: 500, Msg: "服务器错误！", Data: data }
-
-// 自定义状态码
-return data.Custom(403, "权限不足");
-
-// 泛型版本
-return data.Success<UserDto>("获取成功");
-
-// 静态创建
-var result = Oh<MyData>.NewOh(200, "成功", myData);
-```
-
-### 8. 拼音处理
+| 方法 | 说明 |
+| :--- | :--- |
+| `GetInitials(text)` | 拼音首字母（大写） |
+| `GetPinyin(text)` | 完整拼音（空格分隔） |
+| `GetChineseText(pinyin)` | 拼音转中文 |
+| `ConvertEncoding(text, src, dst)` | 编码转换 |
 
 ```csharp
 using Acme.Pinyins;
 
-// 获取拼音首字母
-string initials = Pinyin.GetInitials("中文拼音处理"); // "ZWPYCL"
-
-// 获取完整拼音
-string pinyin = Pinyin.GetPinyin("中文"); // "zhong wen"
-
-// 编码转换
-string encoded = Pinyin.ConvertEncoding("文本", Encoding.UTF8, Encoding.ASCII);
+string initials = Pinyin.GetInitials("中文拼音处理"); // ZWPYCL
+string full = Pinyin.GetPinyin("中文");              // zhong wen
+string chinese = Pinyin.GetChineseText("zhong");
 ```
 
-### 9. Excel 处理
+### Excel 处理
 
-> 基于 NPOI，支持导入/导出。导出路径已内置路径遍历防护。
+基于 NPOI，提供泛型导入导出。`NpolExcelService<TEntity>` 为 DI 友好的实例类，`NpolExcelHelper<T>` 为静态方法版，二者用法一致。
+
+| 方法 | 说明 |
+| :--- | :--- |
+| `InputExcel(IFormFile file, string sheetName = null)` | 从上传文件导入 |
+| `InputExcel(string fileName, string sheetName = null)` | 从文件路径导入 |
+| `ExportExcel(list, templatePath, startRow, sheetName, depositPath, fileName)` | 按模板导出 |
 
 ```csharp
 using Acme.Excel;
-using Acme.Tools;
 
-// 定义模型
-public class Product { public string Name { get; set; } public int Stock { get; set; } }
-
-// 方式一：静态工具类
-List<Product> list = NpolExcelHelper<Product>.InputExcel(@"C:\data\products.xlsx");
-string path = NpolExcelHelper<Product>.ExportExcel(list, @"template.xlsx");
-
-// 方式二：依赖注入服务
-public class ProductController : Controller
+public class Product
 {
-    private readonly NpolExcelService<Product> _excel;
-
-    public ProductController(NpolExcelService<Product> excel) => _excel = excel;
-
-    [HttpPost("import")]
-    public IActionResult Import(IFormFile file) => Ok(_excel.InputExcel(file));
-
-    [HttpGet("export")]
-    public IActionResult Export()
-    {
-        string filePath = _excel.ExportExcel(
-            new List<Product> { new Product { Name = "笔记本", Stock = 50 } },
-            templatePath: @"templates\report.xlsx",
-            depositPath: "exports",
-            fileName: "report"
-        );
-        return PhysicalFile(filePath, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-            Path.GetFileName(filePath));
-    }
+    public string Name { get; set; }
+    public int Stock { get; set; }
+    public DateTime CreatedDate { get; set; }
 }
+
+// 导入
+var service = new NpolExcelService<Product>();
+List<Product> list = service.InputExcel("products.xlsx");
+List<Product> fromForm = service.InputExcel(formFile, "Sheet1");
+
+// 导出（需提供模板文件）
+string path = service.ExportExcel(
+    list,
+    templatePath: "template.xlsx",
+    startRow: 2,
+    sheetName: "产品列表",
+    depositPath: "exports",
+    fileName: "产品数据");
 ```
 
-### 10. 验证码生成
+> 导入会跳过空行，单元格类型转换失败时保留默认值，不中断整表导入；支持 `.xls` / `.xlsx` / `.xlsm`（后缀大小写不敏感）。
 
-> 使用密码学安全随机数 `RandomNumberGenerator`，防止验证码被预测。
+### 验证码
+
+生成数字、算式验证码及验证码图片。
+
+| 方法 | 说明 |
+| :--- | :--- |
+| `GetCode(len)` | 指定长度数字验证码（0-9） |
+| `GetCodeBy100(len)` | 指定长度数字验证码（1-99） |
+| `GetOperator()` | 随机运算符 `+ - × ÷` |
+| `GetEquationCode(out string equation)` | 生成算式验证码并返回结果 |
+| `CreateValidateGraphic1(code)` / `CreateValidateGraphic2(code)` | 生成验证码图片（两种样式） |
+| `CalcByDataTable(expression)` | 计算简单四则表达式 |
 
 ```csharp
 using Acme.Tools;
 
-// 数字验证码
-string code = VerCode.GetCode(6);  // 6位数字
-
-// 算式验证码
-string equation;
-int result = VerCode.GetEquationCode(out equation);
-// equation = "12+34=?", result = 46
-
-// 验证码图片（byte[] 直接返回给前端）
-byte[] img = VerCode.CreateValidateGraphic2(VerCode.GetCode(4));
+string code = VerCode.GetCode(4);
+int result = VerCode.GetEquationCode(out string equation); // equation 如 "23+45=?"
+byte[] image = VerCode.CreateValidateGraphic1(code);
 ```
 
-### 11. 验证工具
+### 验证工具
+
+`VerificationHelper` 提供常用校验扩展方法。
+
+| 方法 | 说明 |
+| :--- | :--- |
+| `str.IsNotNull()` | 是否非空（含空白字符） |
+| `guid.IsNotDefault()` / `int.IsNotDefault()` | 是否非默认值 |
+| `guid?.IsDefault()` | 可空 Guid 是否为空 |
+| `str.RegexVerification(pattern)` | 正则匹配 |
 
 ```csharp
 using Acme.Tools;
 
-// 字符串判空
-bool has = "张三".HasValue();            // true（推荐）
-bool isNull = "".IsNotNull();            // true（原有方法）
-
-// Guid 默认值判断
-Guid.Empty.IsDefault();                  // true
-
-// int 非零判断
-0.IsNotZero();                           // false
-
-// 正则验证
-"user@ex.com".RegexVerification(@"^[\w-]+@[\w-]+(\.[\w-]+)+$"); // true
+bool notEmpty = "hello".IsNotNull();
+bool idOk = userId.IsNotDefault();
+bool emailOk = "user@example.com".RegexVerification(@"^[\w.+-]+@[\w.-]+\.\w+$");
 ```
 
-### 12. 配置管理
+### 通用返回对象
 
-**App 类：** 读取 `appsettings.json` | **JsonFile 类：** 读取自定义 JSON 文件
+`Oh` 提供统一 API 响应体（`Code` / `Msg` / `Data`），配合扩展方法快速构造成功或失败响应。
+
+```csharp
+using Acme.Ohs;
+using Acme.Constant;
+
+// 成功 / 失败
+return Ok(user.Success());                 // { Code: 200, Msg: "成功！", Data: {...} }
+return Ok(user.Success("创建成功"));
+return BadRequest(Oh.Fail("用户不存在"));
+return Ok(hasPermission.IsSuccess("有权限", "无权限"));
+
+// 自定义状态码
+return StatusCode(400, new Oh(400, "更新失败", null));
+```
+
+常用常量见 `CV`：`YesCode`(200)、`NoCode`(500)、`Yes`、`ErrorServer` 等。
+
+### 全局过滤器与 Swagger
+
+`GlobalFilterCollectionExtension` 提供异常过滤器注册、Swagger（单/多版本）、JWT 认证与模型验证响应格式化。
+
+```csharp
+// 注册服务
+builder.Services.AddExceptionFilterService();       // 全局异常过滤器
+builder.Services.ConfigureApiBehaviorOptions();      // 模型验证失败统一返回 Oh
+builder.Services.ConfigureSwaggerOptions("我的 API"); // 单版本
+builder.Services.AddOhAuthentication();              // JWT 认证
+
+// 多版本 Swagger
+// builder.Services.ConfigureSwaggerOptions(new List<SwaggerDocDto>
+// {
+//     new("API v1", "v1"),
+//     new("API v2", "v2")
+// });
+
+// 启用中间件
+app.UseSingSwagger("我的 API", "v1", "swagger");
+// app.UseBathSwagger(swaggerDocs, "swagger");
+app.UseAuthentication();
+app.UseAuthorization();
+```
+
+> `ExceptionFilter` 对 `ArgumentException` 返回 400 并回显提示，其余异常统一返回 500 通用提示，避免泄露堆栈等敏感信息。
+
+### 配置管理
+
+`App` 读取根目录 `appsettings.json`，`JsonFile` 读取任意 JSON 配置文件。
+
+| 成员 | 说明 |
+| :--- | :--- |
+| `App.GetValue(key)` / `App.GetValue(key, name)` | 读取配置值 |
+| `App.Path` | 应用程序域基础目录 |
+| `App.SystemPath` | 当前工作目录 |
+| `new JsonFile(file).GetValue(key)` | 读取指定 JSON 配置 |
 
 ```csharp
 using Acme.Apps;
 using Acme.JsonFiles;
 
-// 读取 appsettings.json
-string conn = App.GetValue("ConnectionStrings:DefaultConnection");
-string api  = App.GetValue("AppSettings:ApiBaseUrl");
+string db = App.GetValue("ConnectionStrings:DefaultConnection");
+string basePath = App.Path;
 
-// 读取自定义配置文件
-var config = new JsonFile("customSettings.json");
-string key = config.GetValue("ThirdParty:ApiKey");
-
-// 路径信息
-string dir = App.Path;        // 应用程序基础目录
-string cwd = App.SystemPath;  // 当前工作目录
+var custom = new JsonFile("customSettings.json");
+string apiKey = custom.GetValue("ThirdParty:ApiKey");
 ```
 
 ---
 
-## 依赖项
+## 依赖
 
-| 依赖包 | 用途 | 版本 |
-|--------|------|------|
-| Newtonsoft.Json | JSON 序列化/反序列化 | 13.0.4 |
-| NPOI | Excel 文件操作 | 2.7.5 / 2.7.6 (net10.0) |
-| Microsoft.Extensions.DependencyInjection | 依赖注入 | 9.0.11 / 10.0.5 (net10.0) |
-| Microsoft.Extensions.Caching.Abstractions | 缓存抽象 | 9.0.11 / 10.0.5 (net10.0) |
-| Swashbuckle.AspNetCore | Swagger 文档 | 9.0.6 / 10.1.5 (net10.0) |
-| ZKWeb.System.Drawing | 绘图验证码 | 4.0.1 |
+| 依赖包 | 用途 | .NET 8 | .NET 9 | .NET 10 |
+| :----- | :--- | :----- | :----- | :------ |
+| Newtonsoft.Json | JSON 序列化 | 13.0.4 | 13.0.4 | 13.0.4 |
+| NPOI | Excel 操作 | 2.8.1 | 2.8.1 | 2.8.1 |
+| ZKWeb.System.Drawing | 验证码绘图 | 4.0.1 | 4.0.1 | 4.0.1 |
+| Microsoft.Extensions.Caching.Abstractions | 缓存抽象 | 10.0.14 | 10.0.14 | 10.0.14 |
+| Microsoft.Extensions.DependencyInjection | 依赖注入 | 10.0.14 | 10.0.14 | 10.0.14 |
+| Microsoft.Extensions.Features | 特性抽象 | 10.0.14 | 10.0.14 | 10.0.14 |
+| Microsoft.AspNetCore.Authentication.JwtBearer | JWT 认证 | 8.0.33 | 9.0.22 | 10.0.14 |
+| Swashbuckle.AspNetCore.* | Swagger 文档 | 10.3.1 | 10.3.1 | 10.3.1 |
 
----
+## 版本兼容性
 
-## 注意事项
+- .NET 8.0：支持
+- .NET 9.0：支持
+- .NET 10.0：支持
 
-- HTTP 请求失败返回 `"请求失败：{错误信息}"`，建议封装 `try-catch`
-- `ConvHelper` 的 `ToInt`/`ToShort`/`ToDate` 等自带安全转换，失败返回默认值
-- Cookie 默认启用 `HttpOnly` 和 `SameSite=Lax`
-- Excel 的 `ExportExcel` 已内置路径遍历防护
-- 大型 Excel 文件导入导出可能消耗较多内存
-- `VerCode` 使用 `RandomNumberGenerator`（密码学安全），请勿回退为 `System.Random`
+## 贡献
 
----
+欢迎通过 [Gitee Issues](https://gitee.com/yzxs949/acme-v2/issues) 反馈问题或提出建议。
 
-*本文档基于 Acme 版本 5.6.5。*
+1. Fork 本仓库
+2. 新建分支：`git checkout -b feature/your-feature`
+3. 提交改动：`git commit -m "feat: your feature"`
+4. 推送分支：`git push origin feature/your-feature`
+5. 提交 Pull Request
+
+提交 Pull Request 前，请确保解决方案能够成功编译（`dotnet build`）。
+
+## 许可证
+
+本项目基于 [MIT](LICENSE) 许可证开源。
+
+## 联系
+
+- 邮箱：<yzxs949@163.com>
+- 微信公众号：.NET修仙日记
+- 仓库地址：<https://gitee.com/yzxs949/acme-v2>
+
+![.NET修仙日记](https://raw.githubusercontent.com/yzxs949/FilePath/refs/heads/main/Image/%E4%BA%8C%E7%BB%B4%E7%A0%81.jpg)

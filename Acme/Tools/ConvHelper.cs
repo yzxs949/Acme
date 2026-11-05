@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Security.Cryptography;
 using System.Text;
 using Acme.Apps;
 namespace Acme.Tools;
@@ -15,8 +16,7 @@ public static class ConvHelper
     /// <returns></returns>  
     public static long GetTimeStamp()
     {
-        TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
-        return Convert.ToInt64(ts.TotalSeconds * 1000);
+        return DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
     }
 
     /// <summary>
@@ -100,18 +100,18 @@ public static class ConvHelper
     /// <summary>
     /// 文件路径转Base64位字符
     /// </summary>
-    /// <param name="FilesPath">文件路径</param>
+    /// <param name="filePath">文件路径</param>
     /// <returns></returns>
-    public static string ToBase64String(this string FilesPath)
+    public static string ToBase64String(this string filePath)
     {
         try
         {
-            byte[] bs = File.ReadAllBytes(FilesPath);
-            return Convert.ToBase64String(bs);
+            byte[] bytes = File.ReadAllBytes(filePath);
+            return Convert.ToBase64String(bytes);
         }
         catch
         {
-            return "";
+            return string.Empty;
         }
     }
 
@@ -169,67 +169,56 @@ public static class ConvHelper
     }
 
     /// <summary>
-    /// 将字符串从系统默认编码转换为 UTF-8（修复乱码）
+    /// 将字符串编码转为 UTF-8
     /// </summary>
     /// <param name="strText">字符串</param>
     /// <returns></returns>
     public static string ToUtf8(this string strText)
     {
-        if (string.IsNullOrEmpty(strText))
-            return strText;
-        byte[] sourceBytes = Encoding.Default.GetBytes(strText);
-        byte[] utf8Bytes = Encoding.Convert(Encoding.Default, Encoding.UTF8, sourceBytes, 0, sourceBytes.Length);
-        return Encoding.UTF8.GetString(utf8Bytes, 0, utf8Bytes.Length);
+        byte[] buffer = Encoding.Default.GetBytes(strText);
+        byte[] utf8Bytes = Encoding.Convert(Encoding.Default, Encoding.UTF8, buffer);
+        return Encoding.UTF8.GetString(utf8Bytes);
     }
 
     /// <summary>
     /// 截取两个字符串中间的内容
     /// </summary>
-    /// <param name="sourse">要截取的内容</param>
-    /// <param name="startstr">第一个字符</param>
-    /// <param name="endstr"></param>
+    /// <param name="source">要截取的内容</param>
+    /// <param name="startStr">起始字符串</param>
+    /// <param name="endStr">结束字符串</param>
     /// <returns></returns>
-    /// <exception cref="Exception"></exception>
-    public static string MidStrEx(this string sourse, string startstr, string endstr)
+    public static string MidStrEx(this string source, string startStr, string endStr)
     {
-        string result = string.Empty;
-        int startindex, endindex;
-        try
-        {
-            startindex = sourse.IndexOf(startstr);
-            if (startindex == -1)
-                return result;
-            string tmpstr = sourse[(startindex + startstr.Length)..];
-            endindex = tmpstr.IndexOf(endstr);
-            if (endindex == -1)
-                return result;
-            result = tmpstr.Remove(endindex);
-            return result;
-        }
-        catch (Exception ex)
-        {
-            throw new Exception(ex.Message);
-        }
+        int startIndex = source.IndexOf(startStr);
+        if (startIndex == -1)
+            return string.Empty;
+
+        string tmp = source[(startIndex + startStr.Length)..];
+        int endIndex = tmp.IndexOf(endStr);
+        if (endIndex == -1)
+            return string.Empty;
+
+        return tmp.Remove(endIndex);
     }
 
     /// <summary>
-    /// 获取随机字符串（使用密码学安全随机数）
+    /// 获取随机字符串
     /// </summary>
-    /// <param name="strText">随机字符内容（逗号分隔）</param>
+    /// <param name="strText">随机字符内容</param>
     /// <param name="len">长度</param>
     /// <returns></returns>
     public static string ToRandomCode(this string strText, int len)
     {
-        string[] strArry = strText.Split(',', StringSplitOptions.RemoveEmptyEntries);
-        if (strArry.Length == 0 || len <= 0) return "";
-
-        var sb = new System.Text.StringBuilder(len);
+        string[] strArray = strText.Split(',');
+        if (strArray.Length == 0 || len <= 0)
+            return string.Empty;
+        StringBuilder code = new(capacity: len);
+        // 使用加密安全的随机数生成器，避免验证码/随机码被预测
         for (int i = 0; i < len; i++)
         {
-            int index = System.Security.Cryptography.RandomNumberGenerator.GetInt32(strArry.Length);
-            sb.Append(strArry[index]);
+            code.Append(strArray[RandomNumberGenerator.GetInt32(0, strArray.Length)]);
         }
-        return sb.ToString();
+        return code.ToString();
     }
 
     /// <summary>

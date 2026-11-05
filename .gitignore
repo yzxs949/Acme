@@ -1,12 +1,51 @@
-﻿################################################################################
-# 此 .gitignore 文件已由 Microsoft(R) Visual Studio 自动创建。
-################################################################################
+﻿# ###############################################################################
+# 通用 .NET 项目 .gitignore (自动忽略 bin、obj、包、缓存、IDE 文件等)
+# ###############################################################################
 
-/Acme
-/Acme.Dapper/obj/Debug
-/.vs
-/packages
-/Acme.ReturnOh/bin
-/Acme.ReturnOh/obj
-/Acme.GlobalFilters/bin
-/Acme.GlobalFilters/obj
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+packages/
+node_modules/
+*.nupkg
+*.snupkg
+
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.ide/
+
+*.dll
+*.exe
+*.pdb
+*.cache
+*.resources
+*.log
+*.tmp
+*.temp
+
+*.db
+*.sqlite
+*.mdf
+*.ldf
+
+wwwroot/lib/
+wwwroot/uploads/
+wwwroot/*.min.js.map
+
+TestResults/
+*.coverage
+*.coveragexml
+
+*.publishsettings
+*.pubxml.user
+*.deployproj
+
+.DS_Store
+Thumbs.db 
