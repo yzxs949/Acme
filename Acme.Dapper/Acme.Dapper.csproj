@@ -9,8 +9,8 @@
 		<Copyright>yzxs</Copyright>
 		<Description>Acme framework based on Dapper database operation class library</Description>
 		<PackageTags>Acme;Dapper;Acme.Dapper;yzxs;云中小生;.NET8;.NET9;.NET10</PackageTags>
-		<PackageProjectUrl>https://gitee.com/yzxs949/acme-v2</PackageProjectUrl>
-		<RepositoryUrl>https://gitee.com/yzxs949/acme-v2</RepositoryUrl>
+		<PackageProjectUrl>https://gitee.com/yzxs949/acme</PackageProjectUrl>
+		<RepositoryUrl>https://gitee.com/yzxs949/acme</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageReleaseNotes>

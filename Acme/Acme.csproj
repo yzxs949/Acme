@@ -11,8 +11,8 @@
 			Acme 极简 .NET 开发，高效触手可及
 		</Description>
 		<PackageTags>Acme;类库;yzxs;云中小生;.NET8;.NET9;.NET10</PackageTags>
-		<PackageProjectUrl>https://gitee.com/yzxs949/acme-v2</PackageProjectUrl>
-		<RepositoryUrl>https://gitee.com/yzxs949/acme-v2</RepositoryUrl>
+		<PackageProjectUrl>https://gitee.com/yzxs949/acme</PackageProjectUrl>
+		<RepositoryUrl>https://gitee.com/yzxs949/acme</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageReleaseNotes>

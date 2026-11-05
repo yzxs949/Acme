@@ -21,6 +21,8 @@
 - [环境要求](#环境要求)
 - [版本历史](#版本历史)
 - [贡献](#贡献)
+- [公众号](#公众号)
+- [赞赏支持](#赞赏支持)
 - [许可证](#许可证)
 
 ## 简介
@@ -643,9 +645,23 @@ await _extensions.ExecuteTransactionAsync(new[]
 
 欢迎提交 Issue 与 Pull Request。
 
-- 仓库：<https://gitee.com/yzxs949/acme-v2>
+- 仓库：<https://gitee.com/yzxs949/acme>
 - 提交前请确保 `dotnet build` 零警告零错误
 - 涉及 SQL 拼接的改动，请补充覆盖该类场景的用例
+
+## 公众号
+
+扫码关注公众号「.NET修仙日记」，获取更新动态与实战笔记。
+
+![作者公众号](https://raw.githubusercontent.com/yzxs949/FilePath/refs/heads/main/Image/%E4%BA%8C%E7%BB%B4%E7%A0%81.jpg)
+
+## 赞赏支持
+
+如果这个项目对您有帮助，欢迎请作者喝杯咖啡，您的支持是持续维护的动力。
+
+| 支付宝 | 微信 |
+| :---: | :---: |
+| ![支付宝](https://raw.githubusercontent.com/yzxs949/FilePath/refs/heads/main/Image/zfb.jpg) | ![微信](https://raw.githubusercontent.com/yzxs949/FilePath/refs/heads/main/Image/wx.jpg) |
 
 ## 许可证
 
