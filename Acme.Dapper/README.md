@@ -2,8 +2,8 @@
 
 轻量、面向对象的 SQL Server 数据访问层，构建在 Dapper 与 Dapper.Contrib 之上。
 
-[![NuGet](https://img.shields.io/badge/nuget-5.7.0-informational?style=flat-square)](https://www.nuget.org/packages/Acme.Dapper)
-[![.NET](https://img.shields.io/badge/.NET-8.0%20%7C%209.0%20%7C%2010.0-512BD4?style=flat-square)](https://dotnet.microsoft.com)
+[![NuGet](https://img.shields.io/badge/nuget-5.7.1-informational?style=flat-square)](https://www.nuget.org/packages/Acme.Dapper)
+[![.NET](https://img.shields.io/badge/.NET-8.0%20%7C%209.0%20%7C%2010.0%20%7C%2011.0-512BD4?style=flat-square)](https://dotnet.microsoft.com)
 [![SQL Server](https://img.shields.io/badge/SQL%20Server-2012%2B-CC2927?style=flat-square)](#环境要求)
 [![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)](https://opensource.org/licenses/MIT)
 
@@ -60,7 +60,7 @@ dotnet add package Acme.Dapper
 或直接在 `PackageReference` 中引用：
 
 ```xml
-<PackageReference Include="Acme.Dapper" Version="5.7.0" />
+<PackageReference Include="Acme.Dapper" Version="5.7.1" />
 ```
 
 包依赖 `Acme` 基础库、`Dapper`、`Dapper.Contrib`、`Microsoft.Data.SqlClient`，NuGet 会自动还原，无需额外配置。
@@ -603,12 +603,20 @@ await _extensions.ExecuteTransactionAsync(new[]
 
 | 项目 | 要求 |
 |---|---|
-| .NET | `net8.0` / `net9.0` / `net10.0` |
+| .NET | `net8.0` / `net9.0` / `net10.0` / `net11.0` |
 | 数据库 | SQL Server 2012 及以上（依赖 `ROW_NUMBER`、`OUTPUT`） |
-| 依赖 | Dapper 2.1.89、Dapper.Contrib 2.0.78、Microsoft.Data.SqlClient 7.1.1、Microsoft.Extensions.DependencyInjection 10.0.14 |
+| 依赖 | Dapper 2.1.89、Dapper.Contrib 2.0.78、Microsoft.Data.SqlClient 7.1.2、Microsoft.Extensions.DependencyInjection 11.0.0 |
 | 基础库 | Acme（随 NuGet 自动还原） |
 
 ## 版本历史
+
+### 5.7.1
+
+变更：
+
+- 新增 `net11.0` 目标框架支持
+- `Microsoft.Data.SqlClient` 升级到 7.1.2
+- `Microsoft.Extensions.DependencyInjection` 升级到 11.0.0
 
 ### 5.7.0
 

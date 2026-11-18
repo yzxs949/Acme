@@ -4,18 +4,18 @@
 
 [![NuGet](https://img.shields.io/nuget/v/Acme.svg)](https://www.nuget.org/packages/Acme)
 [![NuGet Downloads](https://img.shields.io/nuget/dt/Acme.svg)](https://www.nuget.org/packages/Acme)
-[![.NET](https://img.shields.io/badge/.NET-8.0%20%7C%209.0%20%7C%2010.0-512BD4.svg)](https://dotnet.microsoft.com/)
+[![.NET](https://img.shields.io/badge/.NET-8.0%20%7C%209.0%20%7C%2010.0%20%7C%2011.0-512BD4.svg)](https://dotnet.microsoft.com/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Gitee](https://img.shields.io/badge/Gitee-yzxs949%2Facme-C71D23.svg?style=flat&v=2)](https://gitee.com/yzxs949/acme)
 
-Acme 是一个面向 **.NET 8 / 9 / 10** 的轻量级工具类库，聚合了日常开发中最常用的能力：JSON、类型转换、HTTP、加密、Session / Cookie、拼音、Excel、验证码、统一响应体、Swagger / JWT 与配置读取等。开箱即用，帮助你专注于业务本身。
+Acme 是一个面向 **.NET 8 / 9 / 10 / 11** 的轻量级工具类库，聚合了日常开发中最常用的能力：JSON、类型转换、HTTP、加密、Session / Cookie、拼音、Excel、验证码、统一响应体、Swagger / JWT 与配置读取等。开箱即用，帮助你专注于业务本身。
 
 ---
 
 ## 特性
 
 - **零负担**：大量核心能力以静态扩展方法提供，随取随用
-- **多框架**：单个包同时支持 `net8.0` / `net9.0` / `net10.0`
+- **多框架**：单个包同时支持 `net8.0` / `net9.0` / `net10.0` / `net11.0`
 - **模块化**：按需引用，互不耦合
 - **安全默认**：Cookie 默认 `HttpOnly`、验证码使用加密安全随机数、异常详情不外泄
 - **依赖注入友好**：一行 `AddAcmeBuilderServer()` 即可注册 Session / Cookie 服务
@@ -28,6 +28,7 @@ Acme 是一个面向 **.NET 8 / 9 / 10** 的轻量级工具类库，聚合了日
 | .NET 8   | `net8.0`  |
 | .NET 9   | `net9.0`  |
 | .NET 10  | `net10.0` |
+| .NET 11  | `net11.0` |
 
 ## 安装
 
@@ -410,22 +411,23 @@ string apiKey = custom.GetValue("ThirdParty:ApiKey");
 
 ## 依赖
 
-| 依赖包 | 用途 | .NET 8 | .NET 9 | .NET 10 |
-| :----- | :--- | :----- | :----- | :------ |
-| Newtonsoft.Json | JSON 序列化 | 13.0.4 | 13.0.4 | 13.0.4 |
-| NPOI | Excel 操作 | 2.8.1 | 2.8.1 | 2.8.1 |
-| ZKWeb.System.Drawing | 验证码绘图 | 4.0.1 | 4.0.1 | 4.0.1 |
-| Microsoft.Extensions.Caching.Abstractions | 缓存抽象 | 10.0.14 | 10.0.14 | 10.0.14 |
-| Microsoft.Extensions.DependencyInjection | 依赖注入 | 10.0.14 | 10.0.14 | 10.0.14 |
-| Microsoft.Extensions.Features | 特性抽象 | 10.0.14 | 10.0.14 | 10.0.14 |
-| Microsoft.AspNetCore.Authentication.JwtBearer | JWT 认证 | 8.0.33 | 9.0.22 | 10.0.14 |
-| Swashbuckle.AspNetCore.* | Swagger 文档 | 10.3.1 | 10.3.1 | 10.3.1 |
+| 依赖包 | 用途 | .NET 8 | .NET 9 | .NET 10 | .NET 11 |
+| :----- | :--- | :----- | :----- | :------ | :------ |
+| Newtonsoft.Json | JSON 序列化 | 13.0.4 | 13.0.4 | 13.0.4 | 13.0.4 |
+| NPOI | Excel 操作 | 2.8.1 | 2.8.1 | 2.8.1 | 2.8.1 |
+| ZKWeb.System.Drawing | 验证码绘图 | 4.0.1 | 4.0.1 | 4.0.1 | 4.0.1 |
+| Microsoft.Extensions.Caching.Abstractions | 缓存抽象 | 11.0.0 | 11.0.0 | 11.0.0 | 11.0.0 |
+| Microsoft.Extensions.DependencyInjection | 依赖注入 | 11.0.0 | 11.0.0 | 11.0.0 | 11.0.0 |
+| Microsoft.Extensions.Features | 特性抽象 | 11.0.0 | 11.0.0 | 11.0.0 | 11.0.0 |
+| Microsoft.AspNetCore.Authentication.JwtBearer | JWT 认证 | 8.0.34 | 9.0.23 | 10.0.15 | 11.0.0 |
+| Swashbuckle.AspNetCore.* | Swagger 文档 | 10.3.1 | 10.3.1 | 11.0.1 | 11.0.1 |
 
 ## 版本兼容性
 
 - .NET 8.0：支持
 - .NET 9.0：支持
 - .NET 10.0：支持
+- .NET 11.0：支持
 
 ## 贡献
 

@@ -216,4 +216,4 @@ public class Program
 - .NET 8.0：支持
 - .NET 9.0：支持
 - .NET 10.0：支持
-```
+- .NET 11.0：支持

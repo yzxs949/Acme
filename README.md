@@ -1,12 +1,12 @@
 # Acme
 
-面向 .NET 8 / 9 / 10 的轻量开发套件：通用工具库、Dapper 数据访问、统一响应体与全局过滤器。
+面向 .NET 8 / 9 / 10 / 11 的轻量开发套件：通用工具库、Dapper 数据访问、统一响应体与全局过滤器。
 
 详细文档：[Acme](Acme/README.md) · [Acme.Dapper](Acme.Dapper/README.md) · [示例 API](ApiDemo/Program.cs)
 
 [![NuGet Acme](https://img.shields.io/nuget/v/Acme.svg)](https://www.nuget.org/packages/Acme)
 [![NuGet Acme.Dapper](https://img.shields.io/nuget/v/Acme.Dapper.svg)](https://www.nuget.org/packages/Acme.Dapper)
-[![.NET](https://img.shields.io/badge/.NET-8.0%20%7C%209.0%20%7C%2010.0-512BD4.svg)](https://dotnet.microsoft.com/)
+[![.NET](https://img.shields.io/badge/.NET-8.0%20%7C%209.0%20%7C%2010.0%20%7C%2011.0-512BD4.svg)](https://dotnet.microsoft.com/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![Gitee](https://img.shields.io/badge/Gitee-yzxs949%2Facme-C71D23.svg?style=flat&v=2)](https://gitee.com/yzxs949/acme)
 
@@ -32,8 +32,8 @@ Acme 不是一个大而全的框架，而是可以独立引用的包，加上一
 
 | 包 / 项目 | 定位 | 目标框架 | 版本 | 文档 |
 |---|---|---|---|---|
-| `Acme` | 通用工具库：JSON、类型转换、HTTP、MD5、Session / Cookie、拼音、Excel、验证码、`Oh`、配置读取、Swagger / 过滤器 | net8.0 / net9.0 / net10.0 | 5.6.8.1 | [详细文档](Acme/README.md) · [NuGet](https://www.nuget.org/packages/Acme) |
-| `Acme.Dapper` | 基于 Dapper 的 SQL Server 数据访问：仓储、原生 SQL、分页、事务 | net8.0 / net9.0 / net10.0 | 5.7.0 | [详细文档](Acme.Dapper/README.md) · [NuGet](https://www.nuget.org/packages/Acme.Dapper) |
+| `Acme` | 通用工具库：JSON、类型转换、HTTP、MD5、Session / Cookie、拼音、Excel、验证码、`Oh`、配置读取、Swagger / 过滤器 | net8.0 / net9.0 / net10.0 / net11.0 | 5.6.9 | [详细文档](Acme/README.md) · [NuGet](https://www.nuget.org/packages/Acme) |
+| `Acme.Dapper` | 基于 Dapper 的 SQL Server 数据访问：仓储、原生 SQL、分页、事务 | net8.0 / net9.0 / net10.0 / net11.0 | 5.7.1 | [详细文档](Acme.Dapper/README.md) · [NuGet](https://www.nuget.org/packages/Acme.Dapper) |
 | `ApiDemo` | 示例 Web API：多版本 Swagger + 异常过滤 + `Oh` 返回 | net8.0 | — | [Program.cs](ApiDemo/Program.cs) |
 
 设计取向：
@@ -202,6 +202,7 @@ acme/
 │  └─ Apps/               App（配置读取）
 ├─ Acme.Dapper/           Dapper 数据访问（NuGet: Acme.Dapper）
 ├─ ApiDemo/               示例 Web API
+├─ Image/                 公众号与赞赏二维码
 └─ Acme.sln
 ```
 
@@ -211,7 +212,7 @@ acme/
 
 | 项目 | 要求 |
 |---|---|
-| .NET | SDK 8.0 / 9.0 / 10.0 |
+| .NET | SDK 8.0 / 9.0 / 10.0 / 11.0 |
 | 数据库 | SQL Server 2012+（仅 `Acme.Dapper` 需要） |
 | 平台 | 跨平台；验证码绘图依赖 `ZKWeb.System.Drawing` |
 
@@ -219,8 +220,8 @@ acme/
 
 | 包 | 关键依赖 |
 |---|---|
-| `Acme` | Newtonsoft.Json 13.0.4、NPOI 2.8.1、ZKWeb.System.Drawing 4.0.1、Swashbuckle 10.3.1、JwtBearer 8.0.33 / 9.0.22 / 10.0.14 |
-| `Acme.Dapper` | Dapper 2.1.89、Dapper.Contrib 2.0.78、Microsoft.Data.SqlClient 7.1.1、Microsoft.Extensions.DependencyInjection 10.0.14 |
+| `Acme` | Newtonsoft.Json 13.0.4、NPOI 2.8.1、ZKWeb.System.Drawing 4.0.1、Swashbuckle 10.3.1（net8/net9）/ 11.0.1（net10/net11）、JwtBearer 8.0.34 / 9.0.23 / 10.0.15 / 11.0.0 |
+| `Acme.Dapper` | Dapper 2.1.89、Dapper.Contrib 2.0.78、Microsoft.Data.SqlClient 7.1.2、Microsoft.Extensions.DependencyInjection 11.0.0 |
 
 ## 构建
 
@@ -242,8 +243,8 @@ dotnet build ApiDemo/ApiDemo.csproj
 
 | 包 | 版本 | 许可证 | 详细文档 |
 |---|---|---|---|
-| `Acme` | 5.6.8.1 | MIT | [Acme/README.md](Acme/README.md) |
-| `Acme.Dapper` | 5.7.0 | MIT | [Acme.Dapper/README.md](Acme.Dapper/README.md) |
+| `Acme` | 5.6.9 | MIT | [Acme/README.md](Acme/README.md) |
+| `Acme.Dapper` | 5.7.1 | MIT | [Acme.Dapper/README.md](Acme.Dapper/README.md) |
 
 发布说明见各 csproj 中的 `PackageReleaseNotes`。
 
